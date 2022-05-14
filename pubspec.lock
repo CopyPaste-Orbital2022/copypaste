@@ -155,20 +155,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.1"
-  copy_with:
-    dependency: "direct dev"
-    description:
-      path: "plugins/copywith/copy_with_generator"
-      relative: true
-    source: path
-    version: "0.1.2"
-  copy_with_annotation:
-    dependency: "direct main"
-    description:
-      path: "plugins/copywith/copy_with_annotation"
-      relative: true
-    source: path
-    version: "0.1.0"
   crypto:
     dependency: transitive
     description:
