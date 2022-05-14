@@ -1,6 +1,11 @@
+import 'package:copypaste/core/utilities/menubar_icons_icons.dart';
 import 'package:flutter/material.dart';
 
-enum SelectableTools { pen, eraser }
+enum SelectableTools {
+  pen,
+  eraser,
+  hand,
+}
 
 extension SelectableToolsX on SelectableTools {
   String get name {
@@ -10,7 +15,7 @@ extension SelectableToolsX on SelectableTools {
       case SelectableTools.eraser:
         return "eraser";
       default:
-        return "pen";
+        return "hand";
     }
   }
 
@@ -21,18 +26,18 @@ extension SelectableToolsX on SelectableTools {
       case "eraser":
         return SelectableTools.eraser;
       default:
-        return SelectableTools.pen;
+        return SelectableTools.hand;
     }
   }
 
   IconData get icon {
     switch (this) {
       case SelectableTools.pen:
-        return Icons.brush;
+        return MenubarIcons.pen;
       case SelectableTools.eraser:
-        return Icons.highlight;
+        return MenubarIcons.eraser;
       default:
-        return Icons.brush;
+        return Icons.handshake;
     }
   }
 }

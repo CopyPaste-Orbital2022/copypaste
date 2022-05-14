@@ -24,7 +24,7 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
       () => preferencesInjectionModule.prefs,
       preResolve: true);
   gh.lazySingleton<_i4.IDrawingToolBarRepository>(() =>
-      _i5.DrawingToolbarRepositoryImpl(_prefs: get<_i3.SharedPreferences>()));
+      _i5.DrawingToolbarRepositoryImpl(prefs: get<_i3.SharedPreferences>()));
   return get;
 }
 

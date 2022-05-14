@@ -56,13 +56,4 @@ extension SharedPreferencesX on SharedPreferences {
       throw UnsupportedSharedPreferencesTypeError();
     }
   }
-
-  /// Generates the key - enforces the key naming convention.
-  static String generateKey({
-    required String featurePrefix,
-    required String modelPrefix,
-    required String propertyName,
-  }) {
-    return featurePrefix + "-" + modelPrefix + "-" + propertyName;
-  }
 }
