@@ -7,26 +7,26 @@ part 'drawing_state.freezed.dart';
 @freezed
 abstract class DrawingState with _$DrawingState {
   // the initial state
-  const factory DrawingState.initialState() = _InitialState;
+  const factory DrawingState.initialState() = DrawingInitialState;
   // when the user is using pen
   const factory DrawingState.penState({
     required PenEntity pen,
-  }) = _PenState;
-  // when the user is using the highlighter
-  const factory DrawingState.highlighterState({
-    required bool showRuler,
-    required List<Color> colors,
-    required int curretColorIdx,
-    required bool useStylus,
-    required double width,
-  }) = _HighlighterState;
+  }) = DrawingPenState;
+  // // when the user is using the highlighter
+  // const factory DrawingState.highlighterState({
+  //   required bool showRuler,
+  //   required List<Color> colors,
+  //   required int curretColorIdx,
+  //   required bool useStylus,
+  //   required double width,
+  // }) = DrawingHighlighterState;
   // when the user is using the eraser
   const factory DrawingState.eraserState({
     required bool isPartial,
     required bool width,
-  }) = _EraserState;
+  }) = DrawingEraserState;
   // when the user is in the pan mode
-  const factory DrawingState.panState() = _PanState;
+  const factory DrawingState.panState() = DrawingPanState;
   // when the user is in the photo mode
-  const factory DrawingState.pictureState() = _PictureState;
+  const factory DrawingState.pictureState() = DrawingPictureState;
 }

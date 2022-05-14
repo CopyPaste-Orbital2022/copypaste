@@ -4,7 +4,7 @@ import 'drawing_state.dart';
 import 'drawing_event.dart';
 
 class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
-  DrawingBloc() : super(DrawingState.initialState()) {
+  DrawingBloc() : super(const DrawingState.initialState()) {
     on<DrawingEvent>((event, emit) {
       // TODO: implement event handler
     });

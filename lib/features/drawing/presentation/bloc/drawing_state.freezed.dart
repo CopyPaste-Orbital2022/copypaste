@@ -20,9 +20,6 @@ mixin _$DrawingState {
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
     required TResult Function(PenEntity pen) penState,
-    required TResult Function(bool showRuler, List<Color> colors,
-            int curretColorIdx, bool useStylus, double width)
-        highlighterState,
     required TResult Function(bool isPartial, bool width) eraserState,
     required TResult Function() panState,
     required TResult Function() pictureState,
@@ -32,9 +29,6 @@ mixin _$DrawingState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(PenEntity pen)? penState,
-    TResult Function(bool showRuler, List<Color> colors, int curretColorIdx,
-            bool useStylus, double width)?
-        highlighterState,
     TResult Function(bool isPartial, bool width)? eraserState,
     TResult Function()? panState,
     TResult Function()? pictureState,
@@ -44,9 +38,6 @@ mixin _$DrawingState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(PenEntity pen)? penState,
-    TResult Function(bool showRuler, List<Color> colors, int curretColorIdx,
-            bool useStylus, double width)?
-        highlighterState,
     TResult Function(bool isPartial, bool width)? eraserState,
     TResult Function()? panState,
     TResult Function()? pictureState,
@@ -55,32 +46,29 @@ mixin _$DrawingState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitialState value) initialState,
-    required TResult Function(_PenState value) penState,
-    required TResult Function(_HighlighterState value) highlighterState,
-    required TResult Function(_EraserState value) eraserState,
-    required TResult Function(_PanState value) panState,
-    required TResult Function(_PictureState value) pictureState,
+    required TResult Function(DrawingInitialState value) initialState,
+    required TResult Function(DrawingPenState value) penState,
+    required TResult Function(DrawingEraserState value) eraserState,
+    required TResult Function(DrawingPanState value) panState,
+    required TResult Function(DrawingPictureState value) pictureState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_InitialState value)? initialState,
-    TResult Function(_PenState value)? penState,
-    TResult Function(_HighlighterState value)? highlighterState,
-    TResult Function(_EraserState value)? eraserState,
-    TResult Function(_PanState value)? panState,
-    TResult Function(_PictureState value)? pictureState,
+    TResult Function(DrawingInitialState value)? initialState,
+    TResult Function(DrawingPenState value)? penState,
+    TResult Function(DrawingEraserState value)? eraserState,
+    TResult Function(DrawingPanState value)? panState,
+    TResult Function(DrawingPictureState value)? pictureState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialState value)? initialState,
-    TResult Function(_PenState value)? penState,
-    TResult Function(_HighlighterState value)? highlighterState,
-    TResult Function(_EraserState value)? eraserState,
-    TResult Function(_PanState value)? panState,
-    TResult Function(_PictureState value)? pictureState,
+    TResult Function(DrawingInitialState value)? initialState,
+    TResult Function(DrawingPenState value)? penState,
+    TResult Function(DrawingEraserState value)? eraserState,
+    TResult Function(DrawingPanState value)? panState,
+    TResult Function(DrawingPictureState value)? pictureState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -103,28 +91,28 @@ class _$DrawingStateCopyWithImpl<$Res> implements $DrawingStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_InitialStateCopyWith<$Res> {
-  factory _$$_InitialStateCopyWith(
-          _$_InitialState value, $Res Function(_$_InitialState) then) =
-      __$$_InitialStateCopyWithImpl<$Res>;
+abstract class _$$DrawingInitialStateCopyWith<$Res> {
+  factory _$$DrawingInitialStateCopyWith(_$DrawingInitialState value,
+          $Res Function(_$DrawingInitialState) then) =
+      __$$DrawingInitialStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialStateCopyWithImpl<$Res>
+class __$$DrawingInitialStateCopyWithImpl<$Res>
     extends _$DrawingStateCopyWithImpl<$Res>
-    implements _$$_InitialStateCopyWith<$Res> {
-  __$$_InitialStateCopyWithImpl(
-      _$_InitialState _value, $Res Function(_$_InitialState) _then)
-      : super(_value, (v) => _then(v as _$_InitialState));
+    implements _$$DrawingInitialStateCopyWith<$Res> {
+  __$$DrawingInitialStateCopyWithImpl(
+      _$DrawingInitialState _value, $Res Function(_$DrawingInitialState) _then)
+      : super(_value, (v) => _then(v as _$DrawingInitialState));
 
   @override
-  _$_InitialState get _value => super._value as _$_InitialState;
+  _$DrawingInitialState get _value => super._value as _$DrawingInitialState;
 }
 
 /// @nodoc
 
-class _$_InitialState implements _InitialState {
-  const _$_InitialState();
+class _$DrawingInitialState implements DrawingInitialState {
+  const _$DrawingInitialState();
 
   @override
   String toString() {
@@ -134,7 +122,7 @@ class _$_InitialState implements _InitialState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_InitialState);
+        (other.runtimeType == runtimeType && other is _$DrawingInitialState);
   }
 
   @override
@@ -145,9 +133,6 @@ class _$_InitialState implements _InitialState {
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
     required TResult Function(PenEntity pen) penState,
-    required TResult Function(bool showRuler, List<Color> colors,
-            int curretColorIdx, bool useStylus, double width)
-        highlighterState,
     required TResult Function(bool isPartial, bool width) eraserState,
     required TResult Function() panState,
     required TResult Function() pictureState,
@@ -160,9 +145,6 @@ class _$_InitialState implements _InitialState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(PenEntity pen)? penState,
-    TResult Function(bool showRuler, List<Color> colors, int curretColorIdx,
-            bool useStylus, double width)?
-        highlighterState,
     TResult Function(bool isPartial, bool width)? eraserState,
     TResult Function()? panState,
     TResult Function()? pictureState,
@@ -175,9 +157,6 @@ class _$_InitialState implements _InitialState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(PenEntity pen)? penState,
-    TResult Function(bool showRuler, List<Color> colors, int curretColorIdx,
-            bool useStylus, double width)?
-        highlighterState,
     TResult Function(bool isPartial, bool width)? eraserState,
     TResult Function()? panState,
     TResult Function()? pictureState,
@@ -192,12 +171,11 @@ class _$_InitialState implements _InitialState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitialState value) initialState,
-    required TResult Function(_PenState value) penState,
-    required TResult Function(_HighlighterState value) highlighterState,
-    required TResult Function(_EraserState value) eraserState,
-    required TResult Function(_PanState value) panState,
-    required TResult Function(_PictureState value) pictureState,
+    required TResult Function(DrawingInitialState value) initialState,
+    required TResult Function(DrawingPenState value) penState,
+    required TResult Function(DrawingEraserState value) eraserState,
+    required TResult Function(DrawingPanState value) panState,
+    required TResult Function(DrawingPictureState value) pictureState,
   }) {
     return initialState(this);
   }
@@ -205,12 +183,11 @@ class _$_InitialState implements _InitialState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_InitialState value)? initialState,
-    TResult Function(_PenState value)? penState,
-    TResult Function(_HighlighterState value)? highlighterState,
-    TResult Function(_EraserState value)? eraserState,
-    TResult Function(_PanState value)? panState,
-    TResult Function(_PictureState value)? pictureState,
+    TResult Function(DrawingInitialState value)? initialState,
+    TResult Function(DrawingPenState value)? penState,
+    TResult Function(DrawingEraserState value)? eraserState,
+    TResult Function(DrawingPanState value)? panState,
+    TResult Function(DrawingPictureState value)? pictureState,
   }) {
     return initialState?.call(this);
   }
@@ -218,12 +195,11 @@ class _$_InitialState implements _InitialState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialState value)? initialState,
-    TResult Function(_PenState value)? penState,
-    TResult Function(_HighlighterState value)? highlighterState,
-    TResult Function(_EraserState value)? eraserState,
-    TResult Function(_PanState value)? panState,
-    TResult Function(_PictureState value)? pictureState,
+    TResult Function(DrawingInitialState value)? initialState,
+    TResult Function(DrawingPenState value)? penState,
+    TResult Function(DrawingEraserState value)? eraserState,
+    TResult Function(DrawingPanState value)? panState,
+    TResult Function(DrawingPictureState value)? pictureState,
     required TResult orElse(),
   }) {
     if (initialState != null) {
@@ -233,45 +209,55 @@ class _$_InitialState implements _InitialState {
   }
 }
 
-abstract class _InitialState implements DrawingState {
-  const factory _InitialState() = _$_InitialState;
+abstract class DrawingInitialState implements DrawingState {
+  const factory DrawingInitialState() = _$DrawingInitialState;
 }
 
 /// @nodoc
-abstract class _$$_PenStateCopyWith<$Res> {
-  factory _$$_PenStateCopyWith(
-          _$_PenState value, $Res Function(_$_PenState) then) =
-      __$$_PenStateCopyWithImpl<$Res>;
+abstract class _$$DrawingPenStateCopyWith<$Res> {
+  factory _$$DrawingPenStateCopyWith(
+          _$DrawingPenState value, $Res Function(_$DrawingPenState) then) =
+      __$$DrawingPenStateCopyWithImpl<$Res>;
   $Res call({PenEntity pen});
+
+  $PenEntityCopyWith<$Res> get pen;
 }
 
 /// @nodoc
-class __$$_PenStateCopyWithImpl<$Res> extends _$DrawingStateCopyWithImpl<$Res>
-    implements _$$_PenStateCopyWith<$Res> {
-  __$$_PenStateCopyWithImpl(
-      _$_PenState _value, $Res Function(_$_PenState) _then)
-      : super(_value, (v) => _then(v as _$_PenState));
+class __$$DrawingPenStateCopyWithImpl<$Res>
+    extends _$DrawingStateCopyWithImpl<$Res>
+    implements _$$DrawingPenStateCopyWith<$Res> {
+  __$$DrawingPenStateCopyWithImpl(
+      _$DrawingPenState _value, $Res Function(_$DrawingPenState) _then)
+      : super(_value, (v) => _then(v as _$DrawingPenState));
 
   @override
-  _$_PenState get _value => super._value as _$_PenState;
+  _$DrawingPenState get _value => super._value as _$DrawingPenState;
 
   @override
   $Res call({
     Object? pen = freezed,
   }) {
-    return _then(_$_PenState(
+    return _then(_$DrawingPenState(
       pen: pen == freezed
           ? _value.pen
           : pen // ignore: cast_nullable_to_non_nullable
               as PenEntity,
     ));
   }
+
+  @override
+  $PenEntityCopyWith<$Res> get pen {
+    return $PenEntityCopyWith<$Res>(_value.pen, (value) {
+      return _then(_value.copyWith(pen: value));
+    });
+  }
 }
 
 /// @nodoc
 
-class _$_PenState implements _PenState {
-  const _$_PenState({required this.pen});
+class _$DrawingPenState implements DrawingPenState {
+  const _$DrawingPenState({required this.pen});
 
   @override
   final PenEntity pen;
@@ -285,7 +271,7 @@ class _$_PenState implements _PenState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PenState &&
+            other is _$DrawingPenState &&
             const DeepCollectionEquality().equals(other.pen, pen));
   }
 
@@ -295,17 +281,14 @@ class _$_PenState implements _PenState {
 
   @JsonKey(ignore: true)
   @override
-  _$$_PenStateCopyWith<_$_PenState> get copyWith =>
-      __$$_PenStateCopyWithImpl<_$_PenState>(this, _$identity);
+  _$$DrawingPenStateCopyWith<_$DrawingPenState> get copyWith =>
+      __$$DrawingPenStateCopyWithImpl<_$DrawingPenState>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
     required TResult Function(PenEntity pen) penState,
-    required TResult Function(bool showRuler, List<Color> colors,
-            int curretColorIdx, bool useStylus, double width)
-        highlighterState,
     required TResult Function(bool isPartial, bool width) eraserState,
     required TResult Function() panState,
     required TResult Function() pictureState,
@@ -318,9 +301,6 @@ class _$_PenState implements _PenState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(PenEntity pen)? penState,
-    TResult Function(bool showRuler, List<Color> colors, int curretColorIdx,
-            bool useStylus, double width)?
-        highlighterState,
     TResult Function(bool isPartial, bool width)? eraserState,
     TResult Function()? panState,
     TResult Function()? pictureState,
@@ -333,9 +313,6 @@ class _$_PenState implements _PenState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(PenEntity pen)? penState,
-    TResult Function(bool showRuler, List<Color> colors, int curretColorIdx,
-            bool useStylus, double width)?
-        highlighterState,
     TResult Function(bool isPartial, bool width)? eraserState,
     TResult Function()? panState,
     TResult Function()? pictureState,
@@ -350,12 +327,11 @@ class _$_PenState implements _PenState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitialState value) initialState,
-    required TResult Function(_PenState value) penState,
-    required TResult Function(_HighlighterState value) highlighterState,
-    required TResult Function(_EraserState value) eraserState,
-    required TResult Function(_PanState value) panState,
-    required TResult Function(_PictureState value) pictureState,
+    required TResult Function(DrawingInitialState value) initialState,
+    required TResult Function(DrawingPenState value) penState,
+    required TResult Function(DrawingEraserState value) eraserState,
+    required TResult Function(DrawingPanState value) panState,
+    required TResult Function(DrawingPictureState value) pictureState,
   }) {
     return penState(this);
   }
@@ -363,12 +339,11 @@ class _$_PenState implements _PenState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_InitialState value)? initialState,
-    TResult Function(_PenState value)? penState,
-    TResult Function(_HighlighterState value)? highlighterState,
-    TResult Function(_EraserState value)? eraserState,
-    TResult Function(_PanState value)? panState,
-    TResult Function(_PictureState value)? pictureState,
+    TResult Function(DrawingInitialState value)? initialState,
+    TResult Function(DrawingPenState value)? penState,
+    TResult Function(DrawingEraserState value)? eraserState,
+    TResult Function(DrawingPanState value)? panState,
+    TResult Function(DrawingPictureState value)? pictureState,
   }) {
     return penState?.call(this);
   }
@@ -376,12 +351,11 @@ class _$_PenState implements _PenState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialState value)? initialState,
-    TResult Function(_PenState value)? penState,
-    TResult Function(_HighlighterState value)? highlighterState,
-    TResult Function(_EraserState value)? eraserState,
-    TResult Function(_PanState value)? panState,
-    TResult Function(_PictureState value)? pictureState,
+    TResult Function(DrawingInitialState value)? initialState,
+    TResult Function(DrawingPenState value)? penState,
+    TResult Function(DrawingEraserState value)? eraserState,
+    TResult Function(DrawingPanState value)? panState,
+    TResult Function(DrawingPictureState value)? pictureState,
     required TResult orElse(),
   }) {
     if (penState != null) {
@@ -391,270 +365,41 @@ class _$_PenState implements _PenState {
   }
 }
 
-abstract class _PenState implements DrawingState {
-  const factory _PenState({required final PenEntity pen}) = _$_PenState;
+abstract class DrawingPenState implements DrawingState {
+  const factory DrawingPenState({required final PenEntity pen}) =
+      _$DrawingPenState;
 
   PenEntity get pen => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$$_PenStateCopyWith<_$_PenState> get copyWith =>
+  _$$DrawingPenStateCopyWith<_$DrawingPenState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_HighlighterStateCopyWith<$Res> {
-  factory _$$_HighlighterStateCopyWith(
-          _$_HighlighterState value, $Res Function(_$_HighlighterState) then) =
-      __$$_HighlighterStateCopyWithImpl<$Res>;
-  $Res call(
-      {bool showRuler,
-      List<Color> colors,
-      int curretColorIdx,
-      bool useStylus,
-      double width});
-}
-
-/// @nodoc
-class __$$_HighlighterStateCopyWithImpl<$Res>
-    extends _$DrawingStateCopyWithImpl<$Res>
-    implements _$$_HighlighterStateCopyWith<$Res> {
-  __$$_HighlighterStateCopyWithImpl(
-      _$_HighlighterState _value, $Res Function(_$_HighlighterState) _then)
-      : super(_value, (v) => _then(v as _$_HighlighterState));
-
-  @override
-  _$_HighlighterState get _value => super._value as _$_HighlighterState;
-
-  @override
-  $Res call({
-    Object? showRuler = freezed,
-    Object? colors = freezed,
-    Object? curretColorIdx = freezed,
-    Object? useStylus = freezed,
-    Object? width = freezed,
-  }) {
-    return _then(_$_HighlighterState(
-      showRuler: showRuler == freezed
-          ? _value.showRuler
-          : showRuler // ignore: cast_nullable_to_non_nullable
-              as bool,
-      colors: colors == freezed
-          ? _value._colors
-          : colors // ignore: cast_nullable_to_non_nullable
-              as List<Color>,
-      curretColorIdx: curretColorIdx == freezed
-          ? _value.curretColorIdx
-          : curretColorIdx // ignore: cast_nullable_to_non_nullable
-              as int,
-      useStylus: useStylus == freezed
-          ? _value.useStylus
-          : useStylus // ignore: cast_nullable_to_non_nullable
-              as bool,
-      width: width == freezed
-          ? _value.width
-          : width // ignore: cast_nullable_to_non_nullable
-              as double,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_HighlighterState implements _HighlighterState {
-  const _$_HighlighterState(
-      {required this.showRuler,
-      required final List<Color> colors,
-      required this.curretColorIdx,
-      required this.useStylus,
-      required this.width})
-      : _colors = colors;
-
-  @override
-  final bool showRuler;
-  final List<Color> _colors;
-  @override
-  List<Color> get colors {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_colors);
-  }
-
-  @override
-  final int curretColorIdx;
-  @override
-  final bool useStylus;
-  @override
-  final double width;
-
-  @override
-  String toString() {
-    return 'DrawingState.highlighterState(showRuler: $showRuler, colors: $colors, curretColorIdx: $curretColorIdx, useStylus: $useStylus, width: $width)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_HighlighterState &&
-            const DeepCollectionEquality().equals(other.showRuler, showRuler) &&
-            const DeepCollectionEquality().equals(other._colors, _colors) &&
-            const DeepCollectionEquality()
-                .equals(other.curretColorIdx, curretColorIdx) &&
-            const DeepCollectionEquality().equals(other.useStylus, useStylus) &&
-            const DeepCollectionEquality().equals(other.width, width));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(showRuler),
-      const DeepCollectionEquality().hash(_colors),
-      const DeepCollectionEquality().hash(curretColorIdx),
-      const DeepCollectionEquality().hash(useStylus),
-      const DeepCollectionEquality().hash(width));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_HighlighterStateCopyWith<_$_HighlighterState> get copyWith =>
-      __$$_HighlighterStateCopyWithImpl<_$_HighlighterState>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initialState,
-    required TResult Function(PenEntity pen) penState,
-    required TResult Function(bool showRuler, List<Color> colors,
-            int curretColorIdx, bool useStylus, double width)
-        highlighterState,
-    required TResult Function(bool isPartial, bool width) eraserState,
-    required TResult Function() panState,
-    required TResult Function() pictureState,
-  }) {
-    return highlighterState(
-        showRuler, colors, curretColorIdx, useStylus, width);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initialState,
-    TResult Function(PenEntity pen)? penState,
-    TResult Function(bool showRuler, List<Color> colors, int curretColorIdx,
-            bool useStylus, double width)?
-        highlighterState,
-    TResult Function(bool isPartial, bool width)? eraserState,
-    TResult Function()? panState,
-    TResult Function()? pictureState,
-  }) {
-    return highlighterState?.call(
-        showRuler, colors, curretColorIdx, useStylus, width);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initialState,
-    TResult Function(PenEntity pen)? penState,
-    TResult Function(bool showRuler, List<Color> colors, int curretColorIdx,
-            bool useStylus, double width)?
-        highlighterState,
-    TResult Function(bool isPartial, bool width)? eraserState,
-    TResult Function()? panState,
-    TResult Function()? pictureState,
-    required TResult orElse(),
-  }) {
-    if (highlighterState != null) {
-      return highlighterState(
-          showRuler, colors, curretColorIdx, useStylus, width);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_InitialState value) initialState,
-    required TResult Function(_PenState value) penState,
-    required TResult Function(_HighlighterState value) highlighterState,
-    required TResult Function(_EraserState value) eraserState,
-    required TResult Function(_PanState value) panState,
-    required TResult Function(_PictureState value) pictureState,
-  }) {
-    return highlighterState(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_InitialState value)? initialState,
-    TResult Function(_PenState value)? penState,
-    TResult Function(_HighlighterState value)? highlighterState,
-    TResult Function(_EraserState value)? eraserState,
-    TResult Function(_PanState value)? panState,
-    TResult Function(_PictureState value)? pictureState,
-  }) {
-    return highlighterState?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialState value)? initialState,
-    TResult Function(_PenState value)? penState,
-    TResult Function(_HighlighterState value)? highlighterState,
-    TResult Function(_EraserState value)? eraserState,
-    TResult Function(_PanState value)? panState,
-    TResult Function(_PictureState value)? pictureState,
-    required TResult orElse(),
-  }) {
-    if (highlighterState != null) {
-      return highlighterState(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _HighlighterState implements DrawingState {
-  const factory _HighlighterState(
-      {required final bool showRuler,
-      required final List<Color> colors,
-      required final int curretColorIdx,
-      required final bool useStylus,
-      required final double width}) = _$_HighlighterState;
-
-  bool get showRuler => throw _privateConstructorUsedError;
-  List<Color> get colors => throw _privateConstructorUsedError;
-  int get curretColorIdx => throw _privateConstructorUsedError;
-  bool get useStylus => throw _privateConstructorUsedError;
-  double get width => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  _$$_HighlighterStateCopyWith<_$_HighlighterState> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_EraserStateCopyWith<$Res> {
-  factory _$$_EraserStateCopyWith(
-          _$_EraserState value, $Res Function(_$_EraserState) then) =
-      __$$_EraserStateCopyWithImpl<$Res>;
+abstract class _$$DrawingEraserStateCopyWith<$Res> {
+  factory _$$DrawingEraserStateCopyWith(_$DrawingEraserState value,
+          $Res Function(_$DrawingEraserState) then) =
+      __$$DrawingEraserStateCopyWithImpl<$Res>;
   $Res call({bool isPartial, bool width});
 }
 
 /// @nodoc
-class __$$_EraserStateCopyWithImpl<$Res>
+class __$$DrawingEraserStateCopyWithImpl<$Res>
     extends _$DrawingStateCopyWithImpl<$Res>
-    implements _$$_EraserStateCopyWith<$Res> {
-  __$$_EraserStateCopyWithImpl(
-      _$_EraserState _value, $Res Function(_$_EraserState) _then)
-      : super(_value, (v) => _then(v as _$_EraserState));
+    implements _$$DrawingEraserStateCopyWith<$Res> {
+  __$$DrawingEraserStateCopyWithImpl(
+      _$DrawingEraserState _value, $Res Function(_$DrawingEraserState) _then)
+      : super(_value, (v) => _then(v as _$DrawingEraserState));
 
   @override
-  _$_EraserState get _value => super._value as _$_EraserState;
+  _$DrawingEraserState get _value => super._value as _$DrawingEraserState;
 
   @override
   $Res call({
     Object? isPartial = freezed,
     Object? width = freezed,
   }) {
-    return _then(_$_EraserState(
+    return _then(_$DrawingEraserState(
       isPartial: isPartial == freezed
           ? _value.isPartial
           : isPartial // ignore: cast_nullable_to_non_nullable
@@ -669,8 +414,8 @@ class __$$_EraserStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_EraserState implements _EraserState {
-  const _$_EraserState({required this.isPartial, required this.width});
+class _$DrawingEraserState implements DrawingEraserState {
+  const _$DrawingEraserState({required this.isPartial, required this.width});
 
   @override
   final bool isPartial;
@@ -686,7 +431,7 @@ class _$_EraserState implements _EraserState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EraserState &&
+            other is _$DrawingEraserState &&
             const DeepCollectionEquality().equals(other.isPartial, isPartial) &&
             const DeepCollectionEquality().equals(other.width, width));
   }
@@ -699,17 +444,15 @@ class _$_EraserState implements _EraserState {
 
   @JsonKey(ignore: true)
   @override
-  _$$_EraserStateCopyWith<_$_EraserState> get copyWith =>
-      __$$_EraserStateCopyWithImpl<_$_EraserState>(this, _$identity);
+  _$$DrawingEraserStateCopyWith<_$DrawingEraserState> get copyWith =>
+      __$$DrawingEraserStateCopyWithImpl<_$DrawingEraserState>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
     required TResult Function(PenEntity pen) penState,
-    required TResult Function(bool showRuler, List<Color> colors,
-            int curretColorIdx, bool useStylus, double width)
-        highlighterState,
     required TResult Function(bool isPartial, bool width) eraserState,
     required TResult Function() panState,
     required TResult Function() pictureState,
@@ -722,9 +465,6 @@ class _$_EraserState implements _EraserState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(PenEntity pen)? penState,
-    TResult Function(bool showRuler, List<Color> colors, int curretColorIdx,
-            bool useStylus, double width)?
-        highlighterState,
     TResult Function(bool isPartial, bool width)? eraserState,
     TResult Function()? panState,
     TResult Function()? pictureState,
@@ -737,9 +477,6 @@ class _$_EraserState implements _EraserState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(PenEntity pen)? penState,
-    TResult Function(bool showRuler, List<Color> colors, int curretColorIdx,
-            bool useStylus, double width)?
-        highlighterState,
     TResult Function(bool isPartial, bool width)? eraserState,
     TResult Function()? panState,
     TResult Function()? pictureState,
@@ -754,12 +491,11 @@ class _$_EraserState implements _EraserState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitialState value) initialState,
-    required TResult Function(_PenState value) penState,
-    required TResult Function(_HighlighterState value) highlighterState,
-    required TResult Function(_EraserState value) eraserState,
-    required TResult Function(_PanState value) panState,
-    required TResult Function(_PictureState value) pictureState,
+    required TResult Function(DrawingInitialState value) initialState,
+    required TResult Function(DrawingPenState value) penState,
+    required TResult Function(DrawingEraserState value) eraserState,
+    required TResult Function(DrawingPanState value) panState,
+    required TResult Function(DrawingPictureState value) pictureState,
   }) {
     return eraserState(this);
   }
@@ -767,12 +503,11 @@ class _$_EraserState implements _EraserState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_InitialState value)? initialState,
-    TResult Function(_PenState value)? penState,
-    TResult Function(_HighlighterState value)? highlighterState,
-    TResult Function(_EraserState value)? eraserState,
-    TResult Function(_PanState value)? panState,
-    TResult Function(_PictureState value)? pictureState,
+    TResult Function(DrawingInitialState value)? initialState,
+    TResult Function(DrawingPenState value)? penState,
+    TResult Function(DrawingEraserState value)? eraserState,
+    TResult Function(DrawingPanState value)? panState,
+    TResult Function(DrawingPictureState value)? pictureState,
   }) {
     return eraserState?.call(this);
   }
@@ -780,12 +515,11 @@ class _$_EraserState implements _EraserState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialState value)? initialState,
-    TResult Function(_PenState value)? penState,
-    TResult Function(_HighlighterState value)? highlighterState,
-    TResult Function(_EraserState value)? eraserState,
-    TResult Function(_PanState value)? panState,
-    TResult Function(_PictureState value)? pictureState,
+    TResult Function(DrawingInitialState value)? initialState,
+    TResult Function(DrawingPenState value)? penState,
+    TResult Function(DrawingEraserState value)? eraserState,
+    TResult Function(DrawingPanState value)? panState,
+    TResult Function(DrawingPictureState value)? pictureState,
     required TResult orElse(),
   }) {
     if (eraserState != null) {
@@ -795,40 +529,41 @@ class _$_EraserState implements _EraserState {
   }
 }
 
-abstract class _EraserState implements DrawingState {
-  const factory _EraserState(
+abstract class DrawingEraserState implements DrawingState {
+  const factory DrawingEraserState(
       {required final bool isPartial,
-      required final bool width}) = _$_EraserState;
+      required final bool width}) = _$DrawingEraserState;
 
   bool get isPartial => throw _privateConstructorUsedError;
   bool get width => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$$_EraserStateCopyWith<_$_EraserState> get copyWith =>
+  _$$DrawingEraserStateCopyWith<_$DrawingEraserState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_PanStateCopyWith<$Res> {
-  factory _$$_PanStateCopyWith(
-          _$_PanState value, $Res Function(_$_PanState) then) =
-      __$$_PanStateCopyWithImpl<$Res>;
+abstract class _$$DrawingPanStateCopyWith<$Res> {
+  factory _$$DrawingPanStateCopyWith(
+          _$DrawingPanState value, $Res Function(_$DrawingPanState) then) =
+      __$$DrawingPanStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_PanStateCopyWithImpl<$Res> extends _$DrawingStateCopyWithImpl<$Res>
-    implements _$$_PanStateCopyWith<$Res> {
-  __$$_PanStateCopyWithImpl(
-      _$_PanState _value, $Res Function(_$_PanState) _then)
-      : super(_value, (v) => _then(v as _$_PanState));
+class __$$DrawingPanStateCopyWithImpl<$Res>
+    extends _$DrawingStateCopyWithImpl<$Res>
+    implements _$$DrawingPanStateCopyWith<$Res> {
+  __$$DrawingPanStateCopyWithImpl(
+      _$DrawingPanState _value, $Res Function(_$DrawingPanState) _then)
+      : super(_value, (v) => _then(v as _$DrawingPanState));
 
   @override
-  _$_PanState get _value => super._value as _$_PanState;
+  _$DrawingPanState get _value => super._value as _$DrawingPanState;
 }
 
 /// @nodoc
 
-class _$_PanState implements _PanState {
-  const _$_PanState();
+class _$DrawingPanState implements DrawingPanState {
+  const _$DrawingPanState();
 
   @override
   String toString() {
@@ -838,7 +573,7 @@ class _$_PanState implements _PanState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_PanState);
+        (other.runtimeType == runtimeType && other is _$DrawingPanState);
   }
 
   @override
@@ -849,9 +584,6 @@ class _$_PanState implements _PanState {
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
     required TResult Function(PenEntity pen) penState,
-    required TResult Function(bool showRuler, List<Color> colors,
-            int curretColorIdx, bool useStylus, double width)
-        highlighterState,
     required TResult Function(bool isPartial, bool width) eraserState,
     required TResult Function() panState,
     required TResult Function() pictureState,
@@ -864,9 +596,6 @@ class _$_PanState implements _PanState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(PenEntity pen)? penState,
-    TResult Function(bool showRuler, List<Color> colors, int curretColorIdx,
-            bool useStylus, double width)?
-        highlighterState,
     TResult Function(bool isPartial, bool width)? eraserState,
     TResult Function()? panState,
     TResult Function()? pictureState,
@@ -879,9 +608,6 @@ class _$_PanState implements _PanState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(PenEntity pen)? penState,
-    TResult Function(bool showRuler, List<Color> colors, int curretColorIdx,
-            bool useStylus, double width)?
-        highlighterState,
     TResult Function(bool isPartial, bool width)? eraserState,
     TResult Function()? panState,
     TResult Function()? pictureState,
@@ -896,12 +622,11 @@ class _$_PanState implements _PanState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitialState value) initialState,
-    required TResult Function(_PenState value) penState,
-    required TResult Function(_HighlighterState value) highlighterState,
-    required TResult Function(_EraserState value) eraserState,
-    required TResult Function(_PanState value) panState,
-    required TResult Function(_PictureState value) pictureState,
+    required TResult Function(DrawingInitialState value) initialState,
+    required TResult Function(DrawingPenState value) penState,
+    required TResult Function(DrawingEraserState value) eraserState,
+    required TResult Function(DrawingPanState value) panState,
+    required TResult Function(DrawingPictureState value) pictureState,
   }) {
     return panState(this);
   }
@@ -909,12 +634,11 @@ class _$_PanState implements _PanState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_InitialState value)? initialState,
-    TResult Function(_PenState value)? penState,
-    TResult Function(_HighlighterState value)? highlighterState,
-    TResult Function(_EraserState value)? eraserState,
-    TResult Function(_PanState value)? panState,
-    TResult Function(_PictureState value)? pictureState,
+    TResult Function(DrawingInitialState value)? initialState,
+    TResult Function(DrawingPenState value)? penState,
+    TResult Function(DrawingEraserState value)? eraserState,
+    TResult Function(DrawingPanState value)? panState,
+    TResult Function(DrawingPictureState value)? pictureState,
   }) {
     return panState?.call(this);
   }
@@ -922,12 +646,11 @@ class _$_PanState implements _PanState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialState value)? initialState,
-    TResult Function(_PenState value)? penState,
-    TResult Function(_HighlighterState value)? highlighterState,
-    TResult Function(_EraserState value)? eraserState,
-    TResult Function(_PanState value)? panState,
-    TResult Function(_PictureState value)? pictureState,
+    TResult Function(DrawingInitialState value)? initialState,
+    TResult Function(DrawingPenState value)? penState,
+    TResult Function(DrawingEraserState value)? eraserState,
+    TResult Function(DrawingPanState value)? panState,
+    TResult Function(DrawingPictureState value)? pictureState,
     required TResult orElse(),
   }) {
     if (panState != null) {
@@ -937,33 +660,33 @@ class _$_PanState implements _PanState {
   }
 }
 
-abstract class _PanState implements DrawingState {
-  const factory _PanState() = _$_PanState;
+abstract class DrawingPanState implements DrawingState {
+  const factory DrawingPanState() = _$DrawingPanState;
 }
 
 /// @nodoc
-abstract class _$$_PictureStateCopyWith<$Res> {
-  factory _$$_PictureStateCopyWith(
-          _$_PictureState value, $Res Function(_$_PictureState) then) =
-      __$$_PictureStateCopyWithImpl<$Res>;
+abstract class _$$DrawingPictureStateCopyWith<$Res> {
+  factory _$$DrawingPictureStateCopyWith(_$DrawingPictureState value,
+          $Res Function(_$DrawingPictureState) then) =
+      __$$DrawingPictureStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_PictureStateCopyWithImpl<$Res>
+class __$$DrawingPictureStateCopyWithImpl<$Res>
     extends _$DrawingStateCopyWithImpl<$Res>
-    implements _$$_PictureStateCopyWith<$Res> {
-  __$$_PictureStateCopyWithImpl(
-      _$_PictureState _value, $Res Function(_$_PictureState) _then)
-      : super(_value, (v) => _then(v as _$_PictureState));
+    implements _$$DrawingPictureStateCopyWith<$Res> {
+  __$$DrawingPictureStateCopyWithImpl(
+      _$DrawingPictureState _value, $Res Function(_$DrawingPictureState) _then)
+      : super(_value, (v) => _then(v as _$DrawingPictureState));
 
   @override
-  _$_PictureState get _value => super._value as _$_PictureState;
+  _$DrawingPictureState get _value => super._value as _$DrawingPictureState;
 }
 
 /// @nodoc
 
-class _$_PictureState implements _PictureState {
-  const _$_PictureState();
+class _$DrawingPictureState implements DrawingPictureState {
+  const _$DrawingPictureState();
 
   @override
   String toString() {
@@ -973,7 +696,7 @@ class _$_PictureState implements _PictureState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_PictureState);
+        (other.runtimeType == runtimeType && other is _$DrawingPictureState);
   }
 
   @override
@@ -984,9 +707,6 @@ class _$_PictureState implements _PictureState {
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
     required TResult Function(PenEntity pen) penState,
-    required TResult Function(bool showRuler, List<Color> colors,
-            int curretColorIdx, bool useStylus, double width)
-        highlighterState,
     required TResult Function(bool isPartial, bool width) eraserState,
     required TResult Function() panState,
     required TResult Function() pictureState,
@@ -999,9 +719,6 @@ class _$_PictureState implements _PictureState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(PenEntity pen)? penState,
-    TResult Function(bool showRuler, List<Color> colors, int curretColorIdx,
-            bool useStylus, double width)?
-        highlighterState,
     TResult Function(bool isPartial, bool width)? eraserState,
     TResult Function()? panState,
     TResult Function()? pictureState,
@@ -1014,9 +731,6 @@ class _$_PictureState implements _PictureState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(PenEntity pen)? penState,
-    TResult Function(bool showRuler, List<Color> colors, int curretColorIdx,
-            bool useStylus, double width)?
-        highlighterState,
     TResult Function(bool isPartial, bool width)? eraserState,
     TResult Function()? panState,
     TResult Function()? pictureState,
@@ -1031,12 +745,11 @@ class _$_PictureState implements _PictureState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitialState value) initialState,
-    required TResult Function(_PenState value) penState,
-    required TResult Function(_HighlighterState value) highlighterState,
-    required TResult Function(_EraserState value) eraserState,
-    required TResult Function(_PanState value) panState,
-    required TResult Function(_PictureState value) pictureState,
+    required TResult Function(DrawingInitialState value) initialState,
+    required TResult Function(DrawingPenState value) penState,
+    required TResult Function(DrawingEraserState value) eraserState,
+    required TResult Function(DrawingPanState value) panState,
+    required TResult Function(DrawingPictureState value) pictureState,
   }) {
     return pictureState(this);
   }
@@ -1044,12 +757,11 @@ class _$_PictureState implements _PictureState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_InitialState value)? initialState,
-    TResult Function(_PenState value)? penState,
-    TResult Function(_HighlighterState value)? highlighterState,
-    TResult Function(_EraserState value)? eraserState,
-    TResult Function(_PanState value)? panState,
-    TResult Function(_PictureState value)? pictureState,
+    TResult Function(DrawingInitialState value)? initialState,
+    TResult Function(DrawingPenState value)? penState,
+    TResult Function(DrawingEraserState value)? eraserState,
+    TResult Function(DrawingPanState value)? panState,
+    TResult Function(DrawingPictureState value)? pictureState,
   }) {
     return pictureState?.call(this);
   }
@@ -1057,12 +769,11 @@ class _$_PictureState implements _PictureState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialState value)? initialState,
-    TResult Function(_PenState value)? penState,
-    TResult Function(_HighlighterState value)? highlighterState,
-    TResult Function(_EraserState value)? eraserState,
-    TResult Function(_PanState value)? panState,
-    TResult Function(_PictureState value)? pictureState,
+    TResult Function(DrawingInitialState value)? initialState,
+    TResult Function(DrawingPenState value)? penState,
+    TResult Function(DrawingEraserState value)? eraserState,
+    TResult Function(DrawingPanState value)? panState,
+    TResult Function(DrawingPictureState value)? pictureState,
     required TResult orElse(),
   }) {
     if (pictureState != null) {
@@ -1072,6 +783,6 @@ class _$_PictureState implements _PictureState {
   }
 }
 
-abstract class _PictureState implements DrawingState {
-  const factory _PictureState() = _$_PictureState;
+abstract class DrawingPictureState implements DrawingState {
+  const factory DrawingPictureState() = _$DrawingPictureState;
 }

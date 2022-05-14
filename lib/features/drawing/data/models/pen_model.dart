@@ -1,23 +1,54 @@
+import 'dart:ui';
+
 import 'package:copypaste/features/drawing/domain/entities/pen_entity.dart';
 
-class PenModel extends PenEntity {
+class PenModel {
+  final int currentColorIdx;
+  static const int defaultCurrentColorIdx = 0;
+  final List<String> colors;
+  static const List<String> defaultColors = ["0x0000000000"];
+  final bool useStylus;
+  static const bool defaultUseStylus = false;
+  final double width;
+  static const double defaultWidth = 1.0;
+
   PenModel({
-    required bool showRuler,
-    required List<int> colors,
-    required int currentColorIdx,
-    required bool useStylus,
-    required double width,
-    required double pressureSensitivity,
-    required double speedSensitivity,
-    required double tiltSensitivity,
-  }) : super(
-          showRuler: showRuler,
-          colors: colors,
-          currentColorIdx: currentColorIdx,
-          useStylus: useStylus,
-          width: width,
-          pressureSensitivity: pressureSensitivity,
-          speedSensitivity: speedSensitivity,
-          tiltSensitivity: tiltSensitivity,
-        );
+    required this.currentColorIdx,
+    required this.colors,
+    required this.useStylus,
+    required this.width,
+  });
+
+  /// converts to domain
+  PenEntity toDomain() {
+    return PenEntity(
+      currentColorIdx: currentColorIdx,
+      colors: _stringsToColors(colors),
+      useStylus: useStylus,
+      width: width,
+    );
+  }
+
+  /// converts from domain
+  static PenModel fromDomain(PenEntity penEntity) {
+    return PenModel(
+      currentColorIdx: penEntity.currentColorIdx,
+      colors: _colorsToStrings(penEntity.colors),
+      useStylus: penEntity.useStylus,
+      width: penEntity.width,
+    );
+  }
+
+  /// converts a list of Colors [cls] to a list of Strings
+  static List<String> _colorsToStrings(List<Color> cls) {
+    return cls.map((e) => e.value.toString()).toList();
+  }
+
+  /// converts a list of Strings [strs] to a list of Colors
+  static List<Color> _stringsToColors(List<String> strs) {
+    return strs.map((e) => Color(int.parse(e))).toList();
+  }
+
+  /// The model prefix
+  static const String prefix = "pen";
 }

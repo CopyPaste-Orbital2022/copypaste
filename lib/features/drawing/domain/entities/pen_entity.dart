@@ -1,21 +1,15 @@
-class PenEntity {
-  final bool showRuler;
-  final List<int> colors;
-  final int currentColorIdx;
-  final bool useStylus;
-  final double width;
-  final double pressureSensitivity;
-  final double speedSensitivity;
-  final double tiltSensitivity;
+import 'dart:ui';
 
-  const PenEntity({
-    required this.showRuler,
-    required this.colors,
-    required this.currentColorIdx,
-    required this.useStylus,
-    required this.width,
-    required this.pressureSensitivity,
-    required this.speedSensitivity,
-    required this.tiltSensitivity,
-  });
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'pen_entity.freezed.dart';
+
+@freezed
+class PenEntity with _$PenEntity {
+  const factory PenEntity({
+    required int currentColorIdx,
+    required List<Color> colors,
+    required bool useStylus,
+    required double width,
+  }) = _PenEntity;
 }
