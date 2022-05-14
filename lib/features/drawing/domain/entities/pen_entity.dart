@@ -1,9 +1,12 @@
-import 'dart:ffi';
+import 'package:copy_with_annotation/copy_with_annotation.dart';
 
+part 'pen_entity.g.dart';
+
+@CopyWith()
 class PenEntity {
   PenEntity({
     required bool showRuler,
-    required List<Int32> colors,
+    required List<int> colors,
     required int currentColorIdx,
     required bool useStylus,
     required double width,
