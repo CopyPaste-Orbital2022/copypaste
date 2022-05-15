@@ -32,6 +32,7 @@ dependencies:
   equatable: ^2.0.3
   flutter:
     sdk: flutter
+  flutter_bloc: ^8.0.1
   freezed_annotation: ^2.0.3
   get_it: ^7.2.0
   injectable: ^1.5.3
@@ -71,6 +72,5 @@ flutter:
     - family: MenubarIcons
       fonts:
         - asset: assets/fonts/MenubarIcons.ttf
-  #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

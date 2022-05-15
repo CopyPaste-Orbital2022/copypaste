@@ -1,43 +1,50 @@
 import 'package:copypaste/core/utilities/menubar_icons_icons.dart';
 import 'package:flutter/material.dart';
 
-enum SelectableTools {
+enum DrawingTool {
+  /// when the pen tool is currently active
   pen,
   eraser,
   hand,
 }
 
-extension SelectableToolsX on SelectableTools {
+extension DrawingToolX on DrawingTool {
+  /// returns the [name] of the SelectableTool
   String get name {
     switch (this) {
-      case SelectableTools.pen:
+      case DrawingTool.pen:
         return "pen";
-      case SelectableTools.eraser:
+      case DrawingTool.eraser:
         return "eraser";
       default:
         return "hand";
     }
   }
 
-  static SelectableTools fromString(String name) {
+  /// returns a [DrawingTool] instance with the given [name]
+  static DrawingTool fromString(String name) {
     switch (name) {
       case "pen":
-        return SelectableTools.pen;
+        return DrawingTool.pen;
       case "eraser":
-        return SelectableTools.eraser;
+        return DrawingTool.eraser;
       default:
-        return SelectableTools.hand;
+        return DrawingTool.hand;
     }
   }
 
+  /// returns the [IconData] of the current tool
   IconData get icon {
     switch (this) {
-      case SelectableTools.pen:
+      case DrawingTool.pen:
         return MenubarIcons.pen;
-      case SelectableTools.eraser:
+      case DrawingTool.eraser:
         return MenubarIcons.eraser;
       default:
         return Icons.handshake;
     }
   }
+
+  /// The modelKey - should be depricated
+  static const String modelKey = "selectable-tool";
 }

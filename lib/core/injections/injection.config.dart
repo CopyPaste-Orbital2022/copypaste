@@ -12,7 +12,8 @@ import '../../features/drawing/data/repositories/drawing_toolbar_repository_impl
     as _i5;
 import '../../features/drawing/domain/repositories/i_drawing_toolbar_repository.dart'
     as _i4;
-import 'shared_preferences.dart' as _i6; // ignore_for_file: unnecessary_lambdas
+import '../../features/drawing/presentation/bloc/drawing_bloc.dart' as _i6;
+import 'shared_preferences.dart' as _i7; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
@@ -25,7 +26,9 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
       preResolve: true);
   gh.lazySingleton<_i4.IDrawingToolBarRepository>(() =>
       _i5.DrawingToolbarRepositoryImpl(prefs: get<_i3.SharedPreferences>()));
+  gh.lazySingleton<_i6.DrawingBloc>(
+      () => _i6.DrawingBloc(get<_i4.IDrawingToolBarRepository>()));
   return get;
 }
 
-class _$PreferencesInjectionModule extends _i6.PreferencesInjectionModule {}
+class _$PreferencesInjectionModule extends _i7.PreferencesInjectionModule {}

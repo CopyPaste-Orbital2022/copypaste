@@ -1,8 +1,8 @@
 import 'dart:ui';
 
-import 'package:copypaste/features/drawing/domain/entities/pen_entity.dart';
+import 'package:copypaste/features/drawing/domain/entities/pen_state.dart';
 
-class PenModel {
+class PenStateModel {
   final int currentColorIdx;
   static const int defaultCurrentColorIdx = 0;
   final List<String> colors;
@@ -12,7 +12,7 @@ class PenModel {
   final double width;
   static const double defaultWidth = 1.0;
 
-  PenModel({
+  PenStateModel({
     required this.currentColorIdx,
     required this.colors,
     required this.useStylus,
@@ -20,8 +20,8 @@ class PenModel {
   });
 
   /// converts to domain
-  PenEntity toDomain() {
-    return PenEntity(
+  PenState toDomain() {
+    return PenState(
       currentColorIdx: currentColorIdx,
       colors: _stringsToColors(colors),
       useStylus: useStylus,
@@ -30,8 +30,8 @@ class PenModel {
   }
 
   /// converts from domain
-  static PenModel fromDomain(PenEntity penEntity) {
-    return PenModel(
+  static PenStateModel fromDomain(PenState penEntity) {
+    return PenStateModel(
       currentColorIdx: penEntity.currentColorIdx,
       colors: _colorsToStrings(penEntity.colors),
       useStylus: penEntity.useStylus,

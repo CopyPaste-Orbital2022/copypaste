@@ -1,5 +1,5 @@
 import 'package:copypaste/core/injections/injection.dart';
-import 'package:copypaste/core/utilities/menubar_icons_icons.dart';
+import 'package:copypaste/features/drawing/presentation/widgets/drawing_button_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
@@ -79,8 +79,8 @@ class _MyHomePageState extends State<MyHomePage> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
-        actions: [
-          IconButton(onPressed: () {}, icon: const Icon(MenubarIcons.eraser)),
+        actions: const [
+          DrawingButtonMenu(),
         ],
       ),
       body: Center(

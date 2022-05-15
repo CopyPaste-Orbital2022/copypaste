@@ -1,10 +1,11 @@
-import 'package:copypaste/features/drawing/data/models/eraser_model.dart';
-import 'package:copypaste/features/drawing/data/models/pen_model.dart';
+import 'package:copypaste/features/drawing/data/models/eraser_state_model.dart';
+import 'package:copypaste/features/drawing/data/models/pen_state_model.dart';
+import 'package:copypaste/features/drawing/domain/entities/selectable_tools.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:copypaste/features/drawing/domain/entities/eraser_entity.dart';
-import 'package:copypaste/features/drawing/domain/entities/pen_entity.dart';
+import 'package:copypaste/features/drawing/domain/entities/eraser_state.dart';
+import 'package:copypaste/features/drawing/domain/entities/pen_state.dart';
 import 'package:copypaste/features/drawing/domain/repositories/i_drawing_toolbar_repository.dart';
 import 'package:copypaste/core/extensions/shared_preferences_extension.dart';
 
@@ -23,62 +24,81 @@ class DrawingToolbarRepositoryImpl implements IDrawingToolBarRepository {
     required this.prefs,
   });
 
-  // ! below are some HUGELY INEFFICIENT code
-  // ! fix this later
+  // TODO: Fix the inefficient code below later -> replace with constant
+  // TODO: (continued) key instead of the current functions
   @override
-  EraserEntity getEraserEntity() {
-    final String radiusKey = generateKey(
+  DrawingTool getCurrentTool() {
+    final String selectableToolKey = generateKey(
         featurePrefix: featurePrefix,
-        modelPrefix: EraserModel.prefix,
-        propertyName: "radius");
-    final String isPartialKey = generateKey(
-      featurePrefix: featurePrefix,
-      modelPrefix: EraserModel.prefix,
-      propertyName: "is-partial",
-    );
-    final double radius =
-        prefs.getElseSet(radiusKey, EraserModel.defaultRadius);
-    final bool isPartial =
-        prefs.getElseSet(isPartialKey, EraserModel.defaultIsPartial);
-    return EraserModel(radius: radius, isPartial: isPartial).toDomain();
+        modelPrefix: DrawingToolX.modelKey,
+        propertyName: "current-tool");
+    return DrawingToolX.fromString(
+        prefs.getElseSet(selectableToolKey, DrawingTool.hand.name));
   }
 
   @override
-  PenEntity getPenEntity() {
+  void saveCurrentTool(DrawingTool tool) {
+    final String selectableToolKey = generateKey(
+        featurePrefix: featurePrefix,
+        modelPrefix: DrawingToolX.modelKey,
+        propertyName: "current-tool");
+    prefs.setString(selectableToolKey, tool.name);
+  }
+
+  @override
+  EraserState getEraserState() {
+    final String radiusKey = generateKey(
+        featurePrefix: featurePrefix,
+        modelPrefix: EraserStateModel.prefix,
+        propertyName: "radius");
+    final String isPartialKey = generateKey(
+      featurePrefix: featurePrefix,
+      modelPrefix: EraserStateModel.prefix,
+      propertyName: "is-partial",
+    );
+    final double radius =
+        prefs.getElseSet(radiusKey, EraserStateModel.defaultRadius);
+    final bool isPartial =
+        prefs.getElseSet(isPartialKey, EraserStateModel.defaultIsPartial);
+    return EraserStateModel(radius: radius, isPartial: isPartial).toDomain();
+  }
+
+  @override
+  PenState getPenState() {
     final String currentColorIdxKey = generateKey(
       featurePrefix: featurePrefix,
-      modelPrefix: PenModel.prefix,
+      modelPrefix: PenStateModel.prefix,
       propertyName: "current-color-index",
     );
     final String colorsKey = generateKey(
       featurePrefix: featurePrefix,
-      modelPrefix: PenModel.prefix,
+      modelPrefix: PenStateModel.prefix,
       propertyName: "colors",
     );
     final String useStylusKey = generateKey(
       featurePrefix: featurePrefix,
-      modelPrefix: PenModel.prefix,
+      modelPrefix: PenStateModel.prefix,
       propertyName: "use-stylus",
     );
     final String widthKey = generateKey(
       featurePrefix: featurePrefix,
-      modelPrefix: PenModel.prefix,
+      modelPrefix: PenStateModel.prefix,
       propertyName: "width",
     );
     final int currentColorIdx = prefs.getElseSet(
       currentColorIdxKey,
-      PenModel.defaultCurrentColorIdx,
+      PenStateModel.defaultCurrentColorIdx,
     );
     final List<String> colors = prefs.getElseSet(
       colorsKey,
-      PenModel.defaultColors,
+      PenStateModel.defaultColors,
     );
     final bool useStylus = prefs.getElseSet(
       useStylusKey,
-      PenModel.defaultUseStylus,
+      PenStateModel.defaultUseStylus,
     );
-    final double width = prefs.getElseSet(widthKey, PenModel.defaultWidth);
-    return PenModel(
+    final double width = prefs.getElseSet(widthKey, PenStateModel.defaultWidth);
+    return PenStateModel(
       currentColorIdx: currentColorIdx,
       colors: colors,
       useStylus: useStylus,
@@ -87,43 +107,43 @@ class DrawingToolbarRepositoryImpl implements IDrawingToolBarRepository {
   }
 
   @override
-  void saveEraserEntity(EraserEntity entity) {
+  void saveEraserState(EraserState state) {
     final String radiusKey = generateKey(
         featurePrefix: featurePrefix,
-        modelPrefix: EraserModel.prefix,
+        modelPrefix: EraserStateModel.prefix,
         propertyName: "radius");
     final String isPartialKey = generateKey(
       featurePrefix: featurePrefix,
-      modelPrefix: EraserModel.prefix,
+      modelPrefix: EraserStateModel.prefix,
       propertyName: "is-partial",
     );
-    prefs.setDouble(radiusKey, entity.radius);
-    prefs.setBool(isPartialKey, entity.isPartial);
+    prefs.setDouble(radiusKey, state.radius);
+    prefs.setBool(isPartialKey, state.isPartial);
   }
 
   @override
-  void savePenEntity(PenEntity entity) {
+  void savePenState(PenState state) {
     final String currentColorIdxKey = generateKey(
       featurePrefix: featurePrefix,
-      modelPrefix: PenModel.prefix,
+      modelPrefix: PenStateModel.prefix,
       propertyName: "current-color-index",
     );
     final String colorsKey = generateKey(
       featurePrefix: featurePrefix,
-      modelPrefix: PenModel.prefix,
+      modelPrefix: PenStateModel.prefix,
       propertyName: "colors",
     );
     final String useStylusKey = generateKey(
       featurePrefix: featurePrefix,
-      modelPrefix: PenModel.prefix,
+      modelPrefix: PenStateModel.prefix,
       propertyName: "use-stylus",
     );
     final String widthKey = generateKey(
       featurePrefix: featurePrefix,
-      modelPrefix: PenModel.prefix,
+      modelPrefix: PenStateModel.prefix,
       propertyName: "width",
     );
-    PenModel model = PenModel.fromDomain(entity);
+    PenStateModel model = PenStateModel.fromDomain(state);
     prefs.setInt(currentColorIdxKey, model.currentColorIdx);
     prefs.setStringList(colorsKey, model.colors);
     prefs.setBool(useStylusKey, model.useStylus);

@@ -1,7 +1,7 @@
-import 'package:copypaste/features/drawing/domain/entities/eraser_entity.dart';
+import 'package:copypaste/features/drawing/domain/entities/eraser_state.dart';
 import 'package:equatable/equatable.dart';
 
-class EraserModel extends Equatable {
+class EraserStateModel extends Equatable {
   /// storage
   static const String prefix = "eraser";
   static const double defaultRadius = 5.0;
@@ -12,22 +12,22 @@ class EraserModel extends Equatable {
   final bool isPartial;
 
   /// Represents an eraser in the datasource
-  const EraserModel({
+  const EraserStateModel({
     required this.radius,
     required this.isPartial,
   });
 
   /// converts to the domain layer
-  EraserEntity toDomain() {
-    return EraserEntity(
+  EraserState toDomain() {
+    return EraserState(
       radius: radius,
       isPartial: isPartial,
     );
   }
 
   /// converts back to from the domain layer
-  static EraserModel fromDomain(EraserEntity eraserEntity) {
-    return EraserModel(
+  static EraserStateModel fromDomain(EraserState eraserEntity) {
+    return EraserStateModel(
       radius: eraserEntity.radius,
       isPartial: eraserEntity.isPartial,
     );

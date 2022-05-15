@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'eraser_entity.dart';
+part of 'eraser_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,30 +15,30 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$EraserEntity {
+mixin _$EraserState {
   double get radius => throw _privateConstructorUsedError;
   bool get isPartial => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $EraserEntityCopyWith<EraserEntity> get copyWith =>
+  $EraserStateCopyWith<EraserState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EraserEntityCopyWith<$Res> {
-  factory $EraserEntityCopyWith(
-          EraserEntity value, $Res Function(EraserEntity) then) =
-      _$EraserEntityCopyWithImpl<$Res>;
+abstract class $EraserStateCopyWith<$Res> {
+  factory $EraserStateCopyWith(
+          EraserState value, $Res Function(EraserState) then) =
+      _$EraserStateCopyWithImpl<$Res>;
   $Res call({double radius, bool isPartial});
 }
 
 /// @nodoc
-class _$EraserEntityCopyWithImpl<$Res> implements $EraserEntityCopyWith<$Res> {
-  _$EraserEntityCopyWithImpl(this._value, this._then);
+class _$EraserStateCopyWithImpl<$Res> implements $EraserStateCopyWith<$Res> {
+  _$EraserStateCopyWithImpl(this._value, this._then);
 
-  final EraserEntity _value;
+  final EraserState _value;
   // ignore: unused_field
-  final $Res Function(EraserEntity) _then;
+  final $Res Function(EraserState) _then;
 
   @override
   $Res call({
@@ -59,32 +59,31 @@ class _$EraserEntityCopyWithImpl<$Res> implements $EraserEntityCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_EraserEntityCopyWith<$Res>
-    implements $EraserEntityCopyWith<$Res> {
-  factory _$$_EraserEntityCopyWith(
-          _$_EraserEntity value, $Res Function(_$_EraserEntity) then) =
-      __$$_EraserEntityCopyWithImpl<$Res>;
+abstract class _$$_EraserStateCopyWith<$Res>
+    implements $EraserStateCopyWith<$Res> {
+  factory _$$_EraserStateCopyWith(
+          _$_EraserState value, $Res Function(_$_EraserState) then) =
+      __$$_EraserStateCopyWithImpl<$Res>;
   @override
   $Res call({double radius, bool isPartial});
 }
 
 /// @nodoc
-class __$$_EraserEntityCopyWithImpl<$Res>
-    extends _$EraserEntityCopyWithImpl<$Res>
-    implements _$$_EraserEntityCopyWith<$Res> {
-  __$$_EraserEntityCopyWithImpl(
-      _$_EraserEntity _value, $Res Function(_$_EraserEntity) _then)
-      : super(_value, (v) => _then(v as _$_EraserEntity));
+class __$$_EraserStateCopyWithImpl<$Res> extends _$EraserStateCopyWithImpl<$Res>
+    implements _$$_EraserStateCopyWith<$Res> {
+  __$$_EraserStateCopyWithImpl(
+      _$_EraserState _value, $Res Function(_$_EraserState) _then)
+      : super(_value, (v) => _then(v as _$_EraserState));
 
   @override
-  _$_EraserEntity get _value => super._value as _$_EraserEntity;
+  _$_EraserState get _value => super._value as _$_EraserState;
 
   @override
   $Res call({
     Object? radius = freezed,
     Object? isPartial = freezed,
   }) {
-    return _then(_$_EraserEntity(
+    return _then(_$_EraserState(
       radius: radius == freezed
           ? _value.radius
           : radius // ignore: cast_nullable_to_non_nullable
@@ -99,8 +98,8 @@ class __$$_EraserEntityCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_EraserEntity implements _EraserEntity {
-  const _$_EraserEntity({required this.radius, required this.isPartial});
+class _$_EraserState implements _EraserState {
+  const _$_EraserState({required this.radius, required this.isPartial});
 
   @override
   final double radius;
@@ -109,14 +108,14 @@ class _$_EraserEntity implements _EraserEntity {
 
   @override
   String toString() {
-    return 'EraserEntity(radius: $radius, isPartial: $isPartial)';
+    return 'EraserState(radius: $radius, isPartial: $isPartial)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EraserEntity &&
+            other is _$_EraserState &&
             const DeepCollectionEquality().equals(other.radius, radius) &&
             const DeepCollectionEquality().equals(other.isPartial, isPartial));
   }
@@ -129,14 +128,14 @@ class _$_EraserEntity implements _EraserEntity {
 
   @JsonKey(ignore: true)
   @override
-  _$$_EraserEntityCopyWith<_$_EraserEntity> get copyWith =>
-      __$$_EraserEntityCopyWithImpl<_$_EraserEntity>(this, _$identity);
+  _$$_EraserStateCopyWith<_$_EraserState> get copyWith =>
+      __$$_EraserStateCopyWithImpl<_$_EraserState>(this, _$identity);
 }
 
-abstract class _EraserEntity implements EraserEntity {
-  const factory _EraserEntity(
+abstract class _EraserState implements EraserState {
+  const factory _EraserState(
       {required final double radius,
-      required final bool isPartial}) = _$_EraserEntity;
+      required final bool isPartial}) = _$_EraserState;
 
   @override
   double get radius => throw _privateConstructorUsedError;
@@ -144,6 +143,6 @@ abstract class _EraserEntity implements EraserEntity {
   bool get isPartial => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$$_EraserEntityCopyWith<_$_EraserEntity> get copyWith =>
+  _$$_EraserStateCopyWith<_$_EraserState> get copyWith =>
       throw _privateConstructorUsedError;
 }
