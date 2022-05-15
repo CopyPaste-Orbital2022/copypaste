@@ -1,12 +1,17 @@
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
-import 'drawing_state.dart';
-import 'drawing_event.dart';
+import 'package:copypaste/features/drawing/domain/repositories/i_drawing_toolbar_repository.dart';
+import 'package:copypaste/features/drawing/presentation/bloc/index.dart';
+import 'package:injectable/injectable.dart';
 
+@LazySingleton()
 class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
-  DrawingBloc() : super(DrawingState.initialState()) {
-    on<DrawingEvent>((event, emit) {
-      // TODO: implement event handler
+  final IDrawingToolBarRepository _repository;
+  DrawingBloc(this._repository) : super(DrawingStateX.initialState()) {
+    on<ChangeSelectedDrawingButtonEvent>((event, emit) {
+      _repository.saveCurrentTool(event.tool);
+      emit(
+        state.copyWith(currentTool: event.tool),
+      );
     });
   }
 }

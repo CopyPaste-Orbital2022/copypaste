@@ -19,32 +19,42 @@ mixin _$DrawingEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialEvent,
+    required TResult Function(DrawingTool tool)
+        changeSelectedDrawingButtonEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialEvent,
+    TResult Function(DrawingTool tool)? changeSelectedDrawingButtonEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialEvent,
+    TResult Function(DrawingTool tool)? changeSelectedDrawingButtonEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialEvent value) initialEvent,
+    required TResult Function(ChangeSelectedDrawingButtonEvent value)
+        changeSelectedDrawingButtonEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialEvent value)? initialEvent,
+    TResult Function(ChangeSelectedDrawingButtonEvent value)?
+        changeSelectedDrawingButtonEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialEvent value)? initialEvent,
+    TResult Function(ChangeSelectedDrawingButtonEvent value)?
+        changeSelectedDrawingButtonEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -108,6 +118,8 @@ class _$InitialEvent implements InitialEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialEvent,
+    required TResult Function(DrawingTool tool)
+        changeSelectedDrawingButtonEvent,
   }) {
     return initialEvent();
   }
@@ -116,6 +128,7 @@ class _$InitialEvent implements InitialEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialEvent,
+    TResult Function(DrawingTool tool)? changeSelectedDrawingButtonEvent,
   }) {
     return initialEvent?.call();
   }
@@ -124,6 +137,7 @@ class _$InitialEvent implements InitialEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialEvent,
+    TResult Function(DrawingTool tool)? changeSelectedDrawingButtonEvent,
     required TResult orElse(),
   }) {
     if (initialEvent != null) {
@@ -136,6 +150,8 @@ class _$InitialEvent implements InitialEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialEvent value) initialEvent,
+    required TResult Function(ChangeSelectedDrawingButtonEvent value)
+        changeSelectedDrawingButtonEvent,
   }) {
     return initialEvent(this);
   }
@@ -144,6 +160,8 @@ class _$InitialEvent implements InitialEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialEvent value)? initialEvent,
+    TResult Function(ChangeSelectedDrawingButtonEvent value)?
+        changeSelectedDrawingButtonEvent,
   }) {
     return initialEvent?.call(this);
   }
@@ -152,6 +170,8 @@ class _$InitialEvent implements InitialEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialEvent value)? initialEvent,
+    TResult Function(ChangeSelectedDrawingButtonEvent value)?
+        changeSelectedDrawingButtonEvent,
     required TResult orElse(),
   }) {
     if (initialEvent != null) {
@@ -163,4 +183,150 @@ class _$InitialEvent implements InitialEvent {
 
 abstract class InitialEvent implements DrawingEvent {
   const factory InitialEvent() = _$InitialEvent;
+}
+
+/// @nodoc
+abstract class _$$ChangeSelectedDrawingButtonEventCopyWith<$Res> {
+  factory _$$ChangeSelectedDrawingButtonEventCopyWith(
+          _$ChangeSelectedDrawingButtonEvent value,
+          $Res Function(_$ChangeSelectedDrawingButtonEvent) then) =
+      __$$ChangeSelectedDrawingButtonEventCopyWithImpl<$Res>;
+  $Res call({DrawingTool tool});
+}
+
+/// @nodoc
+class __$$ChangeSelectedDrawingButtonEventCopyWithImpl<$Res>
+    extends _$DrawingEventCopyWithImpl<$Res>
+    implements _$$ChangeSelectedDrawingButtonEventCopyWith<$Res> {
+  __$$ChangeSelectedDrawingButtonEventCopyWithImpl(
+      _$ChangeSelectedDrawingButtonEvent _value,
+      $Res Function(_$ChangeSelectedDrawingButtonEvent) _then)
+      : super(_value, (v) => _then(v as _$ChangeSelectedDrawingButtonEvent));
+
+  @override
+  _$ChangeSelectedDrawingButtonEvent get _value =>
+      super._value as _$ChangeSelectedDrawingButtonEvent;
+
+  @override
+  $Res call({
+    Object? tool = freezed,
+  }) {
+    return _then(_$ChangeSelectedDrawingButtonEvent(
+      tool == freezed
+          ? _value.tool
+          : tool // ignore: cast_nullable_to_non_nullable
+              as DrawingTool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeSelectedDrawingButtonEvent
+    implements ChangeSelectedDrawingButtonEvent {
+  const _$ChangeSelectedDrawingButtonEvent(this.tool);
+
+  @override
+  final DrawingTool tool;
+
+  @override
+  String toString() {
+    return 'DrawingEvent.changeSelectedDrawingButtonEvent(tool: $tool)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeSelectedDrawingButtonEvent &&
+            const DeepCollectionEquality().equals(other.tool, tool));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(tool));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$ChangeSelectedDrawingButtonEventCopyWith<
+          _$ChangeSelectedDrawingButtonEvent>
+      get copyWith => __$$ChangeSelectedDrawingButtonEventCopyWithImpl<
+          _$ChangeSelectedDrawingButtonEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialEvent,
+    required TResult Function(DrawingTool tool)
+        changeSelectedDrawingButtonEvent,
+  }) {
+    return changeSelectedDrawingButtonEvent(tool);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialEvent,
+    TResult Function(DrawingTool tool)? changeSelectedDrawingButtonEvent,
+  }) {
+    return changeSelectedDrawingButtonEvent?.call(tool);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialEvent,
+    TResult Function(DrawingTool tool)? changeSelectedDrawingButtonEvent,
+    required TResult orElse(),
+  }) {
+    if (changeSelectedDrawingButtonEvent != null) {
+      return changeSelectedDrawingButtonEvent(tool);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialEvent value) initialEvent,
+    required TResult Function(ChangeSelectedDrawingButtonEvent value)
+        changeSelectedDrawingButtonEvent,
+  }) {
+    return changeSelectedDrawingButtonEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialEvent value)? initialEvent,
+    TResult Function(ChangeSelectedDrawingButtonEvent value)?
+        changeSelectedDrawingButtonEvent,
+  }) {
+    return changeSelectedDrawingButtonEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialEvent value)? initialEvent,
+    TResult Function(ChangeSelectedDrawingButtonEvent value)?
+        changeSelectedDrawingButtonEvent,
+    required TResult orElse(),
+  }) {
+    if (changeSelectedDrawingButtonEvent != null) {
+      return changeSelectedDrawingButtonEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeSelectedDrawingButtonEvent implements DrawingEvent {
+  const factory ChangeSelectedDrawingButtonEvent(final DrawingTool tool) =
+      _$ChangeSelectedDrawingButtonEvent;
+
+  DrawingTool get tool => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$ChangeSelectedDrawingButtonEventCopyWith<
+          _$ChangeSelectedDrawingButtonEvent>
+      get copyWith => throw _privateConstructorUsedError;
 }
