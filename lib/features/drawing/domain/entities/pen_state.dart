@@ -22,3 +22,9 @@ class PenState with _$PenState {
     required double width,
   }) = _PenState;
 }
+
+extension PenStateX on PenState {
+  Color getCurrentColor() {
+    return colors[currentColorIdx];
+  }
+}
