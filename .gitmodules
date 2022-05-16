@@ -1,0 +1,3 @@
+[submodule "plugins/scribble"]
+	path = plugins/scribble
+	url = https://github.com/CopyPaste-Orbital2022/scribble.git

@@ -6,7 +6,7 @@ class PenStateModel {
   final int currentColorIdx;
   static const int defaultCurrentColorIdx = 0;
   final List<String> colors;
-  static const List<String> defaultColors = ["0x0000000000"];
+  static const List<String> defaultColors = ["0xFF00000000"];
   final bool useStylus;
   static const bool defaultUseStylus = false;
   final double width;

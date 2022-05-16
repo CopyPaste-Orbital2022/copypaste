@@ -36,7 +36,8 @@ dependencies:
   freezed_annotation: ^2.0.3
   get_it: ^7.2.0
   injectable: ^1.5.3
-  scribble: ^0.4.0
+  scribble: 
+    path: plugins/scribble
   shared_preferences: ^2.0.13
 
 dev_dependencies:
