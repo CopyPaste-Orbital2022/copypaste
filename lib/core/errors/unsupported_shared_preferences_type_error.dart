@@ -1,0 +1,1 @@
+class UnsupportedSharedPreferencesTypeError extends Error {}
