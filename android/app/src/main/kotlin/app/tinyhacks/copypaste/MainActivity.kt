@@ -1,4 +1,4 @@
-package com.example.copypaste
+package app.tinyhacks.copypaste
 
 import io.flutter.embedding.android.FlutterActivity
 

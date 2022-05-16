@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.copypaste">
+    package="app.tinyhacks.copypaste">
    <application
         android:label="copypaste"
         android:name="${applicationName}"
