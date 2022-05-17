@@ -230,13 +230,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.4"
-  flutter_state_notifier:
-    dependency: transitive
-    description:
-      name: flutter_state_notifier
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.7.1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -289,13 +282,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
-  history_state_notifier:
-    dependency: transitive
-    description:
-      name: history_state_notifier
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.0.5"
   http_multi_server:
     dependency: transitive
     description:
@@ -436,6 +422,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.5"
+  perfect_freehand:
+    dependency: "direct main"
+    description:
+      name: perfect_freehand
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.4"
   platform:
     dependency: transitive
     description:
@@ -485,13 +478,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0"
-  scribble:
-    dependency: "direct main"
-    description:
-      path: "plugins/scribble"
-      relative: true
-    source: path
-    version: "0.3.1"
   shared_preferences:
     dependency: "direct main"
     description:
@@ -588,13 +574,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.10.0"
-  state_notifier:
-    dependency: transitive
-    description:
-      name: state_notifier
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.7.2+1"
   stream_channel:
     dependency: transitive
     description:

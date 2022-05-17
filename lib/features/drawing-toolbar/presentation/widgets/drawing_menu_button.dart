@@ -1,4 +1,4 @@
-import 'package:copypaste/features/drawing/domain/entities/selectable_tools.dart';
+import 'package:copypaste/features/drawing-toolbar/domain/entities/selectable_tools.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/index.dart';

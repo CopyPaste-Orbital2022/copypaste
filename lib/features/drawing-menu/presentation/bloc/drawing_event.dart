@@ -1,4 +1,4 @@
-import 'package:copypaste/features/drawing/domain/entities/selectable_tools.dart';
+import 'package:copypaste/features/drawing-toolbar/domain/entities/selectable_tools.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'drawing_event.freezed.dart';
