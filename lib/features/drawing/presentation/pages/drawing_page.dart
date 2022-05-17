@@ -23,8 +23,6 @@ class DrawingPage extends StatelessWidget {
           builder: (context, state) {
             return Scribble(
               notifier: getIt<ScribbleNotifier>(),
-              drawPen: state.currentTool == DrawingTool.pen,
-              drawEraser: state.currentTool == DrawingTool.eraser,
             );
           },
           listener: (context, state) {},
