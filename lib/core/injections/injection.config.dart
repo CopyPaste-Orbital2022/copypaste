@@ -12,7 +12,7 @@ import '../../features/drawing-toolbar/data/repositories/drawing_toolbar_reposit
     as _i5;
 import '../../features/drawing-toolbar/domain/repositories/i_drawing_toolbar_repository.dart'
     as _i4;
-import '../../features/drawing-toolbar/presentation/bloc/drawing_bloc.dart'
+import '../../features/drawing-toolbar/presentation/bloc/drawing_toolbar_bloc.dart'
     as _i6;
 import 'shared_preferences.dart' as _i7; // ignore_for_file: unnecessary_lambdas
 
