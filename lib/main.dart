@@ -1,6 +1,5 @@
 import 'package:copypaste/core/injections/injection.dart';
-import 'package:copypaste/features/drawing/presentation/pages/drawing_page.dart';
-import 'package:copypaste/features/drawing/presentation/widgets/drawing_button_menu.dart';
+import 'package:copypaste/features/drawing-toolbar/presentation/pages/drawing_page.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 

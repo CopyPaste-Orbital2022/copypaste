@@ -1,4 +1,4 @@
-import 'package:copypaste/features/drawing/domain/entities/eraser_state.dart';
+import 'package:copypaste/features/drawing-toolbar/domain/entities/eraser_state.dart';
 import 'package:equatable/equatable.dart';
 
 class EraserStateModel extends Equatable {

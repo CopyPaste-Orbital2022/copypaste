@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:copypaste/features/drawing/domain/entities/pen_state.dart';
+import 'package:copypaste/features/drawing-toolbar/domain/entities/pen_state.dart';
 
 class PenStateModel {
   final int currentColorIdx;
