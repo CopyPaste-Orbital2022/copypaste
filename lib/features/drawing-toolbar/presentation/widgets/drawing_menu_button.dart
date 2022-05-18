@@ -24,13 +24,13 @@ class DrawingMenuButton extends StatelessWidget {
           key: key,
         );
   final DrawingTool tool;
-  final void Function(BuildContext, DrawingState)? onFirstPress;
-  final void Function(BuildContext, DrawingState)? onSecondPress;
-  final void Function(BuildContext, DrawingState)? listener;
+  final void Function(BuildContext, DrawingToolbarState)? onFirstPress;
+  final void Function(BuildContext, DrawingToolbarState)? onSecondPress;
+  final void Function(BuildContext, DrawingToolbarState)? listener;
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<DrawingBloc, DrawingState>(
+    return BlocConsumer<DrawingToolbarBloc, DrawingToolbarState>(
       builder: (context, state) {
         if (state.currentTool == tool) {
           return IconButton(
@@ -52,9 +52,8 @@ class DrawingMenuButton extends StatelessWidget {
         } else {
           return IconButton(
             onPressed: () {
-              context
-                  .read<DrawingBloc>()
-                  .add(DrawingEvent.changeSelectedDrawingButtonEvent(tool));
+              context.read<DrawingToolbarBloc>().add(
+                  DrawingToolbarEvent.changeSelectedDrawingButtonEvent(tool));
               if (onFirstPress != null) onFirstPress!(context, state);
             },
             icon: Icon(

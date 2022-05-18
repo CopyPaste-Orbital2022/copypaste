@@ -6,9 +6,11 @@ import 'drawing_toolbar_event.dart';
 import 'drawing_toolbar_state.dart';
 
 @LazySingleton()
-class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
+class DrawingToolbarBloc
+    extends Bloc<DrawingToolbarEvent, DrawingToolbarState> {
   final IDrawingToolBarRepository _repository;
-  DrawingBloc(this._repository) : super(DrawingStateX.initialState()) {
+  DrawingToolbarBloc(this._repository)
+      : super(DrawingToolbarStateX.initialState()) {
     on<ChangeSelectedDrawingButtonEvent>((event, emit) {
       _repository.saveCurrentTool(event.tool);
       emit(

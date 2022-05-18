@@ -11,7 +11,7 @@ class DrawingButtonMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<DrawingBloc>(),
+      create: (context) => getIt<DrawingToolbarBloc>(),
       child: Expanded(
         child: Row(
           children: const [

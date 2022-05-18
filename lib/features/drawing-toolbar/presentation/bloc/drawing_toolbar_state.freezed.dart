@@ -15,21 +15,21 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$DrawingState {
+mixin _$DrawingToolbarState {
   DrawingTool get currentTool => throw _privateConstructorUsedError;
   PenState get penState => throw _privateConstructorUsedError;
   EraserState get eraserState => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $DrawingStateCopyWith<DrawingState> get copyWith =>
+  $DrawingToolbarStateCopyWith<DrawingToolbarState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $DrawingStateCopyWith<$Res> {
-  factory $DrawingStateCopyWith(
-          DrawingState value, $Res Function(DrawingState) then) =
-      _$DrawingStateCopyWithImpl<$Res>;
+abstract class $DrawingToolbarStateCopyWith<$Res> {
+  factory $DrawingToolbarStateCopyWith(
+          DrawingToolbarState value, $Res Function(DrawingToolbarState) then) =
+      _$DrawingToolbarStateCopyWithImpl<$Res>;
   $Res call(
       {DrawingTool currentTool, PenState penState, EraserState eraserState});
 
@@ -38,12 +38,13 @@ abstract class $DrawingStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$DrawingStateCopyWithImpl<$Res> implements $DrawingStateCopyWith<$Res> {
-  _$DrawingStateCopyWithImpl(this._value, this._then);
+class _$DrawingToolbarStateCopyWithImpl<$Res>
+    implements $DrawingToolbarStateCopyWith<$Res> {
+  _$DrawingToolbarStateCopyWithImpl(this._value, this._then);
 
-  final DrawingState _value;
+  final DrawingToolbarState _value;
   // ignore: unused_field
-  final $Res Function(DrawingState) _then;
+  final $Res Function(DrawingToolbarState) _then;
 
   @override
   $Res call({
@@ -83,11 +84,11 @@ class _$DrawingStateCopyWithImpl<$Res> implements $DrawingStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_DrawingStateCopyWith<$Res>
-    implements $DrawingStateCopyWith<$Res> {
-  factory _$$_DrawingStateCopyWith(
-          _$_DrawingState value, $Res Function(_$_DrawingState) then) =
-      __$$_DrawingStateCopyWithImpl<$Res>;
+abstract class _$$_DrawingToolbarStateCopyWith<$Res>
+    implements $DrawingToolbarStateCopyWith<$Res> {
+  factory _$$_DrawingToolbarStateCopyWith(_$_DrawingToolbarState value,
+          $Res Function(_$_DrawingToolbarState) then) =
+      __$$_DrawingToolbarStateCopyWithImpl<$Res>;
   @override
   $Res call(
       {DrawingTool currentTool, PenState penState, EraserState eraserState});
@@ -99,15 +100,15 @@ abstract class _$$_DrawingStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_DrawingStateCopyWithImpl<$Res>
-    extends _$DrawingStateCopyWithImpl<$Res>
-    implements _$$_DrawingStateCopyWith<$Res> {
-  __$$_DrawingStateCopyWithImpl(
-      _$_DrawingState _value, $Res Function(_$_DrawingState) _then)
-      : super(_value, (v) => _then(v as _$_DrawingState));
+class __$$_DrawingToolbarStateCopyWithImpl<$Res>
+    extends _$DrawingToolbarStateCopyWithImpl<$Res>
+    implements _$$_DrawingToolbarStateCopyWith<$Res> {
+  __$$_DrawingToolbarStateCopyWithImpl(_$_DrawingToolbarState _value,
+      $Res Function(_$_DrawingToolbarState) _then)
+      : super(_value, (v) => _then(v as _$_DrawingToolbarState));
 
   @override
-  _$_DrawingState get _value => super._value as _$_DrawingState;
+  _$_DrawingToolbarState get _value => super._value as _$_DrawingToolbarState;
 
   @override
   $Res call({
@@ -115,7 +116,7 @@ class __$$_DrawingStateCopyWithImpl<$Res>
     Object? penState = freezed,
     Object? eraserState = freezed,
   }) {
-    return _then(_$_DrawingState(
+    return _then(_$_DrawingToolbarState(
       currentTool: currentTool == freezed
           ? _value.currentTool
           : currentTool // ignore: cast_nullable_to_non_nullable
@@ -134,8 +135,8 @@ class __$$_DrawingStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_DrawingState implements _DrawingState {
-  const _$_DrawingState(
+class _$_DrawingToolbarState implements _DrawingToolbarState {
+  const _$_DrawingToolbarState(
       {required this.currentTool,
       required this.penState,
       required this.eraserState});
@@ -149,14 +150,14 @@ class _$_DrawingState implements _DrawingState {
 
   @override
   String toString() {
-    return 'DrawingState(currentTool: $currentTool, penState: $penState, eraserState: $eraserState)';
+    return 'DrawingToolbarState(currentTool: $currentTool, penState: $penState, eraserState: $eraserState)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DrawingState &&
+            other is _$_DrawingToolbarState &&
             const DeepCollectionEquality()
                 .equals(other.currentTool, currentTool) &&
             const DeepCollectionEquality().equals(other.penState, penState) &&
@@ -173,15 +174,16 @@ class _$_DrawingState implements _DrawingState {
 
   @JsonKey(ignore: true)
   @override
-  _$$_DrawingStateCopyWith<_$_DrawingState> get copyWith =>
-      __$$_DrawingStateCopyWithImpl<_$_DrawingState>(this, _$identity);
+  _$$_DrawingToolbarStateCopyWith<_$_DrawingToolbarState> get copyWith =>
+      __$$_DrawingToolbarStateCopyWithImpl<_$_DrawingToolbarState>(
+          this, _$identity);
 }
 
-abstract class _DrawingState implements DrawingState {
-  const factory _DrawingState(
+abstract class _DrawingToolbarState implements DrawingToolbarState {
+  const factory _DrawingToolbarState(
       {required final DrawingTool currentTool,
       required final PenState penState,
-      required final EraserState eraserState}) = _$_DrawingState;
+      required final EraserState eraserState}) = _$_DrawingToolbarState;
 
   @override
   DrawingTool get currentTool => throw _privateConstructorUsedError;
@@ -191,6 +193,6 @@ abstract class _DrawingState implements DrawingState {
   EraserState get eraserState => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$$_DrawingStateCopyWith<_$_DrawingState> get copyWith =>
+  _$$_DrawingToolbarStateCopyWith<_$_DrawingToolbarState> get copyWith =>
       throw _privateConstructorUsedError;
 }

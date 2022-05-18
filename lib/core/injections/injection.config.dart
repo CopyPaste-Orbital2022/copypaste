@@ -27,8 +27,8 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
       preResolve: true);
   gh.lazySingleton<_i4.IDrawingToolBarRepository>(() =>
       _i5.DrawingToolbarRepositoryImpl(prefs: get<_i3.SharedPreferences>()));
-  gh.lazySingleton<_i6.DrawingBloc>(
-      () => _i6.DrawingBloc(get<_i4.IDrawingToolBarRepository>()));
+  gh.lazySingleton<_i6.DrawingToolbarBloc>(
+      () => _i6.DrawingToolbarBloc(get<_i4.IDrawingToolBarRepository>()));
   return get;
 }
 

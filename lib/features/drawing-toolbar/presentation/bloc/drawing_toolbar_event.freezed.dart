@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$DrawingEvent {
+mixin _$DrawingToolbarEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialEvent,
@@ -61,19 +61,20 @@ mixin _$DrawingEvent {
 }
 
 /// @nodoc
-abstract class $DrawingEventCopyWith<$Res> {
-  factory $DrawingEventCopyWith(
-          DrawingEvent value, $Res Function(DrawingEvent) then) =
-      _$DrawingEventCopyWithImpl<$Res>;
+abstract class $DrawingToolbarEventCopyWith<$Res> {
+  factory $DrawingToolbarEventCopyWith(
+          DrawingToolbarEvent value, $Res Function(DrawingToolbarEvent) then) =
+      _$DrawingToolbarEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$DrawingEventCopyWithImpl<$Res> implements $DrawingEventCopyWith<$Res> {
-  _$DrawingEventCopyWithImpl(this._value, this._then);
+class _$DrawingToolbarEventCopyWithImpl<$Res>
+    implements $DrawingToolbarEventCopyWith<$Res> {
+  _$DrawingToolbarEventCopyWithImpl(this._value, this._then);
 
-  final DrawingEvent _value;
+  final DrawingToolbarEvent _value;
   // ignore: unused_field
-  final $Res Function(DrawingEvent) _then;
+  final $Res Function(DrawingToolbarEvent) _then;
 }
 
 /// @nodoc
@@ -85,7 +86,7 @@ abstract class _$$InitialEventCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialEventCopyWithImpl<$Res>
-    extends _$DrawingEventCopyWithImpl<$Res>
+    extends _$DrawingToolbarEventCopyWithImpl<$Res>
     implements _$$InitialEventCopyWith<$Res> {
   __$$InitialEventCopyWithImpl(
       _$InitialEvent _value, $Res Function(_$InitialEvent) _then)
@@ -102,7 +103,7 @@ class _$InitialEvent implements InitialEvent {
 
   @override
   String toString() {
-    return 'DrawingEvent.initialEvent()';
+    return 'DrawingToolbarEvent.initialEvent()';
   }
 
   @override
@@ -181,7 +182,7 @@ class _$InitialEvent implements InitialEvent {
   }
 }
 
-abstract class InitialEvent implements DrawingEvent {
+abstract class InitialEvent implements DrawingToolbarEvent {
   const factory InitialEvent() = _$InitialEvent;
 }
 
@@ -196,7 +197,7 @@ abstract class _$$ChangeSelectedDrawingButtonEventCopyWith<$Res> {
 
 /// @nodoc
 class __$$ChangeSelectedDrawingButtonEventCopyWithImpl<$Res>
-    extends _$DrawingEventCopyWithImpl<$Res>
+    extends _$DrawingToolbarEventCopyWithImpl<$Res>
     implements _$$ChangeSelectedDrawingButtonEventCopyWith<$Res> {
   __$$ChangeSelectedDrawingButtonEventCopyWithImpl(
       _$ChangeSelectedDrawingButtonEvent _value,
@@ -231,7 +232,7 @@ class _$ChangeSelectedDrawingButtonEvent
 
   @override
   String toString() {
-    return 'DrawingEvent.changeSelectedDrawingButtonEvent(tool: $tool)';
+    return 'DrawingToolbarEvent.changeSelectedDrawingButtonEvent(tool: $tool)';
   }
 
   @override
@@ -320,7 +321,7 @@ class _$ChangeSelectedDrawingButtonEvent
   }
 }
 
-abstract class ChangeSelectedDrawingButtonEvent implements DrawingEvent {
+abstract class ChangeSelectedDrawingButtonEvent implements DrawingToolbarEvent {
   const factory ChangeSelectedDrawingButtonEvent(final DrawingTool tool) =
       _$ChangeSelectedDrawingButtonEvent;
 
