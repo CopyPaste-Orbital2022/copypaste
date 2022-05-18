@@ -5,7 +5,7 @@ import 'package:copypaste/features/drawing-toolbar/domain/entities/selectable_to
 import 'package:copypaste/features/drawing-toolbar/domain/repositories/i_drawing_toolbar_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'drawing_state.freezed.dart';
+part 'drawing_toolbar_state.freezed.dart';
 
 @freezed
 abstract class DrawingState with _$DrawingState {
