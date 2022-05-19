@@ -1,5 +1,6 @@
-import 'package:copypaste/core/utilities/menubar_icons_icons.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../core/utilities/menubar_icons_icons.dart';
 
 enum DrawingTool {
   /// when the pen tool is currently active

@@ -1,7 +1,8 @@
-import 'package:copypaste/core/injections/injection.dart';
-import 'package:copypaste/features/drawing-toolbar/presentation/pages/drawing_page.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
+
+import 'core/injections/injection.dart';
+import 'features/drawing-toolbar/presentation/pages/drawing_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

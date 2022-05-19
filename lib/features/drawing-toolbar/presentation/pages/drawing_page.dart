@@ -1,5 +1,7 @@
-import 'package:copypaste/features/drawing-toolbar/presentation/widgets/drawing_button_menu.dart';
+import 'package:copypaste/features/drawing-toolbar/presentation/widgets/settings_button.dart';
 import 'package:flutter/material.dart';
+
+import '../widgets/drawing_menu.dart';
 
 class DrawingPage extends StatelessWidget {
   const DrawingPage({Key? key}) : super(key: key);
@@ -9,7 +11,9 @@ class DrawingPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: const [
-          DrawingButtonMenu(),
+          SettingsButton(),
+          VerticalDivider(),
+          DrawingMenu(),
         ],
       ),
       body: const Center(

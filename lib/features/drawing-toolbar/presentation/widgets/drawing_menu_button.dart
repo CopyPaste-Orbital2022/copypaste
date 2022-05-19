@@ -1,4 +1,4 @@
-import 'package:copypaste/features/drawing-toolbar/domain/entities/selectable_tools.dart';
+import '../../domain/entities/selectable_tools.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/index.dart';
@@ -53,7 +53,7 @@ class DrawingMenuButton extends StatelessWidget {
           return IconButton(
             onPressed: () {
               context.read<DrawingToolbarBloc>().add(
-                  DrawingToolbarEvent.changeSelectedDrawingButtonEvent(tool));
+                  DrawingToolbarEvent.changeDrawingButtonSelectionEvent(tool));
               if (onFirstPress != null) onFirstPress!(context, state);
             },
             icon: Icon(
@@ -67,5 +67,19 @@ class DrawingMenuButton extends StatelessWidget {
         if (listener != null) listener!(context, state);
       },
     );
+  }
+
+  static List<Widget> get buttons {
+    return const [
+      DrawingMenuButton(
+        tool: DrawingTool.hand,
+      ),
+      DrawingMenuButton(
+        tool: DrawingTool.pen,
+      ),
+      DrawingMenuButton(
+        tool: DrawingTool.eraser,
+      ),
+    ];
   }
 }

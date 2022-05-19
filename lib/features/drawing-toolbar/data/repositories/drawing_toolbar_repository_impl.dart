@@ -1,13 +1,13 @@
-import 'package:copypaste/features/drawing-toolbar/data/models/eraser_state_model.dart';
-import 'package:copypaste/features/drawing-toolbar/data/models/pen_state_model.dart';
-import 'package:copypaste/features/drawing-toolbar/domain/entities/selectable_tools.dart';
+import '../models/eraser_state_model.dart';
+import '../models/pen_state_model.dart';
+import '../../domain/entities/selectable_tools.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:copypaste/features/drawing-toolbar/domain/entities/eraser_state.dart';
-import 'package:copypaste/features/drawing-toolbar/domain/entities/pen_state.dart';
-import 'package:copypaste/features/drawing-toolbar/domain/repositories/i_drawing_toolbar_repository.dart';
-import 'package:copypaste/core/extensions/shared_preferences_extension.dart';
+import '../../domain/entities/eraser_state.dart';
+import '../../domain/entities/pen_state.dart';
+import '../../domain/repositories/i_drawing_toolbar_repository.dart';
+import '../../../../core/extensions/shared_preferences_extension.dart';
 
 import '../../../../core/utilities/generate_key.dart';
 

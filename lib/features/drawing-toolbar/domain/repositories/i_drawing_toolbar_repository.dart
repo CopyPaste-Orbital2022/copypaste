@@ -1,6 +1,6 @@
-import 'package:copypaste/features/drawing-toolbar/domain/entities/eraser_state.dart';
-import 'package:copypaste/features/drawing-toolbar/domain/entities/pen_state.dart';
-import 'package:copypaste/features/drawing-toolbar/domain/entities/selectable_tools.dart';
+import '../entities/eraser_state.dart';
+import '../entities/pen_state.dart';
+import '../entities/selectable_tools.dart';
 
 abstract class IDrawingToolBarRepository {
   /// Returns the currently selected tool;

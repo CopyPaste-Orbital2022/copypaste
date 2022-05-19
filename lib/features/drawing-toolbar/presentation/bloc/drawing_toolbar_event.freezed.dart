@@ -20,41 +20,70 @@ mixin _$DrawingToolbarEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initialEvent,
     required TResult Function(DrawingTool tool)
-        changeSelectedDrawingButtonEvent,
+        changeDrawingButtonSelectionEvent,
+    required TResult Function(int colorIndex) changeColorSelectionEvent,
+    required TResult Function(int colorIndex, Color currentColor)
+        changeColorValueEvent,
+    required TResult Function(Color color) addColorEvent,
+    required TResult Function(int colorIndex) deleteColorEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialEvent,
-    TResult Function(DrawingTool tool)? changeSelectedDrawingButtonEvent,
+    TResult Function(DrawingTool tool)? changeDrawingButtonSelectionEvent,
+    TResult Function(int colorIndex)? changeColorSelectionEvent,
+    TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
+    TResult Function(Color color)? addColorEvent,
+    TResult Function(int colorIndex)? deleteColorEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialEvent,
-    TResult Function(DrawingTool tool)? changeSelectedDrawingButtonEvent,
+    TResult Function(DrawingTool tool)? changeDrawingButtonSelectionEvent,
+    TResult Function(int colorIndex)? changeColorSelectionEvent,
+    TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
+    TResult Function(Color color)? addColorEvent,
+    TResult Function(int colorIndex)? deleteColorEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialEvent value) initialEvent,
-    required TResult Function(ChangeSelectedDrawingButtonEvent value)
-        changeSelectedDrawingButtonEvent,
+    required TResult Function(ChangeDrawingButtonSelectionEvent value)
+        changeDrawingButtonSelectionEvent,
+    required TResult Function(ChangeColorSelectionEvent value)
+        changeColorSelectionEvent,
+    required TResult Function(ChangeColorValueEvent value)
+        changeColorValueEvent,
+    required TResult Function(AddColorEvent value) addColorEvent,
+    required TResult Function(DeleteColorEvent value) deleteColorEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialEvent value)? initialEvent,
-    TResult Function(ChangeSelectedDrawingButtonEvent value)?
-        changeSelectedDrawingButtonEvent,
+    TResult Function(ChangeDrawingButtonSelectionEvent value)?
+        changeDrawingButtonSelectionEvent,
+    TResult Function(ChangeColorSelectionEvent value)?
+        changeColorSelectionEvent,
+    TResult Function(ChangeColorValueEvent value)? changeColorValueEvent,
+    TResult Function(AddColorEvent value)? addColorEvent,
+    TResult Function(DeleteColorEvent value)? deleteColorEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialEvent value)? initialEvent,
-    TResult Function(ChangeSelectedDrawingButtonEvent value)?
-        changeSelectedDrawingButtonEvent,
+    TResult Function(ChangeDrawingButtonSelectionEvent value)?
+        changeDrawingButtonSelectionEvent,
+    TResult Function(ChangeColorSelectionEvent value)?
+        changeColorSelectionEvent,
+    TResult Function(ChangeColorValueEvent value)? changeColorValueEvent,
+    TResult Function(AddColorEvent value)? addColorEvent,
+    TResult Function(DeleteColorEvent value)? deleteColorEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -120,7 +149,12 @@ class _$InitialEvent implements InitialEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initialEvent,
     required TResult Function(DrawingTool tool)
-        changeSelectedDrawingButtonEvent,
+        changeDrawingButtonSelectionEvent,
+    required TResult Function(int colorIndex) changeColorSelectionEvent,
+    required TResult Function(int colorIndex, Color currentColor)
+        changeColorValueEvent,
+    required TResult Function(Color color) addColorEvent,
+    required TResult Function(int colorIndex) deleteColorEvent,
   }) {
     return initialEvent();
   }
@@ -129,7 +163,11 @@ class _$InitialEvent implements InitialEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialEvent,
-    TResult Function(DrawingTool tool)? changeSelectedDrawingButtonEvent,
+    TResult Function(DrawingTool tool)? changeDrawingButtonSelectionEvent,
+    TResult Function(int colorIndex)? changeColorSelectionEvent,
+    TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
+    TResult Function(Color color)? addColorEvent,
+    TResult Function(int colorIndex)? deleteColorEvent,
   }) {
     return initialEvent?.call();
   }
@@ -138,7 +176,11 @@ class _$InitialEvent implements InitialEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialEvent,
-    TResult Function(DrawingTool tool)? changeSelectedDrawingButtonEvent,
+    TResult Function(DrawingTool tool)? changeDrawingButtonSelectionEvent,
+    TResult Function(int colorIndex)? changeColorSelectionEvent,
+    TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
+    TResult Function(Color color)? addColorEvent,
+    TResult Function(int colorIndex)? deleteColorEvent,
     required TResult orElse(),
   }) {
     if (initialEvent != null) {
@@ -151,8 +193,14 @@ class _$InitialEvent implements InitialEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialEvent value) initialEvent,
-    required TResult Function(ChangeSelectedDrawingButtonEvent value)
-        changeSelectedDrawingButtonEvent,
+    required TResult Function(ChangeDrawingButtonSelectionEvent value)
+        changeDrawingButtonSelectionEvent,
+    required TResult Function(ChangeColorSelectionEvent value)
+        changeColorSelectionEvent,
+    required TResult Function(ChangeColorValueEvent value)
+        changeColorValueEvent,
+    required TResult Function(AddColorEvent value) addColorEvent,
+    required TResult Function(DeleteColorEvent value) deleteColorEvent,
   }) {
     return initialEvent(this);
   }
@@ -161,8 +209,13 @@ class _$InitialEvent implements InitialEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialEvent value)? initialEvent,
-    TResult Function(ChangeSelectedDrawingButtonEvent value)?
-        changeSelectedDrawingButtonEvent,
+    TResult Function(ChangeDrawingButtonSelectionEvent value)?
+        changeDrawingButtonSelectionEvent,
+    TResult Function(ChangeColorSelectionEvent value)?
+        changeColorSelectionEvent,
+    TResult Function(ChangeColorValueEvent value)? changeColorValueEvent,
+    TResult Function(AddColorEvent value)? addColorEvent,
+    TResult Function(DeleteColorEvent value)? deleteColorEvent,
   }) {
     return initialEvent?.call(this);
   }
@@ -171,8 +224,13 @@ class _$InitialEvent implements InitialEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialEvent value)? initialEvent,
-    TResult Function(ChangeSelectedDrawingButtonEvent value)?
-        changeSelectedDrawingButtonEvent,
+    TResult Function(ChangeDrawingButtonSelectionEvent value)?
+        changeDrawingButtonSelectionEvent,
+    TResult Function(ChangeColorSelectionEvent value)?
+        changeColorSelectionEvent,
+    TResult Function(ChangeColorValueEvent value)? changeColorValueEvent,
+    TResult Function(AddColorEvent value)? addColorEvent,
+    TResult Function(DeleteColorEvent value)? deleteColorEvent,
     required TResult orElse(),
   }) {
     if (initialEvent != null) {
@@ -187,32 +245,32 @@ abstract class InitialEvent implements DrawingToolbarEvent {
 }
 
 /// @nodoc
-abstract class _$$ChangeSelectedDrawingButtonEventCopyWith<$Res> {
-  factory _$$ChangeSelectedDrawingButtonEventCopyWith(
-          _$ChangeSelectedDrawingButtonEvent value,
-          $Res Function(_$ChangeSelectedDrawingButtonEvent) then) =
-      __$$ChangeSelectedDrawingButtonEventCopyWithImpl<$Res>;
+abstract class _$$ChangeDrawingButtonSelectionEventCopyWith<$Res> {
+  factory _$$ChangeDrawingButtonSelectionEventCopyWith(
+          _$ChangeDrawingButtonSelectionEvent value,
+          $Res Function(_$ChangeDrawingButtonSelectionEvent) then) =
+      __$$ChangeDrawingButtonSelectionEventCopyWithImpl<$Res>;
   $Res call({DrawingTool tool});
 }
 
 /// @nodoc
-class __$$ChangeSelectedDrawingButtonEventCopyWithImpl<$Res>
+class __$$ChangeDrawingButtonSelectionEventCopyWithImpl<$Res>
     extends _$DrawingToolbarEventCopyWithImpl<$Res>
-    implements _$$ChangeSelectedDrawingButtonEventCopyWith<$Res> {
-  __$$ChangeSelectedDrawingButtonEventCopyWithImpl(
-      _$ChangeSelectedDrawingButtonEvent _value,
-      $Res Function(_$ChangeSelectedDrawingButtonEvent) _then)
-      : super(_value, (v) => _then(v as _$ChangeSelectedDrawingButtonEvent));
+    implements _$$ChangeDrawingButtonSelectionEventCopyWith<$Res> {
+  __$$ChangeDrawingButtonSelectionEventCopyWithImpl(
+      _$ChangeDrawingButtonSelectionEvent _value,
+      $Res Function(_$ChangeDrawingButtonSelectionEvent) _then)
+      : super(_value, (v) => _then(v as _$ChangeDrawingButtonSelectionEvent));
 
   @override
-  _$ChangeSelectedDrawingButtonEvent get _value =>
-      super._value as _$ChangeSelectedDrawingButtonEvent;
+  _$ChangeDrawingButtonSelectionEvent get _value =>
+      super._value as _$ChangeDrawingButtonSelectionEvent;
 
   @override
   $Res call({
     Object? tool = freezed,
   }) {
-    return _then(_$ChangeSelectedDrawingButtonEvent(
+    return _then(_$ChangeDrawingButtonSelectionEvent(
       tool == freezed
           ? _value.tool
           : tool // ignore: cast_nullable_to_non_nullable
@@ -223,23 +281,23 @@ class __$$ChangeSelectedDrawingButtonEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ChangeSelectedDrawingButtonEvent
-    implements ChangeSelectedDrawingButtonEvent {
-  const _$ChangeSelectedDrawingButtonEvent(this.tool);
+class _$ChangeDrawingButtonSelectionEvent
+    implements ChangeDrawingButtonSelectionEvent {
+  const _$ChangeDrawingButtonSelectionEvent(this.tool);
 
   @override
   final DrawingTool tool;
 
   @override
   String toString() {
-    return 'DrawingToolbarEvent.changeSelectedDrawingButtonEvent(tool: $tool)';
+    return 'DrawingToolbarEvent.changeDrawingButtonSelectionEvent(tool: $tool)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ChangeSelectedDrawingButtonEvent &&
+            other is _$ChangeDrawingButtonSelectionEvent &&
             const DeepCollectionEquality().equals(other.tool, tool));
   }
 
@@ -249,39 +307,52 @@ class _$ChangeSelectedDrawingButtonEvent
 
   @JsonKey(ignore: true)
   @override
-  _$$ChangeSelectedDrawingButtonEventCopyWith<
-          _$ChangeSelectedDrawingButtonEvent>
-      get copyWith => __$$ChangeSelectedDrawingButtonEventCopyWithImpl<
-          _$ChangeSelectedDrawingButtonEvent>(this, _$identity);
+  _$$ChangeDrawingButtonSelectionEventCopyWith<
+          _$ChangeDrawingButtonSelectionEvent>
+      get copyWith => __$$ChangeDrawingButtonSelectionEventCopyWithImpl<
+          _$ChangeDrawingButtonSelectionEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialEvent,
     required TResult Function(DrawingTool tool)
-        changeSelectedDrawingButtonEvent,
+        changeDrawingButtonSelectionEvent,
+    required TResult Function(int colorIndex) changeColorSelectionEvent,
+    required TResult Function(int colorIndex, Color currentColor)
+        changeColorValueEvent,
+    required TResult Function(Color color) addColorEvent,
+    required TResult Function(int colorIndex) deleteColorEvent,
   }) {
-    return changeSelectedDrawingButtonEvent(tool);
+    return changeDrawingButtonSelectionEvent(tool);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialEvent,
-    TResult Function(DrawingTool tool)? changeSelectedDrawingButtonEvent,
+    TResult Function(DrawingTool tool)? changeDrawingButtonSelectionEvent,
+    TResult Function(int colorIndex)? changeColorSelectionEvent,
+    TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
+    TResult Function(Color color)? addColorEvent,
+    TResult Function(int colorIndex)? deleteColorEvent,
   }) {
-    return changeSelectedDrawingButtonEvent?.call(tool);
+    return changeDrawingButtonSelectionEvent?.call(tool);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialEvent,
-    TResult Function(DrawingTool tool)? changeSelectedDrawingButtonEvent,
+    TResult Function(DrawingTool tool)? changeDrawingButtonSelectionEvent,
+    TResult Function(int colorIndex)? changeColorSelectionEvent,
+    TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
+    TResult Function(Color color)? addColorEvent,
+    TResult Function(int colorIndex)? deleteColorEvent,
     required TResult orElse(),
   }) {
-    if (changeSelectedDrawingButtonEvent != null) {
-      return changeSelectedDrawingButtonEvent(tool);
+    if (changeDrawingButtonSelectionEvent != null) {
+      return changeDrawingButtonSelectionEvent(tool);
     }
     return orElse();
   }
@@ -290,44 +361,750 @@ class _$ChangeSelectedDrawingButtonEvent
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialEvent value) initialEvent,
-    required TResult Function(ChangeSelectedDrawingButtonEvent value)
-        changeSelectedDrawingButtonEvent,
+    required TResult Function(ChangeDrawingButtonSelectionEvent value)
+        changeDrawingButtonSelectionEvent,
+    required TResult Function(ChangeColorSelectionEvent value)
+        changeColorSelectionEvent,
+    required TResult Function(ChangeColorValueEvent value)
+        changeColorValueEvent,
+    required TResult Function(AddColorEvent value) addColorEvent,
+    required TResult Function(DeleteColorEvent value) deleteColorEvent,
   }) {
-    return changeSelectedDrawingButtonEvent(this);
+    return changeDrawingButtonSelectionEvent(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialEvent value)? initialEvent,
-    TResult Function(ChangeSelectedDrawingButtonEvent value)?
-        changeSelectedDrawingButtonEvent,
+    TResult Function(ChangeDrawingButtonSelectionEvent value)?
+        changeDrawingButtonSelectionEvent,
+    TResult Function(ChangeColorSelectionEvent value)?
+        changeColorSelectionEvent,
+    TResult Function(ChangeColorValueEvent value)? changeColorValueEvent,
+    TResult Function(AddColorEvent value)? addColorEvent,
+    TResult Function(DeleteColorEvent value)? deleteColorEvent,
   }) {
-    return changeSelectedDrawingButtonEvent?.call(this);
+    return changeDrawingButtonSelectionEvent?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialEvent value)? initialEvent,
-    TResult Function(ChangeSelectedDrawingButtonEvent value)?
-        changeSelectedDrawingButtonEvent,
+    TResult Function(ChangeDrawingButtonSelectionEvent value)?
+        changeDrawingButtonSelectionEvent,
+    TResult Function(ChangeColorSelectionEvent value)?
+        changeColorSelectionEvent,
+    TResult Function(ChangeColorValueEvent value)? changeColorValueEvent,
+    TResult Function(AddColorEvent value)? addColorEvent,
+    TResult Function(DeleteColorEvent value)? deleteColorEvent,
     required TResult orElse(),
   }) {
-    if (changeSelectedDrawingButtonEvent != null) {
-      return changeSelectedDrawingButtonEvent(this);
+    if (changeDrawingButtonSelectionEvent != null) {
+      return changeDrawingButtonSelectionEvent(this);
     }
     return orElse();
   }
 }
 
-abstract class ChangeSelectedDrawingButtonEvent implements DrawingToolbarEvent {
-  const factory ChangeSelectedDrawingButtonEvent(final DrawingTool tool) =
-      _$ChangeSelectedDrawingButtonEvent;
+abstract class ChangeDrawingButtonSelectionEvent
+    implements DrawingToolbarEvent {
+  const factory ChangeDrawingButtonSelectionEvent(final DrawingTool tool) =
+      _$ChangeDrawingButtonSelectionEvent;
 
   DrawingTool get tool => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$$ChangeSelectedDrawingButtonEventCopyWith<
-          _$ChangeSelectedDrawingButtonEvent>
+  _$$ChangeDrawingButtonSelectionEventCopyWith<
+          _$ChangeDrawingButtonSelectionEvent>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeColorSelectionEventCopyWith<$Res> {
+  factory _$$ChangeColorSelectionEventCopyWith(
+          _$ChangeColorSelectionEvent value,
+          $Res Function(_$ChangeColorSelectionEvent) then) =
+      __$$ChangeColorSelectionEventCopyWithImpl<$Res>;
+  $Res call({int colorIndex});
+}
+
+/// @nodoc
+class __$$ChangeColorSelectionEventCopyWithImpl<$Res>
+    extends _$DrawingToolbarEventCopyWithImpl<$Res>
+    implements _$$ChangeColorSelectionEventCopyWith<$Res> {
+  __$$ChangeColorSelectionEventCopyWithImpl(_$ChangeColorSelectionEvent _value,
+      $Res Function(_$ChangeColorSelectionEvent) _then)
+      : super(_value, (v) => _then(v as _$ChangeColorSelectionEvent));
+
+  @override
+  _$ChangeColorSelectionEvent get _value =>
+      super._value as _$ChangeColorSelectionEvent;
+
+  @override
+  $Res call({
+    Object? colorIndex = freezed,
+  }) {
+    return _then(_$ChangeColorSelectionEvent(
+      colorIndex == freezed
+          ? _value.colorIndex
+          : colorIndex // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeColorSelectionEvent implements ChangeColorSelectionEvent {
+  const _$ChangeColorSelectionEvent(this.colorIndex);
+
+  @override
+  final int colorIndex;
+
+  @override
+  String toString() {
+    return 'DrawingToolbarEvent.changeColorSelectionEvent(colorIndex: $colorIndex)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeColorSelectionEvent &&
+            const DeepCollectionEquality()
+                .equals(other.colorIndex, colorIndex));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(colorIndex));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$ChangeColorSelectionEventCopyWith<_$ChangeColorSelectionEvent>
+      get copyWith => __$$ChangeColorSelectionEventCopyWithImpl<
+          _$ChangeColorSelectionEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialEvent,
+    required TResult Function(DrawingTool tool)
+        changeDrawingButtonSelectionEvent,
+    required TResult Function(int colorIndex) changeColorSelectionEvent,
+    required TResult Function(int colorIndex, Color currentColor)
+        changeColorValueEvent,
+    required TResult Function(Color color) addColorEvent,
+    required TResult Function(int colorIndex) deleteColorEvent,
+  }) {
+    return changeColorSelectionEvent(colorIndex);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialEvent,
+    TResult Function(DrawingTool tool)? changeDrawingButtonSelectionEvent,
+    TResult Function(int colorIndex)? changeColorSelectionEvent,
+    TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
+    TResult Function(Color color)? addColorEvent,
+    TResult Function(int colorIndex)? deleteColorEvent,
+  }) {
+    return changeColorSelectionEvent?.call(colorIndex);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialEvent,
+    TResult Function(DrawingTool tool)? changeDrawingButtonSelectionEvent,
+    TResult Function(int colorIndex)? changeColorSelectionEvent,
+    TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
+    TResult Function(Color color)? addColorEvent,
+    TResult Function(int colorIndex)? deleteColorEvent,
+    required TResult orElse(),
+  }) {
+    if (changeColorSelectionEvent != null) {
+      return changeColorSelectionEvent(colorIndex);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialEvent value) initialEvent,
+    required TResult Function(ChangeDrawingButtonSelectionEvent value)
+        changeDrawingButtonSelectionEvent,
+    required TResult Function(ChangeColorSelectionEvent value)
+        changeColorSelectionEvent,
+    required TResult Function(ChangeColorValueEvent value)
+        changeColorValueEvent,
+    required TResult Function(AddColorEvent value) addColorEvent,
+    required TResult Function(DeleteColorEvent value) deleteColorEvent,
+  }) {
+    return changeColorSelectionEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialEvent value)? initialEvent,
+    TResult Function(ChangeDrawingButtonSelectionEvent value)?
+        changeDrawingButtonSelectionEvent,
+    TResult Function(ChangeColorSelectionEvent value)?
+        changeColorSelectionEvent,
+    TResult Function(ChangeColorValueEvent value)? changeColorValueEvent,
+    TResult Function(AddColorEvent value)? addColorEvent,
+    TResult Function(DeleteColorEvent value)? deleteColorEvent,
+  }) {
+    return changeColorSelectionEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialEvent value)? initialEvent,
+    TResult Function(ChangeDrawingButtonSelectionEvent value)?
+        changeDrawingButtonSelectionEvent,
+    TResult Function(ChangeColorSelectionEvent value)?
+        changeColorSelectionEvent,
+    TResult Function(ChangeColorValueEvent value)? changeColorValueEvent,
+    TResult Function(AddColorEvent value)? addColorEvent,
+    TResult Function(DeleteColorEvent value)? deleteColorEvent,
+    required TResult orElse(),
+  }) {
+    if (changeColorSelectionEvent != null) {
+      return changeColorSelectionEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeColorSelectionEvent implements DrawingToolbarEvent {
+  const factory ChangeColorSelectionEvent(final int colorIndex) =
+      _$ChangeColorSelectionEvent;
+
+  int get colorIndex => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$ChangeColorSelectionEventCopyWith<_$ChangeColorSelectionEvent>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeColorValueEventCopyWith<$Res> {
+  factory _$$ChangeColorValueEventCopyWith(_$ChangeColorValueEvent value,
+          $Res Function(_$ChangeColorValueEvent) then) =
+      __$$ChangeColorValueEventCopyWithImpl<$Res>;
+  $Res call({int colorIndex, Color currentColor});
+}
+
+/// @nodoc
+class __$$ChangeColorValueEventCopyWithImpl<$Res>
+    extends _$DrawingToolbarEventCopyWithImpl<$Res>
+    implements _$$ChangeColorValueEventCopyWith<$Res> {
+  __$$ChangeColorValueEventCopyWithImpl(_$ChangeColorValueEvent _value,
+      $Res Function(_$ChangeColorValueEvent) _then)
+      : super(_value, (v) => _then(v as _$ChangeColorValueEvent));
+
+  @override
+  _$ChangeColorValueEvent get _value => super._value as _$ChangeColorValueEvent;
+
+  @override
+  $Res call({
+    Object? colorIndex = freezed,
+    Object? currentColor = freezed,
+  }) {
+    return _then(_$ChangeColorValueEvent(
+      colorIndex == freezed
+          ? _value.colorIndex
+          : colorIndex // ignore: cast_nullable_to_non_nullable
+              as int,
+      currentColor == freezed
+          ? _value.currentColor
+          : currentColor // ignore: cast_nullable_to_non_nullable
+              as Color,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeColorValueEvent implements ChangeColorValueEvent {
+  const _$ChangeColorValueEvent(this.colorIndex, this.currentColor);
+
+  @override
+  final int colorIndex;
+  @override
+  final Color currentColor;
+
+  @override
+  String toString() {
+    return 'DrawingToolbarEvent.changeColorValueEvent(colorIndex: $colorIndex, currentColor: $currentColor)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeColorValueEvent &&
+            const DeepCollectionEquality()
+                .equals(other.colorIndex, colorIndex) &&
+            const DeepCollectionEquality()
+                .equals(other.currentColor, currentColor));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(colorIndex),
+      const DeepCollectionEquality().hash(currentColor));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$ChangeColorValueEventCopyWith<_$ChangeColorValueEvent> get copyWith =>
+      __$$ChangeColorValueEventCopyWithImpl<_$ChangeColorValueEvent>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialEvent,
+    required TResult Function(DrawingTool tool)
+        changeDrawingButtonSelectionEvent,
+    required TResult Function(int colorIndex) changeColorSelectionEvent,
+    required TResult Function(int colorIndex, Color currentColor)
+        changeColorValueEvent,
+    required TResult Function(Color color) addColorEvent,
+    required TResult Function(int colorIndex) deleteColorEvent,
+  }) {
+    return changeColorValueEvent(colorIndex, currentColor);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialEvent,
+    TResult Function(DrawingTool tool)? changeDrawingButtonSelectionEvent,
+    TResult Function(int colorIndex)? changeColorSelectionEvent,
+    TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
+    TResult Function(Color color)? addColorEvent,
+    TResult Function(int colorIndex)? deleteColorEvent,
+  }) {
+    return changeColorValueEvent?.call(colorIndex, currentColor);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialEvent,
+    TResult Function(DrawingTool tool)? changeDrawingButtonSelectionEvent,
+    TResult Function(int colorIndex)? changeColorSelectionEvent,
+    TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
+    TResult Function(Color color)? addColorEvent,
+    TResult Function(int colorIndex)? deleteColorEvent,
+    required TResult orElse(),
+  }) {
+    if (changeColorValueEvent != null) {
+      return changeColorValueEvent(colorIndex, currentColor);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialEvent value) initialEvent,
+    required TResult Function(ChangeDrawingButtonSelectionEvent value)
+        changeDrawingButtonSelectionEvent,
+    required TResult Function(ChangeColorSelectionEvent value)
+        changeColorSelectionEvent,
+    required TResult Function(ChangeColorValueEvent value)
+        changeColorValueEvent,
+    required TResult Function(AddColorEvent value) addColorEvent,
+    required TResult Function(DeleteColorEvent value) deleteColorEvent,
+  }) {
+    return changeColorValueEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialEvent value)? initialEvent,
+    TResult Function(ChangeDrawingButtonSelectionEvent value)?
+        changeDrawingButtonSelectionEvent,
+    TResult Function(ChangeColorSelectionEvent value)?
+        changeColorSelectionEvent,
+    TResult Function(ChangeColorValueEvent value)? changeColorValueEvent,
+    TResult Function(AddColorEvent value)? addColorEvent,
+    TResult Function(DeleteColorEvent value)? deleteColorEvent,
+  }) {
+    return changeColorValueEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialEvent value)? initialEvent,
+    TResult Function(ChangeDrawingButtonSelectionEvent value)?
+        changeDrawingButtonSelectionEvent,
+    TResult Function(ChangeColorSelectionEvent value)?
+        changeColorSelectionEvent,
+    TResult Function(ChangeColorValueEvent value)? changeColorValueEvent,
+    TResult Function(AddColorEvent value)? addColorEvent,
+    TResult Function(DeleteColorEvent value)? deleteColorEvent,
+    required TResult orElse(),
+  }) {
+    if (changeColorValueEvent != null) {
+      return changeColorValueEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeColorValueEvent implements DrawingToolbarEvent {
+  const factory ChangeColorValueEvent(
+      final int colorIndex, final Color currentColor) = _$ChangeColorValueEvent;
+
+  int get colorIndex => throw _privateConstructorUsedError;
+  Color get currentColor => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$ChangeColorValueEventCopyWith<_$ChangeColorValueEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AddColorEventCopyWith<$Res> {
+  factory _$$AddColorEventCopyWith(
+          _$AddColorEvent value, $Res Function(_$AddColorEvent) then) =
+      __$$AddColorEventCopyWithImpl<$Res>;
+  $Res call({Color color});
+}
+
+/// @nodoc
+class __$$AddColorEventCopyWithImpl<$Res>
+    extends _$DrawingToolbarEventCopyWithImpl<$Res>
+    implements _$$AddColorEventCopyWith<$Res> {
+  __$$AddColorEventCopyWithImpl(
+      _$AddColorEvent _value, $Res Function(_$AddColorEvent) _then)
+      : super(_value, (v) => _then(v as _$AddColorEvent));
+
+  @override
+  _$AddColorEvent get _value => super._value as _$AddColorEvent;
+
+  @override
+  $Res call({
+    Object? color = freezed,
+  }) {
+    return _then(_$AddColorEvent(
+      color == freezed
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as Color,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AddColorEvent implements AddColorEvent {
+  const _$AddColorEvent(this.color);
+
+  @override
+  final Color color;
+
+  @override
+  String toString() {
+    return 'DrawingToolbarEvent.addColorEvent(color: $color)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddColorEvent &&
+            const DeepCollectionEquality().equals(other.color, color));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(color));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$AddColorEventCopyWith<_$AddColorEvent> get copyWith =>
+      __$$AddColorEventCopyWithImpl<_$AddColorEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialEvent,
+    required TResult Function(DrawingTool tool)
+        changeDrawingButtonSelectionEvent,
+    required TResult Function(int colorIndex) changeColorSelectionEvent,
+    required TResult Function(int colorIndex, Color currentColor)
+        changeColorValueEvent,
+    required TResult Function(Color color) addColorEvent,
+    required TResult Function(int colorIndex) deleteColorEvent,
+  }) {
+    return addColorEvent(color);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialEvent,
+    TResult Function(DrawingTool tool)? changeDrawingButtonSelectionEvent,
+    TResult Function(int colorIndex)? changeColorSelectionEvent,
+    TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
+    TResult Function(Color color)? addColorEvent,
+    TResult Function(int colorIndex)? deleteColorEvent,
+  }) {
+    return addColorEvent?.call(color);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialEvent,
+    TResult Function(DrawingTool tool)? changeDrawingButtonSelectionEvent,
+    TResult Function(int colorIndex)? changeColorSelectionEvent,
+    TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
+    TResult Function(Color color)? addColorEvent,
+    TResult Function(int colorIndex)? deleteColorEvent,
+    required TResult orElse(),
+  }) {
+    if (addColorEvent != null) {
+      return addColorEvent(color);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialEvent value) initialEvent,
+    required TResult Function(ChangeDrawingButtonSelectionEvent value)
+        changeDrawingButtonSelectionEvent,
+    required TResult Function(ChangeColorSelectionEvent value)
+        changeColorSelectionEvent,
+    required TResult Function(ChangeColorValueEvent value)
+        changeColorValueEvent,
+    required TResult Function(AddColorEvent value) addColorEvent,
+    required TResult Function(DeleteColorEvent value) deleteColorEvent,
+  }) {
+    return addColorEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialEvent value)? initialEvent,
+    TResult Function(ChangeDrawingButtonSelectionEvent value)?
+        changeDrawingButtonSelectionEvent,
+    TResult Function(ChangeColorSelectionEvent value)?
+        changeColorSelectionEvent,
+    TResult Function(ChangeColorValueEvent value)? changeColorValueEvent,
+    TResult Function(AddColorEvent value)? addColorEvent,
+    TResult Function(DeleteColorEvent value)? deleteColorEvent,
+  }) {
+    return addColorEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialEvent value)? initialEvent,
+    TResult Function(ChangeDrawingButtonSelectionEvent value)?
+        changeDrawingButtonSelectionEvent,
+    TResult Function(ChangeColorSelectionEvent value)?
+        changeColorSelectionEvent,
+    TResult Function(ChangeColorValueEvent value)? changeColorValueEvent,
+    TResult Function(AddColorEvent value)? addColorEvent,
+    TResult Function(DeleteColorEvent value)? deleteColorEvent,
+    required TResult orElse(),
+  }) {
+    if (addColorEvent != null) {
+      return addColorEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AddColorEvent implements DrawingToolbarEvent {
+  const factory AddColorEvent(final Color color) = _$AddColorEvent;
+
+  Color get color => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$AddColorEventCopyWith<_$AddColorEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DeleteColorEventCopyWith<$Res> {
+  factory _$$DeleteColorEventCopyWith(
+          _$DeleteColorEvent value, $Res Function(_$DeleteColorEvent) then) =
+      __$$DeleteColorEventCopyWithImpl<$Res>;
+  $Res call({int colorIndex});
+}
+
+/// @nodoc
+class __$$DeleteColorEventCopyWithImpl<$Res>
+    extends _$DrawingToolbarEventCopyWithImpl<$Res>
+    implements _$$DeleteColorEventCopyWith<$Res> {
+  __$$DeleteColorEventCopyWithImpl(
+      _$DeleteColorEvent _value, $Res Function(_$DeleteColorEvent) _then)
+      : super(_value, (v) => _then(v as _$DeleteColorEvent));
+
+  @override
+  _$DeleteColorEvent get _value => super._value as _$DeleteColorEvent;
+
+  @override
+  $Res call({
+    Object? colorIndex = freezed,
+  }) {
+    return _then(_$DeleteColorEvent(
+      colorIndex == freezed
+          ? _value.colorIndex
+          : colorIndex // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DeleteColorEvent implements DeleteColorEvent {
+  const _$DeleteColorEvent(this.colorIndex);
+
+  @override
+  final int colorIndex;
+
+  @override
+  String toString() {
+    return 'DrawingToolbarEvent.deleteColorEvent(colorIndex: $colorIndex)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteColorEvent &&
+            const DeepCollectionEquality()
+                .equals(other.colorIndex, colorIndex));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(colorIndex));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$DeleteColorEventCopyWith<_$DeleteColorEvent> get copyWith =>
+      __$$DeleteColorEventCopyWithImpl<_$DeleteColorEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialEvent,
+    required TResult Function(DrawingTool tool)
+        changeDrawingButtonSelectionEvent,
+    required TResult Function(int colorIndex) changeColorSelectionEvent,
+    required TResult Function(int colorIndex, Color currentColor)
+        changeColorValueEvent,
+    required TResult Function(Color color) addColorEvent,
+    required TResult Function(int colorIndex) deleteColorEvent,
+  }) {
+    return deleteColorEvent(colorIndex);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialEvent,
+    TResult Function(DrawingTool tool)? changeDrawingButtonSelectionEvent,
+    TResult Function(int colorIndex)? changeColorSelectionEvent,
+    TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
+    TResult Function(Color color)? addColorEvent,
+    TResult Function(int colorIndex)? deleteColorEvent,
+  }) {
+    return deleteColorEvent?.call(colorIndex);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialEvent,
+    TResult Function(DrawingTool tool)? changeDrawingButtonSelectionEvent,
+    TResult Function(int colorIndex)? changeColorSelectionEvent,
+    TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
+    TResult Function(Color color)? addColorEvent,
+    TResult Function(int colorIndex)? deleteColorEvent,
+    required TResult orElse(),
+  }) {
+    if (deleteColorEvent != null) {
+      return deleteColorEvent(colorIndex);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialEvent value) initialEvent,
+    required TResult Function(ChangeDrawingButtonSelectionEvent value)
+        changeDrawingButtonSelectionEvent,
+    required TResult Function(ChangeColorSelectionEvent value)
+        changeColorSelectionEvent,
+    required TResult Function(ChangeColorValueEvent value)
+        changeColorValueEvent,
+    required TResult Function(AddColorEvent value) addColorEvent,
+    required TResult Function(DeleteColorEvent value) deleteColorEvent,
+  }) {
+    return deleteColorEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialEvent value)? initialEvent,
+    TResult Function(ChangeDrawingButtonSelectionEvent value)?
+        changeDrawingButtonSelectionEvent,
+    TResult Function(ChangeColorSelectionEvent value)?
+        changeColorSelectionEvent,
+    TResult Function(ChangeColorValueEvent value)? changeColorValueEvent,
+    TResult Function(AddColorEvent value)? addColorEvent,
+    TResult Function(DeleteColorEvent value)? deleteColorEvent,
+  }) {
+    return deleteColorEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialEvent value)? initialEvent,
+    TResult Function(ChangeDrawingButtonSelectionEvent value)?
+        changeDrawingButtonSelectionEvent,
+    TResult Function(ChangeColorSelectionEvent value)?
+        changeColorSelectionEvent,
+    TResult Function(ChangeColorValueEvent value)? changeColorValueEvent,
+    TResult Function(AddColorEvent value)? addColorEvent,
+    TResult Function(DeleteColorEvent value)? deleteColorEvent,
+    required TResult orElse(),
+  }) {
+    if (deleteColorEvent != null) {
+      return deleteColorEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DeleteColorEvent implements DrawingToolbarEvent {
+  const factory DeleteColorEvent(final int colorIndex) = _$DeleteColorEvent;
+
+  int get colorIndex => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$DeleteColorEventCopyWith<_$DeleteColorEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
