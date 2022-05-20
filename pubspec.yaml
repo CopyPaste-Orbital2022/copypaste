@@ -39,6 +39,8 @@ dependencies:
   injectable: ^1.5.3
   perfect_freehand: ^1.0.4
   shared_preferences: ^2.0.13
+  scribble:
+    path: plugins/scribble
 
 dev_dependencies:
   build_runner: ^2.1.10
