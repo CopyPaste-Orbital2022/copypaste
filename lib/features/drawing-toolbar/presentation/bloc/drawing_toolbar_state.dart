@@ -1,9 +1,10 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../../../../core/injections/injection.dart';
 import '../../domain/entities/eraser_state.dart';
 import '../../domain/entities/pen_state.dart';
 import '../../domain/entities/selectable_tools.dart';
 import '../../domain/repositories/i_drawing_toolbar_repository.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'drawing_toolbar_state.freezed.dart';
 

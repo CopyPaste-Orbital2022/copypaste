@@ -1,11 +1,10 @@
-import 'color_menu/color_menu.dart';
-import 'color_menu/color_menu_button.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/injections/injection.dart';
 import '../bloc/index.dart';
+import 'color_menu/color_menu.dart';
 import 'drawing_menu_button.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DrawingMenu extends StatelessWidget {
   const DrawingMenu({Key? key}) : super(key: key);

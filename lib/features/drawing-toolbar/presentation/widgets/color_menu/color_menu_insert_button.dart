@@ -1,7 +1,8 @@
-import '../../bloc/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+
+import '../../bloc/index.dart';
 
 class ColorMenuInsertButton extends StatefulWidget {
   const ColorMenuInsertButton({Key? key}) : super(key: key);

@@ -1,7 +1,8 @@
-import 'package:copypaste/features/drawing-toolbar/presentation/widgets/settings_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../widgets/drawing_menu.dart';
+import '../widgets/settings_button.dart';
 
 class DrawingPage extends StatelessWidget {
   const DrawingPage({Key? key}) : super(key: key);
@@ -16,9 +17,7 @@ class DrawingPage extends StatelessWidget {
           DrawingMenu(),
         ],
       ),
-      body: const Center(
-        child: Text("To Be Implemented"),
-      ),
+      body: Center(),
     );
   }
 }

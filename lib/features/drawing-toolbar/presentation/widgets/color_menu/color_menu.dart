@@ -1,9 +1,10 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../domain/entities/selectable_tools.dart';
 import '../../bloc/index.dart';
 import 'color_menu_button.dart';
 import 'color_menu_insert_button.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ColorMenu extends StatelessWidget {
   const ColorMenu({Key? key}) : super(key: key);
