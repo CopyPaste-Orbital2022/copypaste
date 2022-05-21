@@ -22,6 +22,7 @@ class DrawingToolbarBloc
       // saves the state in repo
       _repository.saveCurrentTool(event.tool);
       // updates the notifier
+      _notifier.setAllowedPointersMode(state.allowedPointerMode);
       _notifier.switchTo(tool: event.tool);
       // emits the state
       emit(
@@ -99,6 +100,22 @@ class DrawingToolbarBloc
         );
         _repository.savePenState(tmpState.penState);
         emit(tmpState);
+      },
+    );
+
+    // when changes the width selection
+    on<ChangeStrokeWidthSelectionEvent>(
+      (event, emit) {
+        // gets the width value
+        final double width = state.penState.widths[event.widthIndex];
+        // changes the stroke width accordingly
+        _notifier.setStrokeWidth(width);
+        // emits the state
+        emit(state.copyWith(
+          penState: state.penState.copyWith(
+            currentWidthIdx: event.widthIndex,
+          ),
+        ));
       },
     );
   }

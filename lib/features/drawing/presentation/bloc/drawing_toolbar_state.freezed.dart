@@ -19,6 +19,8 @@ mixin _$DrawingToolbarState {
   DrawingTool get currentTool => throw _privateConstructorUsedError;
   PenState get penState => throw _privateConstructorUsedError;
   EraserState get eraserState => throw _privateConstructorUsedError;
+  ScribblePointerMode get allowedPointerMode =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DrawingToolbarStateCopyWith<DrawingToolbarState> get copyWith =>
@@ -31,7 +33,10 @@ abstract class $DrawingToolbarStateCopyWith<$Res> {
           DrawingToolbarState value, $Res Function(DrawingToolbarState) then) =
       _$DrawingToolbarStateCopyWithImpl<$Res>;
   $Res call(
-      {DrawingTool currentTool, PenState penState, EraserState eraserState});
+      {DrawingTool currentTool,
+      PenState penState,
+      EraserState eraserState,
+      ScribblePointerMode allowedPointerMode});
 
   $PenStateCopyWith<$Res> get penState;
   $EraserStateCopyWith<$Res> get eraserState;
@@ -51,6 +56,7 @@ class _$DrawingToolbarStateCopyWithImpl<$Res>
     Object? currentTool = freezed,
     Object? penState = freezed,
     Object? eraserState = freezed,
+    Object? allowedPointerMode = freezed,
   }) {
     return _then(_value.copyWith(
       currentTool: currentTool == freezed
@@ -65,6 +71,10 @@ class _$DrawingToolbarStateCopyWithImpl<$Res>
           ? _value.eraserState
           : eraserState // ignore: cast_nullable_to_non_nullable
               as EraserState,
+      allowedPointerMode: allowedPointerMode == freezed
+          ? _value.allowedPointerMode
+          : allowedPointerMode // ignore: cast_nullable_to_non_nullable
+              as ScribblePointerMode,
     ));
   }
 
@@ -91,7 +101,10 @@ abstract class _$$_DrawingToolbarStateCopyWith<$Res>
       __$$_DrawingToolbarStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {DrawingTool currentTool, PenState penState, EraserState eraserState});
+      {DrawingTool currentTool,
+      PenState penState,
+      EraserState eraserState,
+      ScribblePointerMode allowedPointerMode});
 
   @override
   $PenStateCopyWith<$Res> get penState;
@@ -115,6 +128,7 @@ class __$$_DrawingToolbarStateCopyWithImpl<$Res>
     Object? currentTool = freezed,
     Object? penState = freezed,
     Object? eraserState = freezed,
+    Object? allowedPointerMode = freezed,
   }) {
     return _then(_$_DrawingToolbarState(
       currentTool: currentTool == freezed
@@ -129,6 +143,10 @@ class __$$_DrawingToolbarStateCopyWithImpl<$Res>
           ? _value.eraserState
           : eraserState // ignore: cast_nullable_to_non_nullable
               as EraserState,
+      allowedPointerMode: allowedPointerMode == freezed
+          ? _value.allowedPointerMode
+          : allowedPointerMode // ignore: cast_nullable_to_non_nullable
+              as ScribblePointerMode,
     ));
   }
 }
@@ -139,7 +157,8 @@ class _$_DrawingToolbarState implements _DrawingToolbarState {
   const _$_DrawingToolbarState(
       {required this.currentTool,
       required this.penState,
-      required this.eraserState});
+      required this.eraserState,
+      required this.allowedPointerMode});
 
   @override
   final DrawingTool currentTool;
@@ -147,10 +166,12 @@ class _$_DrawingToolbarState implements _DrawingToolbarState {
   final PenState penState;
   @override
   final EraserState eraserState;
+  @override
+  final ScribblePointerMode allowedPointerMode;
 
   @override
   String toString() {
-    return 'DrawingToolbarState(currentTool: $currentTool, penState: $penState, eraserState: $eraserState)';
+    return 'DrawingToolbarState(currentTool: $currentTool, penState: $penState, eraserState: $eraserState, allowedPointerMode: $allowedPointerMode)';
   }
 
   @override
@@ -162,7 +183,9 @@ class _$_DrawingToolbarState implements _DrawingToolbarState {
                 .equals(other.currentTool, currentTool) &&
             const DeepCollectionEquality().equals(other.penState, penState) &&
             const DeepCollectionEquality()
-                .equals(other.eraserState, eraserState));
+                .equals(other.eraserState, eraserState) &&
+            const DeepCollectionEquality()
+                .equals(other.allowedPointerMode, allowedPointerMode));
   }
 
   @override
@@ -170,7 +193,8 @@ class _$_DrawingToolbarState implements _DrawingToolbarState {
       runtimeType,
       const DeepCollectionEquality().hash(currentTool),
       const DeepCollectionEquality().hash(penState),
-      const DeepCollectionEquality().hash(eraserState));
+      const DeepCollectionEquality().hash(eraserState),
+      const DeepCollectionEquality().hash(allowedPointerMode));
 
   @JsonKey(ignore: true)
   @override
@@ -181,9 +205,11 @@ class _$_DrawingToolbarState implements _DrawingToolbarState {
 
 abstract class _DrawingToolbarState implements DrawingToolbarState {
   const factory _DrawingToolbarState(
-      {required final DrawingTool currentTool,
-      required final PenState penState,
-      required final EraserState eraserState}) = _$_DrawingToolbarState;
+          {required final DrawingTool currentTool,
+          required final PenState penState,
+          required final EraserState eraserState,
+          required final ScribblePointerMode allowedPointerMode}) =
+      _$_DrawingToolbarState;
 
   @override
   DrawingTool get currentTool => throw _privateConstructorUsedError;
@@ -191,6 +217,9 @@ abstract class _DrawingToolbarState implements DrawingToolbarState {
   PenState get penState => throw _privateConstructorUsedError;
   @override
   EraserState get eraserState => throw _privateConstructorUsedError;
+  @override
+  ScribblePointerMode get allowedPointerMode =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_DrawingToolbarStateCopyWith<_$_DrawingToolbarState> get copyWith =>

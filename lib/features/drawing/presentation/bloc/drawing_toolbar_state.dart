@@ -16,6 +16,7 @@ abstract class DrawingToolbarState with _$DrawingToolbarState {
     required DrawingTool currentTool,
     required PenState penState,
     required EraserState eraserState,
+    required ScribblePointerMode allowedPointerMode,
   }) = _DrawingToolbarState;
 }
 
@@ -31,7 +32,7 @@ extension DrawingToolbarStateX on DrawingToolbarState {
     WidgetsBinding.instance.addPostFrameCallback(
       (timeStamp) {
         final ScribbleNotifier notifier = getIt<ScribbleNotifier>();
-        // note that set color also sets the state to pen state, hence set color should be run before the switchTo command
+        // ! note that set color also sets the state to pen state, hence set color should be run before the switchTo command
         notifier.setColor(penState.getCurrentColor());
         notifier.switchTo(tool: currentTool);
       },
@@ -41,6 +42,7 @@ extension DrawingToolbarStateX on DrawingToolbarState {
       currentTool: currentTool,
       penState: penState,
       eraserState: eraserState,
+      allowedPointerMode: ScribblePointerMode.all,
     );
   }
 }

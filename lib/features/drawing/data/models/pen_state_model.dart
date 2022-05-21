@@ -9,14 +9,17 @@ class PenStateModel {
   static const List<String> defaultColors = ["0xFF00000000"];
   final bool useStylus;
   static const bool defaultUseStylus = false;
-  final double width;
-  static const double defaultWidth = 1.0;
+  final int currentWidthIdx;
+  static const int defaultCurrentWidthIdx = 0;
+  final List<String> widths;
+  static const List<String> defaultWidths = ["5.0", "10.0", "15.0"];
 
   PenStateModel({
     required this.currentColorIdx,
     required this.colors,
     required this.useStylus,
-    required this.width,
+    required this.currentWidthIdx,
+    required this.widths,
   });
 
   /// converts to domain
@@ -25,7 +28,8 @@ class PenStateModel {
       currentColorIdx: currentColorIdx,
       colors: _stringsToColors(colors),
       useStylus: useStylus,
-      width: width,
+      currentWidthIdx: currentWidthIdx,
+      widths: widths.map((e) => double.parse(e)).toList(),
     );
   }
 
@@ -35,7 +39,8 @@ class PenStateModel {
       currentColorIdx: penEntity.currentColorIdx,
       colors: _colorsToStrings(penEntity.colors),
       useStylus: penEntity.useStylus,
-      width: penEntity.width,
+      currentWidthIdx: penEntity.currentWidthIdx,
+      widths: penEntity.widths.map((e) => e.toString()).toList(),
     );
   }
 

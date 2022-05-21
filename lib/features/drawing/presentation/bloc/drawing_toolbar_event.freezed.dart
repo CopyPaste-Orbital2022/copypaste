@@ -26,6 +26,7 @@ mixin _$DrawingToolbarEvent {
         changeColorValueEvent,
     required TResult Function(Color color) addColorEvent,
     required TResult Function(int colorIndex) deleteColorEvent,
+    required TResult Function(int widthIndex) changeStrokeWidthSelectionEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,6 +37,7 @@ mixin _$DrawingToolbarEvent {
     TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
     TResult Function(Color color)? addColorEvent,
     TResult Function(int colorIndex)? deleteColorEvent,
+    TResult Function(int widthIndex)? changeStrokeWidthSelectionEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -46,6 +48,7 @@ mixin _$DrawingToolbarEvent {
     TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
     TResult Function(Color color)? addColorEvent,
     TResult Function(int colorIndex)? deleteColorEvent,
+    TResult Function(int widthIndex)? changeStrokeWidthSelectionEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -60,6 +63,8 @@ mixin _$DrawingToolbarEvent {
         changeColorValueEvent,
     required TResult Function(AddColorEvent value) addColorEvent,
     required TResult Function(DeleteColorEvent value) deleteColorEvent,
+    required TResult Function(ChangeStrokeWidthSelectionEvent value)
+        changeStrokeWidthSelectionEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -72,6 +77,8 @@ mixin _$DrawingToolbarEvent {
     TResult Function(ChangeColorValueEvent value)? changeColorValueEvent,
     TResult Function(AddColorEvent value)? addColorEvent,
     TResult Function(DeleteColorEvent value)? deleteColorEvent,
+    TResult Function(ChangeStrokeWidthSelectionEvent value)?
+        changeStrokeWidthSelectionEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -84,6 +91,8 @@ mixin _$DrawingToolbarEvent {
     TResult Function(ChangeColorValueEvent value)? changeColorValueEvent,
     TResult Function(AddColorEvent value)? addColorEvent,
     TResult Function(DeleteColorEvent value)? deleteColorEvent,
+    TResult Function(ChangeStrokeWidthSelectionEvent value)?
+        changeStrokeWidthSelectionEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -155,6 +164,7 @@ class _$InitialEvent implements InitialEvent {
         changeColorValueEvent,
     required TResult Function(Color color) addColorEvent,
     required TResult Function(int colorIndex) deleteColorEvent,
+    required TResult Function(int widthIndex) changeStrokeWidthSelectionEvent,
   }) {
     return initialEvent();
   }
@@ -168,6 +178,7 @@ class _$InitialEvent implements InitialEvent {
     TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
     TResult Function(Color color)? addColorEvent,
     TResult Function(int colorIndex)? deleteColorEvent,
+    TResult Function(int widthIndex)? changeStrokeWidthSelectionEvent,
   }) {
     return initialEvent?.call();
   }
@@ -181,6 +192,7 @@ class _$InitialEvent implements InitialEvent {
     TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
     TResult Function(Color color)? addColorEvent,
     TResult Function(int colorIndex)? deleteColorEvent,
+    TResult Function(int widthIndex)? changeStrokeWidthSelectionEvent,
     required TResult orElse(),
   }) {
     if (initialEvent != null) {
@@ -201,6 +213,8 @@ class _$InitialEvent implements InitialEvent {
         changeColorValueEvent,
     required TResult Function(AddColorEvent value) addColorEvent,
     required TResult Function(DeleteColorEvent value) deleteColorEvent,
+    required TResult Function(ChangeStrokeWidthSelectionEvent value)
+        changeStrokeWidthSelectionEvent,
   }) {
     return initialEvent(this);
   }
@@ -216,6 +230,8 @@ class _$InitialEvent implements InitialEvent {
     TResult Function(ChangeColorValueEvent value)? changeColorValueEvent,
     TResult Function(AddColorEvent value)? addColorEvent,
     TResult Function(DeleteColorEvent value)? deleteColorEvent,
+    TResult Function(ChangeStrokeWidthSelectionEvent value)?
+        changeStrokeWidthSelectionEvent,
   }) {
     return initialEvent?.call(this);
   }
@@ -231,6 +247,8 @@ class _$InitialEvent implements InitialEvent {
     TResult Function(ChangeColorValueEvent value)? changeColorValueEvent,
     TResult Function(AddColorEvent value)? addColorEvent,
     TResult Function(DeleteColorEvent value)? deleteColorEvent,
+    TResult Function(ChangeStrokeWidthSelectionEvent value)?
+        changeStrokeWidthSelectionEvent,
     required TResult orElse(),
   }) {
     if (initialEvent != null) {
@@ -323,6 +341,7 @@ class _$ChangeDrawingButtonSelectionEvent
         changeColorValueEvent,
     required TResult Function(Color color) addColorEvent,
     required TResult Function(int colorIndex) deleteColorEvent,
+    required TResult Function(int widthIndex) changeStrokeWidthSelectionEvent,
   }) {
     return changeDrawingButtonSelectionEvent(tool);
   }
@@ -336,6 +355,7 @@ class _$ChangeDrawingButtonSelectionEvent
     TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
     TResult Function(Color color)? addColorEvent,
     TResult Function(int colorIndex)? deleteColorEvent,
+    TResult Function(int widthIndex)? changeStrokeWidthSelectionEvent,
   }) {
     return changeDrawingButtonSelectionEvent?.call(tool);
   }
@@ -349,6 +369,7 @@ class _$ChangeDrawingButtonSelectionEvent
     TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
     TResult Function(Color color)? addColorEvent,
     TResult Function(int colorIndex)? deleteColorEvent,
+    TResult Function(int widthIndex)? changeStrokeWidthSelectionEvent,
     required TResult orElse(),
   }) {
     if (changeDrawingButtonSelectionEvent != null) {
@@ -369,6 +390,8 @@ class _$ChangeDrawingButtonSelectionEvent
         changeColorValueEvent,
     required TResult Function(AddColorEvent value) addColorEvent,
     required TResult Function(DeleteColorEvent value) deleteColorEvent,
+    required TResult Function(ChangeStrokeWidthSelectionEvent value)
+        changeStrokeWidthSelectionEvent,
   }) {
     return changeDrawingButtonSelectionEvent(this);
   }
@@ -384,6 +407,8 @@ class _$ChangeDrawingButtonSelectionEvent
     TResult Function(ChangeColorValueEvent value)? changeColorValueEvent,
     TResult Function(AddColorEvent value)? addColorEvent,
     TResult Function(DeleteColorEvent value)? deleteColorEvent,
+    TResult Function(ChangeStrokeWidthSelectionEvent value)?
+        changeStrokeWidthSelectionEvent,
   }) {
     return changeDrawingButtonSelectionEvent?.call(this);
   }
@@ -399,6 +424,8 @@ class _$ChangeDrawingButtonSelectionEvent
     TResult Function(ChangeColorValueEvent value)? changeColorValueEvent,
     TResult Function(AddColorEvent value)? addColorEvent,
     TResult Function(DeleteColorEvent value)? deleteColorEvent,
+    TResult Function(ChangeStrokeWidthSelectionEvent value)?
+        changeStrokeWidthSelectionEvent,
     required TResult orElse(),
   }) {
     if (changeDrawingButtonSelectionEvent != null) {
@@ -497,6 +524,7 @@ class _$ChangeColorSelectionEvent implements ChangeColorSelectionEvent {
         changeColorValueEvent,
     required TResult Function(Color color) addColorEvent,
     required TResult Function(int colorIndex) deleteColorEvent,
+    required TResult Function(int widthIndex) changeStrokeWidthSelectionEvent,
   }) {
     return changeColorSelectionEvent(colorIndex);
   }
@@ -510,6 +538,7 @@ class _$ChangeColorSelectionEvent implements ChangeColorSelectionEvent {
     TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
     TResult Function(Color color)? addColorEvent,
     TResult Function(int colorIndex)? deleteColorEvent,
+    TResult Function(int widthIndex)? changeStrokeWidthSelectionEvent,
   }) {
     return changeColorSelectionEvent?.call(colorIndex);
   }
@@ -523,6 +552,7 @@ class _$ChangeColorSelectionEvent implements ChangeColorSelectionEvent {
     TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
     TResult Function(Color color)? addColorEvent,
     TResult Function(int colorIndex)? deleteColorEvent,
+    TResult Function(int widthIndex)? changeStrokeWidthSelectionEvent,
     required TResult orElse(),
   }) {
     if (changeColorSelectionEvent != null) {
@@ -543,6 +573,8 @@ class _$ChangeColorSelectionEvent implements ChangeColorSelectionEvent {
         changeColorValueEvent,
     required TResult Function(AddColorEvent value) addColorEvent,
     required TResult Function(DeleteColorEvent value) deleteColorEvent,
+    required TResult Function(ChangeStrokeWidthSelectionEvent value)
+        changeStrokeWidthSelectionEvent,
   }) {
     return changeColorSelectionEvent(this);
   }
@@ -558,6 +590,8 @@ class _$ChangeColorSelectionEvent implements ChangeColorSelectionEvent {
     TResult Function(ChangeColorValueEvent value)? changeColorValueEvent,
     TResult Function(AddColorEvent value)? addColorEvent,
     TResult Function(DeleteColorEvent value)? deleteColorEvent,
+    TResult Function(ChangeStrokeWidthSelectionEvent value)?
+        changeStrokeWidthSelectionEvent,
   }) {
     return changeColorSelectionEvent?.call(this);
   }
@@ -573,6 +607,8 @@ class _$ChangeColorSelectionEvent implements ChangeColorSelectionEvent {
     TResult Function(ChangeColorValueEvent value)? changeColorValueEvent,
     TResult Function(AddColorEvent value)? addColorEvent,
     TResult Function(DeleteColorEvent value)? deleteColorEvent,
+    TResult Function(ChangeStrokeWidthSelectionEvent value)?
+        changeStrokeWidthSelectionEvent,
     required TResult orElse(),
   }) {
     if (changeColorSelectionEvent != null) {
@@ -678,6 +714,7 @@ class _$ChangeColorValueEvent implements ChangeColorValueEvent {
         changeColorValueEvent,
     required TResult Function(Color color) addColorEvent,
     required TResult Function(int colorIndex) deleteColorEvent,
+    required TResult Function(int widthIndex) changeStrokeWidthSelectionEvent,
   }) {
     return changeColorValueEvent(colorIndex, currentColor);
   }
@@ -691,6 +728,7 @@ class _$ChangeColorValueEvent implements ChangeColorValueEvent {
     TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
     TResult Function(Color color)? addColorEvent,
     TResult Function(int colorIndex)? deleteColorEvent,
+    TResult Function(int widthIndex)? changeStrokeWidthSelectionEvent,
   }) {
     return changeColorValueEvent?.call(colorIndex, currentColor);
   }
@@ -704,6 +742,7 @@ class _$ChangeColorValueEvent implements ChangeColorValueEvent {
     TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
     TResult Function(Color color)? addColorEvent,
     TResult Function(int colorIndex)? deleteColorEvent,
+    TResult Function(int widthIndex)? changeStrokeWidthSelectionEvent,
     required TResult orElse(),
   }) {
     if (changeColorValueEvent != null) {
@@ -724,6 +763,8 @@ class _$ChangeColorValueEvent implements ChangeColorValueEvent {
         changeColorValueEvent,
     required TResult Function(AddColorEvent value) addColorEvent,
     required TResult Function(DeleteColorEvent value) deleteColorEvent,
+    required TResult Function(ChangeStrokeWidthSelectionEvent value)
+        changeStrokeWidthSelectionEvent,
   }) {
     return changeColorValueEvent(this);
   }
@@ -739,6 +780,8 @@ class _$ChangeColorValueEvent implements ChangeColorValueEvent {
     TResult Function(ChangeColorValueEvent value)? changeColorValueEvent,
     TResult Function(AddColorEvent value)? addColorEvent,
     TResult Function(DeleteColorEvent value)? deleteColorEvent,
+    TResult Function(ChangeStrokeWidthSelectionEvent value)?
+        changeStrokeWidthSelectionEvent,
   }) {
     return changeColorValueEvent?.call(this);
   }
@@ -754,6 +797,8 @@ class _$ChangeColorValueEvent implements ChangeColorValueEvent {
     TResult Function(ChangeColorValueEvent value)? changeColorValueEvent,
     TResult Function(AddColorEvent value)? addColorEvent,
     TResult Function(DeleteColorEvent value)? deleteColorEvent,
+    TResult Function(ChangeStrokeWidthSelectionEvent value)?
+        changeStrokeWidthSelectionEvent,
     required TResult orElse(),
   }) {
     if (changeColorValueEvent != null) {
@@ -847,6 +892,7 @@ class _$AddColorEvent implements AddColorEvent {
         changeColorValueEvent,
     required TResult Function(Color color) addColorEvent,
     required TResult Function(int colorIndex) deleteColorEvent,
+    required TResult Function(int widthIndex) changeStrokeWidthSelectionEvent,
   }) {
     return addColorEvent(color);
   }
@@ -860,6 +906,7 @@ class _$AddColorEvent implements AddColorEvent {
     TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
     TResult Function(Color color)? addColorEvent,
     TResult Function(int colorIndex)? deleteColorEvent,
+    TResult Function(int widthIndex)? changeStrokeWidthSelectionEvent,
   }) {
     return addColorEvent?.call(color);
   }
@@ -873,6 +920,7 @@ class _$AddColorEvent implements AddColorEvent {
     TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
     TResult Function(Color color)? addColorEvent,
     TResult Function(int colorIndex)? deleteColorEvent,
+    TResult Function(int widthIndex)? changeStrokeWidthSelectionEvent,
     required TResult orElse(),
   }) {
     if (addColorEvent != null) {
@@ -893,6 +941,8 @@ class _$AddColorEvent implements AddColorEvent {
         changeColorValueEvent,
     required TResult Function(AddColorEvent value) addColorEvent,
     required TResult Function(DeleteColorEvent value) deleteColorEvent,
+    required TResult Function(ChangeStrokeWidthSelectionEvent value)
+        changeStrokeWidthSelectionEvent,
   }) {
     return addColorEvent(this);
   }
@@ -908,6 +958,8 @@ class _$AddColorEvent implements AddColorEvent {
     TResult Function(ChangeColorValueEvent value)? changeColorValueEvent,
     TResult Function(AddColorEvent value)? addColorEvent,
     TResult Function(DeleteColorEvent value)? deleteColorEvent,
+    TResult Function(ChangeStrokeWidthSelectionEvent value)?
+        changeStrokeWidthSelectionEvent,
   }) {
     return addColorEvent?.call(this);
   }
@@ -923,6 +975,8 @@ class _$AddColorEvent implements AddColorEvent {
     TResult Function(ChangeColorValueEvent value)? changeColorValueEvent,
     TResult Function(AddColorEvent value)? addColorEvent,
     TResult Function(DeleteColorEvent value)? deleteColorEvent,
+    TResult Function(ChangeStrokeWidthSelectionEvent value)?
+        changeStrokeWidthSelectionEvent,
     required TResult orElse(),
   }) {
     if (addColorEvent != null) {
@@ -1015,6 +1069,7 @@ class _$DeleteColorEvent implements DeleteColorEvent {
         changeColorValueEvent,
     required TResult Function(Color color) addColorEvent,
     required TResult Function(int colorIndex) deleteColorEvent,
+    required TResult Function(int widthIndex) changeStrokeWidthSelectionEvent,
   }) {
     return deleteColorEvent(colorIndex);
   }
@@ -1028,6 +1083,7 @@ class _$DeleteColorEvent implements DeleteColorEvent {
     TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
     TResult Function(Color color)? addColorEvent,
     TResult Function(int colorIndex)? deleteColorEvent,
+    TResult Function(int widthIndex)? changeStrokeWidthSelectionEvent,
   }) {
     return deleteColorEvent?.call(colorIndex);
   }
@@ -1041,6 +1097,7 @@ class _$DeleteColorEvent implements DeleteColorEvent {
     TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
     TResult Function(Color color)? addColorEvent,
     TResult Function(int colorIndex)? deleteColorEvent,
+    TResult Function(int widthIndex)? changeStrokeWidthSelectionEvent,
     required TResult orElse(),
   }) {
     if (deleteColorEvent != null) {
@@ -1061,6 +1118,8 @@ class _$DeleteColorEvent implements DeleteColorEvent {
         changeColorValueEvent,
     required TResult Function(AddColorEvent value) addColorEvent,
     required TResult Function(DeleteColorEvent value) deleteColorEvent,
+    required TResult Function(ChangeStrokeWidthSelectionEvent value)
+        changeStrokeWidthSelectionEvent,
   }) {
     return deleteColorEvent(this);
   }
@@ -1076,6 +1135,8 @@ class _$DeleteColorEvent implements DeleteColorEvent {
     TResult Function(ChangeColorValueEvent value)? changeColorValueEvent,
     TResult Function(AddColorEvent value)? addColorEvent,
     TResult Function(DeleteColorEvent value)? deleteColorEvent,
+    TResult Function(ChangeStrokeWidthSelectionEvent value)?
+        changeStrokeWidthSelectionEvent,
   }) {
     return deleteColorEvent?.call(this);
   }
@@ -1091,6 +1152,8 @@ class _$DeleteColorEvent implements DeleteColorEvent {
     TResult Function(ChangeColorValueEvent value)? changeColorValueEvent,
     TResult Function(AddColorEvent value)? addColorEvent,
     TResult Function(DeleteColorEvent value)? deleteColorEvent,
+    TResult Function(ChangeStrokeWidthSelectionEvent value)?
+        changeStrokeWidthSelectionEvent,
     required TResult orElse(),
   }) {
     if (deleteColorEvent != null) {
@@ -1107,4 +1170,187 @@ abstract class DeleteColorEvent implements DrawingToolbarEvent {
   @JsonKey(ignore: true)
   _$$DeleteColorEventCopyWith<_$DeleteColorEvent> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeStrokeWidthSelectionEventCopyWith<$Res> {
+  factory _$$ChangeStrokeWidthSelectionEventCopyWith(
+          _$ChangeStrokeWidthSelectionEvent value,
+          $Res Function(_$ChangeStrokeWidthSelectionEvent) then) =
+      __$$ChangeStrokeWidthSelectionEventCopyWithImpl<$Res>;
+  $Res call({int widthIndex});
+}
+
+/// @nodoc
+class __$$ChangeStrokeWidthSelectionEventCopyWithImpl<$Res>
+    extends _$DrawingToolbarEventCopyWithImpl<$Res>
+    implements _$$ChangeStrokeWidthSelectionEventCopyWith<$Res> {
+  __$$ChangeStrokeWidthSelectionEventCopyWithImpl(
+      _$ChangeStrokeWidthSelectionEvent _value,
+      $Res Function(_$ChangeStrokeWidthSelectionEvent) _then)
+      : super(_value, (v) => _then(v as _$ChangeStrokeWidthSelectionEvent));
+
+  @override
+  _$ChangeStrokeWidthSelectionEvent get _value =>
+      super._value as _$ChangeStrokeWidthSelectionEvent;
+
+  @override
+  $Res call({
+    Object? widthIndex = freezed,
+  }) {
+    return _then(_$ChangeStrokeWidthSelectionEvent(
+      widthIndex == freezed
+          ? _value.widthIndex
+          : widthIndex // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeStrokeWidthSelectionEvent
+    implements ChangeStrokeWidthSelectionEvent {
+  const _$ChangeStrokeWidthSelectionEvent(this.widthIndex);
+
+  @override
+  final int widthIndex;
+
+  @override
+  String toString() {
+    return 'DrawingToolbarEvent.changeStrokeWidthSelectionEvent(widthIndex: $widthIndex)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeStrokeWidthSelectionEvent &&
+            const DeepCollectionEquality()
+                .equals(other.widthIndex, widthIndex));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(widthIndex));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$ChangeStrokeWidthSelectionEventCopyWith<_$ChangeStrokeWidthSelectionEvent>
+      get copyWith => __$$ChangeStrokeWidthSelectionEventCopyWithImpl<
+          _$ChangeStrokeWidthSelectionEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialEvent,
+    required TResult Function(DrawingTool tool)
+        changeDrawingButtonSelectionEvent,
+    required TResult Function(int colorIndex) changeColorSelectionEvent,
+    required TResult Function(int colorIndex, Color currentColor)
+        changeColorValueEvent,
+    required TResult Function(Color color) addColorEvent,
+    required TResult Function(int colorIndex) deleteColorEvent,
+    required TResult Function(int widthIndex) changeStrokeWidthSelectionEvent,
+  }) {
+    return changeStrokeWidthSelectionEvent(widthIndex);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialEvent,
+    TResult Function(DrawingTool tool)? changeDrawingButtonSelectionEvent,
+    TResult Function(int colorIndex)? changeColorSelectionEvent,
+    TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
+    TResult Function(Color color)? addColorEvent,
+    TResult Function(int colorIndex)? deleteColorEvent,
+    TResult Function(int widthIndex)? changeStrokeWidthSelectionEvent,
+  }) {
+    return changeStrokeWidthSelectionEvent?.call(widthIndex);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialEvent,
+    TResult Function(DrawingTool tool)? changeDrawingButtonSelectionEvent,
+    TResult Function(int colorIndex)? changeColorSelectionEvent,
+    TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
+    TResult Function(Color color)? addColorEvent,
+    TResult Function(int colorIndex)? deleteColorEvent,
+    TResult Function(int widthIndex)? changeStrokeWidthSelectionEvent,
+    required TResult orElse(),
+  }) {
+    if (changeStrokeWidthSelectionEvent != null) {
+      return changeStrokeWidthSelectionEvent(widthIndex);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialEvent value) initialEvent,
+    required TResult Function(ChangeDrawingButtonSelectionEvent value)
+        changeDrawingButtonSelectionEvent,
+    required TResult Function(ChangeColorSelectionEvent value)
+        changeColorSelectionEvent,
+    required TResult Function(ChangeColorValueEvent value)
+        changeColorValueEvent,
+    required TResult Function(AddColorEvent value) addColorEvent,
+    required TResult Function(DeleteColorEvent value) deleteColorEvent,
+    required TResult Function(ChangeStrokeWidthSelectionEvent value)
+        changeStrokeWidthSelectionEvent,
+  }) {
+    return changeStrokeWidthSelectionEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialEvent value)? initialEvent,
+    TResult Function(ChangeDrawingButtonSelectionEvent value)?
+        changeDrawingButtonSelectionEvent,
+    TResult Function(ChangeColorSelectionEvent value)?
+        changeColorSelectionEvent,
+    TResult Function(ChangeColorValueEvent value)? changeColorValueEvent,
+    TResult Function(AddColorEvent value)? addColorEvent,
+    TResult Function(DeleteColorEvent value)? deleteColorEvent,
+    TResult Function(ChangeStrokeWidthSelectionEvent value)?
+        changeStrokeWidthSelectionEvent,
+  }) {
+    return changeStrokeWidthSelectionEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialEvent value)? initialEvent,
+    TResult Function(ChangeDrawingButtonSelectionEvent value)?
+        changeDrawingButtonSelectionEvent,
+    TResult Function(ChangeColorSelectionEvent value)?
+        changeColorSelectionEvent,
+    TResult Function(ChangeColorValueEvent value)? changeColorValueEvent,
+    TResult Function(AddColorEvent value)? addColorEvent,
+    TResult Function(DeleteColorEvent value)? deleteColorEvent,
+    TResult Function(ChangeStrokeWidthSelectionEvent value)?
+        changeStrokeWidthSelectionEvent,
+    required TResult orElse(),
+  }) {
+    if (changeStrokeWidthSelectionEvent != null) {
+      return changeStrokeWidthSelectionEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeStrokeWidthSelectionEvent implements DrawingToolbarEvent {
+  const factory ChangeStrokeWidthSelectionEvent(final int widthIndex) =
+      _$ChangeStrokeWidthSelectionEvent;
+
+  int get widthIndex => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$ChangeStrokeWidthSelectionEventCopyWith<_$ChangeStrokeWidthSelectionEvent>
+      get copyWith => throw _privateConstructorUsedError;
 }

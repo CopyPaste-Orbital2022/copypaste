@@ -1,3 +1,4 @@
+import 'package:copypaste/features/drawing/presentation/widgets/stroke_width/stroke_width_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,6 +19,7 @@ class DrawingMenu extends StatelessWidget {
           children: [
             ...DrawingMenuButton.buttons,
             const ColorMenu(),
+            const StrokeWidthMenu(),
           ],
         ),
       ),

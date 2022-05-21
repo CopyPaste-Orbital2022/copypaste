@@ -79,10 +79,15 @@ class DrawingToolbarRepositoryImpl implements IDrawingToolBarRepository {
       modelPrefix: PenStateModel.prefix,
       propertyName: "use-stylus",
     );
-    final String widthKey = generateKey(
+    final String currentWidthIdxKey = generateKey(
       featurePrefix: featurePrefix,
       modelPrefix: PenStateModel.prefix,
-      propertyName: "width",
+      propertyName: "current-width-index",
+    );
+    final String widthsKey = generateKey(
+      featurePrefix: featurePrefix,
+      modelPrefix: PenStateModel.prefix,
+      propertyName: "widths",
     );
     final int currentColorIdx = prefs.getElseSet(
       currentColorIdxKey,
@@ -96,12 +101,18 @@ class DrawingToolbarRepositoryImpl implements IDrawingToolBarRepository {
       useStylusKey,
       PenStateModel.defaultUseStylus,
     );
-    final double width = prefs.getElseSet(widthKey, PenStateModel.defaultWidth);
+    final int currentWidthIdx = prefs.getElseSet(
+      currentWidthIdxKey,
+      PenStateModel.defaultCurrentWidthIdx,
+    );
+    final List<String> widths =
+        prefs.getElseSet(widthsKey, PenStateModel.defaultWidths);
     return PenStateModel(
       currentColorIdx: currentColorIdx,
       colors: colors,
       useStylus: useStylus,
-      width: width,
+      currentWidthIdx: currentWidthIdx,
+      widths: widths,
     ).toDomain();
   }
 
@@ -137,15 +148,21 @@ class DrawingToolbarRepositoryImpl implements IDrawingToolBarRepository {
       modelPrefix: PenStateModel.prefix,
       propertyName: "use-stylus",
     );
-    final String widthKey = generateKey(
+    final String currentWidthIdxKey = generateKey(
       featurePrefix: featurePrefix,
       modelPrefix: PenStateModel.prefix,
-      propertyName: "width",
+      propertyName: "current-width-index",
+    );
+    final String widthsKey = generateKey(
+      featurePrefix: featurePrefix,
+      modelPrefix: PenStateModel.prefix,
+      propertyName: "widths",
     );
     PenStateModel model = PenStateModel.fromDomain(state);
     prefs.setInt(currentColorIdxKey, model.currentColorIdx);
     prefs.setStringList(colorsKey, model.colors);
     prefs.setBool(useStylusKey, model.useStylus);
-    prefs.setDouble(widthKey, model.width);
+    prefs.setInt(currentWidthIdxKey, model.currentWidthIdx);
+    prefs.setStringList(widthsKey, model.widths);
   }
 }

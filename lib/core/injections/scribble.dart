@@ -3,6 +3,6 @@ import 'package:scribble/scribble.dart';
 
 @module
 abstract class ScribbleInjectionModule {
-  @preResolve
+  @lazySingleton
   ScribbleNotifier get notifier => ScribbleNotifier();
 }

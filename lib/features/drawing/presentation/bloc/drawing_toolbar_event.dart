@@ -29,4 +29,8 @@ abstract class DrawingToolbarEvent with _$DrawingToolbarEvent {
   // deletes the color
   const factory DrawingToolbarEvent.deleteColorEvent(int colorIndex) =
       DeleteColorEvent;
+
+  // changes the stroke width selection
+  const factory DrawingToolbarEvent.changeStrokeWidthSelectionEvent(
+      int widthIndex) = ChangeStrokeWidthSelectionEvent;
 }

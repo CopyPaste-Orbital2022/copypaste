@@ -19,7 +19,8 @@ mixin _$PenState {
   int get currentColorIdx => throw _privateConstructorUsedError;
   List<Color> get colors => throw _privateConstructorUsedError;
   bool get useStylus => throw _privateConstructorUsedError;
-  double get width => throw _privateConstructorUsedError;
+  int get currentWidthIdx => throw _privateConstructorUsedError;
+  List<double> get widths => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PenStateCopyWith<PenState> get copyWith =>
@@ -31,7 +32,11 @@ abstract class $PenStateCopyWith<$Res> {
   factory $PenStateCopyWith(PenState value, $Res Function(PenState) then) =
       _$PenStateCopyWithImpl<$Res>;
   $Res call(
-      {int currentColorIdx, List<Color> colors, bool useStylus, double width});
+      {int currentColorIdx,
+      List<Color> colors,
+      bool useStylus,
+      int currentWidthIdx,
+      List<double> widths});
 }
 
 /// @nodoc
@@ -47,7 +52,8 @@ class _$PenStateCopyWithImpl<$Res> implements $PenStateCopyWith<$Res> {
     Object? currentColorIdx = freezed,
     Object? colors = freezed,
     Object? useStylus = freezed,
-    Object? width = freezed,
+    Object? currentWidthIdx = freezed,
+    Object? widths = freezed,
   }) {
     return _then(_value.copyWith(
       currentColorIdx: currentColorIdx == freezed
@@ -62,10 +68,14 @@ class _$PenStateCopyWithImpl<$Res> implements $PenStateCopyWith<$Res> {
           ? _value.useStylus
           : useStylus // ignore: cast_nullable_to_non_nullable
               as bool,
-      width: width == freezed
-          ? _value.width
-          : width // ignore: cast_nullable_to_non_nullable
-              as double,
+      currentWidthIdx: currentWidthIdx == freezed
+          ? _value.currentWidthIdx
+          : currentWidthIdx // ignore: cast_nullable_to_non_nullable
+              as int,
+      widths: widths == freezed
+          ? _value.widths
+          : widths // ignore: cast_nullable_to_non_nullable
+              as List<double>,
     ));
   }
 }
@@ -77,7 +87,11 @@ abstract class _$$_PenStateCopyWith<$Res> implements $PenStateCopyWith<$Res> {
       __$$_PenStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {int currentColorIdx, List<Color> colors, bool useStylus, double width});
+      {int currentColorIdx,
+      List<Color> colors,
+      bool useStylus,
+      int currentWidthIdx,
+      List<double> widths});
 }
 
 /// @nodoc
@@ -95,7 +109,8 @@ class __$$_PenStateCopyWithImpl<$Res> extends _$PenStateCopyWithImpl<$Res>
     Object? currentColorIdx = freezed,
     Object? colors = freezed,
     Object? useStylus = freezed,
-    Object? width = freezed,
+    Object? currentWidthIdx = freezed,
+    Object? widths = freezed,
   }) {
     return _then(_$_PenState(
       currentColorIdx: currentColorIdx == freezed
@@ -110,10 +125,14 @@ class __$$_PenStateCopyWithImpl<$Res> extends _$PenStateCopyWithImpl<$Res>
           ? _value.useStylus
           : useStylus // ignore: cast_nullable_to_non_nullable
               as bool,
-      width: width == freezed
-          ? _value.width
-          : width // ignore: cast_nullable_to_non_nullable
-              as double,
+      currentWidthIdx: currentWidthIdx == freezed
+          ? _value.currentWidthIdx
+          : currentWidthIdx // ignore: cast_nullable_to_non_nullable
+              as int,
+      widths: widths == freezed
+          ? _value._widths
+          : widths // ignore: cast_nullable_to_non_nullable
+              as List<double>,
     ));
   }
 }
@@ -125,8 +144,10 @@ class _$_PenState implements _PenState {
       {required this.currentColorIdx,
       required final List<Color> colors,
       required this.useStylus,
-      required this.width})
-      : _colors = colors;
+      required this.currentWidthIdx,
+      required final List<double> widths})
+      : _colors = colors,
+        _widths = widths;
 
   @override
   final int currentColorIdx;
@@ -140,11 +161,17 @@ class _$_PenState implements _PenState {
   @override
   final bool useStylus;
   @override
-  final double width;
+  final int currentWidthIdx;
+  final List<double> _widths;
+  @override
+  List<double> get widths {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_widths);
+  }
 
   @override
   String toString() {
-    return 'PenState(currentColorIdx: $currentColorIdx, colors: $colors, useStylus: $useStylus, width: $width)';
+    return 'PenState(currentColorIdx: $currentColorIdx, colors: $colors, useStylus: $useStylus, currentWidthIdx: $currentWidthIdx, widths: $widths)';
   }
 
   @override
@@ -156,7 +183,9 @@ class _$_PenState implements _PenState {
                 .equals(other.currentColorIdx, currentColorIdx) &&
             const DeepCollectionEquality().equals(other._colors, _colors) &&
             const DeepCollectionEquality().equals(other.useStylus, useStylus) &&
-            const DeepCollectionEquality().equals(other.width, width));
+            const DeepCollectionEquality()
+                .equals(other.currentWidthIdx, currentWidthIdx) &&
+            const DeepCollectionEquality().equals(other._widths, _widths));
   }
 
   @override
@@ -165,7 +194,8 @@ class _$_PenState implements _PenState {
       const DeepCollectionEquality().hash(currentColorIdx),
       const DeepCollectionEquality().hash(_colors),
       const DeepCollectionEquality().hash(useStylus),
-      const DeepCollectionEquality().hash(width));
+      const DeepCollectionEquality().hash(currentWidthIdx),
+      const DeepCollectionEquality().hash(_widths));
 
   @JsonKey(ignore: true)
   @override
@@ -178,7 +208,8 @@ abstract class _PenState implements PenState {
       {required final int currentColorIdx,
       required final List<Color> colors,
       required final bool useStylus,
-      required final double width}) = _$_PenState;
+      required final int currentWidthIdx,
+      required final List<double> widths}) = _$_PenState;
 
   @override
   int get currentColorIdx => throw _privateConstructorUsedError;
@@ -187,7 +218,9 @@ abstract class _PenState implements PenState {
   @override
   bool get useStylus => throw _privateConstructorUsedError;
   @override
-  double get width => throw _privateConstructorUsedError;
+  int get currentWidthIdx => throw _privateConstructorUsedError;
+  @override
+  List<double> get widths => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_PenStateCopyWith<_$_PenState> get copyWith =>

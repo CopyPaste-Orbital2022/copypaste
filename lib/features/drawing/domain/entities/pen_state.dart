@@ -12,19 +12,24 @@ part 'pen_state.freezed.dart';
 ///
 /// [useStylus] - whether if the user is using a stylus
 ///
-/// [width] - the width of a pen
+/// [size] - the width of a pen
 @freezed
 class PenState with _$PenState {
   const factory PenState({
     required int currentColorIdx,
     required List<Color> colors,
     required bool useStylus,
-    required double width,
+    required int currentWidthIdx,
+    required List<double> widths,
   }) = _PenState;
 }
 
 extension PenStateX on PenState {
   Color getCurrentColor() {
     return colors[currentColorIdx];
+  }
+
+  double getCurrentWidth() {
+    return widths[currentWidthIdx];
   }
 }
