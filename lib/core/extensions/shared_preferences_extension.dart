@@ -1,5 +1,6 @@
-import 'package:copypaste/core/errors/unsupported_shared_preferences_type_error.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../errors/unsupported_shared_preferences_type_error.dart';
 
 extension SharedPreferencesX on SharedPreferences {
   /// Gets the value for "[prefix]-[id]" if it exists
