@@ -1,3 +1,4 @@
+import 'package:copypaste/features/drawing/presentation/widgets/drawing_paper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,7 +18,12 @@ class DrawingPage extends StatelessWidget {
           DrawingMenu(),
         ],
       ),
-      body: Center(),
+      body: Container(
+        color: Colors.grey,
+        child: DrawingPaper(
+          size: MediaQuery.of(context).size,
+        ),
+      ),
     );
   }
 }
