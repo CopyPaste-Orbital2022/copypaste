@@ -1,11 +1,10 @@
-import 'package:copypaste/core/extensions/scribble_extension.dart';
+import '../../../../core/extensions/scribble_extension.dart';
+import '../../domain/entities/selectable_param.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:scribble/scribble.dart';
 import '../../../../core/injections/injection.dart';
-import '../../domain/entities/eraser_state.dart';
-import '../../domain/entities/pen_state.dart';
-import '../../domain/entities/selectable_tools.dart';
+import '../../domain/entities/drawing_tools.dart';
 import '../../domain/repositories/i_drawing_toolbar_repository.dart';
 
 part 'drawing_toolbar_state.freezed.dart';
@@ -14,9 +13,10 @@ part 'drawing_toolbar_state.freezed.dart';
 abstract class DrawingToolbarState with _$DrawingToolbarState {
   const factory DrawingToolbarState({
     required DrawingTool currentTool,
-    required PenState penState,
-    required EraserState eraserState,
-    required ScribblePointerMode allowedPointerMode,
+    required bool useStylus,
+    required PenColorSelectable penColorSelectable,
+    required PenWidthSelectable penWidthSelectable,
+    required EraserWidthSelectable eraserWidthSelectable,
   }) = _DrawingToolbarState;
 }
 
@@ -24,25 +24,36 @@ extension DrawingToolbarStateX on DrawingToolbarState {
   static DrawingToolbarState initialState() {
     final IDrawingToolBarRepository repository =
         getIt<IDrawingToolBarRepository>();
-    // gets the saved status from the repo
+
+    // gets the relevant information from the repository
     final DrawingTool currentTool = repository.getCurrentTool();
-    final EraserState eraserState = repository.getEraserState();
-    final PenState penState = repository.getPenState();
-    // updates the notifier after all widgets are initialized
+    final bool useStylus = repository.getUseStylus();
+    final PenColorSelectable penColorSelectable =
+        repository.getPenColorSelectable();
+    final PenWidthSelectable penWidthSelectable =
+        repository.getPenWidthSelectable();
+    final EraserWidthSelectable eraserWidthSelectable =
+        repository.getEraserWidthSelectable();
+
+    // updates [ScribbleNotifier] with the relevant information after the widgets are rendered
     WidgetsBinding.instance.addPostFrameCallback(
       (timeStamp) {
         final ScribbleNotifier notifier = getIt<ScribbleNotifier>();
-        // ! note that set color also sets the state to pen state, hence set color should be run before the switchTo command
-        notifier.setColor(penState.getCurrentColor());
-        notifier.switchTo(tool: currentTool);
+        notifier.switchTo(
+          tool: currentTool,
+          useStylus: useStylus,
+          penColorSelectable: penColorSelectable,
+          penWidthSelectable: penWidthSelectable,
+          eraserWidthSelectable: eraserWidthSelectable,
+        );
       },
     );
-    // returns the state
     return DrawingToolbarState(
       currentTool: currentTool,
-      penState: penState,
-      eraserState: eraserState,
-      allowedPointerMode: ScribblePointerMode.all,
+      useStylus: useStylus,
+      penColorSelectable: penColorSelectable,
+      penWidthSelectable: penWidthSelectable,
+      eraserWidthSelectable: eraserWidthSelectable,
     );
   }
 }

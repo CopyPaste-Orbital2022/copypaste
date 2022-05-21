@@ -1,168 +1,104 @@
+import 'dart:ui';
+
+import '../../../../core/extensions/shared_preferences_extension.dart';
+import '../../domain/entities/selectable_param.dart';
+import '../../domain/entities/drawing_tools.dart';
+import '../../domain/repositories/i_drawing_toolbar_repository.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../../core/extensions/shared_preferences_extension.dart';
-import '../../../../core/utilities/generate_key.dart';
-import '../../domain/entities/eraser_state.dart';
-import '../../domain/entities/pen_state.dart';
-import '../../domain/entities/selectable_tools.dart';
-import '../../domain/repositories/i_drawing_toolbar_repository.dart';
-import '../models/eraser_state_model.dart';
-import '../models/pen_state_model.dart';
+import '../models/selectable_param_model.dart';
 
 @LazySingleton(as: IDrawingToolBarRepository)
 class DrawingToolbarRepositoryImpl implements IDrawingToolBarRepository {
-  /// prefix
-  static const String featurePrefix = "drawing-tool-bar";
+  static const String currentToolKey = "drawing-current-tool";
+  static const String eraserWidthSelectableKey =
+      "drawing-eraser-width-selectable";
+  static const String penWidthSelectableKey = "drawing-pen-width-selectable";
+  static const String penColorSelectableKey = "drawing-pen-color-selectable";
+  static const String useStylusKey = "drawing-use-stylus";
 
-  /// data source
-  SharedPreferences prefs;
+  final SharedPreferences _prefs;
 
-  /// constructor
-  DrawingToolbarRepositoryImpl({
-    required this.prefs,
-  });
+  DrawingToolbarRepositoryImpl(
+    this._prefs,
+  );
 
-  // TODO: Fix the inefficient code below later -> replace with constant
-  // TODO: (continued) key instead of the current functions
+  // current tool
+
   @override
   DrawingTool getCurrentTool() {
-    final String selectableToolKey = generateKey(
-        featurePrefix: featurePrefix,
-        modelPrefix: DrawingToolX.modelKey,
-        propertyName: "current-tool");
-    return DrawingToolX.fromString(
-        prefs.getElseSet(selectableToolKey, DrawingTool.hand.name));
+    final String currentToolStr = _prefs.getElseSet(
+      currentToolKey,
+      DrawingTool.hand.name,
+    );
+    return DrawingToolX.fromString(currentToolStr);
   }
 
   @override
   void saveCurrentTool(DrawingTool tool) {
-    final String selectableToolKey = generateKey(
-        featurePrefix: featurePrefix,
-        modelPrefix: DrawingToolX.modelKey,
-        propertyName: "current-tool");
-    prefs.setString(selectableToolKey, tool.name);
+    _prefs.setString(currentToolKey, tool.name);
   }
 
-  @override
-  EraserState getEraserState() {
-    final String radiusKey = generateKey(
-        featurePrefix: featurePrefix,
-        modelPrefix: EraserStateModel.prefix,
-        propertyName: "radius");
-    final String isPartialKey = generateKey(
-      featurePrefix: featurePrefix,
-      modelPrefix: EraserStateModel.prefix,
-      propertyName: "is-partial",
-    );
-    final double radius =
-        prefs.getElseSet(radiusKey, EraserStateModel.defaultRadius);
-    final bool isPartial =
-        prefs.getElseSet(isPartialKey, EraserStateModel.defaultIsPartial);
-    return EraserStateModel(radius: radius, isPartial: isPartial).toDomain();
-  }
+  // eraser width
 
   @override
-  PenState getPenState() {
-    final String currentColorIdxKey = generateKey(
-      featurePrefix: featurePrefix,
-      modelPrefix: PenStateModel.prefix,
-      propertyName: "current-color-index",
-    );
-    final String colorsKey = generateKey(
-      featurePrefix: featurePrefix,
-      modelPrefix: PenStateModel.prefix,
-      propertyName: "colors",
-    );
-    final String useStylusKey = generateKey(
-      featurePrefix: featurePrefix,
-      modelPrefix: PenStateModel.prefix,
-      propertyName: "use-stylus",
-    );
-    final String currentWidthIdxKey = generateKey(
-      featurePrefix: featurePrefix,
-      modelPrefix: PenStateModel.prefix,
-      propertyName: "current-width-index",
-    );
-    final String widthsKey = generateKey(
-      featurePrefix: featurePrefix,
-      modelPrefix: PenStateModel.prefix,
-      propertyName: "widths",
-    );
-    final int currentColorIdx = prefs.getElseSet(
-      currentColorIdxKey,
-      PenStateModel.defaultCurrentColorIdx,
-    );
-    final List<String> colors = prefs.getElseSet(
-      colorsKey,
-      PenStateModel.defaultColors,
-    );
-    final bool useStylus = prefs.getElseSet(
-      useStylusKey,
-      PenStateModel.defaultUseStylus,
-    );
-    final int currentWidthIdx = prefs.getElseSet(
-      currentWidthIdxKey,
-      PenStateModel.defaultCurrentWidthIdx,
-    );
-    final List<String> widths =
-        prefs.getElseSet(widthsKey, PenStateModel.defaultWidths);
-    return PenStateModel(
-      currentColorIdx: currentColorIdx,
-      colors: colors,
-      useStylus: useStylus,
-      currentWidthIdx: currentWidthIdx,
-      widths: widths,
+  EraserWidthSelectable getEraserWidthSelectable() {
+    return SelectableParamModel.fromSharedPrefs(
+      eraserWidthSelectableKey,
+      SelectableParamModel.defaultEraserWidthSelectableParam,
     ).toDomain();
   }
 
   @override
-  void saveEraserState(EraserState state) {
-    final String radiusKey = generateKey(
-        featurePrefix: featurePrefix,
-        modelPrefix: EraserStateModel.prefix,
-        propertyName: "radius");
-    final String isPartialKey = generateKey(
-      featurePrefix: featurePrefix,
-      modelPrefix: EraserStateModel.prefix,
-      propertyName: "is-partial",
+  void saveEraserWidthSelectable(EraserWidthSelectable eraserWidthSelectable) {
+    SelectableParamModel.fromDomain(eraserWidthSelectable).saveToSharedPrefs(
+      eraserWidthSelectableKey,
     );
-    prefs.setDouble(radiusKey, state.radius);
-    prefs.setBool(isPartialKey, state.isPartial);
+  }
+
+  // pen color
+
+  @override
+  PenColorSelectable getPenColorSelectable() {
+    return SelectableParamModel.fromSharedPrefs(penColorSelectableKey,
+            SelectableParamModel.defaultPenColorSelectableParam)
+        .toDomain();
   }
 
   @override
-  void savePenState(PenState state) {
-    final String currentColorIdxKey = generateKey(
-      featurePrefix: featurePrefix,
-      modelPrefix: PenStateModel.prefix,
-      propertyName: "current-color-index",
+  void savePenColorSelectable(PenColorSelectable penColorSelectable) {
+    SelectableParamModel.fromDomain(penColorSelectable)
+        .saveToSharedPrefs(penColorSelectableKey);
+  }
+
+  // pen width
+
+  @override
+  PenWidthSelectable getPenWidthSelectable() {
+    return SelectableParamModel.fromSharedPrefs(penWidthSelectableKey,
+            SelectableParamModel.defaultPenWidthSelectableParam)
+        .toDomain();
+  }
+
+  @override
+  void savePenWidthSelectable(PenWidthSelectable penWidthSelectable) {
+    SelectableParamModel.fromDomain(penWidthSelectable)
+        .saveToSharedPrefs(penWidthSelectableKey);
+  }
+
+  // use stylus
+
+  @override
+  bool getUseStylus() {
+    return _prefs.getElseSet(
+      useStylusKey,
+      false,
     );
-    final String colorsKey = generateKey(
-      featurePrefix: featurePrefix,
-      modelPrefix: PenStateModel.prefix,
-      propertyName: "colors",
-    );
-    final String useStylusKey = generateKey(
-      featurePrefix: featurePrefix,
-      modelPrefix: PenStateModel.prefix,
-      propertyName: "use-stylus",
-    );
-    final String currentWidthIdxKey = generateKey(
-      featurePrefix: featurePrefix,
-      modelPrefix: PenStateModel.prefix,
-      propertyName: "current-width-index",
-    );
-    final String widthsKey = generateKey(
-      featurePrefix: featurePrefix,
-      modelPrefix: PenStateModel.prefix,
-      propertyName: "widths",
-    );
-    PenStateModel model = PenStateModel.fromDomain(state);
-    prefs.setInt(currentColorIdxKey, model.currentColorIdx);
-    prefs.setStringList(colorsKey, model.colors);
-    prefs.setBool(useStylusKey, model.useStylus);
-    prefs.setInt(currentWidthIdxKey, model.currentWidthIdx);
-    prefs.setStringList(widthsKey, model.widths);
+  }
+
+  @override
+  void saveUseStylus(bool useStylus) {
+    _prefs.setBool(useStylusKey, useStylus);
   }
 }

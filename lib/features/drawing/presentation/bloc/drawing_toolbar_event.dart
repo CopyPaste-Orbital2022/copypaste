@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../../domain/entities/selectable_tools.dart';
+import '../../domain/entities/drawing_tools.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'drawing_toolbar_event.freezed.dart';
 
 @freezed
 abstract class DrawingToolbarEvent with _$DrawingToolbarEvent {
-  const factory DrawingToolbarEvent.initialEvent() = InitialEvent;
-
   // changes the current drawing button selection
   const factory DrawingToolbarEvent.changeDrawingButtonSelectionEvent(
       DrawingTool tool) = ChangeDrawingButtonSelectionEvent;
@@ -33,4 +31,16 @@ abstract class DrawingToolbarEvent with _$DrawingToolbarEvent {
   // changes the stroke width selection
   const factory DrawingToolbarEvent.changeStrokeWidthSelectionEvent(
       int widthIndex) = ChangeStrokeWidthSelectionEvent;
+
+  // changes the useStylus
+  const factory DrawingToolbarEvent.toggleUseStylusEvent() =
+      ToggleUseStylusEvent;
+
+  // changes the eraser width selection
+  const factory DrawingToolbarEvent.changeEraserWidthSelectionEvent(
+      int widthIndex) = ChangeEraserWidthSelectionEvent;
+
+  // changes the eraser width value
+  const factory DrawingToolbarEvent.changeEraserWidthValueEvent(
+      int widthIndex, double width) = ChangeEraserWidthValueEvent;
 }

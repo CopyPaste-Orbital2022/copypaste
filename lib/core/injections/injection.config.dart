@@ -30,8 +30,8 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
   await gh.factoryAsync<_i4.SharedPreferences>(
       () => preferencesInjectionModule.prefs,
       preResolve: true);
-  gh.lazySingleton<_i5.IDrawingToolBarRepository>(() =>
-      _i6.DrawingToolbarRepositoryImpl(prefs: get<_i4.SharedPreferences>()));
+  gh.lazySingleton<_i5.IDrawingToolBarRepository>(
+      () => _i6.DrawingToolbarRepositoryImpl(get<_i4.SharedPreferences>()));
   gh.lazySingleton<_i7.DrawingToolbarBloc>(() => _i7.DrawingToolbarBloc(
       get<_i5.IDrawingToolBarRepository>(), get<_i3.ScribbleNotifier>()));
   return get;

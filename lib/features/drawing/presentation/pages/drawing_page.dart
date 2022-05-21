@@ -1,4 +1,4 @@
-import 'package:copypaste/features/drawing/presentation/widgets/drawing_paper.dart';
+import '../widgets/drawing_paper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

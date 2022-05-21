@@ -1,8 +1,6 @@
-import 'dart:ui';
-
 import 'package:bloc/bloc.dart';
-import 'package:copypaste/core/extensions/scribble_extension.dart';
-import 'package:copypaste/features/drawing/domain/entities/pen_state.dart';
+import '../../../../core/extensions/scribble_extension.dart';
+import '../../domain/entities/selectable_param.dart';
 import 'package:injectable/injectable.dart';
 import 'package:scribble/scribble.dart';
 
@@ -14,109 +12,211 @@ import 'drawing_toolbar_state.dart';
 class DrawingToolbarBloc
     extends Bloc<DrawingToolbarEvent, DrawingToolbarState> {
   final IDrawingToolBarRepository _repository;
-  final ScribbleNotifier _notifier;
-  DrawingToolbarBloc(this._repository, this._notifier)
+  final ScribbleNotifier _scribbleNotifier;
+  DrawingToolbarBloc(this._repository, this._scribbleNotifier)
       : super(DrawingToolbarStateX.initialState()) {
-    // when the primary tool is changed
-    on<ChangeDrawingButtonSelectionEvent>((event, emit) {
-      // saves the state in repo
+    on<DrawingToolbarEvent>((event, emit) {
+      event.map(
+        changeDrawingButtonSelectionEvent:
+            getChangeDrawingButtonSelectionEventHandler(emit),
+        changeColorSelectionEvent: getChangeColorSelectionEventHandler(emit),
+        changeColorValueEvent: getChangeColorValueEventHandler(emit),
+        addColorEvent: getAddColorEventHanlder(emit),
+        deleteColorEvent: getDeleteColorEventHandler(emit),
+        changeStrokeWidthSelectionEvent:
+            getChangeStrokeWidthSelectionEventHandler(emit),
+        changeEraserWidthSelectionEvent:
+            getChangeEraserWidthSelectionEventHandler(emit),
+        changeEraserWidthValueEvent:
+            getChangeEraserWidthValueEventHandler(emit),
+        toggleUseStylusEvent: getToggleUseStylusEventHandler(emit),
+      );
+    });
+  }
+
+  /// Creates the handler for the change drawing button selection event
+  Function(ChangeDrawingButtonSelectionEvent)
+      getChangeDrawingButtonSelectionEventHandler(
+    Emitter<DrawingToolbarState> emit,
+  ) {
+    return (ChangeDrawingButtonSelectionEvent event) {
       _repository.saveCurrentTool(event.tool);
-      // updates the notifier
-      _notifier.setAllowedPointersMode(state.allowedPointerMode);
-      _notifier.switchTo(tool: event.tool);
-      // emits the state
-      emit(
-        state.copyWith(currentTool: event.tool),
+      final newState = state.copyWith(
+        currentTool: event.tool,
       );
-    });
+      emit(newState);
+      // updates the [ScribbleNotifier]
+      _updateScribbleWithState(newState);
+    };
+  }
 
-    // when the color selection is changed
-    on<ChangeColorSelectionEvent>((event, emit) {
-      // saves the new pen state
-      _repository.savePenState(
-        state.penState.copyWith(
-          currentColorIdx: event.colorIndex,
-        ),
+  /// Creates the handler for the change color selection event
+  Function(ChangeColorSelectionEvent) getChangeColorSelectionEventHandler(
+    Emitter<DrawingToolbarState> emit,
+  ) {
+    return (ChangeColorSelectionEvent event) {
+      final PenColorSelectable penColorSelectable = state.penColorSelectable
+          .select(event.colorIndex) as PenColorSelectable;
+      // save the new color selection
+      _repository.savePenColorSelectable(penColorSelectable);
+      // emits the state with the new color selection
+      final newState = state.copyWith(
+        penColorSelectable: penColorSelectable,
       );
-      // sets the color
-      _notifier.setColor(
-        state.penState.colors[event.colorIndex],
+      emit(newState);
+      // updates the [ScribbleNotifier]
+      _updateScribbleWithState(newState);
+    };
+  }
+
+  /// Creates the handler for the change color value event
+  Function(ChangeColorValueEvent) getChangeColorValueEventHandler(
+    Emitter<DrawingToolbarState> emit,
+  ) {
+    return (ChangeColorValueEvent event) {
+      final PenColorSelectable penColorSelectable =
+          state.penColorSelectable.modify(
+        index: event.colorIndex,
+        value: event.currentColor,
+      ) as PenColorSelectable;
+      // save the new color selection
+      _repository.savePenColorSelectable(penColorSelectable);
+      // emits the state with the new color selection
+      final newState = state.copyWith(
+        penColorSelectable: penColorSelectable,
       );
-      // emits the state
-      emit(
-        state.copyWith(
-          penState: state.penState.copyWith(
-            currentColorIdx: event.colorIndex,
-          ),
-        ),
+      emit(newState);
+      // updates the [ScribbleNotifier]
+      _updateScribbleWithState(newState);
+    };
+  }
+
+  /// Creates the handler for the add color event
+  Function(AddColorEvent) getAddColorEventHanlder(
+    Emitter<DrawingToolbarState> emit,
+  ) {
+    return (AddColorEvent event) {
+      final PenColorSelectable penColorSelectable = state.penColorSelectable
+          .addItem(item: event.color) as PenColorSelectable;
+
+      // save the new color selection
+      _repository.savePenColorSelectable(penColorSelectable);
+      // emits the state with the new color selection
+      final newState = state.copyWith(
+        penColorSelectable: penColorSelectable,
       );
-    });
+      emit(newState);
+      // updates the [ScribbleNotifier]
+      _updateScribbleWithState(newState);
+    };
+  }
 
-    // when a color is changed
-    on<ChangeColorValueEvent>((event, emit) {
-      List<Color> colors = List.from(state.penState.colors);
-      colors[event.colorIndex] = event.currentColor;
-      final DrawingToolbarState tmpState = state.copyWith(
-        penState: state.penState.copyWith(
-          colors: colors,
-        ),
+  /// Creates the handler for the delete color event
+  Function(DeleteColorEvent) getDeleteColorEventHandler(
+    Emitter<DrawingToolbarState> emit,
+  ) {
+    return (DeleteColorEvent event) {
+      final PenColorSelectable penColorSelectable = state.penColorSelectable
+          .removeItem(index: event.colorIndex) as PenColorSelectable;
+      // save the new color selection
+      _repository.savePenColorSelectable(penColorSelectable);
+      // emits the state with the new color selection
+      final newState = state.copyWith(
+        penColorSelectable: penColorSelectable,
       );
-      _repository.savePenState(tmpState.penState);
-      emit(tmpState);
-    });
+      emit(newState);
+      // updates the [ScribbleNotifier]
+      _updateScribbleWithState(newState);
+    };
+  }
 
-    // when adds a color
-    on<AddColorEvent>(
-      (event, emit) {
-        List<Color> colors = List.from(state.penState.colors);
-        colors.add(event.color);
-        final DrawingToolbarState tmpState = state.copyWith(
-          penState: state.penState.copyWith(
-            colors: colors,
-          ),
-        );
-        _repository.savePenState(tmpState.penState);
-        emit(tmpState);
-      },
-    );
+  /// Creates the handler for the change stroke width selection event
+  Function(ChangeStrokeWidthSelectionEvent)
+      getChangeStrokeWidthSelectionEventHandler(
+    Emitter<DrawingToolbarState> emit,
+  ) {
+    return (ChangeStrokeWidthSelectionEvent event) {
+      final PenWidthSelectable penWidthSelectable = state.penWidthSelectable
+          .select(event.widthIndex) as PenWidthSelectable;
+      // save the new width selection
+      _repository.savePenWidthSelectable(penWidthSelectable);
+      // emits the state with the new width selection
+      final newState = state.copyWith(
+        penWidthSelectable: penWidthSelectable,
+      );
+      emit(state);
+      // updates the [ScribbleNotifier]
+      _updateScribbleWithState(state);
+    };
+  }
 
-    // when deletes a color
-    on<DeleteColorEvent>(
-      (event, emit) {
-        final List<Color> colors = state.penState.colors
-            .asMap()
-            .entries
-            .where((element) => element.key != event.colorIndex)
-            .map((e) => e.value)
-            .toList();
+  /// Creates the handler for the change eraser width selection event
+  Function(ChangeEraserWidthSelectionEvent)
+      getChangeEraserWidthSelectionEventHandler(
+    Emitter<DrawingToolbarState> emit,
+  ) {
+    return (ChangeEraserWidthSelectionEvent event) {
+      final EraserWidthSelectable eraserWidthSelectable =
+          state.eraserWidthSelectable.select(event.widthIndex)
+              as EraserWidthSelectable;
+      // save the new width selection
+      _repository.saveEraserWidthSelectable(eraserWidthSelectable);
+      // emits the state with the new width selection
+      final newState = state.copyWith(
+        eraserWidthSelectable: eraserWidthSelectable,
+      );
+      emit(newState);
+      // updates the [ScribbleNotifier]
+      _updateScribbleWithState(state);
+    };
+  }
 
-        final DrawingToolbarState tmpState = state.copyWith(
-          penState: state.penState.copyWith(
-            colors: colors,
-            currentColorIdx: state.penState.currentColorIdx > 0
-                ? state.penState.currentColorIdx
-                : 0,
-          ),
-        );
-        _repository.savePenState(tmpState.penState);
-        emit(tmpState);
-      },
-    );
+  /// Creates the handler for the change eraser width value event
+  Function(ChangeEraserWidthValueEvent) getChangeEraserWidthValueEventHandler(
+    Emitter<DrawingToolbarState> emit,
+  ) {
+    return (ChangeEraserWidthValueEvent event) {
+      final EraserWidthSelectable eraserWidthSelectable =
+          state.eraserWidthSelectable.modify(
+        index: event.widthIndex,
+        value: event.width,
+      ) as EraserWidthSelectable;
+      // save the new width selection
+      _repository.saveEraserWidthSelectable(eraserWidthSelectable);
+      // emits the state with the new width selection
+      final newState = state.copyWith(
+        eraserWidthSelectable: eraserWidthSelectable,
+      );
+      emit(newState);
+      // updates the [ScribbleNotifier]
+      _updateScribbleWithState(newState);
+    };
+  }
 
-    // when changes the width selection
-    on<ChangeStrokeWidthSelectionEvent>(
-      (event, emit) {
-        // gets the width value
-        final double width = state.penState.widths[event.widthIndex];
-        // changes the stroke width accordingly
-        _notifier.setStrokeWidth(width);
-        // emits the state
-        emit(state.copyWith(
-          penState: state.penState.copyWith(
-            currentWidthIdx: event.widthIndex,
-          ),
-        ));
-      },
+  /// Creates the handler for change use stylus event
+  Function(ToggleUseStylusEvent) getToggleUseStylusEventHandler(
+    Emitter<DrawingToolbarState> emit,
+  ) {
+    return (ToggleUseStylusEvent event) {
+      // save the new use stylus selection
+      _repository.saveUseStylus(!state.useStylus);
+      // emits the state with the new use stylus selection
+      final newState = state.copyWith(
+        useStylus: !state.useStylus,
+      );
+      emit(newState);
+      // updates the [ScribbleNotifier]
+      _updateScribbleWithState(newState);
+    };
+  }
+
+  void _updateScribbleWithState(DrawingToolbarState state) {
+    _scribbleNotifier.switchTo(
+      tool: state.currentTool,
+      useStylus: state.useStylus,
+      eraserWidthSelectable: state.eraserWidthSelectable,
+      penColorSelectable: state.penColorSelectable,
+      penWidthSelectable: state.penWidthSelectable,
     );
   }
 }

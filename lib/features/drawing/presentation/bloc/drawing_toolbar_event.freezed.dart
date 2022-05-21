@@ -18,7 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$DrawingToolbarEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initialEvent,
     required TResult Function(DrawingTool tool)
         changeDrawingButtonSelectionEvent,
     required TResult Function(int colorIndex) changeColorSelectionEvent,
@@ -27,34 +26,41 @@ mixin _$DrawingToolbarEvent {
     required TResult Function(Color color) addColorEvent,
     required TResult Function(int colorIndex) deleteColorEvent,
     required TResult Function(int widthIndex) changeStrokeWidthSelectionEvent,
+    required TResult Function() toggleUseStylusEvent,
+    required TResult Function(int widthIndex) changeEraserWidthSelectionEvent,
+    required TResult Function(int widthIndex, double width)
+        changeEraserWidthValueEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initialEvent,
     TResult Function(DrawingTool tool)? changeDrawingButtonSelectionEvent,
     TResult Function(int colorIndex)? changeColorSelectionEvent,
     TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
     TResult Function(Color color)? addColorEvent,
     TResult Function(int colorIndex)? deleteColorEvent,
     TResult Function(int widthIndex)? changeStrokeWidthSelectionEvent,
+    TResult Function()? toggleUseStylusEvent,
+    TResult Function(int widthIndex)? changeEraserWidthSelectionEvent,
+    TResult Function(int widthIndex, double width)? changeEraserWidthValueEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initialEvent,
     TResult Function(DrawingTool tool)? changeDrawingButtonSelectionEvent,
     TResult Function(int colorIndex)? changeColorSelectionEvent,
     TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
     TResult Function(Color color)? addColorEvent,
     TResult Function(int colorIndex)? deleteColorEvent,
     TResult Function(int widthIndex)? changeStrokeWidthSelectionEvent,
+    TResult Function()? toggleUseStylusEvent,
+    TResult Function(int widthIndex)? changeEraserWidthSelectionEvent,
+    TResult Function(int widthIndex, double width)? changeEraserWidthValueEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitialEvent value) initialEvent,
     required TResult Function(ChangeDrawingButtonSelectionEvent value)
         changeDrawingButtonSelectionEvent,
     required TResult Function(ChangeColorSelectionEvent value)
@@ -65,11 +71,15 @@ mixin _$DrawingToolbarEvent {
     required TResult Function(DeleteColorEvent value) deleteColorEvent,
     required TResult Function(ChangeStrokeWidthSelectionEvent value)
         changeStrokeWidthSelectionEvent,
+    required TResult Function(ToggleUseStylusEvent value) toggleUseStylusEvent,
+    required TResult Function(ChangeEraserWidthSelectionEvent value)
+        changeEraserWidthSelectionEvent,
+    required TResult Function(ChangeEraserWidthValueEvent value)
+        changeEraserWidthValueEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InitialEvent value)? initialEvent,
     TResult Function(ChangeDrawingButtonSelectionEvent value)?
         changeDrawingButtonSelectionEvent,
     TResult Function(ChangeColorSelectionEvent value)?
@@ -79,11 +89,15 @@ mixin _$DrawingToolbarEvent {
     TResult Function(DeleteColorEvent value)? deleteColorEvent,
     TResult Function(ChangeStrokeWidthSelectionEvent value)?
         changeStrokeWidthSelectionEvent,
+    TResult Function(ToggleUseStylusEvent value)? toggleUseStylusEvent,
+    TResult Function(ChangeEraserWidthSelectionEvent value)?
+        changeEraserWidthSelectionEvent,
+    TResult Function(ChangeEraserWidthValueEvent value)?
+        changeEraserWidthValueEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitialEvent value)? initialEvent,
     TResult Function(ChangeDrawingButtonSelectionEvent value)?
         changeDrawingButtonSelectionEvent,
     TResult Function(ChangeColorSelectionEvent value)?
@@ -93,6 +107,11 @@ mixin _$DrawingToolbarEvent {
     TResult Function(DeleteColorEvent value)? deleteColorEvent,
     TResult Function(ChangeStrokeWidthSelectionEvent value)?
         changeStrokeWidthSelectionEvent,
+    TResult Function(ToggleUseStylusEvent value)? toggleUseStylusEvent,
+    TResult Function(ChangeEraserWidthSelectionEvent value)?
+        changeEraserWidthSelectionEvent,
+    TResult Function(ChangeEraserWidthValueEvent value)?
+        changeEraserWidthValueEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,153 +132,6 @@ class _$DrawingToolbarEventCopyWithImpl<$Res>
   final DrawingToolbarEvent _value;
   // ignore: unused_field
   final $Res Function(DrawingToolbarEvent) _then;
-}
-
-/// @nodoc
-abstract class _$$InitialEventCopyWith<$Res> {
-  factory _$$InitialEventCopyWith(
-          _$InitialEvent value, $Res Function(_$InitialEvent) then) =
-      __$$InitialEventCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$InitialEventCopyWithImpl<$Res>
-    extends _$DrawingToolbarEventCopyWithImpl<$Res>
-    implements _$$InitialEventCopyWith<$Res> {
-  __$$InitialEventCopyWithImpl(
-      _$InitialEvent _value, $Res Function(_$InitialEvent) _then)
-      : super(_value, (v) => _then(v as _$InitialEvent));
-
-  @override
-  _$InitialEvent get _value => super._value as _$InitialEvent;
-}
-
-/// @nodoc
-
-class _$InitialEvent implements InitialEvent {
-  const _$InitialEvent();
-
-  @override
-  String toString() {
-    return 'DrawingToolbarEvent.initialEvent()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialEvent);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initialEvent,
-    required TResult Function(DrawingTool tool)
-        changeDrawingButtonSelectionEvent,
-    required TResult Function(int colorIndex) changeColorSelectionEvent,
-    required TResult Function(int colorIndex, Color currentColor)
-        changeColorValueEvent,
-    required TResult Function(Color color) addColorEvent,
-    required TResult Function(int colorIndex) deleteColorEvent,
-    required TResult Function(int widthIndex) changeStrokeWidthSelectionEvent,
-  }) {
-    return initialEvent();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initialEvent,
-    TResult Function(DrawingTool tool)? changeDrawingButtonSelectionEvent,
-    TResult Function(int colorIndex)? changeColorSelectionEvent,
-    TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
-    TResult Function(Color color)? addColorEvent,
-    TResult Function(int colorIndex)? deleteColorEvent,
-    TResult Function(int widthIndex)? changeStrokeWidthSelectionEvent,
-  }) {
-    return initialEvent?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initialEvent,
-    TResult Function(DrawingTool tool)? changeDrawingButtonSelectionEvent,
-    TResult Function(int colorIndex)? changeColorSelectionEvent,
-    TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
-    TResult Function(Color color)? addColorEvent,
-    TResult Function(int colorIndex)? deleteColorEvent,
-    TResult Function(int widthIndex)? changeStrokeWidthSelectionEvent,
-    required TResult orElse(),
-  }) {
-    if (initialEvent != null) {
-      return initialEvent();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(InitialEvent value) initialEvent,
-    required TResult Function(ChangeDrawingButtonSelectionEvent value)
-        changeDrawingButtonSelectionEvent,
-    required TResult Function(ChangeColorSelectionEvent value)
-        changeColorSelectionEvent,
-    required TResult Function(ChangeColorValueEvent value)
-        changeColorValueEvent,
-    required TResult Function(AddColorEvent value) addColorEvent,
-    required TResult Function(DeleteColorEvent value) deleteColorEvent,
-    required TResult Function(ChangeStrokeWidthSelectionEvent value)
-        changeStrokeWidthSelectionEvent,
-  }) {
-    return initialEvent(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InitialEvent value)? initialEvent,
-    TResult Function(ChangeDrawingButtonSelectionEvent value)?
-        changeDrawingButtonSelectionEvent,
-    TResult Function(ChangeColorSelectionEvent value)?
-        changeColorSelectionEvent,
-    TResult Function(ChangeColorValueEvent value)? changeColorValueEvent,
-    TResult Function(AddColorEvent value)? addColorEvent,
-    TResult Function(DeleteColorEvent value)? deleteColorEvent,
-    TResult Function(ChangeStrokeWidthSelectionEvent value)?
-        changeStrokeWidthSelectionEvent,
-  }) {
-    return initialEvent?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitialEvent value)? initialEvent,
-    TResult Function(ChangeDrawingButtonSelectionEvent value)?
-        changeDrawingButtonSelectionEvent,
-    TResult Function(ChangeColorSelectionEvent value)?
-        changeColorSelectionEvent,
-    TResult Function(ChangeColorValueEvent value)? changeColorValueEvent,
-    TResult Function(AddColorEvent value)? addColorEvent,
-    TResult Function(DeleteColorEvent value)? deleteColorEvent,
-    TResult Function(ChangeStrokeWidthSelectionEvent value)?
-        changeStrokeWidthSelectionEvent,
-    required TResult orElse(),
-  }) {
-    if (initialEvent != null) {
-      return initialEvent(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class InitialEvent implements DrawingToolbarEvent {
-  const factory InitialEvent() = _$InitialEvent;
 }
 
 /// @nodoc
@@ -333,7 +205,6 @@ class _$ChangeDrawingButtonSelectionEvent
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initialEvent,
     required TResult Function(DrawingTool tool)
         changeDrawingButtonSelectionEvent,
     required TResult Function(int colorIndex) changeColorSelectionEvent,
@@ -342,6 +213,10 @@ class _$ChangeDrawingButtonSelectionEvent
     required TResult Function(Color color) addColorEvent,
     required TResult Function(int colorIndex) deleteColorEvent,
     required TResult Function(int widthIndex) changeStrokeWidthSelectionEvent,
+    required TResult Function() toggleUseStylusEvent,
+    required TResult Function(int widthIndex) changeEraserWidthSelectionEvent,
+    required TResult Function(int widthIndex, double width)
+        changeEraserWidthValueEvent,
   }) {
     return changeDrawingButtonSelectionEvent(tool);
   }
@@ -349,13 +224,15 @@ class _$ChangeDrawingButtonSelectionEvent
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initialEvent,
     TResult Function(DrawingTool tool)? changeDrawingButtonSelectionEvent,
     TResult Function(int colorIndex)? changeColorSelectionEvent,
     TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
     TResult Function(Color color)? addColorEvent,
     TResult Function(int colorIndex)? deleteColorEvent,
     TResult Function(int widthIndex)? changeStrokeWidthSelectionEvent,
+    TResult Function()? toggleUseStylusEvent,
+    TResult Function(int widthIndex)? changeEraserWidthSelectionEvent,
+    TResult Function(int widthIndex, double width)? changeEraserWidthValueEvent,
   }) {
     return changeDrawingButtonSelectionEvent?.call(tool);
   }
@@ -363,13 +240,15 @@ class _$ChangeDrawingButtonSelectionEvent
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initialEvent,
     TResult Function(DrawingTool tool)? changeDrawingButtonSelectionEvent,
     TResult Function(int colorIndex)? changeColorSelectionEvent,
     TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
     TResult Function(Color color)? addColorEvent,
     TResult Function(int colorIndex)? deleteColorEvent,
     TResult Function(int widthIndex)? changeStrokeWidthSelectionEvent,
+    TResult Function()? toggleUseStylusEvent,
+    TResult Function(int widthIndex)? changeEraserWidthSelectionEvent,
+    TResult Function(int widthIndex, double width)? changeEraserWidthValueEvent,
     required TResult orElse(),
   }) {
     if (changeDrawingButtonSelectionEvent != null) {
@@ -381,7 +260,6 @@ class _$ChangeDrawingButtonSelectionEvent
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitialEvent value) initialEvent,
     required TResult Function(ChangeDrawingButtonSelectionEvent value)
         changeDrawingButtonSelectionEvent,
     required TResult Function(ChangeColorSelectionEvent value)
@@ -392,6 +270,11 @@ class _$ChangeDrawingButtonSelectionEvent
     required TResult Function(DeleteColorEvent value) deleteColorEvent,
     required TResult Function(ChangeStrokeWidthSelectionEvent value)
         changeStrokeWidthSelectionEvent,
+    required TResult Function(ToggleUseStylusEvent value) toggleUseStylusEvent,
+    required TResult Function(ChangeEraserWidthSelectionEvent value)
+        changeEraserWidthSelectionEvent,
+    required TResult Function(ChangeEraserWidthValueEvent value)
+        changeEraserWidthValueEvent,
   }) {
     return changeDrawingButtonSelectionEvent(this);
   }
@@ -399,7 +282,6 @@ class _$ChangeDrawingButtonSelectionEvent
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InitialEvent value)? initialEvent,
     TResult Function(ChangeDrawingButtonSelectionEvent value)?
         changeDrawingButtonSelectionEvent,
     TResult Function(ChangeColorSelectionEvent value)?
@@ -409,6 +291,11 @@ class _$ChangeDrawingButtonSelectionEvent
     TResult Function(DeleteColorEvent value)? deleteColorEvent,
     TResult Function(ChangeStrokeWidthSelectionEvent value)?
         changeStrokeWidthSelectionEvent,
+    TResult Function(ToggleUseStylusEvent value)? toggleUseStylusEvent,
+    TResult Function(ChangeEraserWidthSelectionEvent value)?
+        changeEraserWidthSelectionEvent,
+    TResult Function(ChangeEraserWidthValueEvent value)?
+        changeEraserWidthValueEvent,
   }) {
     return changeDrawingButtonSelectionEvent?.call(this);
   }
@@ -416,7 +303,6 @@ class _$ChangeDrawingButtonSelectionEvent
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitialEvent value)? initialEvent,
     TResult Function(ChangeDrawingButtonSelectionEvent value)?
         changeDrawingButtonSelectionEvent,
     TResult Function(ChangeColorSelectionEvent value)?
@@ -426,6 +312,11 @@ class _$ChangeDrawingButtonSelectionEvent
     TResult Function(DeleteColorEvent value)? deleteColorEvent,
     TResult Function(ChangeStrokeWidthSelectionEvent value)?
         changeStrokeWidthSelectionEvent,
+    TResult Function(ToggleUseStylusEvent value)? toggleUseStylusEvent,
+    TResult Function(ChangeEraserWidthSelectionEvent value)?
+        changeEraserWidthSelectionEvent,
+    TResult Function(ChangeEraserWidthValueEvent value)?
+        changeEraserWidthValueEvent,
     required TResult orElse(),
   }) {
     if (changeDrawingButtonSelectionEvent != null) {
@@ -516,7 +407,6 @@ class _$ChangeColorSelectionEvent implements ChangeColorSelectionEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initialEvent,
     required TResult Function(DrawingTool tool)
         changeDrawingButtonSelectionEvent,
     required TResult Function(int colorIndex) changeColorSelectionEvent,
@@ -525,6 +415,10 @@ class _$ChangeColorSelectionEvent implements ChangeColorSelectionEvent {
     required TResult Function(Color color) addColorEvent,
     required TResult Function(int colorIndex) deleteColorEvent,
     required TResult Function(int widthIndex) changeStrokeWidthSelectionEvent,
+    required TResult Function() toggleUseStylusEvent,
+    required TResult Function(int widthIndex) changeEraserWidthSelectionEvent,
+    required TResult Function(int widthIndex, double width)
+        changeEraserWidthValueEvent,
   }) {
     return changeColorSelectionEvent(colorIndex);
   }
@@ -532,13 +426,15 @@ class _$ChangeColorSelectionEvent implements ChangeColorSelectionEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initialEvent,
     TResult Function(DrawingTool tool)? changeDrawingButtonSelectionEvent,
     TResult Function(int colorIndex)? changeColorSelectionEvent,
     TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
     TResult Function(Color color)? addColorEvent,
     TResult Function(int colorIndex)? deleteColorEvent,
     TResult Function(int widthIndex)? changeStrokeWidthSelectionEvent,
+    TResult Function()? toggleUseStylusEvent,
+    TResult Function(int widthIndex)? changeEraserWidthSelectionEvent,
+    TResult Function(int widthIndex, double width)? changeEraserWidthValueEvent,
   }) {
     return changeColorSelectionEvent?.call(colorIndex);
   }
@@ -546,13 +442,15 @@ class _$ChangeColorSelectionEvent implements ChangeColorSelectionEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initialEvent,
     TResult Function(DrawingTool tool)? changeDrawingButtonSelectionEvent,
     TResult Function(int colorIndex)? changeColorSelectionEvent,
     TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
     TResult Function(Color color)? addColorEvent,
     TResult Function(int colorIndex)? deleteColorEvent,
     TResult Function(int widthIndex)? changeStrokeWidthSelectionEvent,
+    TResult Function()? toggleUseStylusEvent,
+    TResult Function(int widthIndex)? changeEraserWidthSelectionEvent,
+    TResult Function(int widthIndex, double width)? changeEraserWidthValueEvent,
     required TResult orElse(),
   }) {
     if (changeColorSelectionEvent != null) {
@@ -564,7 +462,6 @@ class _$ChangeColorSelectionEvent implements ChangeColorSelectionEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitialEvent value) initialEvent,
     required TResult Function(ChangeDrawingButtonSelectionEvent value)
         changeDrawingButtonSelectionEvent,
     required TResult Function(ChangeColorSelectionEvent value)
@@ -575,6 +472,11 @@ class _$ChangeColorSelectionEvent implements ChangeColorSelectionEvent {
     required TResult Function(DeleteColorEvent value) deleteColorEvent,
     required TResult Function(ChangeStrokeWidthSelectionEvent value)
         changeStrokeWidthSelectionEvent,
+    required TResult Function(ToggleUseStylusEvent value) toggleUseStylusEvent,
+    required TResult Function(ChangeEraserWidthSelectionEvent value)
+        changeEraserWidthSelectionEvent,
+    required TResult Function(ChangeEraserWidthValueEvent value)
+        changeEraserWidthValueEvent,
   }) {
     return changeColorSelectionEvent(this);
   }
@@ -582,7 +484,6 @@ class _$ChangeColorSelectionEvent implements ChangeColorSelectionEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InitialEvent value)? initialEvent,
     TResult Function(ChangeDrawingButtonSelectionEvent value)?
         changeDrawingButtonSelectionEvent,
     TResult Function(ChangeColorSelectionEvent value)?
@@ -592,6 +493,11 @@ class _$ChangeColorSelectionEvent implements ChangeColorSelectionEvent {
     TResult Function(DeleteColorEvent value)? deleteColorEvent,
     TResult Function(ChangeStrokeWidthSelectionEvent value)?
         changeStrokeWidthSelectionEvent,
+    TResult Function(ToggleUseStylusEvent value)? toggleUseStylusEvent,
+    TResult Function(ChangeEraserWidthSelectionEvent value)?
+        changeEraserWidthSelectionEvent,
+    TResult Function(ChangeEraserWidthValueEvent value)?
+        changeEraserWidthValueEvent,
   }) {
     return changeColorSelectionEvent?.call(this);
   }
@@ -599,7 +505,6 @@ class _$ChangeColorSelectionEvent implements ChangeColorSelectionEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitialEvent value)? initialEvent,
     TResult Function(ChangeDrawingButtonSelectionEvent value)?
         changeDrawingButtonSelectionEvent,
     TResult Function(ChangeColorSelectionEvent value)?
@@ -609,6 +514,11 @@ class _$ChangeColorSelectionEvent implements ChangeColorSelectionEvent {
     TResult Function(DeleteColorEvent value)? deleteColorEvent,
     TResult Function(ChangeStrokeWidthSelectionEvent value)?
         changeStrokeWidthSelectionEvent,
+    TResult Function(ToggleUseStylusEvent value)? toggleUseStylusEvent,
+    TResult Function(ChangeEraserWidthSelectionEvent value)?
+        changeEraserWidthSelectionEvent,
+    TResult Function(ChangeEraserWidthValueEvent value)?
+        changeEraserWidthValueEvent,
     required TResult orElse(),
   }) {
     if (changeColorSelectionEvent != null) {
@@ -706,7 +616,6 @@ class _$ChangeColorValueEvent implements ChangeColorValueEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initialEvent,
     required TResult Function(DrawingTool tool)
         changeDrawingButtonSelectionEvent,
     required TResult Function(int colorIndex) changeColorSelectionEvent,
@@ -715,6 +624,10 @@ class _$ChangeColorValueEvent implements ChangeColorValueEvent {
     required TResult Function(Color color) addColorEvent,
     required TResult Function(int colorIndex) deleteColorEvent,
     required TResult Function(int widthIndex) changeStrokeWidthSelectionEvent,
+    required TResult Function() toggleUseStylusEvent,
+    required TResult Function(int widthIndex) changeEraserWidthSelectionEvent,
+    required TResult Function(int widthIndex, double width)
+        changeEraserWidthValueEvent,
   }) {
     return changeColorValueEvent(colorIndex, currentColor);
   }
@@ -722,13 +635,15 @@ class _$ChangeColorValueEvent implements ChangeColorValueEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initialEvent,
     TResult Function(DrawingTool tool)? changeDrawingButtonSelectionEvent,
     TResult Function(int colorIndex)? changeColorSelectionEvent,
     TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
     TResult Function(Color color)? addColorEvent,
     TResult Function(int colorIndex)? deleteColorEvent,
     TResult Function(int widthIndex)? changeStrokeWidthSelectionEvent,
+    TResult Function()? toggleUseStylusEvent,
+    TResult Function(int widthIndex)? changeEraserWidthSelectionEvent,
+    TResult Function(int widthIndex, double width)? changeEraserWidthValueEvent,
   }) {
     return changeColorValueEvent?.call(colorIndex, currentColor);
   }
@@ -736,13 +651,15 @@ class _$ChangeColorValueEvent implements ChangeColorValueEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initialEvent,
     TResult Function(DrawingTool tool)? changeDrawingButtonSelectionEvent,
     TResult Function(int colorIndex)? changeColorSelectionEvent,
     TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
     TResult Function(Color color)? addColorEvent,
     TResult Function(int colorIndex)? deleteColorEvent,
     TResult Function(int widthIndex)? changeStrokeWidthSelectionEvent,
+    TResult Function()? toggleUseStylusEvent,
+    TResult Function(int widthIndex)? changeEraserWidthSelectionEvent,
+    TResult Function(int widthIndex, double width)? changeEraserWidthValueEvent,
     required TResult orElse(),
   }) {
     if (changeColorValueEvent != null) {
@@ -754,7 +671,6 @@ class _$ChangeColorValueEvent implements ChangeColorValueEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitialEvent value) initialEvent,
     required TResult Function(ChangeDrawingButtonSelectionEvent value)
         changeDrawingButtonSelectionEvent,
     required TResult Function(ChangeColorSelectionEvent value)
@@ -765,6 +681,11 @@ class _$ChangeColorValueEvent implements ChangeColorValueEvent {
     required TResult Function(DeleteColorEvent value) deleteColorEvent,
     required TResult Function(ChangeStrokeWidthSelectionEvent value)
         changeStrokeWidthSelectionEvent,
+    required TResult Function(ToggleUseStylusEvent value) toggleUseStylusEvent,
+    required TResult Function(ChangeEraserWidthSelectionEvent value)
+        changeEraserWidthSelectionEvent,
+    required TResult Function(ChangeEraserWidthValueEvent value)
+        changeEraserWidthValueEvent,
   }) {
     return changeColorValueEvent(this);
   }
@@ -772,7 +693,6 @@ class _$ChangeColorValueEvent implements ChangeColorValueEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InitialEvent value)? initialEvent,
     TResult Function(ChangeDrawingButtonSelectionEvent value)?
         changeDrawingButtonSelectionEvent,
     TResult Function(ChangeColorSelectionEvent value)?
@@ -782,6 +702,11 @@ class _$ChangeColorValueEvent implements ChangeColorValueEvent {
     TResult Function(DeleteColorEvent value)? deleteColorEvent,
     TResult Function(ChangeStrokeWidthSelectionEvent value)?
         changeStrokeWidthSelectionEvent,
+    TResult Function(ToggleUseStylusEvent value)? toggleUseStylusEvent,
+    TResult Function(ChangeEraserWidthSelectionEvent value)?
+        changeEraserWidthSelectionEvent,
+    TResult Function(ChangeEraserWidthValueEvent value)?
+        changeEraserWidthValueEvent,
   }) {
     return changeColorValueEvent?.call(this);
   }
@@ -789,7 +714,6 @@ class _$ChangeColorValueEvent implements ChangeColorValueEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitialEvent value)? initialEvent,
     TResult Function(ChangeDrawingButtonSelectionEvent value)?
         changeDrawingButtonSelectionEvent,
     TResult Function(ChangeColorSelectionEvent value)?
@@ -799,6 +723,11 @@ class _$ChangeColorValueEvent implements ChangeColorValueEvent {
     TResult Function(DeleteColorEvent value)? deleteColorEvent,
     TResult Function(ChangeStrokeWidthSelectionEvent value)?
         changeStrokeWidthSelectionEvent,
+    TResult Function(ToggleUseStylusEvent value)? toggleUseStylusEvent,
+    TResult Function(ChangeEraserWidthSelectionEvent value)?
+        changeEraserWidthSelectionEvent,
+    TResult Function(ChangeEraserWidthValueEvent value)?
+        changeEraserWidthValueEvent,
     required TResult orElse(),
   }) {
     if (changeColorValueEvent != null) {
@@ -884,7 +813,6 @@ class _$AddColorEvent implements AddColorEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initialEvent,
     required TResult Function(DrawingTool tool)
         changeDrawingButtonSelectionEvent,
     required TResult Function(int colorIndex) changeColorSelectionEvent,
@@ -893,6 +821,10 @@ class _$AddColorEvent implements AddColorEvent {
     required TResult Function(Color color) addColorEvent,
     required TResult Function(int colorIndex) deleteColorEvent,
     required TResult Function(int widthIndex) changeStrokeWidthSelectionEvent,
+    required TResult Function() toggleUseStylusEvent,
+    required TResult Function(int widthIndex) changeEraserWidthSelectionEvent,
+    required TResult Function(int widthIndex, double width)
+        changeEraserWidthValueEvent,
   }) {
     return addColorEvent(color);
   }
@@ -900,13 +832,15 @@ class _$AddColorEvent implements AddColorEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initialEvent,
     TResult Function(DrawingTool tool)? changeDrawingButtonSelectionEvent,
     TResult Function(int colorIndex)? changeColorSelectionEvent,
     TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
     TResult Function(Color color)? addColorEvent,
     TResult Function(int colorIndex)? deleteColorEvent,
     TResult Function(int widthIndex)? changeStrokeWidthSelectionEvent,
+    TResult Function()? toggleUseStylusEvent,
+    TResult Function(int widthIndex)? changeEraserWidthSelectionEvent,
+    TResult Function(int widthIndex, double width)? changeEraserWidthValueEvent,
   }) {
     return addColorEvent?.call(color);
   }
@@ -914,13 +848,15 @@ class _$AddColorEvent implements AddColorEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initialEvent,
     TResult Function(DrawingTool tool)? changeDrawingButtonSelectionEvent,
     TResult Function(int colorIndex)? changeColorSelectionEvent,
     TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
     TResult Function(Color color)? addColorEvent,
     TResult Function(int colorIndex)? deleteColorEvent,
     TResult Function(int widthIndex)? changeStrokeWidthSelectionEvent,
+    TResult Function()? toggleUseStylusEvent,
+    TResult Function(int widthIndex)? changeEraserWidthSelectionEvent,
+    TResult Function(int widthIndex, double width)? changeEraserWidthValueEvent,
     required TResult orElse(),
   }) {
     if (addColorEvent != null) {
@@ -932,7 +868,6 @@ class _$AddColorEvent implements AddColorEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitialEvent value) initialEvent,
     required TResult Function(ChangeDrawingButtonSelectionEvent value)
         changeDrawingButtonSelectionEvent,
     required TResult Function(ChangeColorSelectionEvent value)
@@ -943,6 +878,11 @@ class _$AddColorEvent implements AddColorEvent {
     required TResult Function(DeleteColorEvent value) deleteColorEvent,
     required TResult Function(ChangeStrokeWidthSelectionEvent value)
         changeStrokeWidthSelectionEvent,
+    required TResult Function(ToggleUseStylusEvent value) toggleUseStylusEvent,
+    required TResult Function(ChangeEraserWidthSelectionEvent value)
+        changeEraserWidthSelectionEvent,
+    required TResult Function(ChangeEraserWidthValueEvent value)
+        changeEraserWidthValueEvent,
   }) {
     return addColorEvent(this);
   }
@@ -950,7 +890,6 @@ class _$AddColorEvent implements AddColorEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InitialEvent value)? initialEvent,
     TResult Function(ChangeDrawingButtonSelectionEvent value)?
         changeDrawingButtonSelectionEvent,
     TResult Function(ChangeColorSelectionEvent value)?
@@ -960,6 +899,11 @@ class _$AddColorEvent implements AddColorEvent {
     TResult Function(DeleteColorEvent value)? deleteColorEvent,
     TResult Function(ChangeStrokeWidthSelectionEvent value)?
         changeStrokeWidthSelectionEvent,
+    TResult Function(ToggleUseStylusEvent value)? toggleUseStylusEvent,
+    TResult Function(ChangeEraserWidthSelectionEvent value)?
+        changeEraserWidthSelectionEvent,
+    TResult Function(ChangeEraserWidthValueEvent value)?
+        changeEraserWidthValueEvent,
   }) {
     return addColorEvent?.call(this);
   }
@@ -967,7 +911,6 @@ class _$AddColorEvent implements AddColorEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitialEvent value)? initialEvent,
     TResult Function(ChangeDrawingButtonSelectionEvent value)?
         changeDrawingButtonSelectionEvent,
     TResult Function(ChangeColorSelectionEvent value)?
@@ -977,6 +920,11 @@ class _$AddColorEvent implements AddColorEvent {
     TResult Function(DeleteColorEvent value)? deleteColorEvent,
     TResult Function(ChangeStrokeWidthSelectionEvent value)?
         changeStrokeWidthSelectionEvent,
+    TResult Function(ToggleUseStylusEvent value)? toggleUseStylusEvent,
+    TResult Function(ChangeEraserWidthSelectionEvent value)?
+        changeEraserWidthSelectionEvent,
+    TResult Function(ChangeEraserWidthValueEvent value)?
+        changeEraserWidthValueEvent,
     required TResult orElse(),
   }) {
     if (addColorEvent != null) {
@@ -1061,7 +1009,6 @@ class _$DeleteColorEvent implements DeleteColorEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initialEvent,
     required TResult Function(DrawingTool tool)
         changeDrawingButtonSelectionEvent,
     required TResult Function(int colorIndex) changeColorSelectionEvent,
@@ -1070,6 +1017,10 @@ class _$DeleteColorEvent implements DeleteColorEvent {
     required TResult Function(Color color) addColorEvent,
     required TResult Function(int colorIndex) deleteColorEvent,
     required TResult Function(int widthIndex) changeStrokeWidthSelectionEvent,
+    required TResult Function() toggleUseStylusEvent,
+    required TResult Function(int widthIndex) changeEraserWidthSelectionEvent,
+    required TResult Function(int widthIndex, double width)
+        changeEraserWidthValueEvent,
   }) {
     return deleteColorEvent(colorIndex);
   }
@@ -1077,13 +1028,15 @@ class _$DeleteColorEvent implements DeleteColorEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initialEvent,
     TResult Function(DrawingTool tool)? changeDrawingButtonSelectionEvent,
     TResult Function(int colorIndex)? changeColorSelectionEvent,
     TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
     TResult Function(Color color)? addColorEvent,
     TResult Function(int colorIndex)? deleteColorEvent,
     TResult Function(int widthIndex)? changeStrokeWidthSelectionEvent,
+    TResult Function()? toggleUseStylusEvent,
+    TResult Function(int widthIndex)? changeEraserWidthSelectionEvent,
+    TResult Function(int widthIndex, double width)? changeEraserWidthValueEvent,
   }) {
     return deleteColorEvent?.call(colorIndex);
   }
@@ -1091,13 +1044,15 @@ class _$DeleteColorEvent implements DeleteColorEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initialEvent,
     TResult Function(DrawingTool tool)? changeDrawingButtonSelectionEvent,
     TResult Function(int colorIndex)? changeColorSelectionEvent,
     TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
     TResult Function(Color color)? addColorEvent,
     TResult Function(int colorIndex)? deleteColorEvent,
     TResult Function(int widthIndex)? changeStrokeWidthSelectionEvent,
+    TResult Function()? toggleUseStylusEvent,
+    TResult Function(int widthIndex)? changeEraserWidthSelectionEvent,
+    TResult Function(int widthIndex, double width)? changeEraserWidthValueEvent,
     required TResult orElse(),
   }) {
     if (deleteColorEvent != null) {
@@ -1109,7 +1064,6 @@ class _$DeleteColorEvent implements DeleteColorEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitialEvent value) initialEvent,
     required TResult Function(ChangeDrawingButtonSelectionEvent value)
         changeDrawingButtonSelectionEvent,
     required TResult Function(ChangeColorSelectionEvent value)
@@ -1120,6 +1074,11 @@ class _$DeleteColorEvent implements DeleteColorEvent {
     required TResult Function(DeleteColorEvent value) deleteColorEvent,
     required TResult Function(ChangeStrokeWidthSelectionEvent value)
         changeStrokeWidthSelectionEvent,
+    required TResult Function(ToggleUseStylusEvent value) toggleUseStylusEvent,
+    required TResult Function(ChangeEraserWidthSelectionEvent value)
+        changeEraserWidthSelectionEvent,
+    required TResult Function(ChangeEraserWidthValueEvent value)
+        changeEraserWidthValueEvent,
   }) {
     return deleteColorEvent(this);
   }
@@ -1127,7 +1086,6 @@ class _$DeleteColorEvent implements DeleteColorEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InitialEvent value)? initialEvent,
     TResult Function(ChangeDrawingButtonSelectionEvent value)?
         changeDrawingButtonSelectionEvent,
     TResult Function(ChangeColorSelectionEvent value)?
@@ -1137,6 +1095,11 @@ class _$DeleteColorEvent implements DeleteColorEvent {
     TResult Function(DeleteColorEvent value)? deleteColorEvent,
     TResult Function(ChangeStrokeWidthSelectionEvent value)?
         changeStrokeWidthSelectionEvent,
+    TResult Function(ToggleUseStylusEvent value)? toggleUseStylusEvent,
+    TResult Function(ChangeEraserWidthSelectionEvent value)?
+        changeEraserWidthSelectionEvent,
+    TResult Function(ChangeEraserWidthValueEvent value)?
+        changeEraserWidthValueEvent,
   }) {
     return deleteColorEvent?.call(this);
   }
@@ -1144,7 +1107,6 @@ class _$DeleteColorEvent implements DeleteColorEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitialEvent value)? initialEvent,
     TResult Function(ChangeDrawingButtonSelectionEvent value)?
         changeDrawingButtonSelectionEvent,
     TResult Function(ChangeColorSelectionEvent value)?
@@ -1154,6 +1116,11 @@ class _$DeleteColorEvent implements DeleteColorEvent {
     TResult Function(DeleteColorEvent value)? deleteColorEvent,
     TResult Function(ChangeStrokeWidthSelectionEvent value)?
         changeStrokeWidthSelectionEvent,
+    TResult Function(ToggleUseStylusEvent value)? toggleUseStylusEvent,
+    TResult Function(ChangeEraserWidthSelectionEvent value)?
+        changeEraserWidthSelectionEvent,
+    TResult Function(ChangeEraserWidthValueEvent value)?
+        changeEraserWidthValueEvent,
     required TResult orElse(),
   }) {
     if (deleteColorEvent != null) {
@@ -1243,7 +1210,6 @@ class _$ChangeStrokeWidthSelectionEvent
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initialEvent,
     required TResult Function(DrawingTool tool)
         changeDrawingButtonSelectionEvent,
     required TResult Function(int colorIndex) changeColorSelectionEvent,
@@ -1252,6 +1218,10 @@ class _$ChangeStrokeWidthSelectionEvent
     required TResult Function(Color color) addColorEvent,
     required TResult Function(int colorIndex) deleteColorEvent,
     required TResult Function(int widthIndex) changeStrokeWidthSelectionEvent,
+    required TResult Function() toggleUseStylusEvent,
+    required TResult Function(int widthIndex) changeEraserWidthSelectionEvent,
+    required TResult Function(int widthIndex, double width)
+        changeEraserWidthValueEvent,
   }) {
     return changeStrokeWidthSelectionEvent(widthIndex);
   }
@@ -1259,13 +1229,15 @@ class _$ChangeStrokeWidthSelectionEvent
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initialEvent,
     TResult Function(DrawingTool tool)? changeDrawingButtonSelectionEvent,
     TResult Function(int colorIndex)? changeColorSelectionEvent,
     TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
     TResult Function(Color color)? addColorEvent,
     TResult Function(int colorIndex)? deleteColorEvent,
     TResult Function(int widthIndex)? changeStrokeWidthSelectionEvent,
+    TResult Function()? toggleUseStylusEvent,
+    TResult Function(int widthIndex)? changeEraserWidthSelectionEvent,
+    TResult Function(int widthIndex, double width)? changeEraserWidthValueEvent,
   }) {
     return changeStrokeWidthSelectionEvent?.call(widthIndex);
   }
@@ -1273,13 +1245,15 @@ class _$ChangeStrokeWidthSelectionEvent
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initialEvent,
     TResult Function(DrawingTool tool)? changeDrawingButtonSelectionEvent,
     TResult Function(int colorIndex)? changeColorSelectionEvent,
     TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
     TResult Function(Color color)? addColorEvent,
     TResult Function(int colorIndex)? deleteColorEvent,
     TResult Function(int widthIndex)? changeStrokeWidthSelectionEvent,
+    TResult Function()? toggleUseStylusEvent,
+    TResult Function(int widthIndex)? changeEraserWidthSelectionEvent,
+    TResult Function(int widthIndex, double width)? changeEraserWidthValueEvent,
     required TResult orElse(),
   }) {
     if (changeStrokeWidthSelectionEvent != null) {
@@ -1291,7 +1265,6 @@ class _$ChangeStrokeWidthSelectionEvent
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitialEvent value) initialEvent,
     required TResult Function(ChangeDrawingButtonSelectionEvent value)
         changeDrawingButtonSelectionEvent,
     required TResult Function(ChangeColorSelectionEvent value)
@@ -1302,6 +1275,11 @@ class _$ChangeStrokeWidthSelectionEvent
     required TResult Function(DeleteColorEvent value) deleteColorEvent,
     required TResult Function(ChangeStrokeWidthSelectionEvent value)
         changeStrokeWidthSelectionEvent,
+    required TResult Function(ToggleUseStylusEvent value) toggleUseStylusEvent,
+    required TResult Function(ChangeEraserWidthSelectionEvent value)
+        changeEraserWidthSelectionEvent,
+    required TResult Function(ChangeEraserWidthValueEvent value)
+        changeEraserWidthValueEvent,
   }) {
     return changeStrokeWidthSelectionEvent(this);
   }
@@ -1309,7 +1287,6 @@ class _$ChangeStrokeWidthSelectionEvent
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InitialEvent value)? initialEvent,
     TResult Function(ChangeDrawingButtonSelectionEvent value)?
         changeDrawingButtonSelectionEvent,
     TResult Function(ChangeColorSelectionEvent value)?
@@ -1319,6 +1296,11 @@ class _$ChangeStrokeWidthSelectionEvent
     TResult Function(DeleteColorEvent value)? deleteColorEvent,
     TResult Function(ChangeStrokeWidthSelectionEvent value)?
         changeStrokeWidthSelectionEvent,
+    TResult Function(ToggleUseStylusEvent value)? toggleUseStylusEvent,
+    TResult Function(ChangeEraserWidthSelectionEvent value)?
+        changeEraserWidthSelectionEvent,
+    TResult Function(ChangeEraserWidthValueEvent value)?
+        changeEraserWidthValueEvent,
   }) {
     return changeStrokeWidthSelectionEvent?.call(this);
   }
@@ -1326,7 +1308,6 @@ class _$ChangeStrokeWidthSelectionEvent
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitialEvent value)? initialEvent,
     TResult Function(ChangeDrawingButtonSelectionEvent value)?
         changeDrawingButtonSelectionEvent,
     TResult Function(ChangeColorSelectionEvent value)?
@@ -1336,6 +1317,11 @@ class _$ChangeStrokeWidthSelectionEvent
     TResult Function(DeleteColorEvent value)? deleteColorEvent,
     TResult Function(ChangeStrokeWidthSelectionEvent value)?
         changeStrokeWidthSelectionEvent,
+    TResult Function(ToggleUseStylusEvent value)? toggleUseStylusEvent,
+    TResult Function(ChangeEraserWidthSelectionEvent value)?
+        changeEraserWidthSelectionEvent,
+    TResult Function(ChangeEraserWidthValueEvent value)?
+        changeEraserWidthValueEvent,
     required TResult orElse(),
   }) {
     if (changeStrokeWidthSelectionEvent != null) {
@@ -1352,5 +1338,585 @@ abstract class ChangeStrokeWidthSelectionEvent implements DrawingToolbarEvent {
   int get widthIndex => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$ChangeStrokeWidthSelectionEventCopyWith<_$ChangeStrokeWidthSelectionEvent>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ToggleUseStylusEventCopyWith<$Res> {
+  factory _$$ToggleUseStylusEventCopyWith(_$ToggleUseStylusEvent value,
+          $Res Function(_$ToggleUseStylusEvent) then) =
+      __$$ToggleUseStylusEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ToggleUseStylusEventCopyWithImpl<$Res>
+    extends _$DrawingToolbarEventCopyWithImpl<$Res>
+    implements _$$ToggleUseStylusEventCopyWith<$Res> {
+  __$$ToggleUseStylusEventCopyWithImpl(_$ToggleUseStylusEvent _value,
+      $Res Function(_$ToggleUseStylusEvent) _then)
+      : super(_value, (v) => _then(v as _$ToggleUseStylusEvent));
+
+  @override
+  _$ToggleUseStylusEvent get _value => super._value as _$ToggleUseStylusEvent;
+}
+
+/// @nodoc
+
+class _$ToggleUseStylusEvent implements ToggleUseStylusEvent {
+  const _$ToggleUseStylusEvent();
+
+  @override
+  String toString() {
+    return 'DrawingToolbarEvent.toggleUseStylusEvent()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ToggleUseStylusEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(DrawingTool tool)
+        changeDrawingButtonSelectionEvent,
+    required TResult Function(int colorIndex) changeColorSelectionEvent,
+    required TResult Function(int colorIndex, Color currentColor)
+        changeColorValueEvent,
+    required TResult Function(Color color) addColorEvent,
+    required TResult Function(int colorIndex) deleteColorEvent,
+    required TResult Function(int widthIndex) changeStrokeWidthSelectionEvent,
+    required TResult Function() toggleUseStylusEvent,
+    required TResult Function(int widthIndex) changeEraserWidthSelectionEvent,
+    required TResult Function(int widthIndex, double width)
+        changeEraserWidthValueEvent,
+  }) {
+    return toggleUseStylusEvent();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(DrawingTool tool)? changeDrawingButtonSelectionEvent,
+    TResult Function(int colorIndex)? changeColorSelectionEvent,
+    TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
+    TResult Function(Color color)? addColorEvent,
+    TResult Function(int colorIndex)? deleteColorEvent,
+    TResult Function(int widthIndex)? changeStrokeWidthSelectionEvent,
+    TResult Function()? toggleUseStylusEvent,
+    TResult Function(int widthIndex)? changeEraserWidthSelectionEvent,
+    TResult Function(int widthIndex, double width)? changeEraserWidthValueEvent,
+  }) {
+    return toggleUseStylusEvent?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(DrawingTool tool)? changeDrawingButtonSelectionEvent,
+    TResult Function(int colorIndex)? changeColorSelectionEvent,
+    TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
+    TResult Function(Color color)? addColorEvent,
+    TResult Function(int colorIndex)? deleteColorEvent,
+    TResult Function(int widthIndex)? changeStrokeWidthSelectionEvent,
+    TResult Function()? toggleUseStylusEvent,
+    TResult Function(int widthIndex)? changeEraserWidthSelectionEvent,
+    TResult Function(int widthIndex, double width)? changeEraserWidthValueEvent,
+    required TResult orElse(),
+  }) {
+    if (toggleUseStylusEvent != null) {
+      return toggleUseStylusEvent();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChangeDrawingButtonSelectionEvent value)
+        changeDrawingButtonSelectionEvent,
+    required TResult Function(ChangeColorSelectionEvent value)
+        changeColorSelectionEvent,
+    required TResult Function(ChangeColorValueEvent value)
+        changeColorValueEvent,
+    required TResult Function(AddColorEvent value) addColorEvent,
+    required TResult Function(DeleteColorEvent value) deleteColorEvent,
+    required TResult Function(ChangeStrokeWidthSelectionEvent value)
+        changeStrokeWidthSelectionEvent,
+    required TResult Function(ToggleUseStylusEvent value) toggleUseStylusEvent,
+    required TResult Function(ChangeEraserWidthSelectionEvent value)
+        changeEraserWidthSelectionEvent,
+    required TResult Function(ChangeEraserWidthValueEvent value)
+        changeEraserWidthValueEvent,
+  }) {
+    return toggleUseStylusEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ChangeDrawingButtonSelectionEvent value)?
+        changeDrawingButtonSelectionEvent,
+    TResult Function(ChangeColorSelectionEvent value)?
+        changeColorSelectionEvent,
+    TResult Function(ChangeColorValueEvent value)? changeColorValueEvent,
+    TResult Function(AddColorEvent value)? addColorEvent,
+    TResult Function(DeleteColorEvent value)? deleteColorEvent,
+    TResult Function(ChangeStrokeWidthSelectionEvent value)?
+        changeStrokeWidthSelectionEvent,
+    TResult Function(ToggleUseStylusEvent value)? toggleUseStylusEvent,
+    TResult Function(ChangeEraserWidthSelectionEvent value)?
+        changeEraserWidthSelectionEvent,
+    TResult Function(ChangeEraserWidthValueEvent value)?
+        changeEraserWidthValueEvent,
+  }) {
+    return toggleUseStylusEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChangeDrawingButtonSelectionEvent value)?
+        changeDrawingButtonSelectionEvent,
+    TResult Function(ChangeColorSelectionEvent value)?
+        changeColorSelectionEvent,
+    TResult Function(ChangeColorValueEvent value)? changeColorValueEvent,
+    TResult Function(AddColorEvent value)? addColorEvent,
+    TResult Function(DeleteColorEvent value)? deleteColorEvent,
+    TResult Function(ChangeStrokeWidthSelectionEvent value)?
+        changeStrokeWidthSelectionEvent,
+    TResult Function(ToggleUseStylusEvent value)? toggleUseStylusEvent,
+    TResult Function(ChangeEraserWidthSelectionEvent value)?
+        changeEraserWidthSelectionEvent,
+    TResult Function(ChangeEraserWidthValueEvent value)?
+        changeEraserWidthValueEvent,
+    required TResult orElse(),
+  }) {
+    if (toggleUseStylusEvent != null) {
+      return toggleUseStylusEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ToggleUseStylusEvent implements DrawingToolbarEvent {
+  const factory ToggleUseStylusEvent() = _$ToggleUseStylusEvent;
+}
+
+/// @nodoc
+abstract class _$$ChangeEraserWidthSelectionEventCopyWith<$Res> {
+  factory _$$ChangeEraserWidthSelectionEventCopyWith(
+          _$ChangeEraserWidthSelectionEvent value,
+          $Res Function(_$ChangeEraserWidthSelectionEvent) then) =
+      __$$ChangeEraserWidthSelectionEventCopyWithImpl<$Res>;
+  $Res call({int widthIndex});
+}
+
+/// @nodoc
+class __$$ChangeEraserWidthSelectionEventCopyWithImpl<$Res>
+    extends _$DrawingToolbarEventCopyWithImpl<$Res>
+    implements _$$ChangeEraserWidthSelectionEventCopyWith<$Res> {
+  __$$ChangeEraserWidthSelectionEventCopyWithImpl(
+      _$ChangeEraserWidthSelectionEvent _value,
+      $Res Function(_$ChangeEraserWidthSelectionEvent) _then)
+      : super(_value, (v) => _then(v as _$ChangeEraserWidthSelectionEvent));
+
+  @override
+  _$ChangeEraserWidthSelectionEvent get _value =>
+      super._value as _$ChangeEraserWidthSelectionEvent;
+
+  @override
+  $Res call({
+    Object? widthIndex = freezed,
+  }) {
+    return _then(_$ChangeEraserWidthSelectionEvent(
+      widthIndex == freezed
+          ? _value.widthIndex
+          : widthIndex // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeEraserWidthSelectionEvent
+    implements ChangeEraserWidthSelectionEvent {
+  const _$ChangeEraserWidthSelectionEvent(this.widthIndex);
+
+  @override
+  final int widthIndex;
+
+  @override
+  String toString() {
+    return 'DrawingToolbarEvent.changeEraserWidthSelectionEvent(widthIndex: $widthIndex)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeEraserWidthSelectionEvent &&
+            const DeepCollectionEquality()
+                .equals(other.widthIndex, widthIndex));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(widthIndex));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$ChangeEraserWidthSelectionEventCopyWith<_$ChangeEraserWidthSelectionEvent>
+      get copyWith => __$$ChangeEraserWidthSelectionEventCopyWithImpl<
+          _$ChangeEraserWidthSelectionEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(DrawingTool tool)
+        changeDrawingButtonSelectionEvent,
+    required TResult Function(int colorIndex) changeColorSelectionEvent,
+    required TResult Function(int colorIndex, Color currentColor)
+        changeColorValueEvent,
+    required TResult Function(Color color) addColorEvent,
+    required TResult Function(int colorIndex) deleteColorEvent,
+    required TResult Function(int widthIndex) changeStrokeWidthSelectionEvent,
+    required TResult Function() toggleUseStylusEvent,
+    required TResult Function(int widthIndex) changeEraserWidthSelectionEvent,
+    required TResult Function(int widthIndex, double width)
+        changeEraserWidthValueEvent,
+  }) {
+    return changeEraserWidthSelectionEvent(widthIndex);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(DrawingTool tool)? changeDrawingButtonSelectionEvent,
+    TResult Function(int colorIndex)? changeColorSelectionEvent,
+    TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
+    TResult Function(Color color)? addColorEvent,
+    TResult Function(int colorIndex)? deleteColorEvent,
+    TResult Function(int widthIndex)? changeStrokeWidthSelectionEvent,
+    TResult Function()? toggleUseStylusEvent,
+    TResult Function(int widthIndex)? changeEraserWidthSelectionEvent,
+    TResult Function(int widthIndex, double width)? changeEraserWidthValueEvent,
+  }) {
+    return changeEraserWidthSelectionEvent?.call(widthIndex);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(DrawingTool tool)? changeDrawingButtonSelectionEvent,
+    TResult Function(int colorIndex)? changeColorSelectionEvent,
+    TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
+    TResult Function(Color color)? addColorEvent,
+    TResult Function(int colorIndex)? deleteColorEvent,
+    TResult Function(int widthIndex)? changeStrokeWidthSelectionEvent,
+    TResult Function()? toggleUseStylusEvent,
+    TResult Function(int widthIndex)? changeEraserWidthSelectionEvent,
+    TResult Function(int widthIndex, double width)? changeEraserWidthValueEvent,
+    required TResult orElse(),
+  }) {
+    if (changeEraserWidthSelectionEvent != null) {
+      return changeEraserWidthSelectionEvent(widthIndex);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChangeDrawingButtonSelectionEvent value)
+        changeDrawingButtonSelectionEvent,
+    required TResult Function(ChangeColorSelectionEvent value)
+        changeColorSelectionEvent,
+    required TResult Function(ChangeColorValueEvent value)
+        changeColorValueEvent,
+    required TResult Function(AddColorEvent value) addColorEvent,
+    required TResult Function(DeleteColorEvent value) deleteColorEvent,
+    required TResult Function(ChangeStrokeWidthSelectionEvent value)
+        changeStrokeWidthSelectionEvent,
+    required TResult Function(ToggleUseStylusEvent value) toggleUseStylusEvent,
+    required TResult Function(ChangeEraserWidthSelectionEvent value)
+        changeEraserWidthSelectionEvent,
+    required TResult Function(ChangeEraserWidthValueEvent value)
+        changeEraserWidthValueEvent,
+  }) {
+    return changeEraserWidthSelectionEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ChangeDrawingButtonSelectionEvent value)?
+        changeDrawingButtonSelectionEvent,
+    TResult Function(ChangeColorSelectionEvent value)?
+        changeColorSelectionEvent,
+    TResult Function(ChangeColorValueEvent value)? changeColorValueEvent,
+    TResult Function(AddColorEvent value)? addColorEvent,
+    TResult Function(DeleteColorEvent value)? deleteColorEvent,
+    TResult Function(ChangeStrokeWidthSelectionEvent value)?
+        changeStrokeWidthSelectionEvent,
+    TResult Function(ToggleUseStylusEvent value)? toggleUseStylusEvent,
+    TResult Function(ChangeEraserWidthSelectionEvent value)?
+        changeEraserWidthSelectionEvent,
+    TResult Function(ChangeEraserWidthValueEvent value)?
+        changeEraserWidthValueEvent,
+  }) {
+    return changeEraserWidthSelectionEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChangeDrawingButtonSelectionEvent value)?
+        changeDrawingButtonSelectionEvent,
+    TResult Function(ChangeColorSelectionEvent value)?
+        changeColorSelectionEvent,
+    TResult Function(ChangeColorValueEvent value)? changeColorValueEvent,
+    TResult Function(AddColorEvent value)? addColorEvent,
+    TResult Function(DeleteColorEvent value)? deleteColorEvent,
+    TResult Function(ChangeStrokeWidthSelectionEvent value)?
+        changeStrokeWidthSelectionEvent,
+    TResult Function(ToggleUseStylusEvent value)? toggleUseStylusEvent,
+    TResult Function(ChangeEraserWidthSelectionEvent value)?
+        changeEraserWidthSelectionEvent,
+    TResult Function(ChangeEraserWidthValueEvent value)?
+        changeEraserWidthValueEvent,
+    required TResult orElse(),
+  }) {
+    if (changeEraserWidthSelectionEvent != null) {
+      return changeEraserWidthSelectionEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeEraserWidthSelectionEvent implements DrawingToolbarEvent {
+  const factory ChangeEraserWidthSelectionEvent(final int widthIndex) =
+      _$ChangeEraserWidthSelectionEvent;
+
+  int get widthIndex => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$ChangeEraserWidthSelectionEventCopyWith<_$ChangeEraserWidthSelectionEvent>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeEraserWidthValueEventCopyWith<$Res> {
+  factory _$$ChangeEraserWidthValueEventCopyWith(
+          _$ChangeEraserWidthValueEvent value,
+          $Res Function(_$ChangeEraserWidthValueEvent) then) =
+      __$$ChangeEraserWidthValueEventCopyWithImpl<$Res>;
+  $Res call({int widthIndex, double width});
+}
+
+/// @nodoc
+class __$$ChangeEraserWidthValueEventCopyWithImpl<$Res>
+    extends _$DrawingToolbarEventCopyWithImpl<$Res>
+    implements _$$ChangeEraserWidthValueEventCopyWith<$Res> {
+  __$$ChangeEraserWidthValueEventCopyWithImpl(
+      _$ChangeEraserWidthValueEvent _value,
+      $Res Function(_$ChangeEraserWidthValueEvent) _then)
+      : super(_value, (v) => _then(v as _$ChangeEraserWidthValueEvent));
+
+  @override
+  _$ChangeEraserWidthValueEvent get _value =>
+      super._value as _$ChangeEraserWidthValueEvent;
+
+  @override
+  $Res call({
+    Object? widthIndex = freezed,
+    Object? width = freezed,
+  }) {
+    return _then(_$ChangeEraserWidthValueEvent(
+      widthIndex == freezed
+          ? _value.widthIndex
+          : widthIndex // ignore: cast_nullable_to_non_nullable
+              as int,
+      width == freezed
+          ? _value.width
+          : width // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeEraserWidthValueEvent implements ChangeEraserWidthValueEvent {
+  const _$ChangeEraserWidthValueEvent(this.widthIndex, this.width);
+
+  @override
+  final int widthIndex;
+  @override
+  final double width;
+
+  @override
+  String toString() {
+    return 'DrawingToolbarEvent.changeEraserWidthValueEvent(widthIndex: $widthIndex, width: $width)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeEraserWidthValueEvent &&
+            const DeepCollectionEquality()
+                .equals(other.widthIndex, widthIndex) &&
+            const DeepCollectionEquality().equals(other.width, width));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(widthIndex),
+      const DeepCollectionEquality().hash(width));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$ChangeEraserWidthValueEventCopyWith<_$ChangeEraserWidthValueEvent>
+      get copyWith => __$$ChangeEraserWidthValueEventCopyWithImpl<
+          _$ChangeEraserWidthValueEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(DrawingTool tool)
+        changeDrawingButtonSelectionEvent,
+    required TResult Function(int colorIndex) changeColorSelectionEvent,
+    required TResult Function(int colorIndex, Color currentColor)
+        changeColorValueEvent,
+    required TResult Function(Color color) addColorEvent,
+    required TResult Function(int colorIndex) deleteColorEvent,
+    required TResult Function(int widthIndex) changeStrokeWidthSelectionEvent,
+    required TResult Function() toggleUseStylusEvent,
+    required TResult Function(int widthIndex) changeEraserWidthSelectionEvent,
+    required TResult Function(int widthIndex, double width)
+        changeEraserWidthValueEvent,
+  }) {
+    return changeEraserWidthValueEvent(widthIndex, width);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(DrawingTool tool)? changeDrawingButtonSelectionEvent,
+    TResult Function(int colorIndex)? changeColorSelectionEvent,
+    TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
+    TResult Function(Color color)? addColorEvent,
+    TResult Function(int colorIndex)? deleteColorEvent,
+    TResult Function(int widthIndex)? changeStrokeWidthSelectionEvent,
+    TResult Function()? toggleUseStylusEvent,
+    TResult Function(int widthIndex)? changeEraserWidthSelectionEvent,
+    TResult Function(int widthIndex, double width)? changeEraserWidthValueEvent,
+  }) {
+    return changeEraserWidthValueEvent?.call(widthIndex, width);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(DrawingTool tool)? changeDrawingButtonSelectionEvent,
+    TResult Function(int colorIndex)? changeColorSelectionEvent,
+    TResult Function(int colorIndex, Color currentColor)? changeColorValueEvent,
+    TResult Function(Color color)? addColorEvent,
+    TResult Function(int colorIndex)? deleteColorEvent,
+    TResult Function(int widthIndex)? changeStrokeWidthSelectionEvent,
+    TResult Function()? toggleUseStylusEvent,
+    TResult Function(int widthIndex)? changeEraserWidthSelectionEvent,
+    TResult Function(int widthIndex, double width)? changeEraserWidthValueEvent,
+    required TResult orElse(),
+  }) {
+    if (changeEraserWidthValueEvent != null) {
+      return changeEraserWidthValueEvent(widthIndex, width);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChangeDrawingButtonSelectionEvent value)
+        changeDrawingButtonSelectionEvent,
+    required TResult Function(ChangeColorSelectionEvent value)
+        changeColorSelectionEvent,
+    required TResult Function(ChangeColorValueEvent value)
+        changeColorValueEvent,
+    required TResult Function(AddColorEvent value) addColorEvent,
+    required TResult Function(DeleteColorEvent value) deleteColorEvent,
+    required TResult Function(ChangeStrokeWidthSelectionEvent value)
+        changeStrokeWidthSelectionEvent,
+    required TResult Function(ToggleUseStylusEvent value) toggleUseStylusEvent,
+    required TResult Function(ChangeEraserWidthSelectionEvent value)
+        changeEraserWidthSelectionEvent,
+    required TResult Function(ChangeEraserWidthValueEvent value)
+        changeEraserWidthValueEvent,
+  }) {
+    return changeEraserWidthValueEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ChangeDrawingButtonSelectionEvent value)?
+        changeDrawingButtonSelectionEvent,
+    TResult Function(ChangeColorSelectionEvent value)?
+        changeColorSelectionEvent,
+    TResult Function(ChangeColorValueEvent value)? changeColorValueEvent,
+    TResult Function(AddColorEvent value)? addColorEvent,
+    TResult Function(DeleteColorEvent value)? deleteColorEvent,
+    TResult Function(ChangeStrokeWidthSelectionEvent value)?
+        changeStrokeWidthSelectionEvent,
+    TResult Function(ToggleUseStylusEvent value)? toggleUseStylusEvent,
+    TResult Function(ChangeEraserWidthSelectionEvent value)?
+        changeEraserWidthSelectionEvent,
+    TResult Function(ChangeEraserWidthValueEvent value)?
+        changeEraserWidthValueEvent,
+  }) {
+    return changeEraserWidthValueEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChangeDrawingButtonSelectionEvent value)?
+        changeDrawingButtonSelectionEvent,
+    TResult Function(ChangeColorSelectionEvent value)?
+        changeColorSelectionEvent,
+    TResult Function(ChangeColorValueEvent value)? changeColorValueEvent,
+    TResult Function(AddColorEvent value)? addColorEvent,
+    TResult Function(DeleteColorEvent value)? deleteColorEvent,
+    TResult Function(ChangeStrokeWidthSelectionEvent value)?
+        changeStrokeWidthSelectionEvent,
+    TResult Function(ToggleUseStylusEvent value)? toggleUseStylusEvent,
+    TResult Function(ChangeEraserWidthSelectionEvent value)?
+        changeEraserWidthSelectionEvent,
+    TResult Function(ChangeEraserWidthValueEvent value)?
+        changeEraserWidthValueEvent,
+    required TResult orElse(),
+  }) {
+    if (changeEraserWidthValueEvent != null) {
+      return changeEraserWidthValueEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeEraserWidthValueEvent implements DrawingToolbarEvent {
+  const factory ChangeEraserWidthValueEvent(
+      final int widthIndex, final double width) = _$ChangeEraserWidthValueEvent;
+
+  int get widthIndex => throw _privateConstructorUsedError;
+  double get width => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$ChangeEraserWidthValueEventCopyWith<_$ChangeEraserWidthValueEvent>
       get copyWith => throw _privateConstructorUsedError;
 }

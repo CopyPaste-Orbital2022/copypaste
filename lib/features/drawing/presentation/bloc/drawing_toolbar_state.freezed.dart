@@ -17,9 +17,12 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$DrawingToolbarState {
   DrawingTool get currentTool => throw _privateConstructorUsedError;
-  PenState get penState => throw _privateConstructorUsedError;
-  EraserState get eraserState => throw _privateConstructorUsedError;
-  ScribblePointerMode get allowedPointerMode =>
+  bool get useStylus => throw _privateConstructorUsedError;
+  SelectableParam<Color> get penColorSelectable =>
+      throw _privateConstructorUsedError;
+  SelectableParam<double> get penWidthSelectable =>
+      throw _privateConstructorUsedError;
+  SelectableParam<double> get eraserWidthSelectable =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -34,12 +37,14 @@ abstract class $DrawingToolbarStateCopyWith<$Res> {
       _$DrawingToolbarStateCopyWithImpl<$Res>;
   $Res call(
       {DrawingTool currentTool,
-      PenState penState,
-      EraserState eraserState,
-      ScribblePointerMode allowedPointerMode});
+      bool useStylus,
+      SelectableParam<Color> penColorSelectable,
+      SelectableParam<double> penWidthSelectable,
+      SelectableParam<double> eraserWidthSelectable});
 
-  $PenStateCopyWith<$Res> get penState;
-  $EraserStateCopyWith<$Res> get eraserState;
+  $SelectableParamCopyWith<Color, $Res> get penColorSelectable;
+  $SelectableParamCopyWith<double, $Res> get penWidthSelectable;
+  $SelectableParamCopyWith<double, $Res> get eraserWidthSelectable;
 }
 
 /// @nodoc
@@ -54,41 +59,56 @@ class _$DrawingToolbarStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? currentTool = freezed,
-    Object? penState = freezed,
-    Object? eraserState = freezed,
-    Object? allowedPointerMode = freezed,
+    Object? useStylus = freezed,
+    Object? penColorSelectable = freezed,
+    Object? penWidthSelectable = freezed,
+    Object? eraserWidthSelectable = freezed,
   }) {
     return _then(_value.copyWith(
       currentTool: currentTool == freezed
           ? _value.currentTool
           : currentTool // ignore: cast_nullable_to_non_nullable
               as DrawingTool,
-      penState: penState == freezed
-          ? _value.penState
-          : penState // ignore: cast_nullable_to_non_nullable
-              as PenState,
-      eraserState: eraserState == freezed
-          ? _value.eraserState
-          : eraserState // ignore: cast_nullable_to_non_nullable
-              as EraserState,
-      allowedPointerMode: allowedPointerMode == freezed
-          ? _value.allowedPointerMode
-          : allowedPointerMode // ignore: cast_nullable_to_non_nullable
-              as ScribblePointerMode,
+      useStylus: useStylus == freezed
+          ? _value.useStylus
+          : useStylus // ignore: cast_nullable_to_non_nullable
+              as bool,
+      penColorSelectable: penColorSelectable == freezed
+          ? _value.penColorSelectable
+          : penColorSelectable // ignore: cast_nullable_to_non_nullable
+              as SelectableParam<Color>,
+      penWidthSelectable: penWidthSelectable == freezed
+          ? _value.penWidthSelectable
+          : penWidthSelectable // ignore: cast_nullable_to_non_nullable
+              as SelectableParam<double>,
+      eraserWidthSelectable: eraserWidthSelectable == freezed
+          ? _value.eraserWidthSelectable
+          : eraserWidthSelectable // ignore: cast_nullable_to_non_nullable
+              as SelectableParam<double>,
     ));
   }
 
   @override
-  $PenStateCopyWith<$Res> get penState {
-    return $PenStateCopyWith<$Res>(_value.penState, (value) {
-      return _then(_value.copyWith(penState: value));
+  $SelectableParamCopyWith<Color, $Res> get penColorSelectable {
+    return $SelectableParamCopyWith<Color, $Res>(_value.penColorSelectable,
+        (value) {
+      return _then(_value.copyWith(penColorSelectable: value));
     });
   }
 
   @override
-  $EraserStateCopyWith<$Res> get eraserState {
-    return $EraserStateCopyWith<$Res>(_value.eraserState, (value) {
-      return _then(_value.copyWith(eraserState: value));
+  $SelectableParamCopyWith<double, $Res> get penWidthSelectable {
+    return $SelectableParamCopyWith<double, $Res>(_value.penWidthSelectable,
+        (value) {
+      return _then(_value.copyWith(penWidthSelectable: value));
+    });
+  }
+
+  @override
+  $SelectableParamCopyWith<double, $Res> get eraserWidthSelectable {
+    return $SelectableParamCopyWith<double, $Res>(_value.eraserWidthSelectable,
+        (value) {
+      return _then(_value.copyWith(eraserWidthSelectable: value));
     });
   }
 }
@@ -102,14 +122,17 @@ abstract class _$$_DrawingToolbarStateCopyWith<$Res>
   @override
   $Res call(
       {DrawingTool currentTool,
-      PenState penState,
-      EraserState eraserState,
-      ScribblePointerMode allowedPointerMode});
+      bool useStylus,
+      SelectableParam<Color> penColorSelectable,
+      SelectableParam<double> penWidthSelectable,
+      SelectableParam<double> eraserWidthSelectable});
 
   @override
-  $PenStateCopyWith<$Res> get penState;
+  $SelectableParamCopyWith<Color, $Res> get penColorSelectable;
   @override
-  $EraserStateCopyWith<$Res> get eraserState;
+  $SelectableParamCopyWith<double, $Res> get penWidthSelectable;
+  @override
+  $SelectableParamCopyWith<double, $Res> get eraserWidthSelectable;
 }
 
 /// @nodoc
@@ -126,27 +149,32 @@ class __$$_DrawingToolbarStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? currentTool = freezed,
-    Object? penState = freezed,
-    Object? eraserState = freezed,
-    Object? allowedPointerMode = freezed,
+    Object? useStylus = freezed,
+    Object? penColorSelectable = freezed,
+    Object? penWidthSelectable = freezed,
+    Object? eraserWidthSelectable = freezed,
   }) {
     return _then(_$_DrawingToolbarState(
       currentTool: currentTool == freezed
           ? _value.currentTool
           : currentTool // ignore: cast_nullable_to_non_nullable
               as DrawingTool,
-      penState: penState == freezed
-          ? _value.penState
-          : penState // ignore: cast_nullable_to_non_nullable
-              as PenState,
-      eraserState: eraserState == freezed
-          ? _value.eraserState
-          : eraserState // ignore: cast_nullable_to_non_nullable
-              as EraserState,
-      allowedPointerMode: allowedPointerMode == freezed
-          ? _value.allowedPointerMode
-          : allowedPointerMode // ignore: cast_nullable_to_non_nullable
-              as ScribblePointerMode,
+      useStylus: useStylus == freezed
+          ? _value.useStylus
+          : useStylus // ignore: cast_nullable_to_non_nullable
+              as bool,
+      penColorSelectable: penColorSelectable == freezed
+          ? _value.penColorSelectable
+          : penColorSelectable // ignore: cast_nullable_to_non_nullable
+              as SelectableParam<Color>,
+      penWidthSelectable: penWidthSelectable == freezed
+          ? _value.penWidthSelectable
+          : penWidthSelectable // ignore: cast_nullable_to_non_nullable
+              as SelectableParam<double>,
+      eraserWidthSelectable: eraserWidthSelectable == freezed
+          ? _value.eraserWidthSelectable
+          : eraserWidthSelectable // ignore: cast_nullable_to_non_nullable
+              as SelectableParam<double>,
     ));
   }
 }
@@ -156,22 +184,25 @@ class __$$_DrawingToolbarStateCopyWithImpl<$Res>
 class _$_DrawingToolbarState implements _DrawingToolbarState {
   const _$_DrawingToolbarState(
       {required this.currentTool,
-      required this.penState,
-      required this.eraserState,
-      required this.allowedPointerMode});
+      required this.useStylus,
+      required this.penColorSelectable,
+      required this.penWidthSelectable,
+      required this.eraserWidthSelectable});
 
   @override
   final DrawingTool currentTool;
   @override
-  final PenState penState;
+  final bool useStylus;
   @override
-  final EraserState eraserState;
+  final SelectableParam<Color> penColorSelectable;
   @override
-  final ScribblePointerMode allowedPointerMode;
+  final SelectableParam<double> penWidthSelectable;
+  @override
+  final SelectableParam<double> eraserWidthSelectable;
 
   @override
   String toString() {
-    return 'DrawingToolbarState(currentTool: $currentTool, penState: $penState, eraserState: $eraserState, allowedPointerMode: $allowedPointerMode)';
+    return 'DrawingToolbarState(currentTool: $currentTool, useStylus: $useStylus, penColorSelectable: $penColorSelectable, penWidthSelectable: $penWidthSelectable, eraserWidthSelectable: $eraserWidthSelectable)';
   }
 
   @override
@@ -181,20 +212,23 @@ class _$_DrawingToolbarState implements _DrawingToolbarState {
             other is _$_DrawingToolbarState &&
             const DeepCollectionEquality()
                 .equals(other.currentTool, currentTool) &&
-            const DeepCollectionEquality().equals(other.penState, penState) &&
+            const DeepCollectionEquality().equals(other.useStylus, useStylus) &&
             const DeepCollectionEquality()
-                .equals(other.eraserState, eraserState) &&
+                .equals(other.penColorSelectable, penColorSelectable) &&
             const DeepCollectionEquality()
-                .equals(other.allowedPointerMode, allowedPointerMode));
+                .equals(other.penWidthSelectable, penWidthSelectable) &&
+            const DeepCollectionEquality()
+                .equals(other.eraserWidthSelectable, eraserWidthSelectable));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(currentTool),
-      const DeepCollectionEquality().hash(penState),
-      const DeepCollectionEquality().hash(eraserState),
-      const DeepCollectionEquality().hash(allowedPointerMode));
+      const DeepCollectionEquality().hash(useStylus),
+      const DeepCollectionEquality().hash(penColorSelectable),
+      const DeepCollectionEquality().hash(penWidthSelectable),
+      const DeepCollectionEquality().hash(eraserWidthSelectable));
 
   @JsonKey(ignore: true)
   @override
@@ -206,19 +240,24 @@ class _$_DrawingToolbarState implements _DrawingToolbarState {
 abstract class _DrawingToolbarState implements DrawingToolbarState {
   const factory _DrawingToolbarState(
           {required final DrawingTool currentTool,
-          required final PenState penState,
-          required final EraserState eraserState,
-          required final ScribblePointerMode allowedPointerMode}) =
+          required final bool useStylus,
+          required final SelectableParam<Color> penColorSelectable,
+          required final SelectableParam<double> penWidthSelectable,
+          required final SelectableParam<double> eraserWidthSelectable}) =
       _$_DrawingToolbarState;
 
   @override
   DrawingTool get currentTool => throw _privateConstructorUsedError;
   @override
-  PenState get penState => throw _privateConstructorUsedError;
+  bool get useStylus => throw _privateConstructorUsedError;
   @override
-  EraserState get eraserState => throw _privateConstructorUsedError;
+  SelectableParam<Color> get penColorSelectable =>
+      throw _privateConstructorUsedError;
   @override
-  ScribblePointerMode get allowedPointerMode =>
+  SelectableParam<double> get penWidthSelectable =>
+      throw _privateConstructorUsedError;
+  @override
+  SelectableParam<double> get eraserWidthSelectable =>
       throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

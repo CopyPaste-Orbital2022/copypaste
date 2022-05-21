@@ -1,6 +1,8 @@
-import '../entities/eraser_state.dart';
-import '../entities/pen_state.dart';
-import '../entities/selectable_tools.dart';
+import 'dart:ui';
+
+import '../entities/selectable_param.dart';
+
+import '../entities/drawing_tools.dart';
 
 abstract class IDrawingToolBarRepository {
   /// Returns the currently selected tool;
@@ -9,15 +11,27 @@ abstract class IDrawingToolBarRepository {
   /// Saves the [tool] as the currently selected tool in the shared prefs
   void saveCurrentTool(DrawingTool tool);
 
-  /// Returns the state for the pen
-  PenState getPenState();
+  /// Returns the useStylus status
+  bool getUseStylus();
 
-  /// Saves the [state] of the pen
-  void savePenState(PenState state);
+  /// Saves the useStylus status in the shared prefs
+  void saveUseStylus(bool useStylus);
 
-  /// Returns the state of the eraser
-  EraserState getEraserState();
+  /// Saves the penColorSelectable in the shared prefs
+  void savePenColorSelectable(PenColorSelectable penColorSelectable);
 
-  /// Saves the [state] of the eraser
-  void saveEraserState(EraserState state);
+  /// Returns the penColorSelectable
+  PenColorSelectable getPenColorSelectable();
+
+  /// Saves the penWidthSelectable in the shared prefs
+  void savePenWidthSelectable(PenWidthSelectable penWidthSelectable);
+
+  /// Returns the penWidthSelectable
+  PenWidthSelectable getPenWidthSelectable();
+
+  /// Saves the eraserWidthSelectable in the shared prefs
+  void saveEraserWidthSelectable(EraserWidthSelectable eraserWidthSelectable);
+
+  /// Returns the eraserWidthSelectable
+  EraserWidthSelectable getEraserWidthSelectable();
 }
