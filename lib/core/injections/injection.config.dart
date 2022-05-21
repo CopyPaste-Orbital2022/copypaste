@@ -8,11 +8,11 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:shared_preferences/shared_preferences.dart' as _i3;
 
-import '../../features/drawing-toolbar/data/repositories/drawing_toolbar_repository_impl.dart'
+import '../../features/drawing/data/repositories/drawing_toolbar_repository_impl.dart'
     as _i5;
-import '../../features/drawing-toolbar/domain/repositories/i_drawing_toolbar_repository.dart'
+import '../../features/drawing/domain/repositories/i_drawing_toolbar_repository.dart'
     as _i4;
-import '../../features/drawing-toolbar/presentation/bloc/drawing_toolbar_bloc.dart'
+import '../../features/drawing/presentation/bloc/drawing_toolbar_bloc.dart'
     as _i6;
 import 'shared_preferences.dart' as _i7; // ignore_for_file: unnecessary_lambdas
 
