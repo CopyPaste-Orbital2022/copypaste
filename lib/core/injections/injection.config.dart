@@ -6,13 +6,13 @@
 
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
-import 'package:scribble/scribble.dart' as _i5;
-import 'package:shared_preferences/shared_preferences.dart' as _i6;
+import 'package:scribble/scribble.dart' as _i4;
+import 'package:shared_preferences/shared_preferences.dart' as _i5;
 
 import '../../features/drawing/presentation/bloc/drawing_bloc/drawing_bloc.dart'
-    as _i3;
+    as _i6;
 import '../../features/drawing/presentation/bloc/drawing_eraser_bloc/drawing_eraser_bloc.dart'
-    as _i4;
+    as _i3;
 import '../../features/drawing/presentation/bloc/drawing_pencil_bloc/drawing_pencil_bloc.dart'
     as _i7;
 import 'scribble.dart' as _i8;
@@ -25,15 +25,16 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
   final gh = _i2.GetItHelper(get, environment, environmentFilter);
   final scribbleInjectionModule = _$ScribbleInjectionModule();
   final preferencesInjectionModule = _$PreferencesInjectionModule();
-  gh.lazySingleton<_i3.DrawingBloc>(() => _i3.DrawingBloc());
-  gh.lazySingleton<_i4.DrawingEraserBloc>(() => _i4.DrawingEraserBloc());
-  gh.lazySingleton<_i5.ScribbleNotifier>(
+  gh.lazySingleton<_i3.DrawingEraserBloc>(() => _i3.DrawingEraserBloc());
+  gh.lazySingleton<_i4.ScribbleNotifier>(
       () => scribbleInjectionModule.notifier);
-  await gh.factoryAsync<_i6.SharedPreferences>(
+  await gh.factoryAsync<_i5.SharedPreferences>(
       () => preferencesInjectionModule.prefs,
       preResolve: true);
+  gh.lazySingleton<_i6.DrawingBloc>(
+      () => _i6.DrawingBloc(get<_i4.ScribbleNotifier>()));
   gh.lazySingleton<_i7.DrawingPencilBloc>(
-      () => _i7.DrawingPencilBloc(get<_i5.ScribbleNotifier>()));
+      () => _i7.DrawingPencilBloc(get<_i4.ScribbleNotifier>()));
   return get;
 }
 

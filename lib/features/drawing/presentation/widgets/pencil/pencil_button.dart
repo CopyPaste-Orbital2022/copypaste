@@ -12,22 +12,20 @@ class PencilButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: BlocConsumer<DrawingBloc, DrawingState>(
-        builder: (context, state) {
-          return MyPopupIconButton(
-            selectedIcon: Icon(PlatformIcons(context).pen),
-            notSelectedIcon: Icon(PlatformIcons(context).pen),
-            isSelected: state.tool == DrawingTool.pencil,
-            onPressed: () => _onPressed(context),
-            menuContent: const MyPopupMenu(
-              child: PencilPopupMenu(),
-              size: Size(240, 300),
-            ),
-          );
-        },
-        listener: (context, state) {},
-      ),
+    return BlocConsumer<DrawingBloc, DrawingState>(
+      builder: (context, state) {
+        return MyPopupIconButton(
+          selectedIcon: Icon(PlatformIcons(context).pen),
+          notSelectedIcon: Icon(PlatformIcons(context).pen),
+          isSelected: state.tool == DrawingTool.pencil,
+          onPressed: () => _onPressed(context),
+          menuContent: const MyPopupMenu(
+            child: PencilPopupMenu(),
+            size: Size(240, 300),
+          ),
+        );
+      },
+      listener: (context, state) {},
     );
   }
 
