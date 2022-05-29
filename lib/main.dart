@@ -4,7 +4,6 @@ import 'package:injectable/injectable.dart';
 import 'core/injections/injection.dart';
 import 'features/drawing/presentation/pages/drawing_page.dart';
 
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:copypaste/constants/routes.dart';
 import 'package:copypaste/helpers/loading/loading_screen.dart';
@@ -18,12 +17,15 @@ import 'package:copypaste/features/auth/presentation/widgets/login_view.dart';
 // import 'package:copypaste/features/auth/presentation/widgets/notes/notes_view.dart';
 import 'package:copypaste/features/auth/presentation/widgets/register_view.dart';
 import 'package:copypaste/features/auth/presentation/widgets/verify_email_view.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await configureInjection(Environment.prod);
   runApp(
     MaterialApp(
+      supportedLocales: AppLocalizations.supportedLocales,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
       title: 'CopyPaste',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
