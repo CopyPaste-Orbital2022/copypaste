@@ -1,20 +1,12 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-
-import '../../../domain/entities/drawing_tool.dart';
-
-part 'drawing_state.freezed.dart';
+part of "drawing_bloc.dart";
 
 @freezed
 class DrawingState with _$DrawingState {
-  const factory DrawingState({
-    required DrawingTool currentTool,
-    required bool usesStylus,
-  }) = _DrawingState;
+  const factory DrawingState() = _DrawingState;
 }
 
 extension DrawingStateX on DrawingState {
-  static DrawingState initial() => const DrawingState(
-        currentTool: DrawingTool.hand,
-        usesStylus: false,
-      );
+  static DrawingState initial() {
+    return const DrawingState();
+  }
 }
