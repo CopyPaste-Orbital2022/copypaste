@@ -41,7 +41,10 @@ dependencies:
   injectable: ^1.5.3
   perfect_freehand: ^1.0.4
   scribble:
-    path: plugins/scribble
+    git:
+      url: https://github.com/CopyPaste-Orbital2022/scribble.git
+      ref: develop
+  selectable_items: ^1.0.0
   shared_preferences: ^2.0.13
 
 dev_dependencies:
@@ -73,9 +76,6 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  fonts:
-    - family: MenubarIcons
-      fonts:
-        - asset: assets/fonts/MenubarIcons.ttf
+  # fonts:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
