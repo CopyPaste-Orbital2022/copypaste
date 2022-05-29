@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:copypaste/features/drawing/domain/entities/drawing_tool.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,8 +9,9 @@ import 'package:my_popup_menu/my_popup_menu.dart';
 import '../../bloc/index.dart';
 
 class EraserButton extends StatelessWidget {
-  const EraserButton({Key? key}) : super(key: key);
-
+  EraserButton({Key? key}) : super(key: key);
+  final StreamController<Size> _sizeController =
+      StreamController<Size>.broadcast();
   @override
   Widget build(BuildContext context) {
     // bloc consumer of drawing eraser bloc
@@ -18,7 +21,8 @@ class EraserButton extends StatelessWidget {
           isSelected: state.tool == DrawingTool.eraser,
           menuContent: MyPopupMenu(
             child: Container(),
-            size: const Size(240, 300),
+            initialSize: const Size(240, 300),
+            sizeController: _sizeController,
           ),
           selectedIcon: Icon(PlatformIcons(context).remove),
           notSelectedIcon: Icon(PlatformIcons(context).remove),

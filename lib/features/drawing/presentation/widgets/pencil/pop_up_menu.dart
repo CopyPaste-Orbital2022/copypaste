@@ -2,6 +2,8 @@ import 'package:copypaste/features/drawing/presentation/bloc/index.dart';
 import 'package:copypaste/features/drawing/presentation/widgets/pencil/color_selector/pencil_color_selector_title.dart';
 import 'package:copypaste/features/drawing/presentation/widgets/pencil/color_selector/pencil_color_selector.dart';
 import 'package:copypaste/features/drawing/presentation/widgets/pencil/pencil_popup_menu_title.dart';
+import 'package:copypaste/features/drawing/presentation/widgets/pencil/width_selector/pencil_width_selector.dart';
+import 'package:copypaste/features/drawing/presentation/widgets/pencil/width_selector/pencil_width_selector_slider.dart';
 import 'package:copypaste/features/drawing/presentation/widgets/pencil/width_selector/pencil_width_selector_title.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,8 +31,12 @@ class PencilPopupMenu extends StatelessWidget {
           PencilColorSelectorTitle(),
           SizedBox(height: 10),
           PencilColorSelector(),
-          SizedBox(height: 10),
+          SizedBox(height: 20),
           PencilWidthSelectorTitle(),
+          SizedBox(height: 10),
+          PencilWidthSelector(),
+          SizedBox(height: 10),
+          PencilWidthSelectorSlider(),
         ],
       ),
     );

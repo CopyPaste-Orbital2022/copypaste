@@ -5,6 +5,7 @@ class DrawingPencilState with _$DrawingPencilState {
   const factory DrawingPencilState({
     required SelectableItems<Color> colors,
     required SelectableItems<double> widths,
+    String? errorMessage,
   }) = _DrawingPencilState;
 }
 
@@ -22,7 +23,7 @@ extension DrawingPencilStateX on DrawingPencilState {
       ),
       widths: SelectableItems<double>(
         currentIndex: 0,
-        items: [5, 10, 15],
+        items: [5, 10, 15, 20, 25],
       ),
     );
   }

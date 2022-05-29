@@ -1,9 +1,6 @@
-import 'package:copypaste/core/extensions/color_extension.dart';
 import 'package:copypaste/core/injections/injection.dart';
 import 'package:copypaste/features/drawing/presentation/bloc/index.dart';
-import 'package:copypaste/features/drawing/presentation/widgets/pencil/color_selector/pencil_color_selector_delete_color_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:selectable_items/selectable_items.dart';
@@ -45,23 +42,16 @@ class _PencilWidthSelectorTitle extends State<PencilWidthSelectorTitle> {
             ),
             Expanded(
               child: PlatformTextField(
+                textInputAction: TextInputAction.done,
                 controller: _controller,
-                onChanged: (value) {
-                  setState(() {
-                    _text = value;
-                  });
-                },
+                onChanged: (text) => setState(() {
+                  _text = text;
+                }),
                 style: const TextStyle(
                     fontSize: 16,
                     color: Color(0xA0000000),
                     fontFamily: "monospace"),
-                onSubmitted: (text) {
-                  getIt<DrawingPencilBloc>().add(
-                    DrawingPencilEvent.modifyStrokeSizeEvent(
-                        double.parse(text)),
-                  );
-                  _controller.clear();
-                },
+                onSubmitted: (text) => _submidValue(context, text),
               ),
             ),
             const SizedBox(width: 10),
@@ -69,11 +59,41 @@ class _PencilWidthSelectorTitle extends State<PencilWidthSelectorTitle> {
         );
       },
       listener: (context, state) {
-        if (state.widths.currentItem != null) {
-          _text = state.widths.currentItem!.toStringAsFixed(1);
-          _controller.text = _text;
-        }
+        _text = state.widths.currentItem!.toStringAsFixed(1);
+        _controller.text = _text;
       },
     );
+  }
+
+  void _submidValue(BuildContext context, String text) {
+    setState(() {
+      _text = text;
+      _controller.text = _text;
+    });
+    _submitValueCore();
+  }
+
+  void _submitValueCore() {
+    final double? width = double.tryParse(_text);
+    if (width != null && 0 <= width && width <= 32) {
+      getIt<DrawingPencilBloc>().add(
+        DrawingPencilEvent.changeStrokeSizeValueEvent(double.parse(_text)),
+      );
+    } else if (width != null && width < 0) {
+      getIt<DrawingPencilBloc>().add(
+        const DrawingPencilEvent.changeStrokeSizeValueEvent(0.1),
+      );
+    } else if (width != null && width > 32) {
+      getIt<DrawingPencilBloc>().add(
+        const DrawingPencilEvent.changeStrokeSizeValueEvent(32),
+      );
+    }
+  }
+
+  @override
+  void dispose() {
+    _submitValueCore();
+    _controller.dispose();
+    super.dispose();
   }
 }

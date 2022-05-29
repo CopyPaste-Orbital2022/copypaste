@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$DrawingPencilState {
   SelectableItems<Color> get colors => throw _privateConstructorUsedError;
   SelectableItems<double> get widths => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DrawingPencilStateCopyWith<DrawingPencilState> get copyWith =>
@@ -29,7 +30,10 @@ abstract class $DrawingPencilStateCopyWith<$Res> {
   factory $DrawingPencilStateCopyWith(
           DrawingPencilState value, $Res Function(DrawingPencilState) then) =
       _$DrawingPencilStateCopyWithImpl<$Res>;
-  $Res call({SelectableItems<Color> colors, SelectableItems<double> widths});
+  $Res call(
+      {SelectableItems<Color> colors,
+      SelectableItems<double> widths,
+      String? errorMessage});
 
   $SelectableItemsCopyWith<Color, $Res> get colors;
   $SelectableItemsCopyWith<double, $Res> get widths;
@@ -48,6 +52,7 @@ class _$DrawingPencilStateCopyWithImpl<$Res>
   $Res call({
     Object? colors = freezed,
     Object? widths = freezed,
+    Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
       colors: colors == freezed
@@ -58,6 +63,10 @@ class _$DrawingPencilStateCopyWithImpl<$Res>
           ? _value.widths
           : widths // ignore: cast_nullable_to_non_nullable
               as SelectableItems<double>,
+      errorMessage: errorMessage == freezed
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 
@@ -83,7 +92,10 @@ abstract class _$$_DrawingPencilStateCopyWith<$Res>
           $Res Function(_$_DrawingPencilState) then) =
       __$$_DrawingPencilStateCopyWithImpl<$Res>;
   @override
-  $Res call({SelectableItems<Color> colors, SelectableItems<double> widths});
+  $Res call(
+      {SelectableItems<Color> colors,
+      SelectableItems<double> widths,
+      String? errorMessage});
 
   @override
   $SelectableItemsCopyWith<Color, $Res> get colors;
@@ -106,6 +118,7 @@ class __$$_DrawingPencilStateCopyWithImpl<$Res>
   $Res call({
     Object? colors = freezed,
     Object? widths = freezed,
+    Object? errorMessage = freezed,
   }) {
     return _then(_$_DrawingPencilState(
       colors: colors == freezed
@@ -116,6 +129,10 @@ class __$$_DrawingPencilStateCopyWithImpl<$Res>
           ? _value.widths
           : widths // ignore: cast_nullable_to_non_nullable
               as SelectableItems<double>,
+      errorMessage: errorMessage == freezed
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -123,16 +140,19 @@ class __$$_DrawingPencilStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_DrawingPencilState implements _DrawingPencilState {
-  const _$_DrawingPencilState({required this.colors, required this.widths});
+  const _$_DrawingPencilState(
+      {required this.colors, required this.widths, this.errorMessage});
 
   @override
   final SelectableItems<Color> colors;
   @override
   final SelectableItems<double> widths;
+  @override
+  final String? errorMessage;
 
   @override
   String toString() {
-    return 'DrawingPencilState(colors: $colors, widths: $widths)';
+    return 'DrawingPencilState(colors: $colors, widths: $widths, errorMessage: $errorMessage)';
   }
 
   @override
@@ -141,14 +161,17 @@ class _$_DrawingPencilState implements _DrawingPencilState {
         (other.runtimeType == runtimeType &&
             other is _$_DrawingPencilState &&
             const DeepCollectionEquality().equals(other.colors, colors) &&
-            const DeepCollectionEquality().equals(other.widths, widths));
+            const DeepCollectionEquality().equals(other.widths, widths) &&
+            const DeepCollectionEquality()
+                .equals(other.errorMessage, errorMessage));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(colors),
-      const DeepCollectionEquality().hash(widths));
+      const DeepCollectionEquality().hash(widths),
+      const DeepCollectionEquality().hash(errorMessage));
 
   @JsonKey(ignore: true)
   @override
@@ -160,12 +183,15 @@ class _$_DrawingPencilState implements _DrawingPencilState {
 abstract class _DrawingPencilState implements DrawingPencilState {
   const factory _DrawingPencilState(
       {required final SelectableItems<Color> colors,
-      required final SelectableItems<double> widths}) = _$_DrawingPencilState;
+      required final SelectableItems<double> widths,
+      final String? errorMessage}) = _$_DrawingPencilState;
 
   @override
   SelectableItems<Color> get colors => throw _privateConstructorUsedError;
   @override
   SelectableItems<double> get widths => throw _privateConstructorUsedError;
+  @override
+  String? get errorMessage => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_DrawingPencilStateCopyWith<_$_DrawingPencilState> get copyWith =>
@@ -176,40 +202,46 @@ abstract class _DrawingPencilState implements DrawingPencilState {
 mixin _$DrawingPencilEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(double newSize) modifyStrokeSizeEvent,
+    required TResult Function(double newSize) changeStrokeSizeValueEvent,
     required TResult Function(int index) changeStrokeSizeSelectionEvent,
     required TResult Function(int index) changeStrokeColorSelectionEvent,
     required TResult Function(Color color) changePencilCurrentColorValueEvent,
     required TResult Function() duplicateCurrentColorEvent,
     required TResult Function() deleteCurrentColorEvent,
+    required TResult Function(String message) showErrorSnackbarEvent,
+    required TResult Function() dismissErrorSnackbarEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(double newSize)? modifyStrokeSizeEvent,
+    TResult Function(double newSize)? changeStrokeSizeValueEvent,
     TResult Function(int index)? changeStrokeSizeSelectionEvent,
     TResult Function(int index)? changeStrokeColorSelectionEvent,
     TResult Function(Color color)? changePencilCurrentColorValueEvent,
     TResult Function()? duplicateCurrentColorEvent,
     TResult Function()? deleteCurrentColorEvent,
+    TResult Function(String message)? showErrorSnackbarEvent,
+    TResult Function()? dismissErrorSnackbarEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(double newSize)? modifyStrokeSizeEvent,
+    TResult Function(double newSize)? changeStrokeSizeValueEvent,
     TResult Function(int index)? changeStrokeSizeSelectionEvent,
     TResult Function(int index)? changeStrokeColorSelectionEvent,
     TResult Function(Color color)? changePencilCurrentColorValueEvent,
     TResult Function()? duplicateCurrentColorEvent,
     TResult Function()? deleteCurrentColorEvent,
+    TResult Function(String message)? showErrorSnackbarEvent,
+    TResult Function()? dismissErrorSnackbarEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ModifyStrokeSizeEvent value)
-        modifyStrokeSizeEvent,
-    required TResult Function(ChangeStrokeSizeSelectionEvent value)
+    required TResult Function(ChangePencilStrokeSizeValueEvent value)
+        changeStrokeSizeValueEvent,
+    required TResult Function(ChangePencilStrokeSizeSelectionEvent value)
         changeStrokeSizeSelectionEvent,
     required TResult Function(ChangePencilStrokeColorSelectionEvent value)
         changeStrokeColorSelectionEvent,
@@ -219,12 +251,17 @@ mixin _$DrawingPencilEvent {
         duplicateCurrentColorEvent,
     required TResult Function(PencilDeleteCurrentColorEvent value)
         deleteCurrentColorEvent,
+    required TResult Function(ShowPencilErrorSnackbarEvent value)
+        showErrorSnackbarEvent,
+    required TResult Function(DismissPencilErrorSnackbarEvent value)
+        dismissErrorSnackbarEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ModifyStrokeSizeEvent value)? modifyStrokeSizeEvent,
-    TResult Function(ChangeStrokeSizeSelectionEvent value)?
+    TResult Function(ChangePencilStrokeSizeValueEvent value)?
+        changeStrokeSizeValueEvent,
+    TResult Function(ChangePencilStrokeSizeSelectionEvent value)?
         changeStrokeSizeSelectionEvent,
     TResult Function(ChangePencilStrokeColorSelectionEvent value)?
         changeStrokeColorSelectionEvent,
@@ -234,12 +271,17 @@ mixin _$DrawingPencilEvent {
         duplicateCurrentColorEvent,
     TResult Function(PencilDeleteCurrentColorEvent value)?
         deleteCurrentColorEvent,
+    TResult Function(ShowPencilErrorSnackbarEvent value)?
+        showErrorSnackbarEvent,
+    TResult Function(DismissPencilErrorSnackbarEvent value)?
+        dismissErrorSnackbarEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ModifyStrokeSizeEvent value)? modifyStrokeSizeEvent,
-    TResult Function(ChangeStrokeSizeSelectionEvent value)?
+    TResult Function(ChangePencilStrokeSizeValueEvent value)?
+        changeStrokeSizeValueEvent,
+    TResult Function(ChangePencilStrokeSizeSelectionEvent value)?
         changeStrokeSizeSelectionEvent,
     TResult Function(ChangePencilStrokeColorSelectionEvent value)?
         changeStrokeColorSelectionEvent,
@@ -249,6 +291,10 @@ mixin _$DrawingPencilEvent {
         duplicateCurrentColorEvent,
     TResult Function(PencilDeleteCurrentColorEvent value)?
         deleteCurrentColorEvent,
+    TResult Function(ShowPencilErrorSnackbarEvent value)?
+        showErrorSnackbarEvent,
+    TResult Function(DismissPencilErrorSnackbarEvent value)?
+        dismissErrorSnackbarEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -272,29 +318,32 @@ class _$DrawingPencilEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$$ModifyStrokeSizeEventCopyWith<$Res> {
-  factory _$$ModifyStrokeSizeEventCopyWith(_$ModifyStrokeSizeEvent value,
-          $Res Function(_$ModifyStrokeSizeEvent) then) =
-      __$$ModifyStrokeSizeEventCopyWithImpl<$Res>;
+abstract class _$$ChangePencilStrokeSizeValueEventCopyWith<$Res> {
+  factory _$$ChangePencilStrokeSizeValueEventCopyWith(
+          _$ChangePencilStrokeSizeValueEvent value,
+          $Res Function(_$ChangePencilStrokeSizeValueEvent) then) =
+      __$$ChangePencilStrokeSizeValueEventCopyWithImpl<$Res>;
   $Res call({double newSize});
 }
 
 /// @nodoc
-class __$$ModifyStrokeSizeEventCopyWithImpl<$Res>
+class __$$ChangePencilStrokeSizeValueEventCopyWithImpl<$Res>
     extends _$DrawingPencilEventCopyWithImpl<$Res>
-    implements _$$ModifyStrokeSizeEventCopyWith<$Res> {
-  __$$ModifyStrokeSizeEventCopyWithImpl(_$ModifyStrokeSizeEvent _value,
-      $Res Function(_$ModifyStrokeSizeEvent) _then)
-      : super(_value, (v) => _then(v as _$ModifyStrokeSizeEvent));
+    implements _$$ChangePencilStrokeSizeValueEventCopyWith<$Res> {
+  __$$ChangePencilStrokeSizeValueEventCopyWithImpl(
+      _$ChangePencilStrokeSizeValueEvent _value,
+      $Res Function(_$ChangePencilStrokeSizeValueEvent) _then)
+      : super(_value, (v) => _then(v as _$ChangePencilStrokeSizeValueEvent));
 
   @override
-  _$ModifyStrokeSizeEvent get _value => super._value as _$ModifyStrokeSizeEvent;
+  _$ChangePencilStrokeSizeValueEvent get _value =>
+      super._value as _$ChangePencilStrokeSizeValueEvent;
 
   @override
   $Res call({
     Object? newSize = freezed,
   }) {
-    return _then(_$ModifyStrokeSizeEvent(
+    return _then(_$ChangePencilStrokeSizeValueEvent(
       newSize == freezed
           ? _value.newSize
           : newSize // ignore: cast_nullable_to_non_nullable
@@ -305,22 +354,23 @@ class __$$ModifyStrokeSizeEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ModifyStrokeSizeEvent implements ModifyStrokeSizeEvent {
-  const _$ModifyStrokeSizeEvent(this.newSize);
+class _$ChangePencilStrokeSizeValueEvent
+    implements ChangePencilStrokeSizeValueEvent {
+  const _$ChangePencilStrokeSizeValueEvent(this.newSize);
 
   @override
   final double newSize;
 
   @override
   String toString() {
-    return 'DrawingPencilEvent.modifyStrokeSizeEvent(newSize: $newSize)';
+    return 'DrawingPencilEvent.changeStrokeSizeValueEvent(newSize: $newSize)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ModifyStrokeSizeEvent &&
+            other is _$ChangePencilStrokeSizeValueEvent &&
             const DeepCollectionEquality().equals(other.newSize, newSize));
   }
 
@@ -330,49 +380,56 @@ class _$ModifyStrokeSizeEvent implements ModifyStrokeSizeEvent {
 
   @JsonKey(ignore: true)
   @override
-  _$$ModifyStrokeSizeEventCopyWith<_$ModifyStrokeSizeEvent> get copyWith =>
-      __$$ModifyStrokeSizeEventCopyWithImpl<_$ModifyStrokeSizeEvent>(
-          this, _$identity);
+  _$$ChangePencilStrokeSizeValueEventCopyWith<
+          _$ChangePencilStrokeSizeValueEvent>
+      get copyWith => __$$ChangePencilStrokeSizeValueEventCopyWithImpl<
+          _$ChangePencilStrokeSizeValueEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(double newSize) modifyStrokeSizeEvent,
+    required TResult Function(double newSize) changeStrokeSizeValueEvent,
     required TResult Function(int index) changeStrokeSizeSelectionEvent,
     required TResult Function(int index) changeStrokeColorSelectionEvent,
     required TResult Function(Color color) changePencilCurrentColorValueEvent,
     required TResult Function() duplicateCurrentColorEvent,
     required TResult Function() deleteCurrentColorEvent,
+    required TResult Function(String message) showErrorSnackbarEvent,
+    required TResult Function() dismissErrorSnackbarEvent,
   }) {
-    return modifyStrokeSizeEvent(newSize);
+    return changeStrokeSizeValueEvent(newSize);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(double newSize)? modifyStrokeSizeEvent,
+    TResult Function(double newSize)? changeStrokeSizeValueEvent,
     TResult Function(int index)? changeStrokeSizeSelectionEvent,
     TResult Function(int index)? changeStrokeColorSelectionEvent,
     TResult Function(Color color)? changePencilCurrentColorValueEvent,
     TResult Function()? duplicateCurrentColorEvent,
     TResult Function()? deleteCurrentColorEvent,
+    TResult Function(String message)? showErrorSnackbarEvent,
+    TResult Function()? dismissErrorSnackbarEvent,
   }) {
-    return modifyStrokeSizeEvent?.call(newSize);
+    return changeStrokeSizeValueEvent?.call(newSize);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(double newSize)? modifyStrokeSizeEvent,
+    TResult Function(double newSize)? changeStrokeSizeValueEvent,
     TResult Function(int index)? changeStrokeSizeSelectionEvent,
     TResult Function(int index)? changeStrokeColorSelectionEvent,
     TResult Function(Color color)? changePencilCurrentColorValueEvent,
     TResult Function()? duplicateCurrentColorEvent,
     TResult Function()? deleteCurrentColorEvent,
+    TResult Function(String message)? showErrorSnackbarEvent,
+    TResult Function()? dismissErrorSnackbarEvent,
     required TResult orElse(),
   }) {
-    if (modifyStrokeSizeEvent != null) {
-      return modifyStrokeSizeEvent(newSize);
+    if (changeStrokeSizeValueEvent != null) {
+      return changeStrokeSizeValueEvent(newSize);
     }
     return orElse();
   }
@@ -380,9 +437,9 @@ class _$ModifyStrokeSizeEvent implements ModifyStrokeSizeEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ModifyStrokeSizeEvent value)
-        modifyStrokeSizeEvent,
-    required TResult Function(ChangeStrokeSizeSelectionEvent value)
+    required TResult Function(ChangePencilStrokeSizeValueEvent value)
+        changeStrokeSizeValueEvent,
+    required TResult Function(ChangePencilStrokeSizeSelectionEvent value)
         changeStrokeSizeSelectionEvent,
     required TResult Function(ChangePencilStrokeColorSelectionEvent value)
         changeStrokeColorSelectionEvent,
@@ -392,15 +449,20 @@ class _$ModifyStrokeSizeEvent implements ModifyStrokeSizeEvent {
         duplicateCurrentColorEvent,
     required TResult Function(PencilDeleteCurrentColorEvent value)
         deleteCurrentColorEvent,
+    required TResult Function(ShowPencilErrorSnackbarEvent value)
+        showErrorSnackbarEvent,
+    required TResult Function(DismissPencilErrorSnackbarEvent value)
+        dismissErrorSnackbarEvent,
   }) {
-    return modifyStrokeSizeEvent(this);
+    return changeStrokeSizeValueEvent(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ModifyStrokeSizeEvent value)? modifyStrokeSizeEvent,
-    TResult Function(ChangeStrokeSizeSelectionEvent value)?
+    TResult Function(ChangePencilStrokeSizeValueEvent value)?
+        changeStrokeSizeValueEvent,
+    TResult Function(ChangePencilStrokeSizeSelectionEvent value)?
         changeStrokeSizeSelectionEvent,
     TResult Function(ChangePencilStrokeColorSelectionEvent value)?
         changeStrokeColorSelectionEvent,
@@ -410,15 +472,20 @@ class _$ModifyStrokeSizeEvent implements ModifyStrokeSizeEvent {
         duplicateCurrentColorEvent,
     TResult Function(PencilDeleteCurrentColorEvent value)?
         deleteCurrentColorEvent,
+    TResult Function(ShowPencilErrorSnackbarEvent value)?
+        showErrorSnackbarEvent,
+    TResult Function(DismissPencilErrorSnackbarEvent value)?
+        dismissErrorSnackbarEvent,
   }) {
-    return modifyStrokeSizeEvent?.call(this);
+    return changeStrokeSizeValueEvent?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ModifyStrokeSizeEvent value)? modifyStrokeSizeEvent,
-    TResult Function(ChangeStrokeSizeSelectionEvent value)?
+    TResult Function(ChangePencilStrokeSizeValueEvent value)?
+        changeStrokeSizeValueEvent,
+    TResult Function(ChangePencilStrokeSizeSelectionEvent value)?
         changeStrokeSizeSelectionEvent,
     TResult Function(ChangePencilStrokeColorSelectionEvent value)?
         changeStrokeColorSelectionEvent,
@@ -428,52 +495,58 @@ class _$ModifyStrokeSizeEvent implements ModifyStrokeSizeEvent {
         duplicateCurrentColorEvent,
     TResult Function(PencilDeleteCurrentColorEvent value)?
         deleteCurrentColorEvent,
+    TResult Function(ShowPencilErrorSnackbarEvent value)?
+        showErrorSnackbarEvent,
+    TResult Function(DismissPencilErrorSnackbarEvent value)?
+        dismissErrorSnackbarEvent,
     required TResult orElse(),
   }) {
-    if (modifyStrokeSizeEvent != null) {
-      return modifyStrokeSizeEvent(this);
+    if (changeStrokeSizeValueEvent != null) {
+      return changeStrokeSizeValueEvent(this);
     }
     return orElse();
   }
 }
 
-abstract class ModifyStrokeSizeEvent implements DrawingPencilEvent {
-  const factory ModifyStrokeSizeEvent(final double newSize) =
-      _$ModifyStrokeSizeEvent;
+abstract class ChangePencilStrokeSizeValueEvent implements DrawingPencilEvent {
+  const factory ChangePencilStrokeSizeValueEvent(final double newSize) =
+      _$ChangePencilStrokeSizeValueEvent;
 
   double get newSize => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$$ModifyStrokeSizeEventCopyWith<_$ModifyStrokeSizeEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ChangePencilStrokeSizeValueEventCopyWith<
+          _$ChangePencilStrokeSizeValueEvent>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ChangeStrokeSizeSelectionEventCopyWith<$Res> {
-  factory _$$ChangeStrokeSizeSelectionEventCopyWith(
-          _$ChangeStrokeSizeSelectionEvent value,
-          $Res Function(_$ChangeStrokeSizeSelectionEvent) then) =
-      __$$ChangeStrokeSizeSelectionEventCopyWithImpl<$Res>;
+abstract class _$$ChangePencilStrokeSizeSelectionEventCopyWith<$Res> {
+  factory _$$ChangePencilStrokeSizeSelectionEventCopyWith(
+          _$ChangePencilStrokeSizeSelectionEvent value,
+          $Res Function(_$ChangePencilStrokeSizeSelectionEvent) then) =
+      __$$ChangePencilStrokeSizeSelectionEventCopyWithImpl<$Res>;
   $Res call({int index});
 }
 
 /// @nodoc
-class __$$ChangeStrokeSizeSelectionEventCopyWithImpl<$Res>
+class __$$ChangePencilStrokeSizeSelectionEventCopyWithImpl<$Res>
     extends _$DrawingPencilEventCopyWithImpl<$Res>
-    implements _$$ChangeStrokeSizeSelectionEventCopyWith<$Res> {
-  __$$ChangeStrokeSizeSelectionEventCopyWithImpl(
-      _$ChangeStrokeSizeSelectionEvent _value,
-      $Res Function(_$ChangeStrokeSizeSelectionEvent) _then)
-      : super(_value, (v) => _then(v as _$ChangeStrokeSizeSelectionEvent));
+    implements _$$ChangePencilStrokeSizeSelectionEventCopyWith<$Res> {
+  __$$ChangePencilStrokeSizeSelectionEventCopyWithImpl(
+      _$ChangePencilStrokeSizeSelectionEvent _value,
+      $Res Function(_$ChangePencilStrokeSizeSelectionEvent) _then)
+      : super(
+            _value, (v) => _then(v as _$ChangePencilStrokeSizeSelectionEvent));
 
   @override
-  _$ChangeStrokeSizeSelectionEvent get _value =>
-      super._value as _$ChangeStrokeSizeSelectionEvent;
+  _$ChangePencilStrokeSizeSelectionEvent get _value =>
+      super._value as _$ChangePencilStrokeSizeSelectionEvent;
 
   @override
   $Res call({
     Object? index = freezed,
   }) {
-    return _then(_$ChangeStrokeSizeSelectionEvent(
+    return _then(_$ChangePencilStrokeSizeSelectionEvent(
       index == freezed
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
@@ -484,9 +557,9 @@ class __$$ChangeStrokeSizeSelectionEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ChangeStrokeSizeSelectionEvent
-    implements ChangeStrokeSizeSelectionEvent {
-  const _$ChangeStrokeSizeSelectionEvent(this.index);
+class _$ChangePencilStrokeSizeSelectionEvent
+    implements ChangePencilStrokeSizeSelectionEvent {
+  const _$ChangePencilStrokeSizeSelectionEvent(this.index);
 
   @override
   final int index;
@@ -500,7 +573,7 @@ class _$ChangeStrokeSizeSelectionEvent
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ChangeStrokeSizeSelectionEvent &&
+            other is _$ChangePencilStrokeSizeSelectionEvent &&
             const DeepCollectionEquality().equals(other.index, index));
   }
 
@@ -510,19 +583,22 @@ class _$ChangeStrokeSizeSelectionEvent
 
   @JsonKey(ignore: true)
   @override
-  _$$ChangeStrokeSizeSelectionEventCopyWith<_$ChangeStrokeSizeSelectionEvent>
-      get copyWith => __$$ChangeStrokeSizeSelectionEventCopyWithImpl<
-          _$ChangeStrokeSizeSelectionEvent>(this, _$identity);
+  _$$ChangePencilStrokeSizeSelectionEventCopyWith<
+          _$ChangePencilStrokeSizeSelectionEvent>
+      get copyWith => __$$ChangePencilStrokeSizeSelectionEventCopyWithImpl<
+          _$ChangePencilStrokeSizeSelectionEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(double newSize) modifyStrokeSizeEvent,
+    required TResult Function(double newSize) changeStrokeSizeValueEvent,
     required TResult Function(int index) changeStrokeSizeSelectionEvent,
     required TResult Function(int index) changeStrokeColorSelectionEvent,
     required TResult Function(Color color) changePencilCurrentColorValueEvent,
     required TResult Function() duplicateCurrentColorEvent,
     required TResult Function() deleteCurrentColorEvent,
+    required TResult Function(String message) showErrorSnackbarEvent,
+    required TResult Function() dismissErrorSnackbarEvent,
   }) {
     return changeStrokeSizeSelectionEvent(index);
   }
@@ -530,12 +606,14 @@ class _$ChangeStrokeSizeSelectionEvent
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(double newSize)? modifyStrokeSizeEvent,
+    TResult Function(double newSize)? changeStrokeSizeValueEvent,
     TResult Function(int index)? changeStrokeSizeSelectionEvent,
     TResult Function(int index)? changeStrokeColorSelectionEvent,
     TResult Function(Color color)? changePencilCurrentColorValueEvent,
     TResult Function()? duplicateCurrentColorEvent,
     TResult Function()? deleteCurrentColorEvent,
+    TResult Function(String message)? showErrorSnackbarEvent,
+    TResult Function()? dismissErrorSnackbarEvent,
   }) {
     return changeStrokeSizeSelectionEvent?.call(index);
   }
@@ -543,12 +621,14 @@ class _$ChangeStrokeSizeSelectionEvent
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(double newSize)? modifyStrokeSizeEvent,
+    TResult Function(double newSize)? changeStrokeSizeValueEvent,
     TResult Function(int index)? changeStrokeSizeSelectionEvent,
     TResult Function(int index)? changeStrokeColorSelectionEvent,
     TResult Function(Color color)? changePencilCurrentColorValueEvent,
     TResult Function()? duplicateCurrentColorEvent,
     TResult Function()? deleteCurrentColorEvent,
+    TResult Function(String message)? showErrorSnackbarEvent,
+    TResult Function()? dismissErrorSnackbarEvent,
     required TResult orElse(),
   }) {
     if (changeStrokeSizeSelectionEvent != null) {
@@ -560,9 +640,9 @@ class _$ChangeStrokeSizeSelectionEvent
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ModifyStrokeSizeEvent value)
-        modifyStrokeSizeEvent,
-    required TResult Function(ChangeStrokeSizeSelectionEvent value)
+    required TResult Function(ChangePencilStrokeSizeValueEvent value)
+        changeStrokeSizeValueEvent,
+    required TResult Function(ChangePencilStrokeSizeSelectionEvent value)
         changeStrokeSizeSelectionEvent,
     required TResult Function(ChangePencilStrokeColorSelectionEvent value)
         changeStrokeColorSelectionEvent,
@@ -572,6 +652,10 @@ class _$ChangeStrokeSizeSelectionEvent
         duplicateCurrentColorEvent,
     required TResult Function(PencilDeleteCurrentColorEvent value)
         deleteCurrentColorEvent,
+    required TResult Function(ShowPencilErrorSnackbarEvent value)
+        showErrorSnackbarEvent,
+    required TResult Function(DismissPencilErrorSnackbarEvent value)
+        dismissErrorSnackbarEvent,
   }) {
     return changeStrokeSizeSelectionEvent(this);
   }
@@ -579,8 +663,9 @@ class _$ChangeStrokeSizeSelectionEvent
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ModifyStrokeSizeEvent value)? modifyStrokeSizeEvent,
-    TResult Function(ChangeStrokeSizeSelectionEvent value)?
+    TResult Function(ChangePencilStrokeSizeValueEvent value)?
+        changeStrokeSizeValueEvent,
+    TResult Function(ChangePencilStrokeSizeSelectionEvent value)?
         changeStrokeSizeSelectionEvent,
     TResult Function(ChangePencilStrokeColorSelectionEvent value)?
         changeStrokeColorSelectionEvent,
@@ -590,6 +675,10 @@ class _$ChangeStrokeSizeSelectionEvent
         duplicateCurrentColorEvent,
     TResult Function(PencilDeleteCurrentColorEvent value)?
         deleteCurrentColorEvent,
+    TResult Function(ShowPencilErrorSnackbarEvent value)?
+        showErrorSnackbarEvent,
+    TResult Function(DismissPencilErrorSnackbarEvent value)?
+        dismissErrorSnackbarEvent,
   }) {
     return changeStrokeSizeSelectionEvent?.call(this);
   }
@@ -597,8 +686,9 @@ class _$ChangeStrokeSizeSelectionEvent
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ModifyStrokeSizeEvent value)? modifyStrokeSizeEvent,
-    TResult Function(ChangeStrokeSizeSelectionEvent value)?
+    TResult Function(ChangePencilStrokeSizeValueEvent value)?
+        changeStrokeSizeValueEvent,
+    TResult Function(ChangePencilStrokeSizeSelectionEvent value)?
         changeStrokeSizeSelectionEvent,
     TResult Function(ChangePencilStrokeColorSelectionEvent value)?
         changeStrokeColorSelectionEvent,
@@ -608,6 +698,10 @@ class _$ChangeStrokeSizeSelectionEvent
         duplicateCurrentColorEvent,
     TResult Function(PencilDeleteCurrentColorEvent value)?
         deleteCurrentColorEvent,
+    TResult Function(ShowPencilErrorSnackbarEvent value)?
+        showErrorSnackbarEvent,
+    TResult Function(DismissPencilErrorSnackbarEvent value)?
+        dismissErrorSnackbarEvent,
     required TResult orElse(),
   }) {
     if (changeStrokeSizeSelectionEvent != null) {
@@ -617,13 +711,15 @@ class _$ChangeStrokeSizeSelectionEvent
   }
 }
 
-abstract class ChangeStrokeSizeSelectionEvent implements DrawingPencilEvent {
-  const factory ChangeStrokeSizeSelectionEvent(final int index) =
-      _$ChangeStrokeSizeSelectionEvent;
+abstract class ChangePencilStrokeSizeSelectionEvent
+    implements DrawingPencilEvent {
+  const factory ChangePencilStrokeSizeSelectionEvent(final int index) =
+      _$ChangePencilStrokeSizeSelectionEvent;
 
   int get index => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$$ChangeStrokeSizeSelectionEventCopyWith<_$ChangeStrokeSizeSelectionEvent>
+  _$$ChangePencilStrokeSizeSelectionEventCopyWith<
+          _$ChangePencilStrokeSizeSelectionEvent>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -699,12 +795,14 @@ class _$ChangePencilStrokeColorSelectionEvent
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(double newSize) modifyStrokeSizeEvent,
+    required TResult Function(double newSize) changeStrokeSizeValueEvent,
     required TResult Function(int index) changeStrokeSizeSelectionEvent,
     required TResult Function(int index) changeStrokeColorSelectionEvent,
     required TResult Function(Color color) changePencilCurrentColorValueEvent,
     required TResult Function() duplicateCurrentColorEvent,
     required TResult Function() deleteCurrentColorEvent,
+    required TResult Function(String message) showErrorSnackbarEvent,
+    required TResult Function() dismissErrorSnackbarEvent,
   }) {
     return changeStrokeColorSelectionEvent(index);
   }
@@ -712,12 +810,14 @@ class _$ChangePencilStrokeColorSelectionEvent
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(double newSize)? modifyStrokeSizeEvent,
+    TResult Function(double newSize)? changeStrokeSizeValueEvent,
     TResult Function(int index)? changeStrokeSizeSelectionEvent,
     TResult Function(int index)? changeStrokeColorSelectionEvent,
     TResult Function(Color color)? changePencilCurrentColorValueEvent,
     TResult Function()? duplicateCurrentColorEvent,
     TResult Function()? deleteCurrentColorEvent,
+    TResult Function(String message)? showErrorSnackbarEvent,
+    TResult Function()? dismissErrorSnackbarEvent,
   }) {
     return changeStrokeColorSelectionEvent?.call(index);
   }
@@ -725,12 +825,14 @@ class _$ChangePencilStrokeColorSelectionEvent
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(double newSize)? modifyStrokeSizeEvent,
+    TResult Function(double newSize)? changeStrokeSizeValueEvent,
     TResult Function(int index)? changeStrokeSizeSelectionEvent,
     TResult Function(int index)? changeStrokeColorSelectionEvent,
     TResult Function(Color color)? changePencilCurrentColorValueEvent,
     TResult Function()? duplicateCurrentColorEvent,
     TResult Function()? deleteCurrentColorEvent,
+    TResult Function(String message)? showErrorSnackbarEvent,
+    TResult Function()? dismissErrorSnackbarEvent,
     required TResult orElse(),
   }) {
     if (changeStrokeColorSelectionEvent != null) {
@@ -742,9 +844,9 @@ class _$ChangePencilStrokeColorSelectionEvent
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ModifyStrokeSizeEvent value)
-        modifyStrokeSizeEvent,
-    required TResult Function(ChangeStrokeSizeSelectionEvent value)
+    required TResult Function(ChangePencilStrokeSizeValueEvent value)
+        changeStrokeSizeValueEvent,
+    required TResult Function(ChangePencilStrokeSizeSelectionEvent value)
         changeStrokeSizeSelectionEvent,
     required TResult Function(ChangePencilStrokeColorSelectionEvent value)
         changeStrokeColorSelectionEvent,
@@ -754,6 +856,10 @@ class _$ChangePencilStrokeColorSelectionEvent
         duplicateCurrentColorEvent,
     required TResult Function(PencilDeleteCurrentColorEvent value)
         deleteCurrentColorEvent,
+    required TResult Function(ShowPencilErrorSnackbarEvent value)
+        showErrorSnackbarEvent,
+    required TResult Function(DismissPencilErrorSnackbarEvent value)
+        dismissErrorSnackbarEvent,
   }) {
     return changeStrokeColorSelectionEvent(this);
   }
@@ -761,8 +867,9 @@ class _$ChangePencilStrokeColorSelectionEvent
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ModifyStrokeSizeEvent value)? modifyStrokeSizeEvent,
-    TResult Function(ChangeStrokeSizeSelectionEvent value)?
+    TResult Function(ChangePencilStrokeSizeValueEvent value)?
+        changeStrokeSizeValueEvent,
+    TResult Function(ChangePencilStrokeSizeSelectionEvent value)?
         changeStrokeSizeSelectionEvent,
     TResult Function(ChangePencilStrokeColorSelectionEvent value)?
         changeStrokeColorSelectionEvent,
@@ -772,6 +879,10 @@ class _$ChangePencilStrokeColorSelectionEvent
         duplicateCurrentColorEvent,
     TResult Function(PencilDeleteCurrentColorEvent value)?
         deleteCurrentColorEvent,
+    TResult Function(ShowPencilErrorSnackbarEvent value)?
+        showErrorSnackbarEvent,
+    TResult Function(DismissPencilErrorSnackbarEvent value)?
+        dismissErrorSnackbarEvent,
   }) {
     return changeStrokeColorSelectionEvent?.call(this);
   }
@@ -779,8 +890,9 @@ class _$ChangePencilStrokeColorSelectionEvent
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ModifyStrokeSizeEvent value)? modifyStrokeSizeEvent,
-    TResult Function(ChangeStrokeSizeSelectionEvent value)?
+    TResult Function(ChangePencilStrokeSizeValueEvent value)?
+        changeStrokeSizeValueEvent,
+    TResult Function(ChangePencilStrokeSizeSelectionEvent value)?
         changeStrokeSizeSelectionEvent,
     TResult Function(ChangePencilStrokeColorSelectionEvent value)?
         changeStrokeColorSelectionEvent,
@@ -790,6 +902,10 @@ class _$ChangePencilStrokeColorSelectionEvent
         duplicateCurrentColorEvent,
     TResult Function(PencilDeleteCurrentColorEvent value)?
         deleteCurrentColorEvent,
+    TResult Function(ShowPencilErrorSnackbarEvent value)?
+        showErrorSnackbarEvent,
+    TResult Function(DismissPencilErrorSnackbarEvent value)?
+        dismissErrorSnackbarEvent,
     required TResult orElse(),
   }) {
     if (changeStrokeColorSelectionEvent != null) {
@@ -882,12 +998,14 @@ class _$ChangePencilCurrentColorValueEvent
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(double newSize) modifyStrokeSizeEvent,
+    required TResult Function(double newSize) changeStrokeSizeValueEvent,
     required TResult Function(int index) changeStrokeSizeSelectionEvent,
     required TResult Function(int index) changeStrokeColorSelectionEvent,
     required TResult Function(Color color) changePencilCurrentColorValueEvent,
     required TResult Function() duplicateCurrentColorEvent,
     required TResult Function() deleteCurrentColorEvent,
+    required TResult Function(String message) showErrorSnackbarEvent,
+    required TResult Function() dismissErrorSnackbarEvent,
   }) {
     return changePencilCurrentColorValueEvent(color);
   }
@@ -895,12 +1013,14 @@ class _$ChangePencilCurrentColorValueEvent
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(double newSize)? modifyStrokeSizeEvent,
+    TResult Function(double newSize)? changeStrokeSizeValueEvent,
     TResult Function(int index)? changeStrokeSizeSelectionEvent,
     TResult Function(int index)? changeStrokeColorSelectionEvent,
     TResult Function(Color color)? changePencilCurrentColorValueEvent,
     TResult Function()? duplicateCurrentColorEvent,
     TResult Function()? deleteCurrentColorEvent,
+    TResult Function(String message)? showErrorSnackbarEvent,
+    TResult Function()? dismissErrorSnackbarEvent,
   }) {
     return changePencilCurrentColorValueEvent?.call(color);
   }
@@ -908,12 +1028,14 @@ class _$ChangePencilCurrentColorValueEvent
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(double newSize)? modifyStrokeSizeEvent,
+    TResult Function(double newSize)? changeStrokeSizeValueEvent,
     TResult Function(int index)? changeStrokeSizeSelectionEvent,
     TResult Function(int index)? changeStrokeColorSelectionEvent,
     TResult Function(Color color)? changePencilCurrentColorValueEvent,
     TResult Function()? duplicateCurrentColorEvent,
     TResult Function()? deleteCurrentColorEvent,
+    TResult Function(String message)? showErrorSnackbarEvent,
+    TResult Function()? dismissErrorSnackbarEvent,
     required TResult orElse(),
   }) {
     if (changePencilCurrentColorValueEvent != null) {
@@ -925,9 +1047,9 @@ class _$ChangePencilCurrentColorValueEvent
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ModifyStrokeSizeEvent value)
-        modifyStrokeSizeEvent,
-    required TResult Function(ChangeStrokeSizeSelectionEvent value)
+    required TResult Function(ChangePencilStrokeSizeValueEvent value)
+        changeStrokeSizeValueEvent,
+    required TResult Function(ChangePencilStrokeSizeSelectionEvent value)
         changeStrokeSizeSelectionEvent,
     required TResult Function(ChangePencilStrokeColorSelectionEvent value)
         changeStrokeColorSelectionEvent,
@@ -937,6 +1059,10 @@ class _$ChangePencilCurrentColorValueEvent
         duplicateCurrentColorEvent,
     required TResult Function(PencilDeleteCurrentColorEvent value)
         deleteCurrentColorEvent,
+    required TResult Function(ShowPencilErrorSnackbarEvent value)
+        showErrorSnackbarEvent,
+    required TResult Function(DismissPencilErrorSnackbarEvent value)
+        dismissErrorSnackbarEvent,
   }) {
     return changePencilCurrentColorValueEvent(this);
   }
@@ -944,8 +1070,9 @@ class _$ChangePencilCurrentColorValueEvent
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ModifyStrokeSizeEvent value)? modifyStrokeSizeEvent,
-    TResult Function(ChangeStrokeSizeSelectionEvent value)?
+    TResult Function(ChangePencilStrokeSizeValueEvent value)?
+        changeStrokeSizeValueEvent,
+    TResult Function(ChangePencilStrokeSizeSelectionEvent value)?
         changeStrokeSizeSelectionEvent,
     TResult Function(ChangePencilStrokeColorSelectionEvent value)?
         changeStrokeColorSelectionEvent,
@@ -955,6 +1082,10 @@ class _$ChangePencilCurrentColorValueEvent
         duplicateCurrentColorEvent,
     TResult Function(PencilDeleteCurrentColorEvent value)?
         deleteCurrentColorEvent,
+    TResult Function(ShowPencilErrorSnackbarEvent value)?
+        showErrorSnackbarEvent,
+    TResult Function(DismissPencilErrorSnackbarEvent value)?
+        dismissErrorSnackbarEvent,
   }) {
     return changePencilCurrentColorValueEvent?.call(this);
   }
@@ -962,8 +1093,9 @@ class _$ChangePencilCurrentColorValueEvent
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ModifyStrokeSizeEvent value)? modifyStrokeSizeEvent,
-    TResult Function(ChangeStrokeSizeSelectionEvent value)?
+    TResult Function(ChangePencilStrokeSizeValueEvent value)?
+        changeStrokeSizeValueEvent,
+    TResult Function(ChangePencilStrokeSizeSelectionEvent value)?
         changeStrokeSizeSelectionEvent,
     TResult Function(ChangePencilStrokeColorSelectionEvent value)?
         changeStrokeColorSelectionEvent,
@@ -973,6 +1105,10 @@ class _$ChangePencilCurrentColorValueEvent
         duplicateCurrentColorEvent,
     TResult Function(PencilDeleteCurrentColorEvent value)?
         deleteCurrentColorEvent,
+    TResult Function(ShowPencilErrorSnackbarEvent value)?
+        showErrorSnackbarEvent,
+    TResult Function(DismissPencilErrorSnackbarEvent value)?
+        dismissErrorSnackbarEvent,
     required TResult orElse(),
   }) {
     if (changePencilCurrentColorValueEvent != null) {
@@ -1040,12 +1176,14 @@ class _$PencilDuplicateCurrentColorEvent
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(double newSize) modifyStrokeSizeEvent,
+    required TResult Function(double newSize) changeStrokeSizeValueEvent,
     required TResult Function(int index) changeStrokeSizeSelectionEvent,
     required TResult Function(int index) changeStrokeColorSelectionEvent,
     required TResult Function(Color color) changePencilCurrentColorValueEvent,
     required TResult Function() duplicateCurrentColorEvent,
     required TResult Function() deleteCurrentColorEvent,
+    required TResult Function(String message) showErrorSnackbarEvent,
+    required TResult Function() dismissErrorSnackbarEvent,
   }) {
     return duplicateCurrentColorEvent();
   }
@@ -1053,12 +1191,14 @@ class _$PencilDuplicateCurrentColorEvent
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(double newSize)? modifyStrokeSizeEvent,
+    TResult Function(double newSize)? changeStrokeSizeValueEvent,
     TResult Function(int index)? changeStrokeSizeSelectionEvent,
     TResult Function(int index)? changeStrokeColorSelectionEvent,
     TResult Function(Color color)? changePencilCurrentColorValueEvent,
     TResult Function()? duplicateCurrentColorEvent,
     TResult Function()? deleteCurrentColorEvent,
+    TResult Function(String message)? showErrorSnackbarEvent,
+    TResult Function()? dismissErrorSnackbarEvent,
   }) {
     return duplicateCurrentColorEvent?.call();
   }
@@ -1066,12 +1206,14 @@ class _$PencilDuplicateCurrentColorEvent
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(double newSize)? modifyStrokeSizeEvent,
+    TResult Function(double newSize)? changeStrokeSizeValueEvent,
     TResult Function(int index)? changeStrokeSizeSelectionEvent,
     TResult Function(int index)? changeStrokeColorSelectionEvent,
     TResult Function(Color color)? changePencilCurrentColorValueEvent,
     TResult Function()? duplicateCurrentColorEvent,
     TResult Function()? deleteCurrentColorEvent,
+    TResult Function(String message)? showErrorSnackbarEvent,
+    TResult Function()? dismissErrorSnackbarEvent,
     required TResult orElse(),
   }) {
     if (duplicateCurrentColorEvent != null) {
@@ -1083,9 +1225,9 @@ class _$PencilDuplicateCurrentColorEvent
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ModifyStrokeSizeEvent value)
-        modifyStrokeSizeEvent,
-    required TResult Function(ChangeStrokeSizeSelectionEvent value)
+    required TResult Function(ChangePencilStrokeSizeValueEvent value)
+        changeStrokeSizeValueEvent,
+    required TResult Function(ChangePencilStrokeSizeSelectionEvent value)
         changeStrokeSizeSelectionEvent,
     required TResult Function(ChangePencilStrokeColorSelectionEvent value)
         changeStrokeColorSelectionEvent,
@@ -1095,6 +1237,10 @@ class _$PencilDuplicateCurrentColorEvent
         duplicateCurrentColorEvent,
     required TResult Function(PencilDeleteCurrentColorEvent value)
         deleteCurrentColorEvent,
+    required TResult Function(ShowPencilErrorSnackbarEvent value)
+        showErrorSnackbarEvent,
+    required TResult Function(DismissPencilErrorSnackbarEvent value)
+        dismissErrorSnackbarEvent,
   }) {
     return duplicateCurrentColorEvent(this);
   }
@@ -1102,8 +1248,9 @@ class _$PencilDuplicateCurrentColorEvent
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ModifyStrokeSizeEvent value)? modifyStrokeSizeEvent,
-    TResult Function(ChangeStrokeSizeSelectionEvent value)?
+    TResult Function(ChangePencilStrokeSizeValueEvent value)?
+        changeStrokeSizeValueEvent,
+    TResult Function(ChangePencilStrokeSizeSelectionEvent value)?
         changeStrokeSizeSelectionEvent,
     TResult Function(ChangePencilStrokeColorSelectionEvent value)?
         changeStrokeColorSelectionEvent,
@@ -1113,6 +1260,10 @@ class _$PencilDuplicateCurrentColorEvent
         duplicateCurrentColorEvent,
     TResult Function(PencilDeleteCurrentColorEvent value)?
         deleteCurrentColorEvent,
+    TResult Function(ShowPencilErrorSnackbarEvent value)?
+        showErrorSnackbarEvent,
+    TResult Function(DismissPencilErrorSnackbarEvent value)?
+        dismissErrorSnackbarEvent,
   }) {
     return duplicateCurrentColorEvent?.call(this);
   }
@@ -1120,8 +1271,9 @@ class _$PencilDuplicateCurrentColorEvent
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ModifyStrokeSizeEvent value)? modifyStrokeSizeEvent,
-    TResult Function(ChangeStrokeSizeSelectionEvent value)?
+    TResult Function(ChangePencilStrokeSizeValueEvent value)?
+        changeStrokeSizeValueEvent,
+    TResult Function(ChangePencilStrokeSizeSelectionEvent value)?
         changeStrokeSizeSelectionEvent,
     TResult Function(ChangePencilStrokeColorSelectionEvent value)?
         changeStrokeColorSelectionEvent,
@@ -1131,6 +1283,10 @@ class _$PencilDuplicateCurrentColorEvent
         duplicateCurrentColorEvent,
     TResult Function(PencilDeleteCurrentColorEvent value)?
         deleteCurrentColorEvent,
+    TResult Function(ShowPencilErrorSnackbarEvent value)?
+        showErrorSnackbarEvent,
+    TResult Function(DismissPencilErrorSnackbarEvent value)?
+        dismissErrorSnackbarEvent,
     required TResult orElse(),
   }) {
     if (duplicateCurrentColorEvent != null) {
@@ -1190,12 +1346,14 @@ class _$PencilDeleteCurrentColorEvent implements PencilDeleteCurrentColorEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(double newSize) modifyStrokeSizeEvent,
+    required TResult Function(double newSize) changeStrokeSizeValueEvent,
     required TResult Function(int index) changeStrokeSizeSelectionEvent,
     required TResult Function(int index) changeStrokeColorSelectionEvent,
     required TResult Function(Color color) changePencilCurrentColorValueEvent,
     required TResult Function() duplicateCurrentColorEvent,
     required TResult Function() deleteCurrentColorEvent,
+    required TResult Function(String message) showErrorSnackbarEvent,
+    required TResult Function() dismissErrorSnackbarEvent,
   }) {
     return deleteCurrentColorEvent();
   }
@@ -1203,12 +1361,14 @@ class _$PencilDeleteCurrentColorEvent implements PencilDeleteCurrentColorEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(double newSize)? modifyStrokeSizeEvent,
+    TResult Function(double newSize)? changeStrokeSizeValueEvent,
     TResult Function(int index)? changeStrokeSizeSelectionEvent,
     TResult Function(int index)? changeStrokeColorSelectionEvent,
     TResult Function(Color color)? changePencilCurrentColorValueEvent,
     TResult Function()? duplicateCurrentColorEvent,
     TResult Function()? deleteCurrentColorEvent,
+    TResult Function(String message)? showErrorSnackbarEvent,
+    TResult Function()? dismissErrorSnackbarEvent,
   }) {
     return deleteCurrentColorEvent?.call();
   }
@@ -1216,12 +1376,14 @@ class _$PencilDeleteCurrentColorEvent implements PencilDeleteCurrentColorEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(double newSize)? modifyStrokeSizeEvent,
+    TResult Function(double newSize)? changeStrokeSizeValueEvent,
     TResult Function(int index)? changeStrokeSizeSelectionEvent,
     TResult Function(int index)? changeStrokeColorSelectionEvent,
     TResult Function(Color color)? changePencilCurrentColorValueEvent,
     TResult Function()? duplicateCurrentColorEvent,
     TResult Function()? deleteCurrentColorEvent,
+    TResult Function(String message)? showErrorSnackbarEvent,
+    TResult Function()? dismissErrorSnackbarEvent,
     required TResult orElse(),
   }) {
     if (deleteCurrentColorEvent != null) {
@@ -1233,9 +1395,9 @@ class _$PencilDeleteCurrentColorEvent implements PencilDeleteCurrentColorEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ModifyStrokeSizeEvent value)
-        modifyStrokeSizeEvent,
-    required TResult Function(ChangeStrokeSizeSelectionEvent value)
+    required TResult Function(ChangePencilStrokeSizeValueEvent value)
+        changeStrokeSizeValueEvent,
+    required TResult Function(ChangePencilStrokeSizeSelectionEvent value)
         changeStrokeSizeSelectionEvent,
     required TResult Function(ChangePencilStrokeColorSelectionEvent value)
         changeStrokeColorSelectionEvent,
@@ -1245,6 +1407,10 @@ class _$PencilDeleteCurrentColorEvent implements PencilDeleteCurrentColorEvent {
         duplicateCurrentColorEvent,
     required TResult Function(PencilDeleteCurrentColorEvent value)
         deleteCurrentColorEvent,
+    required TResult Function(ShowPencilErrorSnackbarEvent value)
+        showErrorSnackbarEvent,
+    required TResult Function(DismissPencilErrorSnackbarEvent value)
+        dismissErrorSnackbarEvent,
   }) {
     return deleteCurrentColorEvent(this);
   }
@@ -1252,8 +1418,9 @@ class _$PencilDeleteCurrentColorEvent implements PencilDeleteCurrentColorEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ModifyStrokeSizeEvent value)? modifyStrokeSizeEvent,
-    TResult Function(ChangeStrokeSizeSelectionEvent value)?
+    TResult Function(ChangePencilStrokeSizeValueEvent value)?
+        changeStrokeSizeValueEvent,
+    TResult Function(ChangePencilStrokeSizeSelectionEvent value)?
         changeStrokeSizeSelectionEvent,
     TResult Function(ChangePencilStrokeColorSelectionEvent value)?
         changeStrokeColorSelectionEvent,
@@ -1263,6 +1430,10 @@ class _$PencilDeleteCurrentColorEvent implements PencilDeleteCurrentColorEvent {
         duplicateCurrentColorEvent,
     TResult Function(PencilDeleteCurrentColorEvent value)?
         deleteCurrentColorEvent,
+    TResult Function(ShowPencilErrorSnackbarEvent value)?
+        showErrorSnackbarEvent,
+    TResult Function(DismissPencilErrorSnackbarEvent value)?
+        dismissErrorSnackbarEvent,
   }) {
     return deleteCurrentColorEvent?.call(this);
   }
@@ -1270,8 +1441,9 @@ class _$PencilDeleteCurrentColorEvent implements PencilDeleteCurrentColorEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ModifyStrokeSizeEvent value)? modifyStrokeSizeEvent,
-    TResult Function(ChangeStrokeSizeSelectionEvent value)?
+    TResult Function(ChangePencilStrokeSizeValueEvent value)?
+        changeStrokeSizeValueEvent,
+    TResult Function(ChangePencilStrokeSizeSelectionEvent value)?
         changeStrokeSizeSelectionEvent,
     TResult Function(ChangePencilStrokeColorSelectionEvent value)?
         changeStrokeColorSelectionEvent,
@@ -1281,6 +1453,10 @@ class _$PencilDeleteCurrentColorEvent implements PencilDeleteCurrentColorEvent {
         duplicateCurrentColorEvent,
     TResult Function(PencilDeleteCurrentColorEvent value)?
         deleteCurrentColorEvent,
+    TResult Function(ShowPencilErrorSnackbarEvent value)?
+        showErrorSnackbarEvent,
+    TResult Function(DismissPencilErrorSnackbarEvent value)?
+        dismissErrorSnackbarEvent,
     required TResult orElse(),
   }) {
     if (deleteCurrentColorEvent != null) {
@@ -1293,4 +1469,374 @@ class _$PencilDeleteCurrentColorEvent implements PencilDeleteCurrentColorEvent {
 abstract class PencilDeleteCurrentColorEvent implements DrawingPencilEvent {
   const factory PencilDeleteCurrentColorEvent() =
       _$PencilDeleteCurrentColorEvent;
+}
+
+/// @nodoc
+abstract class _$$ShowPencilErrorSnackbarEventCopyWith<$Res> {
+  factory _$$ShowPencilErrorSnackbarEventCopyWith(
+          _$ShowPencilErrorSnackbarEvent value,
+          $Res Function(_$ShowPencilErrorSnackbarEvent) then) =
+      __$$ShowPencilErrorSnackbarEventCopyWithImpl<$Res>;
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$ShowPencilErrorSnackbarEventCopyWithImpl<$Res>
+    extends _$DrawingPencilEventCopyWithImpl<$Res>
+    implements _$$ShowPencilErrorSnackbarEventCopyWith<$Res> {
+  __$$ShowPencilErrorSnackbarEventCopyWithImpl(
+      _$ShowPencilErrorSnackbarEvent _value,
+      $Res Function(_$ShowPencilErrorSnackbarEvent) _then)
+      : super(_value, (v) => _then(v as _$ShowPencilErrorSnackbarEvent));
+
+  @override
+  _$ShowPencilErrorSnackbarEvent get _value =>
+      super._value as _$ShowPencilErrorSnackbarEvent;
+
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_$ShowPencilErrorSnackbarEvent(
+      message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ShowPencilErrorSnackbarEvent implements ShowPencilErrorSnackbarEvent {
+  const _$ShowPencilErrorSnackbarEvent(this.message);
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'DrawingPencilEvent.showErrorSnackbarEvent(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ShowPencilErrorSnackbarEvent &&
+            const DeepCollectionEquality().equals(other.message, message));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$ShowPencilErrorSnackbarEventCopyWith<_$ShowPencilErrorSnackbarEvent>
+      get copyWith => __$$ShowPencilErrorSnackbarEventCopyWithImpl<
+          _$ShowPencilErrorSnackbarEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(double newSize) changeStrokeSizeValueEvent,
+    required TResult Function(int index) changeStrokeSizeSelectionEvent,
+    required TResult Function(int index) changeStrokeColorSelectionEvent,
+    required TResult Function(Color color) changePencilCurrentColorValueEvent,
+    required TResult Function() duplicateCurrentColorEvent,
+    required TResult Function() deleteCurrentColorEvent,
+    required TResult Function(String message) showErrorSnackbarEvent,
+    required TResult Function() dismissErrorSnackbarEvent,
+  }) {
+    return showErrorSnackbarEvent(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(double newSize)? changeStrokeSizeValueEvent,
+    TResult Function(int index)? changeStrokeSizeSelectionEvent,
+    TResult Function(int index)? changeStrokeColorSelectionEvent,
+    TResult Function(Color color)? changePencilCurrentColorValueEvent,
+    TResult Function()? duplicateCurrentColorEvent,
+    TResult Function()? deleteCurrentColorEvent,
+    TResult Function(String message)? showErrorSnackbarEvent,
+    TResult Function()? dismissErrorSnackbarEvent,
+  }) {
+    return showErrorSnackbarEvent?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(double newSize)? changeStrokeSizeValueEvent,
+    TResult Function(int index)? changeStrokeSizeSelectionEvent,
+    TResult Function(int index)? changeStrokeColorSelectionEvent,
+    TResult Function(Color color)? changePencilCurrentColorValueEvent,
+    TResult Function()? duplicateCurrentColorEvent,
+    TResult Function()? deleteCurrentColorEvent,
+    TResult Function(String message)? showErrorSnackbarEvent,
+    TResult Function()? dismissErrorSnackbarEvent,
+    required TResult orElse(),
+  }) {
+    if (showErrorSnackbarEvent != null) {
+      return showErrorSnackbarEvent(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChangePencilStrokeSizeValueEvent value)
+        changeStrokeSizeValueEvent,
+    required TResult Function(ChangePencilStrokeSizeSelectionEvent value)
+        changeStrokeSizeSelectionEvent,
+    required TResult Function(ChangePencilStrokeColorSelectionEvent value)
+        changeStrokeColorSelectionEvent,
+    required TResult Function(ChangePencilCurrentColorValueEvent value)
+        changePencilCurrentColorValueEvent,
+    required TResult Function(PencilDuplicateCurrentColorEvent value)
+        duplicateCurrentColorEvent,
+    required TResult Function(PencilDeleteCurrentColorEvent value)
+        deleteCurrentColorEvent,
+    required TResult Function(ShowPencilErrorSnackbarEvent value)
+        showErrorSnackbarEvent,
+    required TResult Function(DismissPencilErrorSnackbarEvent value)
+        dismissErrorSnackbarEvent,
+  }) {
+    return showErrorSnackbarEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ChangePencilStrokeSizeValueEvent value)?
+        changeStrokeSizeValueEvent,
+    TResult Function(ChangePencilStrokeSizeSelectionEvent value)?
+        changeStrokeSizeSelectionEvent,
+    TResult Function(ChangePencilStrokeColorSelectionEvent value)?
+        changeStrokeColorSelectionEvent,
+    TResult Function(ChangePencilCurrentColorValueEvent value)?
+        changePencilCurrentColorValueEvent,
+    TResult Function(PencilDuplicateCurrentColorEvent value)?
+        duplicateCurrentColorEvent,
+    TResult Function(PencilDeleteCurrentColorEvent value)?
+        deleteCurrentColorEvent,
+    TResult Function(ShowPencilErrorSnackbarEvent value)?
+        showErrorSnackbarEvent,
+    TResult Function(DismissPencilErrorSnackbarEvent value)?
+        dismissErrorSnackbarEvent,
+  }) {
+    return showErrorSnackbarEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChangePencilStrokeSizeValueEvent value)?
+        changeStrokeSizeValueEvent,
+    TResult Function(ChangePencilStrokeSizeSelectionEvent value)?
+        changeStrokeSizeSelectionEvent,
+    TResult Function(ChangePencilStrokeColorSelectionEvent value)?
+        changeStrokeColorSelectionEvent,
+    TResult Function(ChangePencilCurrentColorValueEvent value)?
+        changePencilCurrentColorValueEvent,
+    TResult Function(PencilDuplicateCurrentColorEvent value)?
+        duplicateCurrentColorEvent,
+    TResult Function(PencilDeleteCurrentColorEvent value)?
+        deleteCurrentColorEvent,
+    TResult Function(ShowPencilErrorSnackbarEvent value)?
+        showErrorSnackbarEvent,
+    TResult Function(DismissPencilErrorSnackbarEvent value)?
+        dismissErrorSnackbarEvent,
+    required TResult orElse(),
+  }) {
+    if (showErrorSnackbarEvent != null) {
+      return showErrorSnackbarEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ShowPencilErrorSnackbarEvent implements DrawingPencilEvent {
+  const factory ShowPencilErrorSnackbarEvent(final String message) =
+      _$ShowPencilErrorSnackbarEvent;
+
+  String get message => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$ShowPencilErrorSnackbarEventCopyWith<_$ShowPencilErrorSnackbarEvent>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DismissPencilErrorSnackbarEventCopyWith<$Res> {
+  factory _$$DismissPencilErrorSnackbarEventCopyWith(
+          _$DismissPencilErrorSnackbarEvent value,
+          $Res Function(_$DismissPencilErrorSnackbarEvent) then) =
+      __$$DismissPencilErrorSnackbarEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$DismissPencilErrorSnackbarEventCopyWithImpl<$Res>
+    extends _$DrawingPencilEventCopyWithImpl<$Res>
+    implements _$$DismissPencilErrorSnackbarEventCopyWith<$Res> {
+  __$$DismissPencilErrorSnackbarEventCopyWithImpl(
+      _$DismissPencilErrorSnackbarEvent _value,
+      $Res Function(_$DismissPencilErrorSnackbarEvent) _then)
+      : super(_value, (v) => _then(v as _$DismissPencilErrorSnackbarEvent));
+
+  @override
+  _$DismissPencilErrorSnackbarEvent get _value =>
+      super._value as _$DismissPencilErrorSnackbarEvent;
+}
+
+/// @nodoc
+
+class _$DismissPencilErrorSnackbarEvent
+    implements DismissPencilErrorSnackbarEvent {
+  const _$DismissPencilErrorSnackbarEvent();
+
+  @override
+  String toString() {
+    return 'DrawingPencilEvent.dismissErrorSnackbarEvent()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DismissPencilErrorSnackbarEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(double newSize) changeStrokeSizeValueEvent,
+    required TResult Function(int index) changeStrokeSizeSelectionEvent,
+    required TResult Function(int index) changeStrokeColorSelectionEvent,
+    required TResult Function(Color color) changePencilCurrentColorValueEvent,
+    required TResult Function() duplicateCurrentColorEvent,
+    required TResult Function() deleteCurrentColorEvent,
+    required TResult Function(String message) showErrorSnackbarEvent,
+    required TResult Function() dismissErrorSnackbarEvent,
+  }) {
+    return dismissErrorSnackbarEvent();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(double newSize)? changeStrokeSizeValueEvent,
+    TResult Function(int index)? changeStrokeSizeSelectionEvent,
+    TResult Function(int index)? changeStrokeColorSelectionEvent,
+    TResult Function(Color color)? changePencilCurrentColorValueEvent,
+    TResult Function()? duplicateCurrentColorEvent,
+    TResult Function()? deleteCurrentColorEvent,
+    TResult Function(String message)? showErrorSnackbarEvent,
+    TResult Function()? dismissErrorSnackbarEvent,
+  }) {
+    return dismissErrorSnackbarEvent?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(double newSize)? changeStrokeSizeValueEvent,
+    TResult Function(int index)? changeStrokeSizeSelectionEvent,
+    TResult Function(int index)? changeStrokeColorSelectionEvent,
+    TResult Function(Color color)? changePencilCurrentColorValueEvent,
+    TResult Function()? duplicateCurrentColorEvent,
+    TResult Function()? deleteCurrentColorEvent,
+    TResult Function(String message)? showErrorSnackbarEvent,
+    TResult Function()? dismissErrorSnackbarEvent,
+    required TResult orElse(),
+  }) {
+    if (dismissErrorSnackbarEvent != null) {
+      return dismissErrorSnackbarEvent();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChangePencilStrokeSizeValueEvent value)
+        changeStrokeSizeValueEvent,
+    required TResult Function(ChangePencilStrokeSizeSelectionEvent value)
+        changeStrokeSizeSelectionEvent,
+    required TResult Function(ChangePencilStrokeColorSelectionEvent value)
+        changeStrokeColorSelectionEvent,
+    required TResult Function(ChangePencilCurrentColorValueEvent value)
+        changePencilCurrentColorValueEvent,
+    required TResult Function(PencilDuplicateCurrentColorEvent value)
+        duplicateCurrentColorEvent,
+    required TResult Function(PencilDeleteCurrentColorEvent value)
+        deleteCurrentColorEvent,
+    required TResult Function(ShowPencilErrorSnackbarEvent value)
+        showErrorSnackbarEvent,
+    required TResult Function(DismissPencilErrorSnackbarEvent value)
+        dismissErrorSnackbarEvent,
+  }) {
+    return dismissErrorSnackbarEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ChangePencilStrokeSizeValueEvent value)?
+        changeStrokeSizeValueEvent,
+    TResult Function(ChangePencilStrokeSizeSelectionEvent value)?
+        changeStrokeSizeSelectionEvent,
+    TResult Function(ChangePencilStrokeColorSelectionEvent value)?
+        changeStrokeColorSelectionEvent,
+    TResult Function(ChangePencilCurrentColorValueEvent value)?
+        changePencilCurrentColorValueEvent,
+    TResult Function(PencilDuplicateCurrentColorEvent value)?
+        duplicateCurrentColorEvent,
+    TResult Function(PencilDeleteCurrentColorEvent value)?
+        deleteCurrentColorEvent,
+    TResult Function(ShowPencilErrorSnackbarEvent value)?
+        showErrorSnackbarEvent,
+    TResult Function(DismissPencilErrorSnackbarEvent value)?
+        dismissErrorSnackbarEvent,
+  }) {
+    return dismissErrorSnackbarEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChangePencilStrokeSizeValueEvent value)?
+        changeStrokeSizeValueEvent,
+    TResult Function(ChangePencilStrokeSizeSelectionEvent value)?
+        changeStrokeSizeSelectionEvent,
+    TResult Function(ChangePencilStrokeColorSelectionEvent value)?
+        changeStrokeColorSelectionEvent,
+    TResult Function(ChangePencilCurrentColorValueEvent value)?
+        changePencilCurrentColorValueEvent,
+    TResult Function(PencilDuplicateCurrentColorEvent value)?
+        duplicateCurrentColorEvent,
+    TResult Function(PencilDeleteCurrentColorEvent value)?
+        deleteCurrentColorEvent,
+    TResult Function(ShowPencilErrorSnackbarEvent value)?
+        showErrorSnackbarEvent,
+    TResult Function(DismissPencilErrorSnackbarEvent value)?
+        dismissErrorSnackbarEvent,
+    required TResult orElse(),
+  }) {
+    if (dismissErrorSnackbarEvent != null) {
+      return dismissErrorSnackbarEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DismissPencilErrorSnackbarEvent implements DrawingPencilEvent {
+  const factory DismissPencilErrorSnackbarEvent() =
+      _$DismissPencilErrorSnackbarEvent;
 }

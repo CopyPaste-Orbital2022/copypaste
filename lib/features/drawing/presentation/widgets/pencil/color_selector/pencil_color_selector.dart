@@ -21,10 +21,7 @@ class PencilColorSelector extends StatelessWidget {
           scrollDirection: Axis.vertical,
           crossAxisSpacing: 10,
           mainAxisSpacing: 10,
-          children: [
-            ..._getColors(state.colors),
-            const PencilColorSelectorAddColorButton(),
-          ],
+          children: _getColors(state.colors),
         );
       },
       listener: (context, state) {},
@@ -32,7 +29,7 @@ class PencilColorSelector extends StatelessWidget {
   }
 
   List<Widget> _getColors(SelectableItems<Color> colors) {
-    List<PencilColorSelectorColor> res = [];
+    List<Widget> res = [];
     for (int i = 0; i < colors.items.length; i++) {
       res.add(
         PencilColorSelectorColor(
@@ -41,6 +38,9 @@ class PencilColorSelector extends StatelessWidget {
           color: colors.items[i],
         ),
       );
+    }
+    if (res.length < 15) {
+      res.add(const PencilColorSelectorAddColorButton());
     }
     return res;
   }

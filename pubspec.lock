@@ -425,9 +425,11 @@ packages:
   my_popup_menu:
     dependency: "direct main"
     description:
-      name: my_popup_menu
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "."
+      ref: develop2
+      resolved-ref: c787577efa72643114dee668f2fe9c57907f4949
+      url: "https://github.com/wxxedu/my_popup_menu"
+    source: git
     version: "0.0.6"
   nested:
     dependency: transitive

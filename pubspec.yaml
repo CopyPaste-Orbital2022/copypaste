@@ -40,7 +40,10 @@ dependencies:
   freezed_annotation: ^2.0.3
   get_it: ^7.2.0
   injectable: ^1.5.3
-  my_popup_menu: ^0.0.6
+  my_popup_menu: 
+    git:
+      url: https://github.com/wxxedu/my_popup_menu
+      ref: develop2
   nil: ^1.1.1
   perfect_freehand: ^1.0.4
   scribble:

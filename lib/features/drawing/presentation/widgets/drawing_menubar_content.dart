@@ -1,5 +1,6 @@
 import 'package:copypaste/features/drawing/presentation/widgets/eraser/eraser_button.dart';
 import 'package:copypaste/features/drawing/presentation/widgets/pencil/pencil_button.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -25,10 +26,25 @@ class DrawingMenubarContent extends StatelessWidget {
           create: (context) => getIt<DrawingPencilBloc>(),
         ),
       ],
-      child: Row(mainAxisAlignment: MainAxisAlignment.center, children: const [
-        PencilButton(),
-        EraserButton(),
-      ]),
+      child: BlocListener<DrawingPencilBloc, DrawingPencilState>(
+        child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          PencilButton(),
+          EraserButton(),
+        ]),
+        listener: (context, state) {
+          if (state.errorMessage != null) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.errorMessage!),
+                backgroundColor: Colors.red,
+              ),
+            );
+            context.read<DrawingPencilBloc>().add(
+                  const DrawingPencilEvent.dismissErrorSnackbarEvent(),
+                );
+          }
+        },
+      ),
     );
   }
 }
