@@ -251,6 +251,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.4"
+  flutter_platform_widgets:
+    dependency: "direct main"
+    description:
+      name: flutter_platform_widgets
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.20.0"
   flutter_state_notifier:
     dependency: transitive
     description:
@@ -415,6 +422,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.2"
+  my_popup_menu:
+    dependency: "direct main"
+    description:
+      name: my_popup_menu
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.6"
   nested:
     dependency: transitive
     description:
@@ -422,6 +436,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
+  nil:
+    dependency: "direct main"
+    description:
+      name: nil
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.1"
   package_config:
     dependency: transitive
     description:
@@ -528,7 +549,7 @@ packages:
       name: selectable_items
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.0"
+    version: "1.0.2"
   shared_preferences:
     dependency: "direct main"
     description:

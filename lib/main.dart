@@ -1,4 +1,6 @@
+import 'package:copypaste/features/drawing/presentation/pages/drawing_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:injectable/injectable.dart';
 
 import 'core/injections/injection.dart';
@@ -15,12 +17,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return PlatformApp(
       title: 'CopyPaste',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Container(),
+      home: DrawingPage(),
     );
   }
 }
