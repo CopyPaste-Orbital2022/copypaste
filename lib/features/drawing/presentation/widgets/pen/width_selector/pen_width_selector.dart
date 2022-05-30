@@ -1,15 +1,15 @@
-import 'package:copypaste/features/drawing/presentation/bloc/index.dart';
-import 'package:copypaste/features/drawing/presentation/widgets/pencil/width_selector/pencil_width_selector_width.dart';
+import '../../../bloc/index.dart';
+import 'pen_width_selector_width.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:selectable_items/selectable_items.dart';
 
-class PencilWidthSelector extends StatelessWidget {
-  const PencilWidthSelector({Key? key}) : super(key: key);
+class PenWidthSelector extends StatelessWidget {
+  const PenWidthSelector({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<DrawingPencilBloc, DrawingPencilState>(
+    return BlocConsumer<DrawingPenBloc, DrawingPenState>(
       builder: (context, state) {
         return GridView.count(
           padding: EdgeInsets.zero,
@@ -28,10 +28,10 @@ class PencilWidthSelector extends StatelessWidget {
   }
 
   List<Widget> _getWidths(SelectableItems<double> widths) {
-    List<PencilWidthSelectWidth> res = [];
+    List<PenWidthSelectWidth> res = [];
     for (int i = 0; i < widths.items.length; i++) {
       res.add(
-        PencilWidthSelectWidth(
+        PenWidthSelectWidth(
           widths.items[i],
           index: i,
           isSelected: widths.currentIndex == i,

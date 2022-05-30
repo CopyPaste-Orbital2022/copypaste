@@ -1,4 +1,4 @@
-import 'package:copypaste/core/injections/injection.dart';
+import '../../../../core/injections/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:scribble/scribble.dart';

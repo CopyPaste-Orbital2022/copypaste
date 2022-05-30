@@ -1,9 +1,10 @@
 import 'dart:async';
 
-import 'package:copypaste/features/drawing/domain/entities/drawing_tool.dart';
+import '../../../../../core/utils/icon_paths.dart';
+import '../../../domain/entities/drawing_tool.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:my_popup_menu/my_popup_menu.dart';
 
 import '../../bloc/index.dart';
@@ -17,20 +18,24 @@ class EraserButton extends StatelessWidget {
     // bloc consumer of drawing eraser bloc
     return BlocConsumer<DrawingBloc, DrawingState>(
       builder: (context, state) {
-        return MyPopupIconButton(
-          isSelected: state.tool == DrawingTool.eraser,
-          menuContent: MyPopupMenu(
-            child: Container(),
-            initialSize: const Size(240, 300),
-            sizeController: _sizeController,
+        return Transform.scale(
+          scale: 1.5,
+          child: MyPopupIconButton(
+            padding: const EdgeInsets.all(0),
+            isSelected: state.tool == DrawingTool.eraser,
+            menuContent: MyPopupMenu(
+              child: Container(),
+              initialSize: const Size(240, 300),
+              sizeController: _sizeController,
+            ),
+            selectedIcon: SvgPicture.asset(IconPaths.eraserFillPath),
+            notSelectedIcon: SvgPicture.asset(IconPaths.eraserOutlinePath),
+            onPressed: () {
+              context
+                  .read<DrawingBloc>()
+                  .add(const ChangeToolEvent(DrawingTool.eraser));
+            },
           ),
-          selectedIcon: Icon(PlatformIcons(context).remove),
-          notSelectedIcon: Icon(PlatformIcons(context).remove),
-          onPressed: () {
-            context
-                .read<DrawingBloc>()
-                .add(const ChangeToolEvent(DrawingTool.eraser));
-          },
         );
       },
       listener: (context, state) {},

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../bloc/index.dart';
 
-import '../../../bloc/drawing_pencil_bloc/drawing_pencil_bloc.dart';
-
-class PencilWidthSelectWidth extends StatelessWidget {
-  const PencilWidthSelectWidth(
+class PenWidthSelectWidth extends StatelessWidget {
+  const PenWidthSelectWidth(
     this.width, {
     Key? key,
     required this.isSelected,
@@ -17,8 +16,8 @@ class PencilWidthSelectWidth extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        BlocProvider.of<DrawingPencilBloc>(context).add(
-          ChangePencilStrokeSizeSelectionEvent(index),
+        BlocProvider.of<DrawingPenBloc>(context).add(
+          ChangePenStrokeSizeSelectionEvent(index),
         );
       },
       child: Container(

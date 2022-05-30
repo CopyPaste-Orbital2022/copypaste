@@ -9,7 +9,7 @@ class PencilColorSelectorDeleteColorButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<DrawingPencilBloc, DrawingPencilState>(
+    return BlocConsumer<DrawingPenBloc, DrawingPenState>(
       builder: (context, state) {
         return PlatformIconButton(
           padding: EdgeInsets.zero,
@@ -20,8 +20,8 @@ class PencilColorSelectorDeleteColorButton extends StatelessWidget {
           onPressed: state.colors.items.length > 3
               ? () {
                   context
-                      .read<DrawingPencilBloc>()
-                      .add(const PencilDeleteCurrentColorEvent());
+                      .read<DrawingPenBloc>()
+                      .add(const PenDeleteCurrentColorEvent());
                 }
               : null,
         );

@@ -37,10 +37,11 @@ dependencies:
   flutter_bloc: ^8.0.1
   flutter_colorpicker: ^1.0.3
   flutter_platform_widgets: ^1.20.0
+  flutter_svg: ^1.1.0
   freezed_annotation: ^2.0.3
   get_it: ^7.2.0
   injectable: ^1.5.3
-  my_popup_menu: 
+  my_popup_menu:
     git:
       url: https://github.com/wxxedu/my_popup_menu
       ref: develop2
@@ -72,7 +73,11 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
-  # assets:
+  assets:
+    - assets/menubar/eraser.fill.svg
+    - assets/menubar/eraser.outline.svg
+    - assets/menubar/pen.fill.svg
+    - assets/menubar/pen.outline.svg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see

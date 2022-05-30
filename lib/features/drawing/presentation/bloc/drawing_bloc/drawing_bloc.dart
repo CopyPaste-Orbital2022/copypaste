@@ -1,11 +1,12 @@
-import 'package:copypaste/core/injections/injection.dart';
-import 'package:copypaste/features/drawing/domain/entities/drawing_tool.dart';
-import 'package:copypaste/features/drawing/presentation/bloc/drawing_pencil_bloc/drawing_pencil_bloc.dart';
+import '../../../../../core/injections/injection.dart';
+import '../../../domain/entities/drawing_tool.dart';
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:freezed_annotation/freezed_annotation.dart";
 import 'package:injectable/injectable.dart';
 import 'package:scribble/scribble.dart';
 import 'package:selectable_items/selectable_items.dart';
+
+import '../drawing_pen_bloc/drawing_pen_bloc.dart';
 
 part "drawing_state.dart";
 
@@ -22,7 +23,7 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
         _scribbleNotifier.setEraser();
       } else {
         _scribbleNotifier
-            .setColor(getIt<DrawingPencilBloc>().state.colors.currentItem!);
+            .setColor(getIt<DrawingPenBloc>().state.colors.currentItem!);
       }
       emit(state.copyWith(
         tool: event.tool,

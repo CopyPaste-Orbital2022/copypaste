@@ -1,17 +1,17 @@
-part of "drawing_pencil_bloc.dart";
+part of 'drawing_pen_bloc.dart';
 
 @freezed
-class DrawingPencilState with _$DrawingPencilState {
-  const factory DrawingPencilState({
+class DrawingPenState with _$DrawingPenState {
+  const factory DrawingPenState({
     required SelectableItems<Color> colors,
     required SelectableItems<double> widths,
     String? errorMessage,
-  }) = _DrawingPencilState;
+  }) = _DrawingPenState;
 }
 
-extension DrawingPencilStateX on DrawingPencilState {
-  static DrawingPencilState initial() {
-    return const DrawingPencilState(
+extension DrawingPencilStateX on DrawingPenState {
+  static DrawingPenState initial() {
+    return const DrawingPenState(
       colors: SelectableItems<Color>(
         currentIndex: 0,
         items: [

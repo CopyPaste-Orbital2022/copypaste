@@ -33,8 +33,8 @@ class PencilColorSelectorColor extends StatelessWidget {
         ),
       ),
       onTap: () {
-        getIt<DrawingPencilBloc>().add(
-          ChangePencilStrokeColorSelectionEvent(index),
+        getIt<DrawingPenBloc>().add(
+          ChangePenStrokeColorSelectionEvent(index),
         );
       },
     );

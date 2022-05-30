@@ -1,11 +1,11 @@
-import 'package:copypaste/features/drawing/presentation/widgets/eraser/eraser_button.dart';
-import 'package:copypaste/features/drawing/presentation/widgets/pencil/pencil_button.dart';
+import 'eraser/eraser_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/injections/injection.dart';
 import '../bloc/index.dart';
+import 'pen/pen_button.dart';
 
 class DrawingMenubarContent extends StatelessWidget {
   const DrawingMenubarContent({
@@ -22,13 +22,13 @@ class DrawingMenubarContent extends StatelessWidget {
         BlocProvider<DrawingEraserBloc>(
           create: (context) => getIt<DrawingEraserBloc>(),
         ),
-        BlocProvider<DrawingPencilBloc>(
-          create: (context) => getIt<DrawingPencilBloc>(),
+        BlocProvider<DrawingPenBloc>(
+          create: (context) => getIt<DrawingPenBloc>(),
         ),
       ],
-      child: BlocListener<DrawingPencilBloc, DrawingPencilState>(
+      child: BlocListener<DrawingPenBloc, DrawingPenState>(
         child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-          PencilButton(),
+          PenButton(),
           EraserButton(),
         ]),
         listener: (context, state) {
@@ -39,8 +39,8 @@ class DrawingMenubarContent extends StatelessWidget {
                 backgroundColor: Colors.red,
               ),
             );
-            context.read<DrawingPencilBloc>().add(
-                  const DrawingPencilEvent.dismissErrorSnackbarEvent(),
+            context.read<DrawingPenBloc>().add(
+                  const DrawingPenEvent.dismissErrorSnackbarEvent(),
                 );
           }
         },

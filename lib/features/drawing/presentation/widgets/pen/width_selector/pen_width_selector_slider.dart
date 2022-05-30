@@ -1,30 +1,29 @@
-import 'package:copypaste/core/injections/injection.dart';
-import 'package:copypaste/features/drawing/presentation/bloc/index.dart';
+import '../../../../../../core/injections/injection.dart';
+import '../../../bloc/index.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:selectable_items/selectable_items.dart';
 
-class PencilWidthSelectorSlider extends StatefulWidget {
-  const PencilWidthSelectorSlider({Key? key}) : super(key: key);
+class PenWidthSelectorSlider extends StatefulWidget {
+  const PenWidthSelectorSlider({Key? key}) : super(key: key);
 
   @override
-  State<PencilWidthSelectorSlider> createState() =>
-      _PencilWidthSelectorSliderState();
+  State<PenWidthSelectorSlider> createState() => _PenWidthSelectorSliderState();
 }
 
-class _PencilWidthSelectorSliderState extends State<PencilWidthSelectorSlider> {
+class _PenWidthSelectorSliderState extends State<PenWidthSelectorSlider> {
   late double _value;
 
   @override
   void initState() {
     super.initState();
-    _value = getIt<DrawingPencilBloc>().state.widths.currentItem!;
+    _value = getIt<DrawingPenBloc>().state.widths.currentItem!;
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<DrawingPencilBloc, DrawingPencilState>(
+    return BlocConsumer<DrawingPenBloc, DrawingPenState>(
       builder: (context, state) {
         return Flexible(
           child: PlatformSlider(
@@ -35,8 +34,8 @@ class _PencilWidthSelectorSliderState extends State<PencilWidthSelectorSlider> {
               setState(() {
                 _value = newValue;
               });
-              context.read<DrawingPencilBloc>().add(
-                    DrawingPencilEvent.changeStrokeSizeValueEvent(newValue),
+              context.read<DrawingPenBloc>().add(
+                    DrawingPenEvent.changeStrokeSizeValueEvent(newValue),
                   );
             },
           ),

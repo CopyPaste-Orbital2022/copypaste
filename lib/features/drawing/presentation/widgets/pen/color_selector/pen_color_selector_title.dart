@@ -1,7 +1,7 @@
-import 'package:copypaste/core/extensions/color_extension.dart';
-import 'package:copypaste/core/injections/injection.dart';
-import 'package:copypaste/features/drawing/presentation/bloc/index.dart';
-import 'package:copypaste/features/drawing/presentation/widgets/pencil/color_selector/pencil_color_selector_delete_color_button.dart';
+import '../../../../../../core/extensions/color_extension.dart';
+import '../../../../../../core/injections/injection.dart';
+import '../../../bloc/index.dart';
+import 'pen_color_selector_delete_color_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,7 +25,7 @@ class _PencilColorSelectorTitleState extends State<PencilColorSelectorTitle> {
   @override
   void initState() {
     super.initState();
-    _text = getIt<DrawingPencilBloc>().state.colors.currentItem!.toHex(
+    _text = getIt<DrawingPenBloc>().state.colors.currentItem!.toHex(
           leadingHashSign: false,
         );
 
@@ -34,7 +34,7 @@ class _PencilColorSelectorTitleState extends State<PencilColorSelectorTitle> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<DrawingPencilBloc, DrawingPencilState>(
+    return BlocConsumer<DrawingPenBloc, DrawingPenState>(
       builder: (context, state) {
         return Row(
           children: [
@@ -62,8 +62,8 @@ class _PencilColorSelectorTitleState extends State<PencilColorSelectorTitle> {
                     color: Color(0xA0000000),
                     fontFamily: "monospace"),
                 onSubmitted: (text) {
-                  getIt<DrawingPencilBloc>().add(
-                    DrawingPencilEvent.changePencilCurrentColorValueEvent(
+                  getIt<DrawingPenBloc>().add(
+                    DrawingPenEvent.changePencilCurrentColorValueEvent(
                       HexColor.fromHex(_text),
                     ),
                   );

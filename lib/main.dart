@@ -1,4 +1,4 @@
-import 'package:copypaste/features/drawing/presentation/pages/drawing_page.dart';
+import 'features/drawing/presentation/pages/drawing_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:injectable/injectable.dart';

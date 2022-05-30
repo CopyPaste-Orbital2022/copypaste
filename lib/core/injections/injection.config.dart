@@ -13,7 +13,7 @@ import '../../features/drawing/presentation/bloc/drawing_bloc/drawing_bloc.dart'
     as _i6;
 import '../../features/drawing/presentation/bloc/drawing_eraser_bloc/drawing_eraser_bloc.dart'
     as _i3;
-import '../../features/drawing/presentation/bloc/drawing_pencil_bloc/drawing_pencil_bloc.dart'
+import '../../features/drawing/presentation/bloc/drawing_pen_bloc/drawing_pen_bloc.dart'
     as _i7;
 import 'scribble.dart' as _i8;
 import 'shared_preferences.dart' as _i9; // ignore_for_file: unnecessary_lambdas
@@ -33,8 +33,8 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
       preResolve: true);
   gh.lazySingleton<_i6.DrawingBloc>(
       () => _i6.DrawingBloc(get<_i4.ScribbleNotifier>()));
-  gh.lazySingleton<_i7.DrawingPencilBloc>(
-      () => _i7.DrawingPencilBloc(get<_i4.ScribbleNotifier>()));
+  gh.lazySingleton<_i7.DrawingPenBloc>(
+      () => _i7.DrawingPenBloc(get<_i4.ScribbleNotifier>()));
   return get;
 }
 
