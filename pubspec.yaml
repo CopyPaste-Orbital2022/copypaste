@@ -18,7 +18,7 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.16.2 <3.0.0"
+  sdk: ">=2.17.0 <3.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -40,18 +40,17 @@ dependencies:
   flutter_svg: ^1.1.0
   freezed_annotation: ^2.0.3
   get_it: ^7.2.0
+  hive: ^2.2.2
   injectable: ^1.5.3
-  my_popup_menu:
-    git:
-      url: https://github.com/wxxedu/my_popup_menu
-      ref: develop2
+  my_color_picker:
+    path: plugins/my_color_picker
+  my_stackable_popup_menu:
+    path: plugins/my_stackable_popup_menu
   nil: ^1.1.1
-  perfect_freehand: ^1.0.4
-  scribble:
-    git:
-      url: https://github.com/CopyPaste-Orbital2022/scribble.git
-      ref: develop
-  selectable_items: ^1.0.2
+  perfect_freehand:
+    path: plugins/perfect-freehand-dart
+  selectable_items:
+    path: plugins/selectable_items
   shared_preferences: ^2.0.13
 
 dev_dependencies:

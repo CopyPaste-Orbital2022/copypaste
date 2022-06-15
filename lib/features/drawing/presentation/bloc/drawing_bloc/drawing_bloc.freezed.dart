@@ -16,8 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$DrawingState {
-  DrawingTool get tool => throw _privateConstructorUsedError;
-  bool get useStylus => throw _privateConstructorUsedError;
+  List<SPStroke> get strokes => throw _privateConstructorUsedError;
+  SPStroke? get currentStroke => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DrawingStateCopyWith<DrawingState> get copyWith =>
@@ -29,7 +29,9 @@ abstract class $DrawingStateCopyWith<$Res> {
   factory $DrawingStateCopyWith(
           DrawingState value, $Res Function(DrawingState) then) =
       _$DrawingStateCopyWithImpl<$Res>;
-  $Res call({DrawingTool tool, bool useStylus});
+  $Res call({List<SPStroke> strokes, SPStroke? currentStroke});
+
+  $SPStrokeCopyWith<$Res>? get currentStroke;
 }
 
 /// @nodoc
@@ -42,19 +44,30 @@ class _$DrawingStateCopyWithImpl<$Res> implements $DrawingStateCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? tool = freezed,
-    Object? useStylus = freezed,
+    Object? strokes = freezed,
+    Object? currentStroke = freezed,
   }) {
     return _then(_value.copyWith(
-      tool: tool == freezed
-          ? _value.tool
-          : tool // ignore: cast_nullable_to_non_nullable
-              as DrawingTool,
-      useStylus: useStylus == freezed
-          ? _value.useStylus
-          : useStylus // ignore: cast_nullable_to_non_nullable
-              as bool,
+      strokes: strokes == freezed
+          ? _value.strokes
+          : strokes // ignore: cast_nullable_to_non_nullable
+              as List<SPStroke>,
+      currentStroke: currentStroke == freezed
+          ? _value.currentStroke
+          : currentStroke // ignore: cast_nullable_to_non_nullable
+              as SPStroke?,
     ));
+  }
+
+  @override
+  $SPStrokeCopyWith<$Res>? get currentStroke {
+    if (_value.currentStroke == null) {
+      return null;
+    }
+
+    return $SPStrokeCopyWith<$Res>(_value.currentStroke!, (value) {
+      return _then(_value.copyWith(currentStroke: value));
+    });
   }
 }
 
@@ -65,7 +78,10 @@ abstract class _$$_DrawingStateCopyWith<$Res>
           _$_DrawingState value, $Res Function(_$_DrawingState) then) =
       __$$_DrawingStateCopyWithImpl<$Res>;
   @override
-  $Res call({DrawingTool tool, bool useStylus});
+  $Res call({List<SPStroke> strokes, SPStroke? currentStroke});
+
+  @override
+  $SPStrokeCopyWith<$Res>? get currentStroke;
 }
 
 /// @nodoc
@@ -81,18 +97,18 @@ class __$$_DrawingStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? tool = freezed,
-    Object? useStylus = freezed,
+    Object? strokes = freezed,
+    Object? currentStroke = freezed,
   }) {
     return _then(_$_DrawingState(
-      tool: tool == freezed
-          ? _value.tool
-          : tool // ignore: cast_nullable_to_non_nullable
-              as DrawingTool,
-      useStylus: useStylus == freezed
-          ? _value.useStylus
-          : useStylus // ignore: cast_nullable_to_non_nullable
-              as bool,
+      strokes: strokes == freezed
+          ? _value._strokes
+          : strokes // ignore: cast_nullable_to_non_nullable
+              as List<SPStroke>,
+      currentStroke: currentStroke == freezed
+          ? _value.currentStroke
+          : currentStroke // ignore: cast_nullable_to_non_nullable
+              as SPStroke?,
     ));
   }
 }
@@ -100,16 +116,24 @@ class __$$_DrawingStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_DrawingState implements _DrawingState {
-  const _$_DrawingState({required this.tool, required this.useStylus});
+  const _$_DrawingState(
+      {final List<SPStroke> strokes = const [], this.currentStroke})
+      : _strokes = strokes;
+
+  final List<SPStroke> _strokes;
+  @override
+  @JsonKey()
+  List<SPStroke> get strokes {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_strokes);
+  }
 
   @override
-  final DrawingTool tool;
-  @override
-  final bool useStylus;
+  final SPStroke? currentStroke;
 
   @override
   String toString() {
-    return 'DrawingState(tool: $tool, useStylus: $useStylus)';
+    return 'DrawingState(strokes: $strokes, currentStroke: $currentStroke)';
   }
 
   @override
@@ -117,15 +141,16 @@ class _$_DrawingState implements _DrawingState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_DrawingState &&
-            const DeepCollectionEquality().equals(other.tool, tool) &&
-            const DeepCollectionEquality().equals(other.useStylus, useStylus));
+            const DeepCollectionEquality().equals(other._strokes, _strokes) &&
+            const DeepCollectionEquality()
+                .equals(other.currentStroke, currentStroke));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(tool),
-      const DeepCollectionEquality().hash(useStylus));
+      const DeepCollectionEquality().hash(_strokes),
+      const DeepCollectionEquality().hash(currentStroke));
 
   @JsonKey(ignore: true)
   @override
@@ -135,13 +160,13 @@ class _$_DrawingState implements _DrawingState {
 
 abstract class _DrawingState implements DrawingState {
   const factory _DrawingState(
-      {required final DrawingTool tool,
-      required final bool useStylus}) = _$_DrawingState;
+      {final List<SPStroke> strokes,
+      final SPStroke? currentStroke}) = _$_DrawingState;
 
   @override
-  DrawingTool get tool => throw _privateConstructorUsedError;
+  List<SPStroke> get strokes => throw _privateConstructorUsedError;
   @override
-  bool get useStylus => throw _privateConstructorUsedError;
+  SPStroke? get currentStroke => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_DrawingStateCopyWith<_$_DrawingState> get copyWith =>
@@ -152,39 +177,33 @@ abstract class _DrawingState implements DrawingState {
 mixin _$DrawingEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DrawingTool tool) changeToolEvent,
-    required TResult Function(bool useStylus) toggleUseStylusEvent,
+    required TResult Function() initialEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(DrawingTool tool)? changeToolEvent,
-    TResult Function(bool useStylus)? toggleUseStylusEvent,
+    TResult Function()? initialEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DrawingTool tool)? changeToolEvent,
-    TResult Function(bool useStylus)? toggleUseStylusEvent,
+    TResult Function()? initialEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ChangeToolEvent value) changeToolEvent,
-    required TResult Function(ToggleUseStylusEvent value) toggleUseStylusEvent,
+    required TResult Function(DrawingEventInitialEvent value) initialEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ChangeToolEvent value)? changeToolEvent,
-    TResult Function(ToggleUseStylusEvent value)? toggleUseStylusEvent,
+    TResult Function(DrawingEventInitialEvent value)? initialEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ChangeToolEvent value)? changeToolEvent,
-    TResult Function(ToggleUseStylusEvent value)? toggleUseStylusEvent,
+    TResult Function(DrawingEventInitialEvent value)? initialEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -207,94 +226,69 @@ class _$DrawingEventCopyWithImpl<$Res> implements $DrawingEventCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$ChangeToolEventCopyWith<$Res> {
-  factory _$$ChangeToolEventCopyWith(
-          _$ChangeToolEvent value, $Res Function(_$ChangeToolEvent) then) =
-      __$$ChangeToolEventCopyWithImpl<$Res>;
-  $Res call({DrawingTool tool});
+abstract class _$$DrawingEventInitialEventCopyWith<$Res> {
+  factory _$$DrawingEventInitialEventCopyWith(_$DrawingEventInitialEvent value,
+          $Res Function(_$DrawingEventInitialEvent) then) =
+      __$$DrawingEventInitialEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ChangeToolEventCopyWithImpl<$Res>
+class __$$DrawingEventInitialEventCopyWithImpl<$Res>
     extends _$DrawingEventCopyWithImpl<$Res>
-    implements _$$ChangeToolEventCopyWith<$Res> {
-  __$$ChangeToolEventCopyWithImpl(
-      _$ChangeToolEvent _value, $Res Function(_$ChangeToolEvent) _then)
-      : super(_value, (v) => _then(v as _$ChangeToolEvent));
+    implements _$$DrawingEventInitialEventCopyWith<$Res> {
+  __$$DrawingEventInitialEventCopyWithImpl(_$DrawingEventInitialEvent _value,
+      $Res Function(_$DrawingEventInitialEvent) _then)
+      : super(_value, (v) => _then(v as _$DrawingEventInitialEvent));
 
   @override
-  _$ChangeToolEvent get _value => super._value as _$ChangeToolEvent;
-
-  @override
-  $Res call({
-    Object? tool = freezed,
-  }) {
-    return _then(_$ChangeToolEvent(
-      tool == freezed
-          ? _value.tool
-          : tool // ignore: cast_nullable_to_non_nullable
-              as DrawingTool,
-    ));
-  }
+  _$DrawingEventInitialEvent get _value =>
+      super._value as _$DrawingEventInitialEvent;
 }
 
 /// @nodoc
 
-class _$ChangeToolEvent implements ChangeToolEvent {
-  const _$ChangeToolEvent(this.tool);
-
-  @override
-  final DrawingTool tool;
+class _$DrawingEventInitialEvent implements DrawingEventInitialEvent {
+  const _$DrawingEventInitialEvent();
 
   @override
   String toString() {
-    return 'DrawingEvent.changeToolEvent(tool: $tool)';
+    return 'DrawingEvent.initialEvent()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ChangeToolEvent &&
-            const DeepCollectionEquality().equals(other.tool, tool));
+            other is _$DrawingEventInitialEvent);
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(tool));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$ChangeToolEventCopyWith<_$ChangeToolEvent> get copyWith =>
-      __$$ChangeToolEventCopyWithImpl<_$ChangeToolEvent>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DrawingTool tool) changeToolEvent,
-    required TResult Function(bool useStylus) toggleUseStylusEvent,
+    required TResult Function() initialEvent,
   }) {
-    return changeToolEvent(tool);
+    return initialEvent();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(DrawingTool tool)? changeToolEvent,
-    TResult Function(bool useStylus)? toggleUseStylusEvent,
+    TResult Function()? initialEvent,
   }) {
-    return changeToolEvent?.call(tool);
+    return initialEvent?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DrawingTool tool)? changeToolEvent,
-    TResult Function(bool useStylus)? toggleUseStylusEvent,
+    TResult Function()? initialEvent,
     required TResult orElse(),
   }) {
-    if (changeToolEvent != null) {
-      return changeToolEvent(tool);
+    if (initialEvent != null) {
+      return initialEvent();
     }
     return orElse();
   }
@@ -302,176 +296,32 @@ class _$ChangeToolEvent implements ChangeToolEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ChangeToolEvent value) changeToolEvent,
-    required TResult Function(ToggleUseStylusEvent value) toggleUseStylusEvent,
+    required TResult Function(DrawingEventInitialEvent value) initialEvent,
   }) {
-    return changeToolEvent(this);
+    return initialEvent(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ChangeToolEvent value)? changeToolEvent,
-    TResult Function(ToggleUseStylusEvent value)? toggleUseStylusEvent,
+    TResult Function(DrawingEventInitialEvent value)? initialEvent,
   }) {
-    return changeToolEvent?.call(this);
+    return initialEvent?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ChangeToolEvent value)? changeToolEvent,
-    TResult Function(ToggleUseStylusEvent value)? toggleUseStylusEvent,
+    TResult Function(DrawingEventInitialEvent value)? initialEvent,
     required TResult orElse(),
   }) {
-    if (changeToolEvent != null) {
-      return changeToolEvent(this);
+    if (initialEvent != null) {
+      return initialEvent(this);
     }
     return orElse();
   }
 }
 
-abstract class ChangeToolEvent implements DrawingEvent {
-  const factory ChangeToolEvent(final DrawingTool tool) = _$ChangeToolEvent;
-
-  DrawingTool get tool => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  _$$ChangeToolEventCopyWith<_$ChangeToolEvent> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$ToggleUseStylusEventCopyWith<$Res> {
-  factory _$$ToggleUseStylusEventCopyWith(_$ToggleUseStylusEvent value,
-          $Res Function(_$ToggleUseStylusEvent) then) =
-      __$$ToggleUseStylusEventCopyWithImpl<$Res>;
-  $Res call({bool useStylus});
-}
-
-/// @nodoc
-class __$$ToggleUseStylusEventCopyWithImpl<$Res>
-    extends _$DrawingEventCopyWithImpl<$Res>
-    implements _$$ToggleUseStylusEventCopyWith<$Res> {
-  __$$ToggleUseStylusEventCopyWithImpl(_$ToggleUseStylusEvent _value,
-      $Res Function(_$ToggleUseStylusEvent) _then)
-      : super(_value, (v) => _then(v as _$ToggleUseStylusEvent));
-
-  @override
-  _$ToggleUseStylusEvent get _value => super._value as _$ToggleUseStylusEvent;
-
-  @override
-  $Res call({
-    Object? useStylus = freezed,
-  }) {
-    return _then(_$ToggleUseStylusEvent(
-      useStylus == freezed
-          ? _value.useStylus
-          : useStylus // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$ToggleUseStylusEvent implements ToggleUseStylusEvent {
-  const _$ToggleUseStylusEvent(this.useStylus);
-
-  @override
-  final bool useStylus;
-
-  @override
-  String toString() {
-    return 'DrawingEvent.toggleUseStylusEvent(useStylus: $useStylus)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ToggleUseStylusEvent &&
-            const DeepCollectionEquality().equals(other.useStylus, useStylus));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(useStylus));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$ToggleUseStylusEventCopyWith<_$ToggleUseStylusEvent> get copyWith =>
-      __$$ToggleUseStylusEventCopyWithImpl<_$ToggleUseStylusEvent>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(DrawingTool tool) changeToolEvent,
-    required TResult Function(bool useStylus) toggleUseStylusEvent,
-  }) {
-    return toggleUseStylusEvent(useStylus);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(DrawingTool tool)? changeToolEvent,
-    TResult Function(bool useStylus)? toggleUseStylusEvent,
-  }) {
-    return toggleUseStylusEvent?.call(useStylus);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DrawingTool tool)? changeToolEvent,
-    TResult Function(bool useStylus)? toggleUseStylusEvent,
-    required TResult orElse(),
-  }) {
-    if (toggleUseStylusEvent != null) {
-      return toggleUseStylusEvent(useStylus);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ChangeToolEvent value) changeToolEvent,
-    required TResult Function(ToggleUseStylusEvent value) toggleUseStylusEvent,
-  }) {
-    return toggleUseStylusEvent(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ChangeToolEvent value)? changeToolEvent,
-    TResult Function(ToggleUseStylusEvent value)? toggleUseStylusEvent,
-  }) {
-    return toggleUseStylusEvent?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ChangeToolEvent value)? changeToolEvent,
-    TResult Function(ToggleUseStylusEvent value)? toggleUseStylusEvent,
-    required TResult orElse(),
-  }) {
-    if (toggleUseStylusEvent != null) {
-      return toggleUseStylusEvent(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ToggleUseStylusEvent implements DrawingEvent {
-  const factory ToggleUseStylusEvent(final bool useStylus) =
-      _$ToggleUseStylusEvent;
-
-  bool get useStylus => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  _$$ToggleUseStylusEventCopyWith<_$ToggleUseStylusEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+abstract class DrawingEventInitialEvent implements DrawingEvent {
+  const factory DrawingEventInitialEvent() = _$DrawingEventInitialEvent;
 }
