@@ -10,6 +10,11 @@ part "selectable_bloc.freezed.dart";
 
 abstract class SelectableBloc<T>
     extends Bloc<SelectableEvent<T>, SelectableState<T>> {
+  // Getters
+  SelectableItems get items => state.items;
+
+  T? get selected => items.selected;
+
   SelectableBloc(SelectableState<T> initialState) : super(initialState) {
     on<SelectableEvent<T>>((event, emit) {
       event.map(
