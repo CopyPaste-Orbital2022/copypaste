@@ -88,6 +88,23 @@ class DrawingPageAppbarTitle extends StatelessWidget {
                   size: 24,
                 ),
               ),
+              const VerticalDivider(),
+              PlatformIconButton(
+                icon: Icon(
+                  PlatformIcons(context).share,
+                  color: Colors.white,
+                  size: 24,
+                ),
+                onPressed: () {},
+              ),
+              PlatformIconButton(
+                icon: Icon(
+                  PlatformIcons(context).ellipsis,
+                  color: Colors.white,
+                  size: 24,
+                ),
+                onPressed: () {},
+              ),
             ],
           );
         })

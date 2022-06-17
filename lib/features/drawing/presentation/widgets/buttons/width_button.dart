@@ -10,12 +10,14 @@ class WidthButton<T extends SelectableBloc<double>> extends StatelessWidget {
     required this.index,
     this.color = Colors.black,
     this.backgroundColor = Colors.white,
+    this.backgroundHighlightColor = const Color.fromARGB(255, 255, 255, 176),
     this.size = 24,
   }) : super(key: key);
 
   final int index;
   final Color color;
   final Color backgroundColor;
+  final Color backgroundHighlightColor;
   final double size;
 
   @override
@@ -46,7 +48,7 @@ class WidthButton<T extends SelectableBloc<double>> extends StatelessWidget {
         width: size,
         height: size,
         decoration: BoxDecoration(
-          color: backgroundColor,
+          color: backgroundHighlightColor,
           shape: BoxShape.circle,
         ),
       );
