@@ -1,3 +1,4 @@
+import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:copypaste/core/utils/platform_helpers.dart';
 import 'package:copypaste/features/drawing/presentation/bloc/history_manager_bloc/history_manager_bloc.dart';
 import 'package:copypaste/features/drawing/presentation/bloc/selectable_bloc/blocs/eraser_width_bloc.dart';
@@ -21,10 +22,13 @@ class DrawingPageAppbarTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
+        if (platformIsDesktop) MoveWindow(),
         BlocBuilder<CurrentToolBloc, CurrentToolState>(
           builder: (context, state) {
             return Row(
               children: [
+                // if on the desktop, we want to have padding
+                if (platformIsDesktop) const SizedBox(width: 50),
                 PlatformIconButton(
                   padding: EdgeInsets.zero,
                   onPressed: () {},
@@ -71,6 +75,7 @@ class DrawingPageAppbarTitle extends StatelessWidget {
                       : Colors.white.withAlpha(128),
                   size: 24,
                 ),
+                padding: EdgeInsets.zero,
               ),
               PlatformIconButton(
                 onPressed: state.canRedo
@@ -87,6 +92,7 @@ class DrawingPageAppbarTitle extends StatelessWidget {
                       : Colors.white.withAlpha(128),
                   size: 24,
                 ),
+                padding: EdgeInsets.zero,
               ),
               const VerticalDivider(),
               PlatformIconButton(
@@ -96,6 +102,7 @@ class DrawingPageAppbarTitle extends StatelessWidget {
                   size: 24,
                 ),
                 onPressed: () {},
+                padding: EdgeInsets.zero,
               ),
               PlatformIconButton(
                 icon: Icon(
@@ -104,6 +111,7 @@ class DrawingPageAppbarTitle extends StatelessWidget {
                   size: 24,
                 ),
                 onPressed: () {},
+                padding: EdgeInsets.zero,
               ),
             ],
           );

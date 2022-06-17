@@ -1,4 +1,5 @@
 import 'package:copypaste/features/drawing/presentation/bloc/history_manager_bloc/history_manager_bloc.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
 import '../../../../core/injections/injection.dart';
 import '../bloc/pen_settings_bloc/pen_settings_bloc.dart';
@@ -17,9 +18,10 @@ import '../widgets/toolbar/drawing_appbar_title.dart';
 class DrawingPage extends StatelessWidget {
   const DrawingPage({Key? key}) : super(key: key);
 
-  AppBar buildAppbar(BuildContext context) {
-    return AppBar(
+  PlatformAppBar buildAppbar(BuildContext context) {
+    return PlatformAppBar(
       title: const DrawingPageAppbarTitle(),
+      backgroundColor: const Color(0xFFFADB00),
     );
   }
 
@@ -36,7 +38,7 @@ class DrawingPage extends StatelessWidget {
         BlocProvider.value(value: getIt<PenSettingsBloc>()),
       ],
       child: MyPageWrapper(
-        child: Scaffold(
+        child: PlatformScaffold(
           appBar: buildAppbar(context),
           body: const DrawingCanvas(),
         ),
