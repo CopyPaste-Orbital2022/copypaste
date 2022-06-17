@@ -13,14 +13,14 @@ abstract class SPStroke with _$SPStroke {
     @Default([]) List<SPPoint> points,
     @Default(false) bool isComplete,
     List<Point>? cachedBorderPoints,
-    @Default(0.5) double thinning, // check
-    @Default(0.5) double smoothing, // check
-    @Default(0.5) double streamline, // check
-    @Default(5) double taperStart, // check
-    @Default(5) double taperEnd, // check
-    @Default(true) bool capStart,
-    @Default(true) bool capEnd,
-    @Default(true) bool simulatePressure,
+    required double thinning, // check
+    required double smoothing, // check
+    required double streamline, // check
+    required double taperStart, // check
+    required double taperEnd, // check
+    required bool capStart,
+    required bool capEnd,
+    required bool simulatePressure,
   }) = _SPStroke;
 }
 
@@ -54,6 +54,7 @@ extension SPStrokeX on SPStroke {
         isComplete: isComplete,
         capStart: capStart,
         capEnd: capEnd,
+        simulatePressure: simulatePressure,
       );
     }
   }

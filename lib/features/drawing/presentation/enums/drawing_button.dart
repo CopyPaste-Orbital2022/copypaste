@@ -1,11 +1,13 @@
+import 'package:copypaste/features/drawing/presentation/widgets/menus/pen_menu.dart';
+
 import '../../../../core/utils/icon_paths.dart';
-import '../widgets/menus/color_menu.dart';
 import 'package:flutter/material.dart';
 
 enum DrawingButtonType {
   pen(
     IconPaths.penFillPath,
     IconPaths.penOutlinePath,
+    menuContent: PenMenu(),
   ),
   eraser(IconPaths.eraserFillPath, IconPaths.eraserOutlinePath);
 

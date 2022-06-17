@@ -1,6 +1,7 @@
 import 'package:copypaste/features/drawing/presentation/bloc/selectable_bloc/selectable_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
 class WidthMenu<T extends SelectableBloc<double>> extends StatelessWidget {
   const WidthMenu({Key? key, required this.index}) : super(key: key);
@@ -14,7 +15,7 @@ class WidthMenu<T extends SelectableBloc<double>> extends StatelessWidget {
           children: [
             const SizedBox(height: 8),
             Text("Width: ${state.get(index)!.toStringAsFixed(1)}"),
-            Slider(
+            PlatformSlider(
               min: state.items.minValue!,
               max: state.items.maxValue!,
               value: state.selected!,

@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:copypaste/core/injections/injection.dart';
 import 'package:copypaste/features/drawing/presentation/bloc/history_manager_bloc/history_manager_bloc.dart';
 import 'package:copypaste/features/drawing/presentation/bloc/history_manager_bloc/history_state.dart';
+import 'package:copypaste/features/drawing/presentation/bloc/pen_settings_bloc/pen_settings_bloc.dart';
 
 import '../../../domain/entities/sp_point.dart';
 import '../selectable_bloc/blocs/current_tool_bloc.dart';
@@ -24,6 +25,7 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
   final PenWidthBloc penWidthBloc;
   final PenColorBloc penColorBloc;
   final EraserWidthBloc eraserWidthBloc;
+  final PenSettingsBloc penSettingsBloc;
   int? _pointer;
 
   DrawingBloc({
@@ -31,6 +33,7 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
     required this.penColorBloc,
     required this.penWidthBloc,
     required this.eraserWidthBloc,
+    required this.penSettingsBloc,
   }) : super(DrawingStateX.initial()) {
     on<DrawingEvent>((event, emit) {
       event.map(
@@ -59,7 +62,7 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
 
   // event handlers
 
-  bool get useStylus => state.useStylus;
+  bool get useStylus => penSettingsBloc.state.useStylus;
 
   void handlePointerEvent(PointerEvent event, Emitter emit,
       Map<DrawingButtonType, void Function(PointerEvent, Emitter)> handlers) {
@@ -105,8 +108,16 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
           offset: event.localPosition,
           pressure: event.pressure,
         ),
-        penColor,
-        penWidth,
+        color: penColor,
+        size: penWidth,
+        thinning: penSettingsBloc.state.thinning,
+        smoothing: penSettingsBloc.state.smoothing,
+        streamline: penSettingsBloc.state.streamline,
+        taperStart: penSettingsBloc.state.taperStart,
+        taperEnd: penSettingsBloc.state.taperEnd,
+        capStart: penSettingsBloc.state.capStart,
+        capEnd: penSettingsBloc.state.capEnd,
+        simulatePressure: !useStylus,
       ),
     );
   }

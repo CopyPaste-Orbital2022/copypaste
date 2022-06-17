@@ -1,6 +1,7 @@
 import 'package:copypaste/features/drawing/presentation/bloc/history_manager_bloc/history_manager_bloc.dart';
 
 import '../../../../core/injections/injection.dart';
+import '../bloc/pen_settings_bloc/pen_settings_bloc.dart';
 import '../widgets/canvas/drawing_canvas.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,6 +33,7 @@ class DrawingPage extends StatelessWidget {
         BlocProvider.value(value: getIt<PenColorBloc>()),
         BlocProvider.value(value: getIt<PenWidthBloc>()),
         BlocProvider.value(value: getIt<HistoryManagerBloc>()),
+        BlocProvider.value(value: getIt<PenSettingsBloc>()),
       ],
       child: MyPageWrapper(
         child: Scaffold(

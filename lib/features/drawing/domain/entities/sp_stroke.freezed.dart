@@ -250,14 +250,14 @@ class _$_SPStroke implements _SPStroke {
       final List<SPPoint> points = const [],
       this.isComplete = false,
       final List<Point>? cachedBorderPoints,
-      this.thinning = 0.5,
-      this.smoothing = 0.5,
-      this.streamline = 0.5,
-      this.taperStart = 5,
-      this.taperEnd = 5,
-      this.capStart = true,
-      this.capEnd = true,
-      this.simulatePressure = true})
+      required this.thinning,
+      required this.smoothing,
+      required this.streamline,
+      required this.taperStart,
+      required this.taperEnd,
+      required this.capStart,
+      required this.capEnd,
+      required this.simulatePressure})
       : _points = points,
         _cachedBorderPoints = cachedBorderPoints;
 
@@ -286,33 +286,25 @@ class _$_SPStroke implements _SPStroke {
   }
 
   @override
-  @JsonKey()
   final double thinning;
 // check
   @override
-  @JsonKey()
   final double smoothing;
 // check
   @override
-  @JsonKey()
   final double streamline;
 // check
   @override
-  @JsonKey()
   final double taperStart;
 // check
   @override
-  @JsonKey()
   final double taperEnd;
 // check
   @override
-  @JsonKey()
   final bool capStart;
   @override
-  @JsonKey()
   final bool capEnd;
   @override
-  @JsonKey()
   final bool simulatePressure;
 
   @override
@@ -375,14 +367,14 @@ abstract class _SPStroke implements SPStroke {
       final List<SPPoint> points,
       final bool isComplete,
       final List<Point>? cachedBorderPoints,
-      final double thinning,
-      final double smoothing,
-      final double streamline,
-      final double taperStart,
-      final double taperEnd,
-      final bool capStart,
-      final bool capEnd,
-      final bool simulatePressure}) = _$_SPStroke;
+      required final double thinning,
+      required final double smoothing,
+      required final double streamline,
+      required final double taperStart,
+      required final double taperEnd,
+      required final bool capStart,
+      required final bool capEnd,
+      required final bool simulatePressure}) = _$_SPStroke;
 
   @override
   double get size => throw _privateConstructorUsedError;

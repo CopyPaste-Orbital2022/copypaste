@@ -6,7 +6,6 @@ part of "drawing_bloc.dart";
 ///
 /// [currentStroke] is the [stroke] that user is drawing. We separate this out to avoid rebuilding all the strokes
 ///
-/// if [useStylus] is true, then the user is using a stylus, then drawing events
 /// should only be handled if the event is a stylus event
 ///
 /// if [eraserPosition] is not null, then the user is erasing
@@ -15,25 +14,43 @@ class DrawingState extends HistoryState with _$DrawingState {
   const factory DrawingState({
     @Default([]) List<SPStroke> strokes,
     SPStroke? currentStroke,
-    @Default(false) bool useStylus,
     Offset? eraserPosition,
   }) = _DrawingState;
 }
 
 extension DrawingStateX on DrawingState {
   static DrawingState initial() {
-    return DrawingState();
+    return const DrawingState();
   }
 
   /// Starts a new stroke
-  DrawingState startDrawing(SPPoint point, Color penColor, double penWidth) {
+  DrawingState startDrawing(
+    SPPoint point, {
+    required Color color,
+    required double size,
+    required double thinning, // check
+    required double smoothing, // check
+    required double streamline, // check
+    required double taperStart, // check
+    required double taperEnd, // check
+    required bool capStart,
+    required bool capEnd,
+    required bool simulatePressure,
+  }) {
     final stroke = SPStroke(
-      color: penColor,
-      size: penWidth,
+      color: color,
+      size: size,
+      thinning: thinning,
+      smoothing: smoothing,
+      streamline: streamline,
+      taperStart: taperStart,
+      taperEnd: taperEnd,
+      capStart: capStart,
+      capEnd: capEnd,
+      simulatePressure: simulatePressure,
+      points: [point],
     );
-    return copyWith(
-      currentStroke: stroke.addPoint(point),
-    );
+    return copyWith(currentStroke: stroke);
   }
 
   /// Updates the current stroke

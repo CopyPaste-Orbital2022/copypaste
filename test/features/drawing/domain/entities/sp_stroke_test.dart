@@ -23,6 +23,14 @@ void main() {
           color: color,
           points: points,
           isComplete: isComplete,
+          thinning: 0.5,
+          smoothing: 0.5,
+          streamline: 0.5,
+          taperStart: 5,
+          taperEnd: 5,
+          capStart: true,
+          capEnd: true,
+          simulatePressure: true,
         );
         // assert
         expect(stroke.size, size);
@@ -43,7 +51,16 @@ void main() {
         const stroke = SPStroke(
           size: size,
           color: color,
+          points: [],
           isComplete: isComplete,
+          thinning: 0.5,
+          smoothing: 0.5,
+          streamline: 0.5,
+          taperStart: 5,
+          taperEnd: 5,
+          capStart: true,
+          capEnd: true,
+          simulatePressure: true,
         );
         // assert
         expect(stroke.points, []);
@@ -64,6 +81,14 @@ void main() {
           size: size,
           color: color,
           points: points,
+          thinning: 0.5,
+          smoothing: 0.5,
+          streamline: 0.5,
+          taperStart: 5,
+          taperEnd: 5,
+          capStart: true,
+          capEnd: true,
+          simulatePressure: true,
         );
         // assert
         expect(stroke.isComplete, false);
@@ -85,7 +110,14 @@ void main() {
           size: size,
           color: color,
           points: points,
-          isComplete: isComplete,
+          thinning: 0.5,
+          smoothing: 0.5,
+          streamline: 0.5,
+          taperStart: 5,
+          taperEnd: 5,
+          capStart: true,
+          capEnd: true,
+          simulatePressure: true,
         );
         // assert
         expect(stroke.cachedBorderPoints, null);
@@ -111,6 +143,14 @@ void main() {
         color: const Color(0xFF000000),
         points: points,
         isComplete: false,
+        thinning: 0.5,
+        smoothing: 0.5,
+        streamline: 0.5,
+        taperStart: 5,
+        taperEnd: 5,
+        capStart: true,
+        capEnd: true,
+        simulatePressure: true,
       );
     });
 
