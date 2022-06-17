@@ -1,4 +1,4 @@
-import 'package:copypaste/features/drawing/presentation/bloc/selectable_bloc/selectable_bloc.dart';
+import '../selectable_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:selectable_items/selectable_items.dart';
 

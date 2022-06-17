@@ -1,4 +1,4 @@
-import 'package:copypaste/features/drawing/domain/entities/sp_point.dart';
+import 'sp_point.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:perfect_freehand/perfect_freehand.dart';
@@ -13,6 +13,14 @@ abstract class SPStroke with _$SPStroke {
     @Default([]) List<SPPoint> points,
     @Default(false) bool isComplete,
     List<Point>? cachedBorderPoints,
+    @Default(0.5) double thinning, // check
+    @Default(0.5) double smoothing, // check
+    @Default(0.5) double streamline, // check
+    @Default(5) double taperStart, // check
+    @Default(5) double taperEnd, // check
+    @Default(true) bool capStart,
+    @Default(true) bool capEnd,
+    @Default(true) bool simulatePressure,
   }) = _SPStroke;
 }
 
@@ -38,9 +46,14 @@ extension SPStrokeX on SPStroke {
       return getStroke(
         points.map((e) => e.point).toList(),
         size: size,
-        taperStart: 5,
-        taperEnd: 5,
+        taperStart: taperStart,
+        taperEnd: taperEnd,
+        smoothing: smoothing,
+        thinning: thinning,
+        streamline: streamline,
         isComplete: isComplete,
+        capStart: capStart,
+        capEnd: capEnd,
       );
     }
   }

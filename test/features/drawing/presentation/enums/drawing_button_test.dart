@@ -1,4 +1,4 @@
-import 'package:copypaste/features/drawing/presentation/widgets/toolbar/drawing_button.dart';
+import 'package:copypaste/features/drawing/presentation/widgets/buttons/drawing_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/widgets.dart';

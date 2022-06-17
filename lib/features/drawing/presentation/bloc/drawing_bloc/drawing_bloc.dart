@@ -1,9 +1,13 @@
 import 'dart:ui';
-import 'package:copypaste/features/drawing/domain/entities/sp_point.dart';
-import 'package:copypaste/features/drawing/presentation/bloc/selectable_bloc/blocs/current_tool_bloc.dart';
-import 'package:copypaste/features/drawing/presentation/bloc/selectable_bloc/blocs/eraser_width_bloc.dart';
-import 'package:copypaste/features/drawing/presentation/bloc/selectable_bloc/blocs/pen_color_bloc.dart';
-import 'package:copypaste/features/drawing/presentation/bloc/selectable_bloc/blocs/pen_width_bloc.dart';
+import 'package:copypaste/core/injections/injection.dart';
+import 'package:copypaste/features/drawing/presentation/bloc/history_manager_bloc/history_manager_bloc.dart';
+import 'package:copypaste/features/drawing/presentation/bloc/history_manager_bloc/history_state.dart';
+
+import '../../../domain/entities/sp_point.dart';
+import '../selectable_bloc/blocs/current_tool_bloc.dart';
+import '../selectable_bloc/blocs/eraser_width_bloc.dart';
+import '../selectable_bloc/blocs/pen_color_bloc.dart';
+import '../selectable_bloc/blocs/pen_width_bloc.dart';
 import 'package:flutter/material.dart';
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:freezed_annotation/freezed_annotation.dart";
@@ -46,6 +50,7 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
           DrawingButtonType.pen: endDrawing,
           DrawingButtonType.eraser: finishErase,
         }),
+        setState: (event) => emit(event.state),
       );
     });
   }
@@ -116,14 +121,16 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
   }
 
   void endDrawing(PointerEvent event, Emitter emit) {
-    emit(
-      state.endDrawing(
-        SPPoint(
-          offset: event.localPosition,
-          pressure: event.pressure,
-        ),
+    final newState = state.endDrawing(
+      SPPoint(
+        offset: event.localPosition,
+        pressure: event.pressure,
       ),
     );
+    print("adding to history");
+    print(getIt<HistoryManagerBloc>().state.stack.length);
+    getIt<HistoryManagerBloc>().add(HistoryManagerEvent.push(newState));
+    emit(newState);
   }
 
   void cancelDrawing(PointerEvent event, Emitter emit) {
@@ -141,23 +148,23 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
 
   void erase(PointerEvent event, Emitter emit) {
     final position = event.localPosition;
-    emit(
-      state
-          .copyWith(
-            eraserPosition: position,
-          )
-          .eraseStroke(
-            position,
-            eraserWidth / 2,
-          ),
-    );
+    final newState = state
+        .copyWith(
+          eraserPosition: position,
+        )
+        .eraseStroke(
+          position,
+          eraserWidth / 2,
+        );
+    emit(newState);
   }
 
   void finishErase(PointerEvent event, Emitter emit) {
-    emit(
-      state.copyWith(
-        eraserPosition: null,
-      ),
+    final newState = state.copyWith(
+      eraserPosition: null,
     );
+    print("adding to history");
+    getIt<HistoryManagerBloc>().add(HistoryManagerEvent.push(newState));
+    emit(newState);
   }
 }

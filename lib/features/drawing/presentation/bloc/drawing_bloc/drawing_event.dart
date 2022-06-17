@@ -21,4 +21,9 @@ class DrawingEvent with _$DrawingEvent {
   const factory DrawingEvent.pointerCancel(
     PointerCancelEvent event,
   ) = DrawingEventPointerCancel;
+
+  /// Set the state to the given [state]
+  const factory DrawingEvent.setState(
+    DrawingState state,
+  ) = DrawingEventSetState;
 }

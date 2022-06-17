@@ -27,37 +27,32 @@ class StrokesPainter extends CustomPainter {
       ..strokeCap = StrokeCap.round
       ..strokeJoin = StrokeJoin.round
       ..style = PaintingStyle.fill;
-    if (stroke.points.length <= 2 || stroke.borderPoints.length <= 2) {
-      final diameter = stroke.size;
-      // draw a circle with the diameter * pressure centered at the point location with the stroke color
-      final point = stroke.points.first;
-      canvas.drawCircle(point.offset, diameter / 2 * point.pressure, paint);
+    // 1. Get the outline points from the input points
+    final outlinePoints = stroke.borderPoints;
+
+    // 2. Render the points as a path
+    final path = Path();
+
+    if (outlinePoints.isEmpty) {
+      // If the list is empty, don't do anything.
       return;
+    } else if (outlinePoints.length < 2) {
+      // If the list only has one point, draw a dot.
+      path.addOval(Rect.fromCircle(
+          center: Offset(outlinePoints[0].x, outlinePoints[0].y), radius: 1));
+    } else {
+      // Otherwise, draw a line that connects each point with a bezier curve segment.
+      path.moveTo(outlinePoints[0].x, outlinePoints[0].y);
+
+      for (int i = 1; i < outlinePoints.length - 1; ++i) {
+        final p0 = outlinePoints[i];
+        final p1 = outlinePoints[i + 1];
+        path.quadraticBezierTo(
+            p0.x, p0.y, (p0.x + p1.x) / 2, (p0.y + p1.y) / 2);
+      }
     }
-    final borderPoints = stroke.borderPoints;
-    final Path path = Path();
-    // move to the first point
-    path.moveTo(borderPoints.first.x, borderPoints.first.y);
-    // draw a bezier curve from the current point to the next point
-    for (int i = 1; i < borderPoints.length - 1; i++) {
-      final point = borderPoints[i];
-      final nextPoint = borderPoints[i + 1];
-      final controlPoint = Offset(
-        point.x + (nextPoint.x - point.x) / 3,
-        point.y + (nextPoint.y - point.y) / 3,
-      );
-      path.quadraticBezierTo(
-          controlPoint.dx, controlPoint.dy, nextPoint.x, nextPoint.y);
-    }
-    // draw a bezier curve from the last point to the first point
-    final lastPoint = borderPoints.last;
-    final firstPoint = borderPoints.first;
-    final controlPoint = Offset(
-      lastPoint.x - (firstPoint.x - lastPoint.x) / 3,
-      lastPoint.y - (firstPoint.y - lastPoint.y) / 3,
-    );
-    path.quadraticBezierTo(
-        controlPoint.dx, controlPoint.dy, firstPoint.x, firstPoint.y);
+
+    // 3. Draw the path to the canvas
     canvas.drawPath(path, paint);
   }
 

@@ -11,7 +11,7 @@ part of "drawing_bloc.dart";
 ///
 /// if [eraserPosition] is not null, then the user is erasing
 @freezed
-class DrawingState with _$DrawingState {
+class DrawingState extends HistoryState with _$DrawingState {
   const factory DrawingState({
     @Default([]) List<SPStroke> strokes,
     SPStroke? currentStroke,

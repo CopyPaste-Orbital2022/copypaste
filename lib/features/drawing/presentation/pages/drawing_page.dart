@@ -1,5 +1,7 @@
-import 'package:copypaste/core/injections/injection.dart';
-import 'package:copypaste/features/drawing/presentation/widgets/canvas/drawing_canvas.dart';
+import 'package:copypaste/features/drawing/presentation/bloc/history_manager_bloc/history_manager_bloc.dart';
+
+import '../../../../core/injections/injection.dart';
+import '../widgets/canvas/drawing_canvas.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_stackable_popup_menu/my_stackable_popup_menu.dart';
@@ -29,6 +31,7 @@ class DrawingPage extends StatelessWidget {
         BlocProvider.value(value: getIt<EraserWidthBloc>()),
         BlocProvider.value(value: getIt<PenColorBloc>()),
         BlocProvider.value(value: getIt<PenWidthBloc>()),
+        BlocProvider.value(value: getIt<HistoryManagerBloc>()),
       ],
       child: MyPageWrapper(
         child: Scaffold(
