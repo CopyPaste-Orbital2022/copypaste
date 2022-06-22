@@ -6,7 +6,7 @@ import 'features/drawing/presentation/pages/drawing_page.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:copypaste/constants/routes.dart';
-import 'package:copypaste/helpers/loading/loading_screen.dart';
+import 'package:copypaste/core/utilities/loading/loading_screen.dart';
 import 'package:copypaste/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:copypaste/features/auth/presentation/bloc/auth_event.dart';
 import 'package:copypaste/features/auth/presentation/bloc/auth_state.dart';

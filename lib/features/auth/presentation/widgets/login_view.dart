@@ -4,7 +4,7 @@ import 'package:copypaste/core/errors/auth_exceptions.dart';
 import '../bloc/auth_bloc.dart';
 import '../bloc/auth_event.dart';
 import '../bloc/auth_state.dart';
-import 'package:copypaste/utilities/dialogs/error_dialog.dart';
+import 'package:copypaste/core/utilities/dialogs/error_dialog.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginView extends StatefulWidget {
