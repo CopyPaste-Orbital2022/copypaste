@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1014506689686",
+    "project_id": "copypaste-69a13",
+    "storage_bucket": "copypaste-69a13.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1014506689686:android:17a7dc25fb10b19fdddeb7",
+        "android_client_info": {
+          "package_name": "app.tinyhacks.copypaste"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1014506689686-bs8cbdnbbj2r23gtf1gsr6an0rl5nj2d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkeawjS5rp0nQ55c_AebqcEo7khiqvJGc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1014506689686-bs8cbdnbbj2r23gtf1gsr6an0rl5nj2d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
