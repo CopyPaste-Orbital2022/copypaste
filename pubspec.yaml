@@ -15,10 +15,10 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.0+1
+version: 0.2.0+2
 
 environment:
-  sdk: ">=2.16.2 <3.0.0"
+  sdk: ">=2.17.0 <3.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -27,9 +27,10 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  bitsdojo_window: ^0.1.2
   bloc: ^8.0.3
   cloud_firestore: ^3.1.18
-  cupertino_icons: ^1.0.2
+  cupertino_icons: ^1.0.5
   custom_pop_up_menu: ^1.2.3+1
   dartz: ^0.10.1
   equatable: ^2.0.3
@@ -40,12 +41,23 @@ dependencies:
   flutter_colorpicker: ^1.0.3
   flutter_localizations:
     sdk: flutter
+  flutter_platform_widgets: ^1.20.0
+  flutter_svg: ^1.1.0
   freezed_annotation: ^2.0.3
   get_it: ^7.2.0
+  hive: ^2.2.2
   injectable: ^1.5.3
   intl: ^0.17.0
-  perfect_freehand: ^1.0.3
   share_plus: ^4.0.9
+  my_color_picker:
+    path: plugins/my_color_picker
+  my_stackable_popup_menu:
+    path: plugins/my_stackable_popup_menu
+  nil: ^1.1.1
+  perfect_freehand:
+    path: plugins/perfect-freehand-dart
+  selectable_items:
+    path: plugins/selectable_items
   shared_preferences: ^2.0.13
 
 dev_dependencies:
@@ -68,7 +80,11 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
-  # assets:
+  assets:
+    - assets/menubar/eraser.fill.svg
+    - assets/menubar/eraser.outline.svg
+    - assets/menubar/pen.fill.svg
+    - assets/menubar/pen.outline.svg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see
@@ -78,9 +94,6 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  fonts:
-    - family: MenubarIcons
-      fonts:
-        - asset: assets/fonts/MenubarIcons.ttf
+  # fonts:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
