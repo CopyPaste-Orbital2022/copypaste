@@ -28,6 +28,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   bloc: ^8.0.3
+  cloud_firestore: ^3.1.18
   cupertino_icons: ^1.0.2
   custom_pop_up_menu: ^1.2.3+1
   dartz: ^0.10.1
@@ -35,17 +36,16 @@ dependencies:
   firebase_auth: ^3.3.19
   flutter:
     sdk: flutter
-  flutter_localizations:
-    sdk: flutter
-  intl: ^0.17.0
   flutter_bloc: ^8.0.1
   flutter_colorpicker: ^1.0.3
+  flutter_localizations:
+    sdk: flutter
   freezed_annotation: ^2.0.3
   get_it: ^7.2.0
   injectable: ^1.5.3
-  perfect_freehand: ^1.0.4
-  scribble:
-    path: plugins/scribble
+  intl: ^0.17.0
+  perfect_freehand: ^1.0.3
+  share_plus: ^4.0.9
   shared_preferences: ^2.0.13
 
 dev_dependencies:
