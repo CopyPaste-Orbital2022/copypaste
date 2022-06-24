@@ -1,6 +1,6 @@
 import 'package:copypaste/features/drawing/presentation/widgets/menus/pen_menu.dart';
 
-import '../../../../core/utils/icon_paths.dart';
+import '../../../../core/utilities/assets/icon_paths.dart';
 import 'package:flutter/material.dart';
 
 enum DrawingButtonType {

@@ -48,7 +48,6 @@ dependencies:
   hive: ^2.2.2
   injectable: ^1.5.3
   intl: ^0.17.0
-  share_plus: ^4.0.9
   my_color_picker:
     path: plugins/my_color_picker
   my_stackable_popup_menu:
@@ -58,7 +57,9 @@ dependencies:
     path: plugins/perfect-freehand-dart
   selectable_items:
     path: plugins/selectable_items
+  share_plus: ^4.0.9
   shared_preferences: ^2.0.13
+  uuid: ^3.0.6
 
 dev_dependencies:
   build_runner: ^2.1.10

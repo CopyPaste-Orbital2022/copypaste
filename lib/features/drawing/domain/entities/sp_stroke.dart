@@ -8,6 +8,7 @@ part 'sp_stroke.freezed.dart';
 @freezed
 abstract class SPStroke with _$SPStroke {
   const factory SPStroke({
+    required String id,
     required double size,
     required Color color,
     @Default([]) List<SPPoint> points,

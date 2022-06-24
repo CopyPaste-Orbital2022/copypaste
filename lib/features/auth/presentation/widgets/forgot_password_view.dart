@@ -1,6 +1,6 @@
+import 'package:copypaste/core/extensions/buildcontext/loc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:copypaste/extensions/buildcontext/loc.dart';
 import '../bloc/auth_bloc.dart';
 import '../bloc/auth_event.dart';
 import '../bloc/auth_state.dart';

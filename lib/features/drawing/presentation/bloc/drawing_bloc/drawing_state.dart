@@ -38,6 +38,7 @@ extension DrawingStateX on DrawingState {
     required bool simulatePressure,
   }) {
     final stroke = SPStroke(
+      id: const Uuid().v4(),
       color: color,
       size: size,
       thinning: thinning,

@@ -19,6 +19,7 @@ void main() {
         const isComplete = true;
         // act
         const stroke = SPStroke(
+          id: 'test-id',
           size: size,
           color: color,
           points: points,
@@ -49,6 +50,7 @@ void main() {
         const isComplete = true;
         // act
         const stroke = SPStroke(
+          id: 'test-id',
           size: size,
           color: color,
           points: [],
@@ -78,6 +80,7 @@ void main() {
         ];
         // act
         const stroke = SPStroke(
+          id: 'test-id',
           size: size,
           color: color,
           points: points,
@@ -107,6 +110,7 @@ void main() {
         const isComplete = true;
         // act
         const stroke = SPStroke(
+          id: 'test-id',
           size: size,
           color: color,
           points: points,
@@ -139,6 +143,7 @@ void main() {
         );
       }
       stroke = SPStroke(
+        id: 'test-id',
         size: 1.0,
         color: const Color(0xFF000000),
         points: points,

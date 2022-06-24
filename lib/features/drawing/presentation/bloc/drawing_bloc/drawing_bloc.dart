@@ -3,6 +3,7 @@ import 'package:copypaste/core/injections/injection.dart';
 import 'package:copypaste/features/drawing/presentation/bloc/history_manager_bloc/history_manager_bloc.dart';
 import 'package:copypaste/features/drawing/presentation/bloc/history_manager_bloc/history_state.dart';
 import 'package:copypaste/features/drawing/presentation/bloc/pen_settings_bloc/pen_settings_bloc.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../../domain/entities/sp_point.dart';
 import '../selectable_bloc/blocs/current_tool_bloc.dart';
