@@ -1,4 +1,4 @@
-import 'package:copypaste/features/drawing/presentation/bloc/selectable_bloc/selectable_bloc.dart';
+import '../../bloc/selectable_bloc/selectable_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';

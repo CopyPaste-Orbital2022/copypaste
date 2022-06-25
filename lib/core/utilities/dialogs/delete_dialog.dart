@@ -1,6 +1,6 @@
-import 'package:copypaste/core/extensions/buildcontext/loc.dart';
+import '../../extensions/buildcontext/loc.dart';
 import 'package:flutter/material.dart';
-import 'package:copypaste/core/utilities/dialogs/generic_dialog.dart';
+import 'generic_dialog.dart';
 
 Future<bool> showDeleteDialog(BuildContext context) {
   return showGenericDialog<bool>(

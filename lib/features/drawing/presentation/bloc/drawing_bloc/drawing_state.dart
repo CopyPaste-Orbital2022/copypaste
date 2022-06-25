@@ -12,6 +12,7 @@ part of "drawing_bloc.dart";
 @freezed
 class DrawingState extends HistoryState with _$DrawingState {
   const factory DrawingState({
+    SPDrawing? drawing,
     @Default([]) List<SPStroke> strokes,
     SPStroke? currentStroke,
     Offset? eraserPosition,

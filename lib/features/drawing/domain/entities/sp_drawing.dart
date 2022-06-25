@@ -1,13 +1,18 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:equatable/equatable.dart';
 
-part 'sp_drawing.freezed.dart';
+class SPDrawing extends Equatable {
+  const SPDrawing({
+    required this.id,
+    required this.createdAt,
+    required this.modifiedAt,
+    required this.title,
+  });
 
-@freezed
-abstract class SPDrawing with _$SPDrawing {
-  const factory SPDrawing({
-    required String id,
-    required DateTime createdAt,
-    required DateTime modifiedAt,
-    required String title,
-  }) = _SPDrawing;
+  final String id;
+  final DateTime createdAt;
+  final DateTime modifiedAt;
+  final String title;
+
+  @override
+  List<Object?> get props => [id, createdAt, modifiedAt, title];
 }

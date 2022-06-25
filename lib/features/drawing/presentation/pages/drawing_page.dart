@@ -1,4 +1,4 @@
-import 'package:copypaste/features/drawing/presentation/bloc/history_manager_bloc/history_manager_bloc.dart';
+import '../bloc/history_manager_bloc/history_manager_bloc.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
 import '../../../../core/injections/injection.dart';

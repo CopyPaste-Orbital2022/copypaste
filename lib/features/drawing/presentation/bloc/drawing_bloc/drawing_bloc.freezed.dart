@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$DrawingState {
+  SPDrawing? get drawing => throw _privateConstructorUsedError;
   List<SPStroke> get strokes => throw _privateConstructorUsedError;
   SPStroke? get currentStroke => throw _privateConstructorUsedError;
   Offset? get eraserPosition => throw _privateConstructorUsedError;
@@ -31,7 +32,8 @@ abstract class $DrawingStateCopyWith<$Res> {
           DrawingState value, $Res Function(DrawingState) then) =
       _$DrawingStateCopyWithImpl<$Res>;
   $Res call(
-      {List<SPStroke> strokes,
+      {SPDrawing? drawing,
+      List<SPStroke> strokes,
       SPStroke? currentStroke,
       Offset? eraserPosition});
 
@@ -48,11 +50,16 @@ class _$DrawingStateCopyWithImpl<$Res> implements $DrawingStateCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? drawing = freezed,
     Object? strokes = freezed,
     Object? currentStroke = freezed,
     Object? eraserPosition = freezed,
   }) {
     return _then(_value.copyWith(
+      drawing: drawing == freezed
+          ? _value.drawing
+          : drawing // ignore: cast_nullable_to_non_nullable
+              as SPDrawing?,
       strokes: strokes == freezed
           ? _value.strokes
           : strokes // ignore: cast_nullable_to_non_nullable
@@ -88,7 +95,8 @@ abstract class _$$_DrawingStateCopyWith<$Res>
       __$$_DrawingStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {List<SPStroke> strokes,
+      {SPDrawing? drawing,
+      List<SPStroke> strokes,
       SPStroke? currentStroke,
       Offset? eraserPosition});
 
@@ -109,11 +117,16 @@ class __$$_DrawingStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? drawing = freezed,
     Object? strokes = freezed,
     Object? currentStroke = freezed,
     Object? eraserPosition = freezed,
   }) {
     return _then(_$_DrawingState(
+      drawing: drawing == freezed
+          ? _value.drawing
+          : drawing // ignore: cast_nullable_to_non_nullable
+              as SPDrawing?,
       strokes: strokes == freezed
           ? _value._strokes
           : strokes // ignore: cast_nullable_to_non_nullable
@@ -134,11 +147,14 @@ class __$$_DrawingStateCopyWithImpl<$Res>
 
 class _$_DrawingState implements _DrawingState {
   const _$_DrawingState(
-      {final List<SPStroke> strokes = const [],
+      {this.drawing,
+      final List<SPStroke> strokes = const [],
       this.currentStroke,
       this.eraserPosition})
       : _strokes = strokes;
 
+  @override
+  final SPDrawing? drawing;
   final List<SPStroke> _strokes;
   @override
   @JsonKey()
@@ -154,7 +170,7 @@ class _$_DrawingState implements _DrawingState {
 
   @override
   String toString() {
-    return 'DrawingState(strokes: $strokes, currentStroke: $currentStroke, eraserPosition: $eraserPosition)';
+    return 'DrawingState(drawing: $drawing, strokes: $strokes, currentStroke: $currentStroke, eraserPosition: $eraserPosition)';
   }
 
   @override
@@ -162,6 +178,7 @@ class _$_DrawingState implements _DrawingState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_DrawingState &&
+            const DeepCollectionEquality().equals(other.drawing, drawing) &&
             const DeepCollectionEquality().equals(other._strokes, _strokes) &&
             const DeepCollectionEquality()
                 .equals(other.currentStroke, currentStroke) &&
@@ -172,6 +189,7 @@ class _$_DrawingState implements _DrawingState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(drawing),
       const DeepCollectionEquality().hash(_strokes),
       const DeepCollectionEquality().hash(currentStroke),
       const DeepCollectionEquality().hash(eraserPosition));
@@ -184,10 +202,13 @@ class _$_DrawingState implements _DrawingState {
 
 abstract class _DrawingState implements DrawingState {
   const factory _DrawingState(
-      {final List<SPStroke> strokes,
+      {final SPDrawing? drawing,
+      final List<SPStroke> strokes,
       final SPStroke? currentStroke,
       final Offset? eraserPosition}) = _$_DrawingState;
 
+  @override
+  SPDrawing? get drawing => throw _privateConstructorUsedError;
   @override
   List<SPStroke> get strokes => throw _privateConstructorUsedError;
   @override
@@ -204,6 +225,7 @@ abstract class _DrawingState implements DrawingState {
 mixin _$DrawingEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() initial,
     required TResult Function(PointerDownEvent event) pointerDown,
     required TResult Function(PointerMoveEvent event) pointerMove,
     required TResult Function(PointerUpEvent event) pointerUp,
@@ -213,6 +235,7 @@ mixin _$DrawingEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
     TResult Function(PointerDownEvent event)? pointerDown,
     TResult Function(PointerMoveEvent event)? pointerMove,
     TResult Function(PointerUpEvent event)? pointerUp,
@@ -222,6 +245,7 @@ mixin _$DrawingEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
     TResult Function(PointerDownEvent event)? pointerDown,
     TResult Function(PointerMoveEvent event)? pointerMove,
     TResult Function(PointerUpEvent event)? pointerUp,
@@ -232,6 +256,7 @@ mixin _$DrawingEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(DrawingEventInitial value) initial,
     required TResult Function(DrawingEventPointerDown value) pointerDown,
     required TResult Function(DrawingEventPointerMove value) pointerMove,
     required TResult Function(DrawingEventPointerUp value) pointerUp,
@@ -241,6 +266,7 @@ mixin _$DrawingEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(DrawingEventInitial value)? initial,
     TResult Function(DrawingEventPointerDown value)? pointerDown,
     TResult Function(DrawingEventPointerMove value)? pointerMove,
     TResult Function(DrawingEventPointerUp value)? pointerUp,
@@ -250,6 +276,7 @@ mixin _$DrawingEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(DrawingEventInitial value)? initial,
     TResult Function(DrawingEventPointerDown value)? pointerDown,
     TResult Function(DrawingEventPointerMove value)? pointerMove,
     TResult Function(DrawingEventPointerUp value)? pointerUp,
@@ -274,6 +301,135 @@ class _$DrawingEventCopyWithImpl<$Res> implements $DrawingEventCopyWith<$Res> {
   final DrawingEvent _value;
   // ignore: unused_field
   final $Res Function(DrawingEvent) _then;
+}
+
+/// @nodoc
+abstract class _$$DrawingEventInitialCopyWith<$Res> {
+  factory _$$DrawingEventInitialCopyWith(_$DrawingEventInitial value,
+          $Res Function(_$DrawingEventInitial) then) =
+      __$$DrawingEventInitialCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$DrawingEventInitialCopyWithImpl<$Res>
+    extends _$DrawingEventCopyWithImpl<$Res>
+    implements _$$DrawingEventInitialCopyWith<$Res> {
+  __$$DrawingEventInitialCopyWithImpl(
+      _$DrawingEventInitial _value, $Res Function(_$DrawingEventInitial) _then)
+      : super(_value, (v) => _then(v as _$DrawingEventInitial));
+
+  @override
+  _$DrawingEventInitial get _value => super._value as _$DrawingEventInitial;
+}
+
+/// @nodoc
+
+class _$DrawingEventInitial implements DrawingEventInitial {
+  const _$DrawingEventInitial();
+
+  @override
+  String toString() {
+    return 'DrawingEvent.initial()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$DrawingEventInitial);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(PointerDownEvent event) pointerDown,
+    required TResult Function(PointerMoveEvent event) pointerMove,
+    required TResult Function(PointerUpEvent event) pointerUp,
+    required TResult Function(PointerCancelEvent event) pointerCancel,
+    required TResult Function(DrawingState state) setState,
+  }) {
+    return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(PointerDownEvent event)? pointerDown,
+    TResult Function(PointerMoveEvent event)? pointerMove,
+    TResult Function(PointerUpEvent event)? pointerUp,
+    TResult Function(PointerCancelEvent event)? pointerCancel,
+    TResult Function(DrawingState state)? setState,
+  }) {
+    return initial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(PointerDownEvent event)? pointerDown,
+    TResult Function(PointerMoveEvent event)? pointerMove,
+    TResult Function(PointerUpEvent event)? pointerUp,
+    TResult Function(PointerCancelEvent event)? pointerCancel,
+    TResult Function(DrawingState state)? setState,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(DrawingEventInitial value) initial,
+    required TResult Function(DrawingEventPointerDown value) pointerDown,
+    required TResult Function(DrawingEventPointerMove value) pointerMove,
+    required TResult Function(DrawingEventPointerUp value) pointerUp,
+    required TResult Function(DrawingEventPointerCancel value) pointerCancel,
+    required TResult Function(DrawingEventSetState value) setState,
+  }) {
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(DrawingEventInitial value)? initial,
+    TResult Function(DrawingEventPointerDown value)? pointerDown,
+    TResult Function(DrawingEventPointerMove value)? pointerMove,
+    TResult Function(DrawingEventPointerUp value)? pointerUp,
+    TResult Function(DrawingEventPointerCancel value)? pointerCancel,
+    TResult Function(DrawingEventSetState value)? setState,
+  }) {
+    return initial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(DrawingEventInitial value)? initial,
+    TResult Function(DrawingEventPointerDown value)? pointerDown,
+    TResult Function(DrawingEventPointerMove value)? pointerMove,
+    TResult Function(DrawingEventPointerUp value)? pointerUp,
+    TResult Function(DrawingEventPointerCancel value)? pointerCancel,
+    TResult Function(DrawingEventSetState value)? setState,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DrawingEventInitial implements DrawingEvent {
+  const factory DrawingEventInitial() = _$DrawingEventInitial;
 }
 
 /// @nodoc
@@ -343,6 +499,7 @@ class _$DrawingEventPointerDown implements DrawingEventPointerDown {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() initial,
     required TResult Function(PointerDownEvent event) pointerDown,
     required TResult Function(PointerMoveEvent event) pointerMove,
     required TResult Function(PointerUpEvent event) pointerUp,
@@ -355,6 +512,7 @@ class _$DrawingEventPointerDown implements DrawingEventPointerDown {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
     TResult Function(PointerDownEvent event)? pointerDown,
     TResult Function(PointerMoveEvent event)? pointerMove,
     TResult Function(PointerUpEvent event)? pointerUp,
@@ -367,6 +525,7 @@ class _$DrawingEventPointerDown implements DrawingEventPointerDown {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
     TResult Function(PointerDownEvent event)? pointerDown,
     TResult Function(PointerMoveEvent event)? pointerMove,
     TResult Function(PointerUpEvent event)? pointerUp,
@@ -383,6 +542,7 @@ class _$DrawingEventPointerDown implements DrawingEventPointerDown {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(DrawingEventInitial value) initial,
     required TResult Function(DrawingEventPointerDown value) pointerDown,
     required TResult Function(DrawingEventPointerMove value) pointerMove,
     required TResult Function(DrawingEventPointerUp value) pointerUp,
@@ -395,6 +555,7 @@ class _$DrawingEventPointerDown implements DrawingEventPointerDown {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(DrawingEventInitial value)? initial,
     TResult Function(DrawingEventPointerDown value)? pointerDown,
     TResult Function(DrawingEventPointerMove value)? pointerMove,
     TResult Function(DrawingEventPointerUp value)? pointerUp,
@@ -407,6 +568,7 @@ class _$DrawingEventPointerDown implements DrawingEventPointerDown {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(DrawingEventInitial value)? initial,
     TResult Function(DrawingEventPointerDown value)? pointerDown,
     TResult Function(DrawingEventPointerMove value)? pointerMove,
     TResult Function(DrawingEventPointerUp value)? pointerUp,
@@ -498,6 +660,7 @@ class _$DrawingEventPointerMove implements DrawingEventPointerMove {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() initial,
     required TResult Function(PointerDownEvent event) pointerDown,
     required TResult Function(PointerMoveEvent event) pointerMove,
     required TResult Function(PointerUpEvent event) pointerUp,
@@ -510,6 +673,7 @@ class _$DrawingEventPointerMove implements DrawingEventPointerMove {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
     TResult Function(PointerDownEvent event)? pointerDown,
     TResult Function(PointerMoveEvent event)? pointerMove,
     TResult Function(PointerUpEvent event)? pointerUp,
@@ -522,6 +686,7 @@ class _$DrawingEventPointerMove implements DrawingEventPointerMove {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
     TResult Function(PointerDownEvent event)? pointerDown,
     TResult Function(PointerMoveEvent event)? pointerMove,
     TResult Function(PointerUpEvent event)? pointerUp,
@@ -538,6 +703,7 @@ class _$DrawingEventPointerMove implements DrawingEventPointerMove {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(DrawingEventInitial value) initial,
     required TResult Function(DrawingEventPointerDown value) pointerDown,
     required TResult Function(DrawingEventPointerMove value) pointerMove,
     required TResult Function(DrawingEventPointerUp value) pointerUp,
@@ -550,6 +716,7 @@ class _$DrawingEventPointerMove implements DrawingEventPointerMove {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(DrawingEventInitial value)? initial,
     TResult Function(DrawingEventPointerDown value)? pointerDown,
     TResult Function(DrawingEventPointerMove value)? pointerMove,
     TResult Function(DrawingEventPointerUp value)? pointerUp,
@@ -562,6 +729,7 @@ class _$DrawingEventPointerMove implements DrawingEventPointerMove {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(DrawingEventInitial value)? initial,
     TResult Function(DrawingEventPointerDown value)? pointerDown,
     TResult Function(DrawingEventPointerMove value)? pointerMove,
     TResult Function(DrawingEventPointerUp value)? pointerUp,
@@ -652,6 +820,7 @@ class _$DrawingEventPointerUp implements DrawingEventPointerUp {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() initial,
     required TResult Function(PointerDownEvent event) pointerDown,
     required TResult Function(PointerMoveEvent event) pointerMove,
     required TResult Function(PointerUpEvent event) pointerUp,
@@ -664,6 +833,7 @@ class _$DrawingEventPointerUp implements DrawingEventPointerUp {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
     TResult Function(PointerDownEvent event)? pointerDown,
     TResult Function(PointerMoveEvent event)? pointerMove,
     TResult Function(PointerUpEvent event)? pointerUp,
@@ -676,6 +846,7 @@ class _$DrawingEventPointerUp implements DrawingEventPointerUp {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
     TResult Function(PointerDownEvent event)? pointerDown,
     TResult Function(PointerMoveEvent event)? pointerMove,
     TResult Function(PointerUpEvent event)? pointerUp,
@@ -692,6 +863,7 @@ class _$DrawingEventPointerUp implements DrawingEventPointerUp {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(DrawingEventInitial value) initial,
     required TResult Function(DrawingEventPointerDown value) pointerDown,
     required TResult Function(DrawingEventPointerMove value) pointerMove,
     required TResult Function(DrawingEventPointerUp value) pointerUp,
@@ -704,6 +876,7 @@ class _$DrawingEventPointerUp implements DrawingEventPointerUp {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(DrawingEventInitial value)? initial,
     TResult Function(DrawingEventPointerDown value)? pointerDown,
     TResult Function(DrawingEventPointerMove value)? pointerMove,
     TResult Function(DrawingEventPointerUp value)? pointerUp,
@@ -716,6 +889,7 @@ class _$DrawingEventPointerUp implements DrawingEventPointerUp {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(DrawingEventInitial value)? initial,
     TResult Function(DrawingEventPointerDown value)? pointerDown,
     TResult Function(DrawingEventPointerMove value)? pointerMove,
     TResult Function(DrawingEventPointerUp value)? pointerUp,
@@ -808,6 +982,7 @@ class _$DrawingEventPointerCancel implements DrawingEventPointerCancel {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() initial,
     required TResult Function(PointerDownEvent event) pointerDown,
     required TResult Function(PointerMoveEvent event) pointerMove,
     required TResult Function(PointerUpEvent event) pointerUp,
@@ -820,6 +995,7 @@ class _$DrawingEventPointerCancel implements DrawingEventPointerCancel {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
     TResult Function(PointerDownEvent event)? pointerDown,
     TResult Function(PointerMoveEvent event)? pointerMove,
     TResult Function(PointerUpEvent event)? pointerUp,
@@ -832,6 +1008,7 @@ class _$DrawingEventPointerCancel implements DrawingEventPointerCancel {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
     TResult Function(PointerDownEvent event)? pointerDown,
     TResult Function(PointerMoveEvent event)? pointerMove,
     TResult Function(PointerUpEvent event)? pointerUp,
@@ -848,6 +1025,7 @@ class _$DrawingEventPointerCancel implements DrawingEventPointerCancel {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(DrawingEventInitial value) initial,
     required TResult Function(DrawingEventPointerDown value) pointerDown,
     required TResult Function(DrawingEventPointerMove value) pointerMove,
     required TResult Function(DrawingEventPointerUp value) pointerUp,
@@ -860,6 +1038,7 @@ class _$DrawingEventPointerCancel implements DrawingEventPointerCancel {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(DrawingEventInitial value)? initial,
     TResult Function(DrawingEventPointerDown value)? pointerDown,
     TResult Function(DrawingEventPointerMove value)? pointerMove,
     TResult Function(DrawingEventPointerUp value)? pointerUp,
@@ -872,6 +1051,7 @@ class _$DrawingEventPointerCancel implements DrawingEventPointerCancel {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(DrawingEventInitial value)? initial,
     TResult Function(DrawingEventPointerDown value)? pointerDown,
     TResult Function(DrawingEventPointerMove value)? pointerMove,
     TResult Function(DrawingEventPointerUp value)? pointerUp,
@@ -971,6 +1151,7 @@ class _$DrawingEventSetState implements DrawingEventSetState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() initial,
     required TResult Function(PointerDownEvent event) pointerDown,
     required TResult Function(PointerMoveEvent event) pointerMove,
     required TResult Function(PointerUpEvent event) pointerUp,
@@ -983,6 +1164,7 @@ class _$DrawingEventSetState implements DrawingEventSetState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
     TResult Function(PointerDownEvent event)? pointerDown,
     TResult Function(PointerMoveEvent event)? pointerMove,
     TResult Function(PointerUpEvent event)? pointerUp,
@@ -995,6 +1177,7 @@ class _$DrawingEventSetState implements DrawingEventSetState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
     TResult Function(PointerDownEvent event)? pointerDown,
     TResult Function(PointerMoveEvent event)? pointerMove,
     TResult Function(PointerUpEvent event)? pointerUp,
@@ -1011,6 +1194,7 @@ class _$DrawingEventSetState implements DrawingEventSetState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(DrawingEventInitial value) initial,
     required TResult Function(DrawingEventPointerDown value) pointerDown,
     required TResult Function(DrawingEventPointerMove value) pointerMove,
     required TResult Function(DrawingEventPointerUp value) pointerUp,
@@ -1023,6 +1207,7 @@ class _$DrawingEventSetState implements DrawingEventSetState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(DrawingEventInitial value)? initial,
     TResult Function(DrawingEventPointerDown value)? pointerDown,
     TResult Function(DrawingEventPointerMove value)? pointerMove,
     TResult Function(DrawingEventPointerUp value)? pointerUp,
@@ -1035,6 +1220,7 @@ class _$DrawingEventSetState implements DrawingEventSetState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(DrawingEventInitial value)? initial,
     TResult Function(DrawingEventPointerDown value)? pointerDown,
     TResult Function(DrawingEventPointerMove value)? pointerMove,
     TResult Function(DrawingEventPointerUp value)? pointerUp,

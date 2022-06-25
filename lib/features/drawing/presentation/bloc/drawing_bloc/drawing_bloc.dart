@@ -1,8 +1,11 @@
 import 'dart:ui';
-import 'package:copypaste/core/injections/injection.dart';
-import 'package:copypaste/features/drawing/presentation/bloc/history_manager_bloc/history_manager_bloc.dart';
-import 'package:copypaste/features/drawing/presentation/bloc/history_manager_bloc/history_state.dart';
-import 'package:copypaste/features/drawing/presentation/bloc/pen_settings_bloc/pen_settings_bloc.dart';
+import 'package:copypaste/features/drawing/domain/entities/sp_drawing.dart';
+import 'package:copypaste/features/drawing/domain/repository/i_sp_drawing_repository.dart';
+
+import '../../../../../core/injections/injection.dart';
+import '../history_manager_bloc/history_manager_bloc.dart';
+import '../history_manager_bloc/history_state.dart';
+import '../pen_settings_bloc/pen_settings_bloc.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../domain/entities/sp_point.dart';
@@ -27,6 +30,7 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
   final PenColorBloc penColorBloc;
   final EraserWidthBloc eraserWidthBloc;
   final PenSettingsBloc penSettingsBloc;
+  final ISPDrawingRepository drawingRepository;
   int? _pointer;
 
   DrawingBloc({
@@ -35,9 +39,12 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
     required this.penWidthBloc,
     required this.eraserWidthBloc,
     required this.penSettingsBloc,
+    required this.drawingRepository,
   }) : super(DrawingStateX.initial()) {
+    // sets the event handlers
     on<DrawingEvent>((event, emit) {
       event.map(
+        initial: (event) => handleInitialEvent(event, emit),
         pointerDown: (event) => handlePointerEvent(event.event, emit, {
           DrawingButtonType.pen: startDrawing,
           DrawingButtonType.eraser: erase,
@@ -62,6 +69,23 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
   DrawingButtonType? get currentTool => currentToolBloc.selected;
 
   // event handlers
+
+  void handleInitialEvent(
+    DrawingEvent event,
+    Emitter<DrawingState> emit,
+  ) async {
+    final drawingOrFailure = await drawingRepository.createNewDrawing();
+    drawingOrFailure.fold(
+      (l) {
+        // TODO: handle error
+      },
+      (r) {
+        emit(
+          state.copyWith(drawing: r),
+        );
+      },
+    );
+  }
 
   bool get useStylus => penSettingsBloc.state.useStylus;
 
@@ -102,25 +126,26 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
   double get penWidth => penWidthBloc.selected!;
 
   void startDrawing(PointerEvent event, Emitter emit) {
-    // update the state
-    emit(
-      state.startDrawing(
-        SPPoint(
-          offset: event.localPosition,
-          pressure: event.pressure,
-        ),
-        color: penColor,
-        size: penWidth,
-        thinning: penSettingsBloc.state.thinning,
-        smoothing: penSettingsBloc.state.smoothing,
-        streamline: penSettingsBloc.state.streamline,
-        taperStart: penSettingsBloc.state.taperStart,
-        taperEnd: penSettingsBloc.state.taperEnd,
-        capStart: penSettingsBloc.state.capStart,
-        capEnd: penSettingsBloc.state.capEnd,
-        simulatePressure: !useStylus,
+    final newState = state.startDrawing(
+      SPPoint(
+        offset: event.localPosition,
+        pressure: event.pressure,
       ),
+      color: penColor,
+      size: penWidth,
+      thinning: penSettingsBloc.state.thinning,
+      smoothing: penSettingsBloc.state.smoothing,
+      streamline: penSettingsBloc.state.streamline,
+      taperStart: penSettingsBloc.state.taperStart,
+      taperEnd: penSettingsBloc.state.taperEnd,
+      capStart: penSettingsBloc.state.capStart,
+      capEnd: penSettingsBloc.state.capEnd,
+      simulatePressure: !useStylus,
     );
+    assert(state.drawing != null);
+    // add the
+    // update the state
+    emit(newState);
   }
 
   void updateDrawing(PointerEvent event, Emitter emit) {
@@ -132,17 +157,21 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
     );
   }
 
-  void endDrawing(PointerEvent event, Emitter emit) {
+  void endDrawing(PointerEvent event, Emitter emit) async {
     final newState = state.endDrawing(
       SPPoint(
         offset: event.localPosition,
         pressure: event.pressure,
       ),
     );
-    print("adding to history");
-    print(getIt<HistoryManagerBloc>().state.stack.length);
     getIt<HistoryManagerBloc>().add(HistoryManagerEvent.push(newState));
+    // add the state to the repository
     emit(newState);
+    final result = await drawingRepository.insertStroke(
+      drawing: state.drawing!,
+      stroke: newState.strokes.last,
+    );
+    print(result);
   }
 
   void cancelDrawing(PointerEvent event, Emitter emit) {
@@ -175,7 +204,6 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
     final newState = state.copyWith(
       eraserPosition: null,
     );
-    print("adding to history");
     getIt<HistoryManagerBloc>().add(HistoryManagerEvent.push(newState));
     emit(newState);
   }

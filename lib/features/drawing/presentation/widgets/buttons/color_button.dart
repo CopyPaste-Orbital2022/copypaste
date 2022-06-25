@@ -1,5 +1,5 @@
-import 'package:copypaste/features/drawing/presentation/bloc/selectable_bloc/selectable_bloc.dart';
-import 'package:copypaste/features/drawing/presentation/widgets/menus/color_menu.dart';
+import '../../bloc/selectable_bloc/selectable_bloc.dart';
+import '../menus/color_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_stackable_popup_menu/my_stackable_popup_menu.dart';

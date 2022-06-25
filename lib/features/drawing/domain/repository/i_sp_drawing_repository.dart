@@ -1,6 +1,6 @@
-import 'package:copypaste/core/failures/database_failure.dart';
-import 'package:copypaste/features/drawing/domain/entities/sp_drawing.dart';
-import 'package:copypaste/features/drawing/domain/entities/sp_stroke.dart';
+import '../../../../core/errors_and_failures/failures/database_failure.dart';
+import '../entities/sp_drawing.dart';
+import '../entities/sp_stroke.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class ISPDrawingRepository {
