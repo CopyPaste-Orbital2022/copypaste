@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
+
 import '../errors_and_failures/errors/unexpected_value_error.dart';
 import '../errors_and_failures/failures/value_failure.dart';
 

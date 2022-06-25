@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:copypaste/features/authentication/presentation/pages/authentication_page.dart';
-import 'package:copypaste/features/drawing/presentation/pages/drawing_page.dart';
+import '../../features/authentication/presentation/pages/authentication_page.dart';
+import '../../features/drawing/presentation/pages/drawing_page.dart';
 import 'package:injectable/injectable.dart';
 import 'package:flutter/material.dart';
 

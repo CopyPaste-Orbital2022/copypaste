@@ -1,4 +1,5 @@
 import 'dart:ui';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:perfect_freehand/perfect_freehand.dart';
 

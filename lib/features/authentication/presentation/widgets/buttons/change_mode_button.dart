@@ -1,4 +1,4 @@
-import 'package:copypaste/features/authentication/presentation/widgets/sign_in_or_register_text.dart';
+import '../sign_in_or_register_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

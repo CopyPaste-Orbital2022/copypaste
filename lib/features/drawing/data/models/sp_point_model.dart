@@ -1,7 +1,8 @@
 import 'dart:ui';
 
-import '../../domain/entities/sp_point.dart';
 import 'package:perfect_freehand/perfect_freehand.dart';
+
+import '../../domain/entities/sp_point.dart';
 
 extension SPPointModel on SPPoint {
   // to json

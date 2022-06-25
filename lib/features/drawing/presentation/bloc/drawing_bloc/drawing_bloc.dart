@@ -1,6 +1,6 @@
 import 'dart:ui';
-import 'package:copypaste/features/drawing/domain/entities/sp_drawing.dart';
-import 'package:copypaste/features/drawing/domain/repository/i_sp_drawing_repository.dart';
+import '../../../domain/entities/sp_drawing.dart';
+import '../../../domain/repository/i_sp_drawing_repository.dart';
 
 import '../../../../../core/injections/injection.dart';
 import '../history_manager_bloc/history_manager_bloc.dart';

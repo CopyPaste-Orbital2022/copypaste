@@ -1,5 +1,5 @@
-import 'package:copypaste/core/errors_and_failures/failures/auth_failure.dart';
-import 'package:copypaste/features/authentication/presentation/widgets/sign_in_or_register_text.dart';
+import '../../../../../core/errors_and_failures/failures/auth_failure.dart';
+import '../sign_in_or_register_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
