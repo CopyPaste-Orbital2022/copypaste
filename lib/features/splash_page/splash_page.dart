@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../core/injections/injection.dart';
 import '../../core/routing/app_router.dart';
 import '../authentication/presentation/bloc/auth_bloc/auth_bloc.dart';
-import '../authentication/presentation/bloc/auth_bloc/auth_state.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({Key? key}) : super(key: key);

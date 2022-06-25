@@ -4,8 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/errors_and_failures/failures/auth_failure.dart';
 import '../../../domain/entities/password.dart';
 import '../../bloc/validation_bloc/validation_bloc.dart';
-import '../../bloc/validation_bloc/validation_event.dart';
-import '../../bloc/validation_bloc/validation_state.dart';
 
 class PasswordInputBox extends StatelessWidget {
   const PasswordInputBox({Key? key}) : super(key: key);

@@ -4,8 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/errors_and_failures/failures/auth_failure.dart';
 import '../../../domain/entities/email.dart';
 import '../../bloc/validation_bloc/validation_bloc.dart';
-import '../../bloc/validation_bloc/validation_event.dart';
-import '../../bloc/validation_bloc/validation_state.dart';
 
 class EmailInputBox extends StatelessWidget {
   const EmailInputBox({Key? key}) : super(key: key);

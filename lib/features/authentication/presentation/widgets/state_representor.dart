@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../bloc/validation_bloc/validation_bloc.dart';
-import '../bloc/validation_bloc/validation_state.dart';
 
 class StateRepresentor extends StatelessWidget {
   const StateRepresentor({Key? key}) : super(key: key);

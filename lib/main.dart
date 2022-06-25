@@ -1,6 +1,5 @@
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:copypaste/features/authentication/presentation/bloc/auth_bloc/auth_bloc.dart';
-import 'package:copypaste/features/authentication/presentation/bloc/auth_bloc/auth_event.dart';
 import 'package:copypaste/features/drawing/presentation/bloc/drawing_bloc/drawing_bloc.dart';
 import 'package:copypaste/firebase_options.dart';
 import 'package:flutter/material.dart';

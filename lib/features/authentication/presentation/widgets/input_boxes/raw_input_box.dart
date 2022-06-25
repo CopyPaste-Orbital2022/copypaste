@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../bloc/validation_bloc/validation_bloc.dart';
-import '../../bloc/validation_bloc/validation_state.dart';
 
 class RawInputBox extends StatelessWidget {
   const RawInputBox({

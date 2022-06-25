@@ -1,11 +1,4 @@
-import 'package:dartz/dartz.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../../../core/errors_and_failures/failures/auth_failure.dart';
-import '../../../domain/entities/display_name.dart';
-import '../../../domain/entities/email.dart';
-import '../../../domain/entities/password.dart';
-
-part 'validation_state.freezed.dart';
+part of 'validation_bloc.dart';
 
 @freezed
 class ValidationState with _$ValidationState {

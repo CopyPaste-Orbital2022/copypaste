@@ -6,8 +6,6 @@ import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import '../../../../../core/injections/injection.dart';
 import '../../../../../core/routing/app_router.dart';
 import '../../bloc/validation_bloc/validation_bloc.dart';
-import '../../bloc/validation_bloc/validation_event.dart';
-import '../../bloc/validation_bloc/validation_state.dart';
 
 class AuthenticationButton extends StatelessWidget {
   const AuthenticationButton({Key? key}) : super(key: key);

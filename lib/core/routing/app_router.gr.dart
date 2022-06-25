@@ -17,6 +17,10 @@ class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    SplashRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+          routeData: routeData, child: const SplashPage());
+    },
     AuthenticationRoute.name: (routeData) {
       return CustomPage<dynamic>(
           routeData: routeData,
@@ -39,9 +43,18 @@ class _$AppRouter extends RootStackRouter {
 
   @override
   List<RouteConfig> get routes => [
+        RouteConfig(SplashRoute.name, path: '/'),
         RouteConfig(AuthenticationRoute.name, path: '/'),
         RouteConfig(DrawingRoute.name, path: '/drawing-page')
       ];
+}
+
+/// generated route for
+/// [SplashPage]
+class SplashRoute extends PageRouteInfo<void> {
+  const SplashRoute() : super(SplashRoute.name, path: '/');
+
+  static const String name = 'SplashRoute';
 }
 
 /// generated route for

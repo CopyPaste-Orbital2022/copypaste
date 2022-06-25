@@ -2,7 +2,6 @@ import 'package:copypaste/features/authentication/presentation/widgets/input_box
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../bloc/validation_bloc/validation_bloc.dart';
-import '../../bloc/validation_bloc/validation_state.dart';
 
 class UserNameInputBoxWrapper extends StatelessWidget {
   const UserNameInputBoxWrapper({Key? key}) : super(key: key);

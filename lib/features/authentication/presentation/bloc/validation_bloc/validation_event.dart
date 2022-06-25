@@ -1,6 +1,4 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-
-part 'validation_event.freezed.dart';
+part of 'validation_bloc.dart';
 
 @freezed
 class ValidationEvent with _$ValidationEvent {

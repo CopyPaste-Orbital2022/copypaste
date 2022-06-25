@@ -1,10 +1,15 @@
 import 'package:bloc/bloc.dart';
-import 'package:copypaste/features/authentication/presentation/bloc/auth_bloc/auth_state.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import '../../../domain/entities/sp_user.dart';
 import '../../../domain/repositories/i_auth_repository.dart';
-import 'auth_event.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import '../../../domain/entities/sp_user.dart';
+
+part 'auth_event.dart';
+part 'auth_state.dart';
+
+part 'auth_bloc.freezed.dart';
 
 @injectable
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
