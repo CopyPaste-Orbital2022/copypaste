@@ -8,7 +8,6 @@ import '../widgets/buttons/change_mode_button.dart';
 import '../widgets/input_boxes/email_input_box.dart';
 import '../widgets/input_boxes/password_input_box.dart';
 import '../widgets/input_boxes/user_name_input_box_wrapper.dart';
-import '../widgets/sign_in_or_register_text.dart';
 
 class AuthenticationPage extends StatelessWidget {
   const AuthenticationPage({Key? key}) : super(key: key);

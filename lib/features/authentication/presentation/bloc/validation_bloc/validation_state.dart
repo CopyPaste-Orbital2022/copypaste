@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../../../core/errors_and_failures/failures/auth_failure.dart';
 import '../../../domain/entities/display_name.dart';

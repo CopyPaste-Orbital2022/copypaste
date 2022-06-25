@@ -48,7 +48,7 @@ class FirebaseAuthRepositoryImpl implements IAuthRepository {
         default:
           return left(AuthFailure.serverError());
       }
-    } on FirebaseException catch (e) {
+    } on FirebaseException {
       return left(AuthFailure.serverError());
     }
   }
@@ -75,7 +75,7 @@ class FirebaseAuthRepositoryImpl implements IAuthRepository {
         default:
           return left(AuthFailure.serverError());
       }
-    } on FirebaseException catch (e) {
+    } on FirebaseException {
       return left(AuthFailure.serverError());
     }
   }

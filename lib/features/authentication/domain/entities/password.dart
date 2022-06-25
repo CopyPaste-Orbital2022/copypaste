@@ -29,7 +29,6 @@ class Password extends ValueObject<String> {
   }
 
   factory Password.validateTwo(String firstRawValue, String secondRawValue) {
-    ;
     if (firstRawValue != secondRawValue) {
       return Password._failed(firstRawValue, twoPasswordInputsAreNotSame);
     } else {

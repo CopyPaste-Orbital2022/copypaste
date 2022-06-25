@@ -1,6 +1,3 @@
-import 'dart:async';
-import 'dart:developer' as developer;
-
 import 'package:bloc/bloc.dart';
 import 'package:copypaste/features/authentication/presentation/bloc/validation_bloc/validation_event.dart';
 import 'package:copypaste/features/authentication/presentation/bloc/validation_bloc/validation_state.dart';
