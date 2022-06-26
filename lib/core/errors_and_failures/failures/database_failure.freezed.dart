@@ -18,23 +18,23 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$DatabaseFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String failedReason) $default, {
-    required TResult Function() hasNoDrawing,
-    required TResult Function() userHasNotSignedIn,
+    TResult Function(String description) $default, {
+    required TResult Function(String? description) hasNoDrawing,
+    required TResult Function(String? description) userHasNotSignedIn,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult Function(String failedReason)? $default, {
-    TResult Function()? hasNoDrawing,
-    TResult Function()? userHasNotSignedIn,
+    TResult Function(String description)? $default, {
+    TResult Function(String? description)? hasNoDrawing,
+    TResult Function(String? description)? userHasNotSignedIn,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String failedReason)? $default, {
-    TResult Function()? hasNoDrawing,
-    TResult Function()? userHasNotSignedIn,
+    TResult Function(String description)? $default, {
+    TResult Function(String? description)? hasNoDrawing,
+    TResult Function(String? description)? userHasNotSignedIn,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -87,7 +87,7 @@ abstract class _$$_DatabaseFailureCopyWith<$Res> {
   factory _$$_DatabaseFailureCopyWith(
           _$_DatabaseFailure value, $Res Function(_$_DatabaseFailure) then) =
       __$$_DatabaseFailureCopyWithImpl<$Res>;
-  $Res call({String failedReason});
+  $Res call({String description});
 }
 
 /// @nodoc
@@ -103,12 +103,12 @@ class __$$_DatabaseFailureCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? failedReason = freezed,
+    Object? description = freezed,
   }) {
     return _then(_$_DatabaseFailure(
-      failedReason == freezed
-          ? _value.failedReason
-          : failedReason // ignore: cast_nullable_to_non_nullable
+      description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -117,14 +117,14 @@ class __$$_DatabaseFailureCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_DatabaseFailure implements _DatabaseFailure {
-  const _$_DatabaseFailure(this.failedReason);
+  const _$_DatabaseFailure(this.description);
 
   @override
-  final String failedReason;
+  final String description;
 
   @override
   String toString() {
-    return 'DatabaseFailure(failedReason: $failedReason)';
+    return 'DatabaseFailure(description: $description)';
   }
 
   @override
@@ -133,12 +133,12 @@ class _$_DatabaseFailure implements _DatabaseFailure {
         (other.runtimeType == runtimeType &&
             other is _$_DatabaseFailure &&
             const DeepCollectionEquality()
-                .equals(other.failedReason, failedReason));
+                .equals(other.description, description));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(failedReason));
+      runtimeType, const DeepCollectionEquality().hash(description));
 
   @JsonKey(ignore: true)
   @override
@@ -148,33 +148,33 @@ class _$_DatabaseFailure implements _DatabaseFailure {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String failedReason) $default, {
-    required TResult Function() hasNoDrawing,
-    required TResult Function() userHasNotSignedIn,
+    TResult Function(String description) $default, {
+    required TResult Function(String? description) hasNoDrawing,
+    required TResult Function(String? description) userHasNotSignedIn,
   }) {
-    return $default(failedReason);
+    return $default(description);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult Function(String failedReason)? $default, {
-    TResult Function()? hasNoDrawing,
-    TResult Function()? userHasNotSignedIn,
+    TResult Function(String description)? $default, {
+    TResult Function(String? description)? hasNoDrawing,
+    TResult Function(String? description)? userHasNotSignedIn,
   }) {
-    return $default?.call(failedReason);
+    return $default?.call(description);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String failedReason)? $default, {
-    TResult Function()? hasNoDrawing,
-    TResult Function()? userHasNotSignedIn,
+    TResult Function(String description)? $default, {
+    TResult Function(String? description)? hasNoDrawing,
+    TResult Function(String? description)? userHasNotSignedIn,
     required TResult orElse(),
   }) {
     if ($default != null) {
-      return $default(failedReason);
+      return $default(description);
     }
     return orElse();
   }
@@ -218,10 +218,9 @@ class _$_DatabaseFailure implements _DatabaseFailure {
 }
 
 abstract class _DatabaseFailure implements DatabaseFailure {
-  const factory _DatabaseFailure(final String failedReason) =
-      _$_DatabaseFailure;
+  const factory _DatabaseFailure(final String description) = _$_DatabaseFailure;
 
-  String get failedReason => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$_DatabaseFailureCopyWith<_$_DatabaseFailure> get copyWith =>
       throw _privateConstructorUsedError;
@@ -233,6 +232,7 @@ abstract class _$$DatabaseFailureHasNoDrawingCopyWith<$Res> {
           _$DatabaseFailureHasNoDrawing value,
           $Res Function(_$DatabaseFailureHasNoDrawing) then) =
       __$$DatabaseFailureHasNoDrawingCopyWithImpl<$Res>;
+  $Res call({String? description});
 }
 
 /// @nodoc
@@ -247,58 +247,82 @@ class __$$DatabaseFailureHasNoDrawingCopyWithImpl<$Res>
   @override
   _$DatabaseFailureHasNoDrawing get _value =>
       super._value as _$DatabaseFailureHasNoDrawing;
+
+  @override
+  $Res call({
+    Object? description = freezed,
+  }) {
+    return _then(_$DatabaseFailureHasNoDrawing(
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$DatabaseFailureHasNoDrawing implements DatabaseFailureHasNoDrawing {
-  const _$DatabaseFailureHasNoDrawing();
+  const _$DatabaseFailureHasNoDrawing({this.description});
+
+  @override
+  final String? description;
 
   @override
   String toString() {
-    return 'DatabaseFailure.hasNoDrawing()';
+    return 'DatabaseFailure.hasNoDrawing(description: $description)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DatabaseFailureHasNoDrawing);
+            other is _$DatabaseFailureHasNoDrawing &&
+            const DeepCollectionEquality()
+                .equals(other.description, description));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(description));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$DatabaseFailureHasNoDrawingCopyWith<_$DatabaseFailureHasNoDrawing>
+      get copyWith => __$$DatabaseFailureHasNoDrawingCopyWithImpl<
+          _$DatabaseFailureHasNoDrawing>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String failedReason) $default, {
-    required TResult Function() hasNoDrawing,
-    required TResult Function() userHasNotSignedIn,
+    TResult Function(String description) $default, {
+    required TResult Function(String? description) hasNoDrawing,
+    required TResult Function(String? description) userHasNotSignedIn,
   }) {
-    return hasNoDrawing();
+    return hasNoDrawing(description);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult Function(String failedReason)? $default, {
-    TResult Function()? hasNoDrawing,
-    TResult Function()? userHasNotSignedIn,
+    TResult Function(String description)? $default, {
+    TResult Function(String? description)? hasNoDrawing,
+    TResult Function(String? description)? userHasNotSignedIn,
   }) {
-    return hasNoDrawing?.call();
+    return hasNoDrawing?.call(description);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String failedReason)? $default, {
-    TResult Function()? hasNoDrawing,
-    TResult Function()? userHasNotSignedIn,
+    TResult Function(String description)? $default, {
+    TResult Function(String? description)? hasNoDrawing,
+    TResult Function(String? description)? userHasNotSignedIn,
     required TResult orElse(),
   }) {
     if (hasNoDrawing != null) {
-      return hasNoDrawing();
+      return hasNoDrawing(description);
     }
     return orElse();
   }
@@ -342,7 +366,13 @@ class _$DatabaseFailureHasNoDrawing implements DatabaseFailureHasNoDrawing {
 }
 
 abstract class DatabaseFailureHasNoDrawing implements DatabaseFailure {
-  const factory DatabaseFailureHasNoDrawing() = _$DatabaseFailureHasNoDrawing;
+  const factory DatabaseFailureHasNoDrawing({final String? description}) =
+      _$DatabaseFailureHasNoDrawing;
+
+  String? get description => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$DatabaseFailureHasNoDrawingCopyWith<_$DatabaseFailureHasNoDrawing>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -351,6 +381,7 @@ abstract class _$$DatabaseFailureUserHasNotSignedInCopyWith<$Res> {
           _$DatabaseFailureUserHasNotSignedIn value,
           $Res Function(_$DatabaseFailureUserHasNotSignedIn) then) =
       __$$DatabaseFailureUserHasNotSignedInCopyWithImpl<$Res>;
+  $Res call({String? description});
 }
 
 /// @nodoc
@@ -365,59 +396,84 @@ class __$$DatabaseFailureUserHasNotSignedInCopyWithImpl<$Res>
   @override
   _$DatabaseFailureUserHasNotSignedIn get _value =>
       super._value as _$DatabaseFailureUserHasNotSignedIn;
+
+  @override
+  $Res call({
+    Object? description = freezed,
+  }) {
+    return _then(_$DatabaseFailureUserHasNotSignedIn(
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$DatabaseFailureUserHasNotSignedIn
     implements DatabaseFailureUserHasNotSignedIn {
-  const _$DatabaseFailureUserHasNotSignedIn();
+  const _$DatabaseFailureUserHasNotSignedIn({this.description});
+
+  @override
+  final String? description;
 
   @override
   String toString() {
-    return 'DatabaseFailure.userHasNotSignedIn()';
+    return 'DatabaseFailure.userHasNotSignedIn(description: $description)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DatabaseFailureUserHasNotSignedIn);
+            other is _$DatabaseFailureUserHasNotSignedIn &&
+            const DeepCollectionEquality()
+                .equals(other.description, description));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(description));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$DatabaseFailureUserHasNotSignedInCopyWith<
+          _$DatabaseFailureUserHasNotSignedIn>
+      get copyWith => __$$DatabaseFailureUserHasNotSignedInCopyWithImpl<
+          _$DatabaseFailureUserHasNotSignedIn>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String failedReason) $default, {
-    required TResult Function() hasNoDrawing,
-    required TResult Function() userHasNotSignedIn,
+    TResult Function(String description) $default, {
+    required TResult Function(String? description) hasNoDrawing,
+    required TResult Function(String? description) userHasNotSignedIn,
   }) {
-    return userHasNotSignedIn();
+    return userHasNotSignedIn(description);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult Function(String failedReason)? $default, {
-    TResult Function()? hasNoDrawing,
-    TResult Function()? userHasNotSignedIn,
+    TResult Function(String description)? $default, {
+    TResult Function(String? description)? hasNoDrawing,
+    TResult Function(String? description)? userHasNotSignedIn,
   }) {
-    return userHasNotSignedIn?.call();
+    return userHasNotSignedIn?.call(description);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String failedReason)? $default, {
-    TResult Function()? hasNoDrawing,
-    TResult Function()? userHasNotSignedIn,
+    TResult Function(String description)? $default, {
+    TResult Function(String? description)? hasNoDrawing,
+    TResult Function(String? description)? userHasNotSignedIn,
     required TResult orElse(),
   }) {
     if (userHasNotSignedIn != null) {
-      return userHasNotSignedIn();
+      return userHasNotSignedIn(description);
     }
     return orElse();
   }
@@ -461,6 +517,12 @@ class _$DatabaseFailureUserHasNotSignedIn
 }
 
 abstract class DatabaseFailureUserHasNotSignedIn implements DatabaseFailure {
-  const factory DatabaseFailureUserHasNotSignedIn() =
+  const factory DatabaseFailureUserHasNotSignedIn({final String? description}) =
       _$DatabaseFailureUserHasNotSignedIn;
+
+  String? get description => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$DatabaseFailureUserHasNotSignedInCopyWith<
+          _$DatabaseFailureUserHasNotSignedIn>
+      get copyWith => throw _privateConstructorUsedError;
 }

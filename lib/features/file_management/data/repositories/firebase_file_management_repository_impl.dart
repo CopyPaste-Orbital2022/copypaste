@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:copypaste/features/authentication/domain/entities/sp_user.dart';
 import 'package:copypaste/features/authentication/presentation/bloc/auth_bloc/auth_bloc.dart';
@@ -8,7 +6,6 @@ import 'package:copypaste/features/file_management/domain/entities/sp_drawing.da
 import 'package:copypaste/core/errors_and_failures/failures/database_failure.dart';
 import 'package:copypaste/features/file_management/domain/repositories/i_file_management_repository.dart';
 import 'package:dartz/dartz.dart';
-import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:copypaste/core/extensions/firebase/firebase_firestore_extension.dart';
 
@@ -63,12 +60,15 @@ class FirebaseFileManagementRepositoryImpl
       (user) async {
         final drawingReference =
             firestore.getDrawingReference(user, drawingModel);
-        Object? errorOrNull;
         try {
-          drawingReference.set(drawingModel.toJson());
+          await drawingReference.update(drawingModel.toJson());
           return right(unit);
         } on FirebaseException catch (e) {
-          throw ErrorDescription(e.code);
+          if (e.code == 'not-found') {
+            await drawingReference.set(drawingModel.toJson());
+            return right(unit);
+          }
+          return left(DatabaseFailure(e.code));
         }
       },
     );
