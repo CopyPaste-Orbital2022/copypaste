@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:copypaste/features/file_management/presentation/pages/file_management_page.dart';
 import '../../features/authentication/presentation/pages/authentication_page.dart';
 import '../../features/drawing/presentation/pages/drawing_page.dart';
 import 'package:injectable/injectable.dart';
@@ -12,10 +13,15 @@ part 'app_router.gr.dart';
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
     // TODO: fix the splash page not updating
-    AutoRoute(page: SplashPage, initial: true),
+    AutoRoute(page: SplashPage),
     CustomRoute(
       initial: true,
       page: AuthenticationPage,
+      transitionsBuilder: TransitionsBuilders.fadeIn,
+      durationInMilliseconds: 400,
+    ),
+    CustomRoute(
+      page: FileManagementPage,
       transitionsBuilder: TransitionsBuilders.fadeIn,
       durationInMilliseconds: 400,
     ),

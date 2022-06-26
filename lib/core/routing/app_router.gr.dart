@@ -30,6 +30,15 @@ class _$AppRouter extends RootStackRouter {
           opaque: true,
           barrierDismissible: false);
     },
+    FileManagementRoute.name: (routeData) {
+      return CustomPage<dynamic>(
+          routeData: routeData,
+          child: const FileManagementPage(),
+          transitionsBuilder: TransitionsBuilders.fadeIn,
+          durationInMilliseconds: 400,
+          opaque: true,
+          barrierDismissible: false);
+    },
     DrawingRoute.name: (routeData) {
       return CustomPage<dynamic>(
           routeData: routeData,
@@ -43,8 +52,9 @@ class _$AppRouter extends RootStackRouter {
 
   @override
   List<RouteConfig> get routes => [
-        RouteConfig(SplashRoute.name, path: '/'),
+        RouteConfig(SplashRoute.name, path: '/splash-page'),
         RouteConfig(AuthenticationRoute.name, path: '/'),
+        RouteConfig(FileManagementRoute.name, path: '/file-management-page'),
         RouteConfig(DrawingRoute.name, path: '/drawing-page')
       ];
 }
@@ -52,7 +62,7 @@ class _$AppRouter extends RootStackRouter {
 /// generated route for
 /// [SplashPage]
 class SplashRoute extends PageRouteInfo<void> {
-  const SplashRoute() : super(SplashRoute.name, path: '/');
+  const SplashRoute() : super(SplashRoute.name, path: '/splash-page');
 
   static const String name = 'SplashRoute';
 }
@@ -63,6 +73,15 @@ class AuthenticationRoute extends PageRouteInfo<void> {
   const AuthenticationRoute() : super(AuthenticationRoute.name, path: '/');
 
   static const String name = 'AuthenticationRoute';
+}
+
+/// generated route for
+/// [FileManagementPage]
+class FileManagementRoute extends PageRouteInfo<void> {
+  const FileManagementRoute()
+      : super(FileManagementRoute.name, path: '/file-management-page');
+
+  static const String name = 'FileManagementRoute';
 }
 
 /// generated route for

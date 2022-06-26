@@ -4,8 +4,6 @@ import 'package:injectable/injectable.dart';
 import '../../../domain/entities/sp_user.dart';
 import '../../../domain/repositories/i_auth_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../domain/entities/sp_user.dart';
-
 part 'auth_event.dart';
 part 'auth_state.dart';
 
@@ -29,5 +27,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<LogOut>((event, emit) async {
       await repository.logOut();
     });
+  }
+
+  /// Returns the user
+  Future<Option<SPUser>> getUserOption() async {
+    return await repository.getUser();
   }
 }

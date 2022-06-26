@@ -1,3 +1,6 @@
+import 'package:copypaste/features/authentication/presentation/bloc/auth_bloc/auth_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../../../core/injections/injection.dart';
 import '../../bloc/drawing_bloc/drawing_bloc.dart';
 import 'paints/current_stroke_paint.dart';

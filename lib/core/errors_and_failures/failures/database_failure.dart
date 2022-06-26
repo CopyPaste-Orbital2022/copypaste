@@ -5,4 +5,7 @@ part 'database_failure.freezed.dart';
 @freezed
 class DatabaseFailure with _$DatabaseFailure {
   const factory DatabaseFailure(String failedReason) = _DatabaseFailure;
+  const factory DatabaseFailure.hasNoDrawing() = DatabaseFailureHasNoDrawing;
+  const factory DatabaseFailure.userHasNotSignedIn() =
+      DatabaseFailureUserHasNotSignedIn;
 }

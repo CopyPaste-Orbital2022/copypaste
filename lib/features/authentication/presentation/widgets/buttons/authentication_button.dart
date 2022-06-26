@@ -1,3 +1,5 @@
+import 'package:copypaste/features/file_management/presentation/bloc/file_management_bloc/file_management_bloc.dart';
+
 import '../../../../../core/errors_and_failures/failures/auth_failure.dart';
 import '../sign_in_or_register_text.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +29,11 @@ class AuthenticationButton extends StatelessWidget {
                       );
                     },
                     (r) {
-                      getIt<AppRouter>().replace(const DrawingRoute());
+                      getIt<AppRouter>().replace(const FileManagementRoute());
+                      // TODO: change the event to load drawings event
+                      getIt<FileManagementBloc>().add(
+                        const FileManagementEvent.initialEvent(),
+                      );
                     },
                   )
                 });

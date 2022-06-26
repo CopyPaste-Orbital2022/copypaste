@@ -1,5 +1,4 @@
 import 'dart:ui';
-import '../../../domain/entities/sp_drawing.dart';
 import '../../../domain/repository/i_sp_drawing_repository.dart';
 
 import '../../../../../core/injections/injection.dart';
@@ -74,17 +73,7 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
     DrawingEvent event,
     Emitter<DrawingState> emit,
   ) async {
-    final drawingOrFailure = await drawingRepository.createNewDrawing();
-    drawingOrFailure.fold(
-      (l) {
-        // TODO: handle error
-      },
-      (r) {
-        emit(
-          state.copyWith(drawing: r),
-        );
-      },
-    );
+    // TODO: finishi this class
   }
 
   bool get useStylus => penSettingsBloc.state.useStylus;
@@ -142,7 +131,6 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
       capEnd: penSettingsBloc.state.capEnd,
       simulatePressure: !useStylus,
     );
-    assert(state.drawing != null);
     // add the
     // update the state
     emit(newState);
@@ -168,7 +156,6 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
     // add the state to the repository
     emit(newState);
     final result = await drawingRepository.insertStroke(
-      drawing: state.drawing!,
       stroke: newState.strokes.last,
     );
     print(result);

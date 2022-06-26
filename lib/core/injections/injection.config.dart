@@ -36,8 +36,22 @@ import '../../features/drawing/presentation/bloc/selectable_bloc/blocs/pen_color
     as _i13;
 import '../../features/drawing/presentation/bloc/selectable_bloc/blocs/pen_width_bloc.dart'
     as _i15;
+import '../../features/file_management/data/repositories/firebase_file_management_repository_impl.dart'
+    as _i21;
+import '../../features/file_management/domain/repositories/i_file_management_repository.dart'
+    as _i20;
+import '../../features/file_management/domain/usecases/change_drawing_name.dart'
+    as _i23;
+import '../../features/file_management/domain/usecases/create_drawing.dart'
+    as _i24;
+import '../../features/file_management/domain/usecases/load_drawings_list.dart'
+    as _i22;
+import '../../features/file_management/domain/usecases/load_most_recent_drawing.dart'
+    as _i25;
+import '../../features/file_management/presentation/bloc/file_management_bloc/file_management_bloc.dart'
+    as _i26;
 import '../routing/app_router.dart' as _i3;
-import 'injection.dart' as _i20; // ignore_for_file: unnecessary_lambdas
+import 'injection.dart' as _i27; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
@@ -57,7 +71,7 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
   gh.lazySingleton<_i9.IAuthRepository>(
       () => _i10.FirebaseAuthRepositoryImpl(get<_i6.FirebaseAuth>()));
   gh.lazySingleton<_i11.ISPDrawingRepository>(
-      () => _i12.SPDrawingRepositoryImpl(get<_i7.FirebaseFirestore>()));
+      () => _i12.SPDrawingRepositoryImpl());
   gh.lazySingleton<_i13.PenColorBloc>(() => _i13.PenColorBloc());
   gh.lazySingleton<_i14.PenSettingsBloc>(() => _i14.PenSettingsBloc());
   gh.lazySingleton<_i15.PenWidthBloc>(() => _i15.PenWidthBloc());
@@ -74,9 +88,26 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
       eraserWidthBloc: get<_i5.EraserWidthBloc>(),
       penSettingsBloc: get<_i14.PenSettingsBloc>(),
       drawingRepository: get<_i11.ISPDrawingRepository>()));
+  gh.lazySingleton<_i20.IFileManagementRepository>(() =>
+      _i21.FirebaseFileManagementRepositoryImpl(
+          get<_i7.FirebaseFirestore>(), get<_i18.AuthBloc>()));
+  gh.lazySingleton<_i22.LoadDrawingsListUsecase>(() =>
+      _i22.LoadDrawingsListUsecase(get<_i20.IFileManagementRepository>()));
+  gh.lazySingleton<_i23.ChangeDrawingNameUsecase>(() =>
+      _i23.ChangeDrawingNameUsecase(get<_i20.IFileManagementRepository>()));
+  gh.lazySingleton<_i24.CreateNewDrawingUsecase>(() =>
+      _i24.CreateNewDrawingUsecase(get<_i20.IFileManagementRepository>()));
+  gh.lazySingleton<_i25.LoadMostRecentDrawingUsecase>(() =>
+      _i25.LoadMostRecentDrawingUsecase(get<_i20.IFileManagementRepository>(),
+          get<_i24.CreateNewDrawingUsecase>()));
+  gh.lazySingleton<_i26.FileManagementBloc>(() => _i26.FileManagementBloc(
+      get<_i23.ChangeDrawingNameUsecase>(),
+      get<_i24.CreateNewDrawingUsecase>(),
+      get<_i22.LoadDrawingsListUsecase>(),
+      get<_i25.LoadMostRecentDrawingUsecase>()));
   return get;
 }
 
-class _$FirebaseInjectableModule extends _i20.FirebaseInjectableModule {}
+class _$FirebaseInjectableModule extends _i27.FirebaseInjectableModule {}
 
-class _$PreferencesInjectionModule extends _i20.PreferencesInjectionModule {}
+class _$PreferencesInjectionModule extends _i27.PreferencesInjectionModule {}

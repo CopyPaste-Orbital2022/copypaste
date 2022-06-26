@@ -16,7 +16,6 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$DrawingState {
-  SPDrawing? get drawing => throw _privateConstructorUsedError;
   List<SPStroke> get strokes => throw _privateConstructorUsedError;
   SPStroke? get currentStroke => throw _privateConstructorUsedError;
   Offset? get eraserPosition => throw _privateConstructorUsedError;
@@ -32,8 +31,7 @@ abstract class $DrawingStateCopyWith<$Res> {
           DrawingState value, $Res Function(DrawingState) then) =
       _$DrawingStateCopyWithImpl<$Res>;
   $Res call(
-      {SPDrawing? drawing,
-      List<SPStroke> strokes,
+      {List<SPStroke> strokes,
       SPStroke? currentStroke,
       Offset? eraserPosition});
 
@@ -50,16 +48,11 @@ class _$DrawingStateCopyWithImpl<$Res> implements $DrawingStateCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? drawing = freezed,
     Object? strokes = freezed,
     Object? currentStroke = freezed,
     Object? eraserPosition = freezed,
   }) {
     return _then(_value.copyWith(
-      drawing: drawing == freezed
-          ? _value.drawing
-          : drawing // ignore: cast_nullable_to_non_nullable
-              as SPDrawing?,
       strokes: strokes == freezed
           ? _value.strokes
           : strokes // ignore: cast_nullable_to_non_nullable
@@ -95,8 +88,7 @@ abstract class _$$_DrawingStateCopyWith<$Res>
       __$$_DrawingStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {SPDrawing? drawing,
-      List<SPStroke> strokes,
+      {List<SPStroke> strokes,
       SPStroke? currentStroke,
       Offset? eraserPosition});
 
@@ -117,16 +109,11 @@ class __$$_DrawingStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? drawing = freezed,
     Object? strokes = freezed,
     Object? currentStroke = freezed,
     Object? eraserPosition = freezed,
   }) {
     return _then(_$_DrawingState(
-      drawing: drawing == freezed
-          ? _value.drawing
-          : drawing // ignore: cast_nullable_to_non_nullable
-              as SPDrawing?,
       strokes: strokes == freezed
           ? _value._strokes
           : strokes // ignore: cast_nullable_to_non_nullable
@@ -147,14 +134,11 @@ class __$$_DrawingStateCopyWithImpl<$Res>
 
 class _$_DrawingState implements _DrawingState {
   const _$_DrawingState(
-      {this.drawing,
-      final List<SPStroke> strokes = const [],
+      {final List<SPStroke> strokes = const [],
       this.currentStroke,
       this.eraserPosition})
       : _strokes = strokes;
 
-  @override
-  final SPDrawing? drawing;
   final List<SPStroke> _strokes;
   @override
   @JsonKey()
@@ -170,7 +154,7 @@ class _$_DrawingState implements _DrawingState {
 
   @override
   String toString() {
-    return 'DrawingState(drawing: $drawing, strokes: $strokes, currentStroke: $currentStroke, eraserPosition: $eraserPosition)';
+    return 'DrawingState(strokes: $strokes, currentStroke: $currentStroke, eraserPosition: $eraserPosition)';
   }
 
   @override
@@ -178,7 +162,6 @@ class _$_DrawingState implements _DrawingState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_DrawingState &&
-            const DeepCollectionEquality().equals(other.drawing, drawing) &&
             const DeepCollectionEquality().equals(other._strokes, _strokes) &&
             const DeepCollectionEquality()
                 .equals(other.currentStroke, currentStroke) &&
@@ -189,7 +172,6 @@ class _$_DrawingState implements _DrawingState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(drawing),
       const DeepCollectionEquality().hash(_strokes),
       const DeepCollectionEquality().hash(currentStroke),
       const DeepCollectionEquality().hash(eraserPosition));
@@ -202,13 +184,10 @@ class _$_DrawingState implements _DrawingState {
 
 abstract class _DrawingState implements DrawingState {
   const factory _DrawingState(
-      {final SPDrawing? drawing,
-      final List<SPStroke> strokes,
+      {final List<SPStroke> strokes,
       final SPStroke? currentStroke,
       final Offset? eraserPosition}) = _$_DrawingState;
 
-  @override
-  SPDrawing? get drawing => throw _privateConstructorUsedError;
   @override
   List<SPStroke> get strokes => throw _privateConstructorUsedError;
   @override

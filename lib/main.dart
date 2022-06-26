@@ -29,7 +29,6 @@ void main() async {
   }
 
   /// initialize drawing event
-  getIt<DrawingBloc>().add(const DrawingEvent.initial());
   getIt<AuthBloc>().add(const AuthEvent.updateUserState());
   runApp(const AppContainer());
 }
@@ -49,29 +48,36 @@ class AppContainer extends StatelessWidget {
         routerDelegate: getIt<AppRouter>().delegate(),
         theme: Theme.of(context).copyWith(
             inputDecorationTheme: InputDecorationTheme(
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10.0),
-            borderSide: const BorderSide(width: 1, color: Color(0xFFF5BC00)),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10.0),
-            borderSide: const BorderSide(width: 2, color: Colors.white),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10.0),
-            borderSide: const BorderSide(width: 1, color: Color(0xFFF5BC00)),
-          ),
-          disabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10.0),
-            borderSide: const BorderSide(width: 1, color: Color(0xFFF5BC00)),
-          ),
-          filled: true,
-          fillColor: const Color(0xFFF5BC00),
-          focusColor: Colors.yellow,
-          prefixIconColor: Colors.white,
-          iconColor: Colors.white,
-          hintStyle: const TextStyle(color: Color(0x80FFFFFF)),
-        )),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.0),
+                borderSide:
+                    const BorderSide(width: 1, color: Color(0xFFF5BC00)),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.0),
+                borderSide: const BorderSide(width: 2, color: Colors.white),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.0),
+                borderSide:
+                    const BorderSide(width: 1, color: Color(0xFFF5BC00)),
+              ),
+              disabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.0),
+                borderSide:
+                    const BorderSide(width: 1, color: Color(0xFFF5BC00)),
+              ),
+              filled: true,
+              fillColor: const Color(0xFFF5BC00),
+              focusColor: Colors.yellow,
+              prefixIconColor: Colors.white,
+              iconColor: Colors.white,
+              hintStyle: const TextStyle(color: Color(0x80FFFFFF)),
+            ),
+            colorScheme: Theme.of(context).colorScheme.copyWith(
+                primary: const Color(0xFFEB7900),
+                onPrimary: const Color(0xFFF0FFF0),
+                primaryContainer: const Color(0xFFF5BC00))),
       ),
     );
   }
