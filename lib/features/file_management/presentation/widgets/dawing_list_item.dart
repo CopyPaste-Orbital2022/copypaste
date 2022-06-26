@@ -1,5 +1,9 @@
+import 'package:copypaste/core/injections/injection.dart';
 import 'package:copypaste/features/file_management/domain/entities/sp_drawing.dart';
+import 'package:copypaste/features/file_management/presentation/bloc/file_management_bloc/file_management_bloc.dart';
+import 'package:copypaste/features/file_management/presentation/widgets/modify_name_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
 class DrawingListItem extends StatelessWidget {
   const DrawingListItem(this.drawing, {Key? key}) : super(key: key);
@@ -14,7 +18,16 @@ class DrawingListItem extends StatelessWidget {
     return Material(
       child: InkWell(
         onTap: () {},
-        onLongPress: () {},
+        onLongPress: () {
+          ModifyTextDialog.show(
+            context: context,
+            initialText: drawing.name,
+            title: PlatformText("Change Name"),
+            onSubmit: (newValue) {
+              print("NewValue: $newValue");
+            },
+          );
+        },
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Row(
