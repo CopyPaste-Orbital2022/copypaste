@@ -32,7 +32,7 @@ class AuthenticationButton extends StatelessWidget {
                       getIt<AppRouter>().replace(const FileManagementRoute());
                       // TODO: change the event to load drawings event
                       getIt<FileManagementBloc>().add(
-                        const FileManagementEvent.initialEvent(),
+                        const FileManagementEvent.refreshListEvent(),
                       );
                     },
                   )

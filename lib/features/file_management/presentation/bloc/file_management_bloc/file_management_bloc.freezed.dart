@@ -141,43 +141,53 @@ abstract class _FileManagementState implements FileManagementState {
 mixin _$FileManagementEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initialEvent,
+    required TResult Function() refreshListEvent,
     required TResult Function() createNewDrawingEvent,
+    required TResult Function(SPDrawing drawing, String name)
+        changeDrawingNameEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initialEvent,
+    TResult Function()? refreshListEvent,
     TResult Function()? createNewDrawingEvent,
+    TResult Function(SPDrawing drawing, String name)? changeDrawingNameEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initialEvent,
+    TResult Function()? refreshListEvent,
     TResult Function()? createNewDrawingEvent,
+    TResult Function(SPDrawing drawing, String name)? changeDrawingNameEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(FileManagementEventInitialEvent value)
-        initialEvent,
-    required TResult Function(FileManagementCreateNewDrawingEvent value)
+    required TResult Function(FileManagementEventRefreshList value)
+        refreshListEvent,
+    required TResult Function(FileManagementEventCreateNewDrawing value)
         createNewDrawingEvent,
+    required TResult Function(FileManagementEventChangeDrawingName value)
+        changeDrawingNameEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(FileManagementEventInitialEvent value)? initialEvent,
-    TResult Function(FileManagementCreateNewDrawingEvent value)?
+    TResult Function(FileManagementEventRefreshList value)? refreshListEvent,
+    TResult Function(FileManagementEventCreateNewDrawing value)?
         createNewDrawingEvent,
+    TResult Function(FileManagementEventChangeDrawingName value)?
+        changeDrawingNameEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(FileManagementEventInitialEvent value)? initialEvent,
-    TResult Function(FileManagementCreateNewDrawingEvent value)?
+    TResult Function(FileManagementEventRefreshList value)? refreshListEvent,
+    TResult Function(FileManagementEventCreateNewDrawing value)?
         createNewDrawingEvent,
+    TResult Function(FileManagementEventChangeDrawingName value)?
+        changeDrawingNameEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -201,43 +211,43 @@ class _$FileManagementEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$$FileManagementEventInitialEventCopyWith<$Res> {
-  factory _$$FileManagementEventInitialEventCopyWith(
-          _$FileManagementEventInitialEvent value,
-          $Res Function(_$FileManagementEventInitialEvent) then) =
-      __$$FileManagementEventInitialEventCopyWithImpl<$Res>;
+abstract class _$$FileManagementEventRefreshListCopyWith<$Res> {
+  factory _$$FileManagementEventRefreshListCopyWith(
+          _$FileManagementEventRefreshList value,
+          $Res Function(_$FileManagementEventRefreshList) then) =
+      __$$FileManagementEventRefreshListCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$FileManagementEventInitialEventCopyWithImpl<$Res>
+class __$$FileManagementEventRefreshListCopyWithImpl<$Res>
     extends _$FileManagementEventCopyWithImpl<$Res>
-    implements _$$FileManagementEventInitialEventCopyWith<$Res> {
-  __$$FileManagementEventInitialEventCopyWithImpl(
-      _$FileManagementEventInitialEvent _value,
-      $Res Function(_$FileManagementEventInitialEvent) _then)
-      : super(_value, (v) => _then(v as _$FileManagementEventInitialEvent));
+    implements _$$FileManagementEventRefreshListCopyWith<$Res> {
+  __$$FileManagementEventRefreshListCopyWithImpl(
+      _$FileManagementEventRefreshList _value,
+      $Res Function(_$FileManagementEventRefreshList) _then)
+      : super(_value, (v) => _then(v as _$FileManagementEventRefreshList));
 
   @override
-  _$FileManagementEventInitialEvent get _value =>
-      super._value as _$FileManagementEventInitialEvent;
+  _$FileManagementEventRefreshList get _value =>
+      super._value as _$FileManagementEventRefreshList;
 }
 
 /// @nodoc
 
-class _$FileManagementEventInitialEvent
-    implements FileManagementEventInitialEvent {
-  const _$FileManagementEventInitialEvent();
+class _$FileManagementEventRefreshList
+    implements FileManagementEventRefreshList {
+  const _$FileManagementEventRefreshList();
 
   @override
   String toString() {
-    return 'FileManagementEvent.initialEvent()';
+    return 'FileManagementEvent.refreshListEvent()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FileManagementEventInitialEvent);
+            other is _$FileManagementEventRefreshList);
   }
 
   @override
@@ -246,30 +256,34 @@ class _$FileManagementEventInitialEvent
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initialEvent,
+    required TResult Function() refreshListEvent,
     required TResult Function() createNewDrawingEvent,
+    required TResult Function(SPDrawing drawing, String name)
+        changeDrawingNameEvent,
   }) {
-    return initialEvent();
+    return refreshListEvent();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initialEvent,
+    TResult Function()? refreshListEvent,
     TResult Function()? createNewDrawingEvent,
+    TResult Function(SPDrawing drawing, String name)? changeDrawingNameEvent,
   }) {
-    return initialEvent?.call();
+    return refreshListEvent?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initialEvent,
+    TResult Function()? refreshListEvent,
     TResult Function()? createNewDrawingEvent,
+    TResult Function(SPDrawing drawing, String name)? changeDrawingNameEvent,
     required TResult orElse(),
   }) {
-    if (initialEvent != null) {
-      return initialEvent();
+    if (refreshListEvent != null) {
+      return refreshListEvent();
     }
     return orElse();
   }
@@ -277,71 +291,77 @@ class _$FileManagementEventInitialEvent
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(FileManagementEventInitialEvent value)
-        initialEvent,
-    required TResult Function(FileManagementCreateNewDrawingEvent value)
+    required TResult Function(FileManagementEventRefreshList value)
+        refreshListEvent,
+    required TResult Function(FileManagementEventCreateNewDrawing value)
         createNewDrawingEvent,
+    required TResult Function(FileManagementEventChangeDrawingName value)
+        changeDrawingNameEvent,
   }) {
-    return initialEvent(this);
+    return refreshListEvent(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(FileManagementEventInitialEvent value)? initialEvent,
-    TResult Function(FileManagementCreateNewDrawingEvent value)?
+    TResult Function(FileManagementEventRefreshList value)? refreshListEvent,
+    TResult Function(FileManagementEventCreateNewDrawing value)?
         createNewDrawingEvent,
+    TResult Function(FileManagementEventChangeDrawingName value)?
+        changeDrawingNameEvent,
   }) {
-    return initialEvent?.call(this);
+    return refreshListEvent?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(FileManagementEventInitialEvent value)? initialEvent,
-    TResult Function(FileManagementCreateNewDrawingEvent value)?
+    TResult Function(FileManagementEventRefreshList value)? refreshListEvent,
+    TResult Function(FileManagementEventCreateNewDrawing value)?
         createNewDrawingEvent,
+    TResult Function(FileManagementEventChangeDrawingName value)?
+        changeDrawingNameEvent,
     required TResult orElse(),
   }) {
-    if (initialEvent != null) {
-      return initialEvent(this);
+    if (refreshListEvent != null) {
+      return refreshListEvent(this);
     }
     return orElse();
   }
 }
 
-abstract class FileManagementEventInitialEvent implements FileManagementEvent {
-  const factory FileManagementEventInitialEvent() =
-      _$FileManagementEventInitialEvent;
+abstract class FileManagementEventRefreshList implements FileManagementEvent {
+  const factory FileManagementEventRefreshList() =
+      _$FileManagementEventRefreshList;
 }
 
 /// @nodoc
-abstract class _$$FileManagementCreateNewDrawingEventCopyWith<$Res> {
-  factory _$$FileManagementCreateNewDrawingEventCopyWith(
-          _$FileManagementCreateNewDrawingEvent value,
-          $Res Function(_$FileManagementCreateNewDrawingEvent) then) =
-      __$$FileManagementCreateNewDrawingEventCopyWithImpl<$Res>;
+abstract class _$$FileManagementEventCreateNewDrawingCopyWith<$Res> {
+  factory _$$FileManagementEventCreateNewDrawingCopyWith(
+          _$FileManagementEventCreateNewDrawing value,
+          $Res Function(_$FileManagementEventCreateNewDrawing) then) =
+      __$$FileManagementEventCreateNewDrawingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$FileManagementCreateNewDrawingEventCopyWithImpl<$Res>
+class __$$FileManagementEventCreateNewDrawingCopyWithImpl<$Res>
     extends _$FileManagementEventCopyWithImpl<$Res>
-    implements _$$FileManagementCreateNewDrawingEventCopyWith<$Res> {
-  __$$FileManagementCreateNewDrawingEventCopyWithImpl(
-      _$FileManagementCreateNewDrawingEvent _value,
-      $Res Function(_$FileManagementCreateNewDrawingEvent) _then)
-      : super(_value, (v) => _then(v as _$FileManagementCreateNewDrawingEvent));
+    implements _$$FileManagementEventCreateNewDrawingCopyWith<$Res> {
+  __$$FileManagementEventCreateNewDrawingCopyWithImpl(
+      _$FileManagementEventCreateNewDrawing _value,
+      $Res Function(_$FileManagementEventCreateNewDrawing) _then)
+      : super(_value, (v) => _then(v as _$FileManagementEventCreateNewDrawing));
 
   @override
-  _$FileManagementCreateNewDrawingEvent get _value =>
-      super._value as _$FileManagementCreateNewDrawingEvent;
+  _$FileManagementEventCreateNewDrawing get _value =>
+      super._value as _$FileManagementEventCreateNewDrawing;
 }
 
 /// @nodoc
 
-class _$FileManagementCreateNewDrawingEvent
-    implements FileManagementCreateNewDrawingEvent {
-  const _$FileManagementCreateNewDrawingEvent();
+class _$FileManagementEventCreateNewDrawing
+    implements FileManagementEventCreateNewDrawing {
+  const _$FileManagementEventCreateNewDrawing();
 
   @override
   String toString() {
@@ -352,7 +372,7 @@ class _$FileManagementCreateNewDrawingEvent
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FileManagementCreateNewDrawingEvent);
+            other is _$FileManagementEventCreateNewDrawing);
   }
 
   @override
@@ -361,8 +381,10 @@ class _$FileManagementCreateNewDrawingEvent
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initialEvent,
+    required TResult Function() refreshListEvent,
     required TResult Function() createNewDrawingEvent,
+    required TResult Function(SPDrawing drawing, String name)
+        changeDrawingNameEvent,
   }) {
     return createNewDrawingEvent();
   }
@@ -370,8 +392,9 @@ class _$FileManagementCreateNewDrawingEvent
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initialEvent,
+    TResult Function()? refreshListEvent,
     TResult Function()? createNewDrawingEvent,
+    TResult Function(SPDrawing drawing, String name)? changeDrawingNameEvent,
   }) {
     return createNewDrawingEvent?.call();
   }
@@ -379,8 +402,9 @@ class _$FileManagementCreateNewDrawingEvent
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initialEvent,
+    TResult Function()? refreshListEvent,
     TResult Function()? createNewDrawingEvent,
+    TResult Function(SPDrawing drawing, String name)? changeDrawingNameEvent,
     required TResult orElse(),
   }) {
     if (createNewDrawingEvent != null) {
@@ -392,10 +416,12 @@ class _$FileManagementCreateNewDrawingEvent
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(FileManagementEventInitialEvent value)
-        initialEvent,
-    required TResult Function(FileManagementCreateNewDrawingEvent value)
+    required TResult Function(FileManagementEventRefreshList value)
+        refreshListEvent,
+    required TResult Function(FileManagementEventCreateNewDrawing value)
         createNewDrawingEvent,
+    required TResult Function(FileManagementEventChangeDrawingName value)
+        changeDrawingNameEvent,
   }) {
     return createNewDrawingEvent(this);
   }
@@ -403,9 +429,11 @@ class _$FileManagementCreateNewDrawingEvent
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(FileManagementEventInitialEvent value)? initialEvent,
-    TResult Function(FileManagementCreateNewDrawingEvent value)?
+    TResult Function(FileManagementEventRefreshList value)? refreshListEvent,
+    TResult Function(FileManagementEventCreateNewDrawing value)?
         createNewDrawingEvent,
+    TResult Function(FileManagementEventChangeDrawingName value)?
+        changeDrawingNameEvent,
   }) {
     return createNewDrawingEvent?.call(this);
   }
@@ -413,9 +441,11 @@ class _$FileManagementCreateNewDrawingEvent
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(FileManagementEventInitialEvent value)? initialEvent,
-    TResult Function(FileManagementCreateNewDrawingEvent value)?
+    TResult Function(FileManagementEventRefreshList value)? refreshListEvent,
+    TResult Function(FileManagementEventCreateNewDrawing value)?
         createNewDrawingEvent,
+    TResult Function(FileManagementEventChangeDrawingName value)?
+        changeDrawingNameEvent,
     required TResult orElse(),
   }) {
     if (createNewDrawingEvent != null) {
@@ -425,8 +455,178 @@ class _$FileManagementCreateNewDrawingEvent
   }
 }
 
-abstract class FileManagementCreateNewDrawingEvent
+abstract class FileManagementEventCreateNewDrawing
     implements FileManagementEvent {
-  const factory FileManagementCreateNewDrawingEvent() =
-      _$FileManagementCreateNewDrawingEvent;
+  const factory FileManagementEventCreateNewDrawing() =
+      _$FileManagementEventCreateNewDrawing;
+}
+
+/// @nodoc
+abstract class _$$FileManagementEventChangeDrawingNameCopyWith<$Res> {
+  factory _$$FileManagementEventChangeDrawingNameCopyWith(
+          _$FileManagementEventChangeDrawingName value,
+          $Res Function(_$FileManagementEventChangeDrawingName) then) =
+      __$$FileManagementEventChangeDrawingNameCopyWithImpl<$Res>;
+  $Res call({SPDrawing drawing, String name});
+}
+
+/// @nodoc
+class __$$FileManagementEventChangeDrawingNameCopyWithImpl<$Res>
+    extends _$FileManagementEventCopyWithImpl<$Res>
+    implements _$$FileManagementEventChangeDrawingNameCopyWith<$Res> {
+  __$$FileManagementEventChangeDrawingNameCopyWithImpl(
+      _$FileManagementEventChangeDrawingName _value,
+      $Res Function(_$FileManagementEventChangeDrawingName) _then)
+      : super(
+            _value, (v) => _then(v as _$FileManagementEventChangeDrawingName));
+
+  @override
+  _$FileManagementEventChangeDrawingName get _value =>
+      super._value as _$FileManagementEventChangeDrawingName;
+
+  @override
+  $Res call({
+    Object? drawing = freezed,
+    Object? name = freezed,
+  }) {
+    return _then(_$FileManagementEventChangeDrawingName(
+      drawing == freezed
+          ? _value.drawing
+          : drawing // ignore: cast_nullable_to_non_nullable
+              as SPDrawing,
+      name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FileManagementEventChangeDrawingName
+    implements FileManagementEventChangeDrawingName {
+  const _$FileManagementEventChangeDrawingName(this.drawing, this.name);
+
+  @override
+  final SPDrawing drawing;
+  @override
+  final String name;
+
+  @override
+  String toString() {
+    return 'FileManagementEvent.changeDrawingNameEvent(drawing: $drawing, name: $name)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FileManagementEventChangeDrawingName &&
+            const DeepCollectionEquality().equals(other.drawing, drawing) &&
+            const DeepCollectionEquality().equals(other.name, name));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(drawing),
+      const DeepCollectionEquality().hash(name));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$FileManagementEventChangeDrawingNameCopyWith<
+          _$FileManagementEventChangeDrawingName>
+      get copyWith => __$$FileManagementEventChangeDrawingNameCopyWithImpl<
+          _$FileManagementEventChangeDrawingName>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() refreshListEvent,
+    required TResult Function() createNewDrawingEvent,
+    required TResult Function(SPDrawing drawing, String name)
+        changeDrawingNameEvent,
+  }) {
+    return changeDrawingNameEvent(drawing, name);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? refreshListEvent,
+    TResult Function()? createNewDrawingEvent,
+    TResult Function(SPDrawing drawing, String name)? changeDrawingNameEvent,
+  }) {
+    return changeDrawingNameEvent?.call(drawing, name);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? refreshListEvent,
+    TResult Function()? createNewDrawingEvent,
+    TResult Function(SPDrawing drawing, String name)? changeDrawingNameEvent,
+    required TResult orElse(),
+  }) {
+    if (changeDrawingNameEvent != null) {
+      return changeDrawingNameEvent(drawing, name);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FileManagementEventRefreshList value)
+        refreshListEvent,
+    required TResult Function(FileManagementEventCreateNewDrawing value)
+        createNewDrawingEvent,
+    required TResult Function(FileManagementEventChangeDrawingName value)
+        changeDrawingNameEvent,
+  }) {
+    return changeDrawingNameEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(FileManagementEventRefreshList value)? refreshListEvent,
+    TResult Function(FileManagementEventCreateNewDrawing value)?
+        createNewDrawingEvent,
+    TResult Function(FileManagementEventChangeDrawingName value)?
+        changeDrawingNameEvent,
+  }) {
+    return changeDrawingNameEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FileManagementEventRefreshList value)? refreshListEvent,
+    TResult Function(FileManagementEventCreateNewDrawing value)?
+        createNewDrawingEvent,
+    TResult Function(FileManagementEventChangeDrawingName value)?
+        changeDrawingNameEvent,
+    required TResult orElse(),
+  }) {
+    if (changeDrawingNameEvent != null) {
+      return changeDrawingNameEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FileManagementEventChangeDrawingName
+    implements FileManagementEvent {
+  const factory FileManagementEventChangeDrawingName(
+          final SPDrawing drawing, final String name) =
+      _$FileManagementEventChangeDrawingName;
+
+  SPDrawing get drawing => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$FileManagementEventChangeDrawingNameCopyWith<
+          _$FileManagementEventChangeDrawingName>
+      get copyWith => throw _privateConstructorUsedError;
 }

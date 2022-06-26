@@ -29,7 +29,11 @@ class FileManagementPage extends StatelessWidget {
                 CupertinoIcons.arrow_2_circlepath,
                 color: Theme.of(context).colorScheme.onPrimary,
               ),
-              onPressed: () {},
+              onPressed: () {
+                getIt<FileManagementBloc>().add(
+                  const FileManagementEvent.refreshListEvent(),
+                );
+              },
               padding: EdgeInsets.zero,
             ),
             PlatformIconButton(

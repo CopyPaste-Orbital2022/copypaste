@@ -9,19 +9,19 @@ class ChangeModeButton extends StatelessWidget {
   const ChangeModeButton({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ValidationBloc, ValidationState>(
-        builder: (context, state) {
-          return PlatformTextButton(
-            padding: EdgeInsets.zero,
-            onPressed: () {
-              context.read<ValidationBloc>().add(ToggleSignInAndRegisterPage());
-            },
-            child: const SignInOrRegisterText(
-              reversed: true,
-              prefix: "Switch to ",
-            ),
-          );
-        },
-        listener: (context, state) {});
+    return BlocBuilder<ValidationBloc, ValidationState>(
+      builder: (context, state) {
+        return PlatformTextButton(
+          padding: EdgeInsets.zero,
+          onPressed: () {
+            context.read<ValidationBloc>().add(ToggleSignInAndRegisterPage());
+          },
+          child: const SignInOrRegisterText(
+            reversed: true,
+            prefix: "Switch to ",
+          ),
+        );
+      },
+    );
   }
 }

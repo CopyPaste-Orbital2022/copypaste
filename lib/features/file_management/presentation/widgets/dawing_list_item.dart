@@ -24,7 +24,9 @@ class DrawingListItem extends StatelessWidget {
             initialText: drawing.name,
             title: PlatformText("Change Name"),
             onSubmit: (newValue) {
-              print("NewValue: $newValue");
+              getIt<FileManagementBloc>().add(
+                FileManagementEvent.changeDrawingNameEvent(drawing, newValue),
+              );
             },
           );
         },

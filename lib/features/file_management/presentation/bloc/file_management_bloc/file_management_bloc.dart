@@ -33,15 +33,17 @@ class FileManagementBloc
     on<FileManagementEvent>(
       (event, emit) async {
         await event.map(
-          initialEvent: (event) async => await _onInitialEvent(emit),
+          refreshListEvent: (event) async => await _onLoadDrawings(emit),
           createNewDrawingEvent: (event) async =>
               await _onCreateNewDrawingEvent(event, emit),
+          changeDrawingNameEvent: (event) async =>
+              await _onChangeDrawingNameEvent(event, emit),
         );
       },
     );
   }
 
-  Future<void> _onInitialEvent(Emitter<FileManagementState> emit) async {
+  Future<void> _onLoadDrawings(Emitter<FileManagementState> emit) async {
     final drawingsListOrFailure = await loadDrawingsListUsecase();
     drawingsListOrFailure.fold(
       (failure) {
@@ -57,13 +59,27 @@ class FileManagementBloc
   }
 
   Future<void> _onCreateNewDrawingEvent(
-      FileManagementCreateNewDrawingEvent event,
+      FileManagementEventCreateNewDrawing event,
       Emitter<FileManagementState> emit) async {
     final newDrawingOrFailure = await createNewDrawingUsecase();
     await newDrawingOrFailure.fold((l) {
       // TODO: add error handling
     }, (r) async {
-      await _onInitialEvent(emit);
+      await _onLoadDrawings(emit);
+    });
+  }
+
+  Future<void> _onChangeDrawingNameEvent(
+      FileManagementEventChangeDrawingName event,
+      Emitter<FileManagementState> emit) async {
+    final failureOrUnit = await changeDrawingNameUsecase(
+      event.drawing,
+      event.name,
+    );
+    await failureOrUnit.fold((l) async {
+      // TODO: add error handling
+    }, (r) async {
+      await _onLoadDrawings(emit);
     });
   }
 }
