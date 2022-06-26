@@ -4,6 +4,7 @@ part of "file_management_bloc.dart";
 class FileManagementState with _$FileManagementState {
   const factory FileManagementState({
     @Default([]) List<SPDrawing> drawings,
+    SPDrawing? selectedDrawing,
   }) = _FileManagementState;
 }
 

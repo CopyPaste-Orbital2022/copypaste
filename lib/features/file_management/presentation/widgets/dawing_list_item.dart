@@ -1,4 +1,5 @@
 import 'package:copypaste/core/injections/injection.dart';
+import 'package:copypaste/core/routing/app_router.dart';
 import 'package:copypaste/features/file_management/domain/entities/sp_drawing.dart';
 import 'package:copypaste/features/file_management/presentation/bloc/file_management_bloc/file_management_bloc.dart';
 import 'package:copypaste/features/file_management/presentation/widgets/modify_name_dialog.dart';
@@ -17,7 +18,11 @@ class DrawingListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          getIt<FileManagementBloc>().add(
+            FileManagementEvent.selectDrawing(drawing),
+          );
+        },
         onLongPress: () {
           ModifyTextDialog.show(
             context: context,

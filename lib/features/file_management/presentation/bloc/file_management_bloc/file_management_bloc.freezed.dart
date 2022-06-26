@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$FileManagementState {
   List<SPDrawing> get drawings => throw _privateConstructorUsedError;
+  SPDrawing? get selectedDrawing => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $FileManagementStateCopyWith<FileManagementState> get copyWith =>
@@ -28,7 +29,7 @@ abstract class $FileManagementStateCopyWith<$Res> {
   factory $FileManagementStateCopyWith(
           FileManagementState value, $Res Function(FileManagementState) then) =
       _$FileManagementStateCopyWithImpl<$Res>;
-  $Res call({List<SPDrawing> drawings});
+  $Res call({List<SPDrawing> drawings, SPDrawing? selectedDrawing});
 }
 
 /// @nodoc
@@ -43,12 +44,17 @@ class _$FileManagementStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? drawings = freezed,
+    Object? selectedDrawing = freezed,
   }) {
     return _then(_value.copyWith(
       drawings: drawings == freezed
           ? _value.drawings
           : drawings // ignore: cast_nullable_to_non_nullable
               as List<SPDrawing>,
+      selectedDrawing: selectedDrawing == freezed
+          ? _value.selectedDrawing
+          : selectedDrawing // ignore: cast_nullable_to_non_nullable
+              as SPDrawing?,
     ));
   }
 }
@@ -60,7 +66,7 @@ abstract class _$$_FileManagementStateCopyWith<$Res>
           $Res Function(_$_FileManagementState) then) =
       __$$_FileManagementStateCopyWithImpl<$Res>;
   @override
-  $Res call({List<SPDrawing> drawings});
+  $Res call({List<SPDrawing> drawings, SPDrawing? selectedDrawing});
 }
 
 /// @nodoc
@@ -77,12 +83,17 @@ class __$$_FileManagementStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? drawings = freezed,
+    Object? selectedDrawing = freezed,
   }) {
     return _then(_$_FileManagementState(
       drawings: drawings == freezed
           ? _value._drawings
           : drawings // ignore: cast_nullable_to_non_nullable
               as List<SPDrawing>,
+      selectedDrawing: selectedDrawing == freezed
+          ? _value.selectedDrawing
+          : selectedDrawing // ignore: cast_nullable_to_non_nullable
+              as SPDrawing?,
     ));
   }
 }
@@ -90,7 +101,8 @@ class __$$_FileManagementStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_FileManagementState implements _FileManagementState {
-  const _$_FileManagementState({final List<SPDrawing> drawings = const []})
+  const _$_FileManagementState(
+      {final List<SPDrawing> drawings = const [], this.selectedDrawing})
       : _drawings = drawings;
 
   final List<SPDrawing> _drawings;
@@ -102,8 +114,11 @@ class _$_FileManagementState implements _FileManagementState {
   }
 
   @override
+  final SPDrawing? selectedDrawing;
+
+  @override
   String toString() {
-    return 'FileManagementState(drawings: $drawings)';
+    return 'FileManagementState(drawings: $drawings, selectedDrawing: $selectedDrawing)';
   }
 
   @override
@@ -111,12 +126,16 @@ class _$_FileManagementState implements _FileManagementState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FileManagementState &&
-            const DeepCollectionEquality().equals(other._drawings, _drawings));
+            const DeepCollectionEquality().equals(other._drawings, _drawings) &&
+            const DeepCollectionEquality()
+                .equals(other.selectedDrawing, selectedDrawing));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_drawings));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_drawings),
+      const DeepCollectionEquality().hash(selectedDrawing));
 
   @JsonKey(ignore: true)
   @override
@@ -126,11 +145,14 @@ class _$_FileManagementState implements _FileManagementState {
 }
 
 abstract class _FileManagementState implements FileManagementState {
-  const factory _FileManagementState({final List<SPDrawing> drawings}) =
-      _$_FileManagementState;
+  const factory _FileManagementState(
+      {final List<SPDrawing> drawings,
+      final SPDrawing? selectedDrawing}) = _$_FileManagementState;
 
   @override
   List<SPDrawing> get drawings => throw _privateConstructorUsedError;
+  @override
+  SPDrawing? get selectedDrawing => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_FileManagementStateCopyWith<_$_FileManagementState> get copyWith =>
@@ -145,6 +167,7 @@ mixin _$FileManagementEvent {
     required TResult Function() createNewDrawingEvent,
     required TResult Function(SPDrawing drawing, String name)
         changeDrawingNameEvent,
+    required TResult Function(SPDrawing drawing) selectDrawing,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -152,6 +175,7 @@ mixin _$FileManagementEvent {
     TResult Function()? refreshListEvent,
     TResult Function()? createNewDrawingEvent,
     TResult Function(SPDrawing drawing, String name)? changeDrawingNameEvent,
+    TResult Function(SPDrawing drawing)? selectDrawing,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -159,6 +183,7 @@ mixin _$FileManagementEvent {
     TResult Function()? refreshListEvent,
     TResult Function()? createNewDrawingEvent,
     TResult Function(SPDrawing drawing, String name)? changeDrawingNameEvent,
+    TResult Function(SPDrawing drawing)? selectDrawing,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -170,6 +195,8 @@ mixin _$FileManagementEvent {
         createNewDrawingEvent,
     required TResult Function(FileManagementEventChangeDrawingName value)
         changeDrawingNameEvent,
+    required TResult Function(FileManagementEventSelectDrawing value)
+        selectDrawing,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -179,6 +206,7 @@ mixin _$FileManagementEvent {
         createNewDrawingEvent,
     TResult Function(FileManagementEventChangeDrawingName value)?
         changeDrawingNameEvent,
+    TResult Function(FileManagementEventSelectDrawing value)? selectDrawing,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -188,6 +216,7 @@ mixin _$FileManagementEvent {
         createNewDrawingEvent,
     TResult Function(FileManagementEventChangeDrawingName value)?
         changeDrawingNameEvent,
+    TResult Function(FileManagementEventSelectDrawing value)? selectDrawing,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -260,6 +289,7 @@ class _$FileManagementEventRefreshList
     required TResult Function() createNewDrawingEvent,
     required TResult Function(SPDrawing drawing, String name)
         changeDrawingNameEvent,
+    required TResult Function(SPDrawing drawing) selectDrawing,
   }) {
     return refreshListEvent();
   }
@@ -270,6 +300,7 @@ class _$FileManagementEventRefreshList
     TResult Function()? refreshListEvent,
     TResult Function()? createNewDrawingEvent,
     TResult Function(SPDrawing drawing, String name)? changeDrawingNameEvent,
+    TResult Function(SPDrawing drawing)? selectDrawing,
   }) {
     return refreshListEvent?.call();
   }
@@ -280,6 +311,7 @@ class _$FileManagementEventRefreshList
     TResult Function()? refreshListEvent,
     TResult Function()? createNewDrawingEvent,
     TResult Function(SPDrawing drawing, String name)? changeDrawingNameEvent,
+    TResult Function(SPDrawing drawing)? selectDrawing,
     required TResult orElse(),
   }) {
     if (refreshListEvent != null) {
@@ -297,6 +329,8 @@ class _$FileManagementEventRefreshList
         createNewDrawingEvent,
     required TResult Function(FileManagementEventChangeDrawingName value)
         changeDrawingNameEvent,
+    required TResult Function(FileManagementEventSelectDrawing value)
+        selectDrawing,
   }) {
     return refreshListEvent(this);
   }
@@ -309,6 +343,7 @@ class _$FileManagementEventRefreshList
         createNewDrawingEvent,
     TResult Function(FileManagementEventChangeDrawingName value)?
         changeDrawingNameEvent,
+    TResult Function(FileManagementEventSelectDrawing value)? selectDrawing,
   }) {
     return refreshListEvent?.call(this);
   }
@@ -321,6 +356,7 @@ class _$FileManagementEventRefreshList
         createNewDrawingEvent,
     TResult Function(FileManagementEventChangeDrawingName value)?
         changeDrawingNameEvent,
+    TResult Function(FileManagementEventSelectDrawing value)? selectDrawing,
     required TResult orElse(),
   }) {
     if (refreshListEvent != null) {
@@ -385,6 +421,7 @@ class _$FileManagementEventCreateNewDrawing
     required TResult Function() createNewDrawingEvent,
     required TResult Function(SPDrawing drawing, String name)
         changeDrawingNameEvent,
+    required TResult Function(SPDrawing drawing) selectDrawing,
   }) {
     return createNewDrawingEvent();
   }
@@ -395,6 +432,7 @@ class _$FileManagementEventCreateNewDrawing
     TResult Function()? refreshListEvent,
     TResult Function()? createNewDrawingEvent,
     TResult Function(SPDrawing drawing, String name)? changeDrawingNameEvent,
+    TResult Function(SPDrawing drawing)? selectDrawing,
   }) {
     return createNewDrawingEvent?.call();
   }
@@ -405,6 +443,7 @@ class _$FileManagementEventCreateNewDrawing
     TResult Function()? refreshListEvent,
     TResult Function()? createNewDrawingEvent,
     TResult Function(SPDrawing drawing, String name)? changeDrawingNameEvent,
+    TResult Function(SPDrawing drawing)? selectDrawing,
     required TResult orElse(),
   }) {
     if (createNewDrawingEvent != null) {
@@ -422,6 +461,8 @@ class _$FileManagementEventCreateNewDrawing
         createNewDrawingEvent,
     required TResult Function(FileManagementEventChangeDrawingName value)
         changeDrawingNameEvent,
+    required TResult Function(FileManagementEventSelectDrawing value)
+        selectDrawing,
   }) {
     return createNewDrawingEvent(this);
   }
@@ -434,6 +475,7 @@ class _$FileManagementEventCreateNewDrawing
         createNewDrawingEvent,
     TResult Function(FileManagementEventChangeDrawingName value)?
         changeDrawingNameEvent,
+    TResult Function(FileManagementEventSelectDrawing value)? selectDrawing,
   }) {
     return createNewDrawingEvent?.call(this);
   }
@@ -446,6 +488,7 @@ class _$FileManagementEventCreateNewDrawing
         createNewDrawingEvent,
     TResult Function(FileManagementEventChangeDrawingName value)?
         changeDrawingNameEvent,
+    TResult Function(FileManagementEventSelectDrawing value)? selectDrawing,
     required TResult orElse(),
   }) {
     if (createNewDrawingEvent != null) {
@@ -547,6 +590,7 @@ class _$FileManagementEventChangeDrawingName
     required TResult Function() createNewDrawingEvent,
     required TResult Function(SPDrawing drawing, String name)
         changeDrawingNameEvent,
+    required TResult Function(SPDrawing drawing) selectDrawing,
   }) {
     return changeDrawingNameEvent(drawing, name);
   }
@@ -557,6 +601,7 @@ class _$FileManagementEventChangeDrawingName
     TResult Function()? refreshListEvent,
     TResult Function()? createNewDrawingEvent,
     TResult Function(SPDrawing drawing, String name)? changeDrawingNameEvent,
+    TResult Function(SPDrawing drawing)? selectDrawing,
   }) {
     return changeDrawingNameEvent?.call(drawing, name);
   }
@@ -567,6 +612,7 @@ class _$FileManagementEventChangeDrawingName
     TResult Function()? refreshListEvent,
     TResult Function()? createNewDrawingEvent,
     TResult Function(SPDrawing drawing, String name)? changeDrawingNameEvent,
+    TResult Function(SPDrawing drawing)? selectDrawing,
     required TResult orElse(),
   }) {
     if (changeDrawingNameEvent != null) {
@@ -584,6 +630,8 @@ class _$FileManagementEventChangeDrawingName
         createNewDrawingEvent,
     required TResult Function(FileManagementEventChangeDrawingName value)
         changeDrawingNameEvent,
+    required TResult Function(FileManagementEventSelectDrawing value)
+        selectDrawing,
   }) {
     return changeDrawingNameEvent(this);
   }
@@ -596,6 +644,7 @@ class _$FileManagementEventChangeDrawingName
         createNewDrawingEvent,
     TResult Function(FileManagementEventChangeDrawingName value)?
         changeDrawingNameEvent,
+    TResult Function(FileManagementEventSelectDrawing value)? selectDrawing,
   }) {
     return changeDrawingNameEvent?.call(this);
   }
@@ -608,6 +657,7 @@ class _$FileManagementEventChangeDrawingName
         createNewDrawingEvent,
     TResult Function(FileManagementEventChangeDrawingName value)?
         changeDrawingNameEvent,
+    TResult Function(FileManagementEventSelectDrawing value)? selectDrawing,
     required TResult orElse(),
   }) {
     if (changeDrawingNameEvent != null) {
@@ -628,5 +678,168 @@ abstract class FileManagementEventChangeDrawingName
   @JsonKey(ignore: true)
   _$$FileManagementEventChangeDrawingNameCopyWith<
           _$FileManagementEventChangeDrawingName>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FileManagementEventSelectDrawingCopyWith<$Res> {
+  factory _$$FileManagementEventSelectDrawingCopyWith(
+          _$FileManagementEventSelectDrawing value,
+          $Res Function(_$FileManagementEventSelectDrawing) then) =
+      __$$FileManagementEventSelectDrawingCopyWithImpl<$Res>;
+  $Res call({SPDrawing drawing});
+}
+
+/// @nodoc
+class __$$FileManagementEventSelectDrawingCopyWithImpl<$Res>
+    extends _$FileManagementEventCopyWithImpl<$Res>
+    implements _$$FileManagementEventSelectDrawingCopyWith<$Res> {
+  __$$FileManagementEventSelectDrawingCopyWithImpl(
+      _$FileManagementEventSelectDrawing _value,
+      $Res Function(_$FileManagementEventSelectDrawing) _then)
+      : super(_value, (v) => _then(v as _$FileManagementEventSelectDrawing));
+
+  @override
+  _$FileManagementEventSelectDrawing get _value =>
+      super._value as _$FileManagementEventSelectDrawing;
+
+  @override
+  $Res call({
+    Object? drawing = freezed,
+  }) {
+    return _then(_$FileManagementEventSelectDrawing(
+      drawing == freezed
+          ? _value.drawing
+          : drawing // ignore: cast_nullable_to_non_nullable
+              as SPDrawing,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FileManagementEventSelectDrawing
+    implements FileManagementEventSelectDrawing {
+  const _$FileManagementEventSelectDrawing(this.drawing);
+
+  @override
+  final SPDrawing drawing;
+
+  @override
+  String toString() {
+    return 'FileManagementEvent.selectDrawing(drawing: $drawing)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FileManagementEventSelectDrawing &&
+            const DeepCollectionEquality().equals(other.drawing, drawing));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(drawing));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$FileManagementEventSelectDrawingCopyWith<
+          _$FileManagementEventSelectDrawing>
+      get copyWith => __$$FileManagementEventSelectDrawingCopyWithImpl<
+          _$FileManagementEventSelectDrawing>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() refreshListEvent,
+    required TResult Function() createNewDrawingEvent,
+    required TResult Function(SPDrawing drawing, String name)
+        changeDrawingNameEvent,
+    required TResult Function(SPDrawing drawing) selectDrawing,
+  }) {
+    return selectDrawing(drawing);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? refreshListEvent,
+    TResult Function()? createNewDrawingEvent,
+    TResult Function(SPDrawing drawing, String name)? changeDrawingNameEvent,
+    TResult Function(SPDrawing drawing)? selectDrawing,
+  }) {
+    return selectDrawing?.call(drawing);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? refreshListEvent,
+    TResult Function()? createNewDrawingEvent,
+    TResult Function(SPDrawing drawing, String name)? changeDrawingNameEvent,
+    TResult Function(SPDrawing drawing)? selectDrawing,
+    required TResult orElse(),
+  }) {
+    if (selectDrawing != null) {
+      return selectDrawing(drawing);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FileManagementEventRefreshList value)
+        refreshListEvent,
+    required TResult Function(FileManagementEventCreateNewDrawing value)
+        createNewDrawingEvent,
+    required TResult Function(FileManagementEventChangeDrawingName value)
+        changeDrawingNameEvent,
+    required TResult Function(FileManagementEventSelectDrawing value)
+        selectDrawing,
+  }) {
+    return selectDrawing(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(FileManagementEventRefreshList value)? refreshListEvent,
+    TResult Function(FileManagementEventCreateNewDrawing value)?
+        createNewDrawingEvent,
+    TResult Function(FileManagementEventChangeDrawingName value)?
+        changeDrawingNameEvent,
+    TResult Function(FileManagementEventSelectDrawing value)? selectDrawing,
+  }) {
+    return selectDrawing?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FileManagementEventRefreshList value)? refreshListEvent,
+    TResult Function(FileManagementEventCreateNewDrawing value)?
+        createNewDrawingEvent,
+    TResult Function(FileManagementEventChangeDrawingName value)?
+        changeDrawingNameEvent,
+    TResult Function(FileManagementEventSelectDrawing value)? selectDrawing,
+    required TResult orElse(),
+  }) {
+    if (selectDrawing != null) {
+      return selectDrawing(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FileManagementEventSelectDrawing implements FileManagementEvent {
+  const factory FileManagementEventSelectDrawing(final SPDrawing drawing) =
+      _$FileManagementEventSelectDrawing;
+
+  SPDrawing get drawing => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$FileManagementEventSelectDrawingCopyWith<
+          _$FileManagementEventSelectDrawing>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:copypaste/core/routing/app_router.dart';
 import 'package:copypaste/features/file_management/domain/usecases/change_drawing_name.dart';
 import 'package:copypaste/features/file_management/domain/usecases/create_drawing.dart';
 import 'package:copypaste/features/file_management/domain/usecases/load_drawings_list.dart';
@@ -23,12 +24,14 @@ class FileManagementBloc
   final CreateNewDrawingUsecase createNewDrawingUsecase;
   final LoadDrawingsListUsecase loadDrawingsListUsecase;
   final LoadMostRecentDrawingUsecase loadMostRecentDrawingUsecase;
+  final AppRouter router;
 
   FileManagementBloc(
     this.changeDrawingNameUsecase,
     this.createNewDrawingUsecase,
     this.loadDrawingsListUsecase,
     this.loadMostRecentDrawingUsecase,
+    this.router,
   ) : super(FileManagementStateX.initial()) {
     on<FileManagementEvent>(
       (event, emit) async {
@@ -38,6 +41,8 @@ class FileManagementBloc
               await _onCreateNewDrawingEvent(event, emit),
           changeDrawingNameEvent: (event) async =>
               await _onChangeDrawingNameEvent(event, emit),
+          selectDrawing: (event) async =>
+              await _onSelectDrawingEvent(event, emit),
         );
       },
     );
@@ -81,5 +86,15 @@ class FileManagementBloc
     }, (r) async {
       await _onLoadDrawings(emit);
     });
+  }
+
+  Future<void> _onSelectDrawingEvent(FileManagementEventSelectDrawing event,
+      Emitter<FileManagementState> emit) async {
+    emit(
+      state.copyWith(
+        selectedDrawing: event.drawing,
+      ),
+    );
+    await router.replace(const DrawingRoute());
   }
 }

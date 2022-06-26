@@ -15,4 +15,8 @@ class FileManagementEvent with _$FileManagementEvent {
     SPDrawing drawing,
     String name,
   ) = FileManagementEventChangeDrawingName;
+
+  /// When the user selects the drawing
+  const factory FileManagementEvent.selectDrawing(SPDrawing drawing) =
+      FileManagementEventSelectDrawing;
 }
