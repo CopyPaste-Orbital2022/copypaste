@@ -562,12 +562,21 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.2"
+  mockito:
+    dependency: "direct dev"
+    description:
+      name: mockito
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.2.0"
   my_color_picker:
     dependency: "direct main"
     description:
-      path: "plugins/my_color_picker"
-      relative: true
-    source: path
+      path: "."
+      ref: HEAD
+      resolved-ref: a1f98b915953161473771e2633a2c3eab6e7f0e6
+      url: "https://github.com/CopyPaste-Orbital2022/my_color_picker.git"
+    source: git
     version: "0.0.2"
   my_popup_menu:
     dependency: transitive
@@ -579,9 +588,11 @@ packages:
   my_stackable_popup_menu:
     dependency: "direct main"
     description:
-      path: "plugins/my_stackable_popup_menu"
-      relative: true
-    source: path
+      path: "."
+      ref: HEAD
+      resolved-ref: a3690bbbf14c4221ec06c967184f8925d7530f1d
+      url: "https://github.com/CopyPaste-Orbital2022/my_stackable_popup_menu.git"
+    source: git
     version: "0.0.3"
   nested:
     dependency: transitive
@@ -649,9 +660,11 @@ packages:
   perfect_freehand:
     dependency: "direct main"
     description:
-      path: "plugins/perfect-freehand-dart"
-      relative: true
-    source: path
+      path: "."
+      ref: HEAD
+      resolved-ref: "44646555958b8d3872c202ffc1237fff288ae9fe"
+      url: "https://github.com/CopyPaste-Orbital2022/perfect-freehand-dart.git"
+    source: git
     version: "1.0.4"
   petitparser:
     dependency: transitive
@@ -712,9 +725,11 @@ packages:
   selectable_items:
     dependency: "direct main"
     description:
-      path: "plugins/selectable_items"
-      relative: true
-    source: path
+      path: "."
+      ref: HEAD
+      resolved-ref: "4b5f1c0bcdcce66a6ba65a1f84821f0c6ef6470b"
+      url: "https://github.com/CopyPaste-Orbital2022/selectable_items.git"
+    source: git
     version: "1.0.2"
   share_plus:
     dependency: "direct main"

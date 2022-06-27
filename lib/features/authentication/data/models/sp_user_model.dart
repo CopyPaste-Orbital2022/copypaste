@@ -24,4 +24,12 @@ class SPUserModel extends SPUser {
       "email": email,
     };
   }
+
+  static SPUserModel fromJson(Map<String, dynamic> json) {
+    return SPUserModel(
+      uid: json["id"] as String,
+      userName: json["name"] as String,
+      email: json["email"] as String?,
+    );
+  }
 }
