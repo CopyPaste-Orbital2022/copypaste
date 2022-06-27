@@ -32,7 +32,7 @@ extension FirebaseFirestoreX on FirebaseFirestore {
   /// the stroke reference
   DocumentReference getStrokeReference(
       SPUser user, SPDrawing drawing, SPStroke stroke) {
-    return getStrokesListReference(user, drawing).doc(stroke.id);
+    return getStrokesListReference(user, drawing).doc(stroke.id.toString());
   }
 
   /// the points reference

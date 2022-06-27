@@ -49,6 +49,9 @@
 /Users/xiuxuan/Developer/copypaste/lib/features/drawing/domain/entities/sp_stroke.dart
 /Users/xiuxuan/Developer/copypaste/lib/features/drawing/domain/entities/sp_stroke.freezed.dart
 /Users/xiuxuan/Developer/copypaste/lib/features/drawing/domain/repository/i_sp_drawing_repository.dart
+/Users/xiuxuan/Developer/copypaste/lib/features/drawing/domain/usecases/add_stroke.dart
+/Users/xiuxuan/Developer/copypaste/lib/features/drawing/domain/usecases/delete_stroke.dart
+/Users/xiuxuan/Developer/copypaste/lib/features/drawing/domain/usecases/load_strokes_for_drawing.dart
 /Users/xiuxuan/Developer/copypaste/lib/features/drawing/presentation/bloc/drawing_bloc/drawing_bloc.dart
 /Users/xiuxuan/Developer/copypaste/lib/features/drawing/presentation/bloc/drawing_bloc/drawing_bloc.freezed.dart
 /Users/xiuxuan/Developer/copypaste/lib/features/drawing/presentation/bloc/drawing_bloc/drawing_event.dart

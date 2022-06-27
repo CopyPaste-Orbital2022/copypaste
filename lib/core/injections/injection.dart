@@ -25,5 +25,10 @@ abstract class FirebaseInjectableModule {
   FirebaseAuth get firebaseAuth => FirebaseAuth.instance;
 
   @lazySingleton
-  FirebaseFirestore get firebaseFirestore => FirebaseFirestore.instance;
+  FirebaseFirestore get firebaseFirestore => FirebaseFirestore.instance
+    ..enablePersistence(const PersistenceSettings(synchronizeTabs: true))
+    ..settings = const Settings(
+      persistenceEnabled: true,
+      cacheSizeBytes: Settings.CACHE_SIZE_UNLIMITED,
+    );
 }

@@ -22,8 +22,12 @@ import '../../features/drawing/data/repositories/sp_drawing_repository_impl.dart
     as _i25;
 import '../../features/drawing/domain/repository/i_sp_drawing_repository.dart'
     as _i24;
-import '../../features/drawing/presentation/bloc/drawing_bloc/drawing_bloc.dart'
+import '../../features/drawing/domain/usecases/add_stroke.dart' as _i27;
+import '../../features/drawing/domain/usecases/delete_stroke.dart' as _i28;
+import '../../features/drawing/domain/usecases/load_strokes_for_drawing.dart'
     as _i26;
+import '../../features/drawing/presentation/bloc/drawing_bloc/drawing_bloc.dart'
+    as _i29;
 import '../../features/drawing/presentation/bloc/history_manager_bloc/history_manager_bloc.dart'
     as _i8;
 import '../../features/drawing/presentation/bloc/pen_settings_bloc/pen_settings_bloc.dart'
@@ -51,7 +55,7 @@ import '../../features/file_management/domain/usecases/load_most_recent_drawing.
 import '../../features/file_management/presentation/bloc/file_management_bloc/file_management_bloc.dart'
     as _i23;
 import '../routing/app_router.dart' as _i3;
-import 'injection.dart' as _i27; // ignore_for_file: unnecessary_lambdas
+import 'injection.dart' as _i30; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
@@ -98,18 +102,26 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
       get<_i22.LoadMostRecentDrawingUsecase>(),
       get<_i3.AppRouter>()));
   gh.lazySingleton<_i24.ISPDrawingRepository>(() =>
-      _i25.SPDrawingRepositoryImpl(get<_i16.AuthBloc>(),
-          get<_i23.FileManagementBloc>(), get<_i7.FirebaseFirestore>()));
-  gh.lazySingleton<_i26.DrawingBloc>(() => _i26.DrawingBloc(
+      _i25.SPDrawingRepositoryImpl(get<_i7.FirebaseFirestore>(),
+          get<_i16.AuthBloc>(), get<_i23.FileManagementBloc>()));
+  gh.lazySingleton<_i26.LoadStrokesForDrawingUsecase>(() =>
+      _i26.LoadStrokesForDrawingUsecase(get<_i24.ISPDrawingRepository>()));
+  gh.lazySingleton<_i27.AddStrokeUsecase>(
+      () => _i27.AddStrokeUsecase(get<_i24.ISPDrawingRepository>()));
+  gh.lazySingleton<_i28.DeleteStrokeUsecase>(
+      () => _i28.DeleteStrokeUsecase(get<_i24.ISPDrawingRepository>()));
+  gh.lazySingleton<_i29.DrawingBloc>(() => _i29.DrawingBloc(
       currentToolBloc: get<_i4.CurrentToolBloc>(),
       penColorBloc: get<_i11.PenColorBloc>(),
       penWidthBloc: get<_i13.PenWidthBloc>(),
       eraserWidthBloc: get<_i5.EraserWidthBloc>(),
       penSettingsBloc: get<_i12.PenSettingsBloc>(),
-      drawingRepository: get<_i24.ISPDrawingRepository>()));
+      loadStrokesForDrawingUsecase: get<_i26.LoadStrokesForDrawingUsecase>(),
+      addStrokeUsecase: get<_i27.AddStrokeUsecase>(),
+      deleteStrokeUsecase: get<_i28.DeleteStrokeUsecase>()));
   return get;
 }
 
-class _$FirebaseInjectableModule extends _i27.FirebaseInjectableModule {}
+class _$FirebaseInjectableModule extends _i30.FirebaseInjectableModule {}
 
-class _$PreferencesInjectionModule extends _i27.PreferencesInjectionModule {}
+class _$PreferencesInjectionModule extends _i30.PreferencesInjectionModule {}

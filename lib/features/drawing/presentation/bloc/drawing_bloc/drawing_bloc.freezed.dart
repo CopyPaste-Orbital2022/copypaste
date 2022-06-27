@@ -210,6 +210,7 @@ mixin _$DrawingEvent {
     required TResult Function(PointerUpEvent event) pointerUp,
     required TResult Function(PointerCancelEvent event) pointerCancel,
     required TResult Function(DrawingState state) setState,
+    required TResult Function() loadStrokes,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -220,6 +221,7 @@ mixin _$DrawingEvent {
     TResult Function(PointerUpEvent event)? pointerUp,
     TResult Function(PointerCancelEvent event)? pointerCancel,
     TResult Function(DrawingState state)? setState,
+    TResult Function()? loadStrokes,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -230,6 +232,7 @@ mixin _$DrawingEvent {
     TResult Function(PointerUpEvent event)? pointerUp,
     TResult Function(PointerCancelEvent event)? pointerCancel,
     TResult Function(DrawingState state)? setState,
+    TResult Function()? loadStrokes,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -241,6 +244,7 @@ mixin _$DrawingEvent {
     required TResult Function(DrawingEventPointerUp value) pointerUp,
     required TResult Function(DrawingEventPointerCancel value) pointerCancel,
     required TResult Function(DrawingEventSetState value) setState,
+    required TResult Function(DrawingEventLoadStrokes value) loadStrokes,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -251,6 +255,7 @@ mixin _$DrawingEvent {
     TResult Function(DrawingEventPointerUp value)? pointerUp,
     TResult Function(DrawingEventPointerCancel value)? pointerCancel,
     TResult Function(DrawingEventSetState value)? setState,
+    TResult Function(DrawingEventLoadStrokes value)? loadStrokes,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -261,6 +266,7 @@ mixin _$DrawingEvent {
     TResult Function(DrawingEventPointerUp value)? pointerUp,
     TResult Function(DrawingEventPointerCancel value)? pointerCancel,
     TResult Function(DrawingEventSetState value)? setState,
+    TResult Function(DrawingEventLoadStrokes value)? loadStrokes,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -329,6 +335,7 @@ class _$DrawingEventInitial implements DrawingEventInitial {
     required TResult Function(PointerUpEvent event) pointerUp,
     required TResult Function(PointerCancelEvent event) pointerCancel,
     required TResult Function(DrawingState state) setState,
+    required TResult Function() loadStrokes,
   }) {
     return initial();
   }
@@ -342,6 +349,7 @@ class _$DrawingEventInitial implements DrawingEventInitial {
     TResult Function(PointerUpEvent event)? pointerUp,
     TResult Function(PointerCancelEvent event)? pointerCancel,
     TResult Function(DrawingState state)? setState,
+    TResult Function()? loadStrokes,
   }) {
     return initial?.call();
   }
@@ -355,6 +363,7 @@ class _$DrawingEventInitial implements DrawingEventInitial {
     TResult Function(PointerUpEvent event)? pointerUp,
     TResult Function(PointerCancelEvent event)? pointerCancel,
     TResult Function(DrawingState state)? setState,
+    TResult Function()? loadStrokes,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -372,6 +381,7 @@ class _$DrawingEventInitial implements DrawingEventInitial {
     required TResult Function(DrawingEventPointerUp value) pointerUp,
     required TResult Function(DrawingEventPointerCancel value) pointerCancel,
     required TResult Function(DrawingEventSetState value) setState,
+    required TResult Function(DrawingEventLoadStrokes value) loadStrokes,
   }) {
     return initial(this);
   }
@@ -385,6 +395,7 @@ class _$DrawingEventInitial implements DrawingEventInitial {
     TResult Function(DrawingEventPointerUp value)? pointerUp,
     TResult Function(DrawingEventPointerCancel value)? pointerCancel,
     TResult Function(DrawingEventSetState value)? setState,
+    TResult Function(DrawingEventLoadStrokes value)? loadStrokes,
   }) {
     return initial?.call(this);
   }
@@ -398,6 +409,7 @@ class _$DrawingEventInitial implements DrawingEventInitial {
     TResult Function(DrawingEventPointerUp value)? pointerUp,
     TResult Function(DrawingEventPointerCancel value)? pointerCancel,
     TResult Function(DrawingEventSetState value)? setState,
+    TResult Function(DrawingEventLoadStrokes value)? loadStrokes,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -484,6 +496,7 @@ class _$DrawingEventPointerDown implements DrawingEventPointerDown {
     required TResult Function(PointerUpEvent event) pointerUp,
     required TResult Function(PointerCancelEvent event) pointerCancel,
     required TResult Function(DrawingState state) setState,
+    required TResult Function() loadStrokes,
   }) {
     return pointerDown(event);
   }
@@ -497,6 +510,7 @@ class _$DrawingEventPointerDown implements DrawingEventPointerDown {
     TResult Function(PointerUpEvent event)? pointerUp,
     TResult Function(PointerCancelEvent event)? pointerCancel,
     TResult Function(DrawingState state)? setState,
+    TResult Function()? loadStrokes,
   }) {
     return pointerDown?.call(event);
   }
@@ -510,6 +524,7 @@ class _$DrawingEventPointerDown implements DrawingEventPointerDown {
     TResult Function(PointerUpEvent event)? pointerUp,
     TResult Function(PointerCancelEvent event)? pointerCancel,
     TResult Function(DrawingState state)? setState,
+    TResult Function()? loadStrokes,
     required TResult orElse(),
   }) {
     if (pointerDown != null) {
@@ -527,6 +542,7 @@ class _$DrawingEventPointerDown implements DrawingEventPointerDown {
     required TResult Function(DrawingEventPointerUp value) pointerUp,
     required TResult Function(DrawingEventPointerCancel value) pointerCancel,
     required TResult Function(DrawingEventSetState value) setState,
+    required TResult Function(DrawingEventLoadStrokes value) loadStrokes,
   }) {
     return pointerDown(this);
   }
@@ -540,6 +556,7 @@ class _$DrawingEventPointerDown implements DrawingEventPointerDown {
     TResult Function(DrawingEventPointerUp value)? pointerUp,
     TResult Function(DrawingEventPointerCancel value)? pointerCancel,
     TResult Function(DrawingEventSetState value)? setState,
+    TResult Function(DrawingEventLoadStrokes value)? loadStrokes,
   }) {
     return pointerDown?.call(this);
   }
@@ -553,6 +570,7 @@ class _$DrawingEventPointerDown implements DrawingEventPointerDown {
     TResult Function(DrawingEventPointerUp value)? pointerUp,
     TResult Function(DrawingEventPointerCancel value)? pointerCancel,
     TResult Function(DrawingEventSetState value)? setState,
+    TResult Function(DrawingEventLoadStrokes value)? loadStrokes,
     required TResult orElse(),
   }) {
     if (pointerDown != null) {
@@ -645,6 +663,7 @@ class _$DrawingEventPointerMove implements DrawingEventPointerMove {
     required TResult Function(PointerUpEvent event) pointerUp,
     required TResult Function(PointerCancelEvent event) pointerCancel,
     required TResult Function(DrawingState state) setState,
+    required TResult Function() loadStrokes,
   }) {
     return pointerMove(event);
   }
@@ -658,6 +677,7 @@ class _$DrawingEventPointerMove implements DrawingEventPointerMove {
     TResult Function(PointerUpEvent event)? pointerUp,
     TResult Function(PointerCancelEvent event)? pointerCancel,
     TResult Function(DrawingState state)? setState,
+    TResult Function()? loadStrokes,
   }) {
     return pointerMove?.call(event);
   }
@@ -671,6 +691,7 @@ class _$DrawingEventPointerMove implements DrawingEventPointerMove {
     TResult Function(PointerUpEvent event)? pointerUp,
     TResult Function(PointerCancelEvent event)? pointerCancel,
     TResult Function(DrawingState state)? setState,
+    TResult Function()? loadStrokes,
     required TResult orElse(),
   }) {
     if (pointerMove != null) {
@@ -688,6 +709,7 @@ class _$DrawingEventPointerMove implements DrawingEventPointerMove {
     required TResult Function(DrawingEventPointerUp value) pointerUp,
     required TResult Function(DrawingEventPointerCancel value) pointerCancel,
     required TResult Function(DrawingEventSetState value) setState,
+    required TResult Function(DrawingEventLoadStrokes value) loadStrokes,
   }) {
     return pointerMove(this);
   }
@@ -701,6 +723,7 @@ class _$DrawingEventPointerMove implements DrawingEventPointerMove {
     TResult Function(DrawingEventPointerUp value)? pointerUp,
     TResult Function(DrawingEventPointerCancel value)? pointerCancel,
     TResult Function(DrawingEventSetState value)? setState,
+    TResult Function(DrawingEventLoadStrokes value)? loadStrokes,
   }) {
     return pointerMove?.call(this);
   }
@@ -714,6 +737,7 @@ class _$DrawingEventPointerMove implements DrawingEventPointerMove {
     TResult Function(DrawingEventPointerUp value)? pointerUp,
     TResult Function(DrawingEventPointerCancel value)? pointerCancel,
     TResult Function(DrawingEventSetState value)? setState,
+    TResult Function(DrawingEventLoadStrokes value)? loadStrokes,
     required TResult orElse(),
   }) {
     if (pointerMove != null) {
@@ -805,6 +829,7 @@ class _$DrawingEventPointerUp implements DrawingEventPointerUp {
     required TResult Function(PointerUpEvent event) pointerUp,
     required TResult Function(PointerCancelEvent event) pointerCancel,
     required TResult Function(DrawingState state) setState,
+    required TResult Function() loadStrokes,
   }) {
     return pointerUp(event);
   }
@@ -818,6 +843,7 @@ class _$DrawingEventPointerUp implements DrawingEventPointerUp {
     TResult Function(PointerUpEvent event)? pointerUp,
     TResult Function(PointerCancelEvent event)? pointerCancel,
     TResult Function(DrawingState state)? setState,
+    TResult Function()? loadStrokes,
   }) {
     return pointerUp?.call(event);
   }
@@ -831,6 +857,7 @@ class _$DrawingEventPointerUp implements DrawingEventPointerUp {
     TResult Function(PointerUpEvent event)? pointerUp,
     TResult Function(PointerCancelEvent event)? pointerCancel,
     TResult Function(DrawingState state)? setState,
+    TResult Function()? loadStrokes,
     required TResult orElse(),
   }) {
     if (pointerUp != null) {
@@ -848,6 +875,7 @@ class _$DrawingEventPointerUp implements DrawingEventPointerUp {
     required TResult Function(DrawingEventPointerUp value) pointerUp,
     required TResult Function(DrawingEventPointerCancel value) pointerCancel,
     required TResult Function(DrawingEventSetState value) setState,
+    required TResult Function(DrawingEventLoadStrokes value) loadStrokes,
   }) {
     return pointerUp(this);
   }
@@ -861,6 +889,7 @@ class _$DrawingEventPointerUp implements DrawingEventPointerUp {
     TResult Function(DrawingEventPointerUp value)? pointerUp,
     TResult Function(DrawingEventPointerCancel value)? pointerCancel,
     TResult Function(DrawingEventSetState value)? setState,
+    TResult Function(DrawingEventLoadStrokes value)? loadStrokes,
   }) {
     return pointerUp?.call(this);
   }
@@ -874,6 +903,7 @@ class _$DrawingEventPointerUp implements DrawingEventPointerUp {
     TResult Function(DrawingEventPointerUp value)? pointerUp,
     TResult Function(DrawingEventPointerCancel value)? pointerCancel,
     TResult Function(DrawingEventSetState value)? setState,
+    TResult Function(DrawingEventLoadStrokes value)? loadStrokes,
     required TResult orElse(),
   }) {
     if (pointerUp != null) {
@@ -967,6 +997,7 @@ class _$DrawingEventPointerCancel implements DrawingEventPointerCancel {
     required TResult Function(PointerUpEvent event) pointerUp,
     required TResult Function(PointerCancelEvent event) pointerCancel,
     required TResult Function(DrawingState state) setState,
+    required TResult Function() loadStrokes,
   }) {
     return pointerCancel(event);
   }
@@ -980,6 +1011,7 @@ class _$DrawingEventPointerCancel implements DrawingEventPointerCancel {
     TResult Function(PointerUpEvent event)? pointerUp,
     TResult Function(PointerCancelEvent event)? pointerCancel,
     TResult Function(DrawingState state)? setState,
+    TResult Function()? loadStrokes,
   }) {
     return pointerCancel?.call(event);
   }
@@ -993,6 +1025,7 @@ class _$DrawingEventPointerCancel implements DrawingEventPointerCancel {
     TResult Function(PointerUpEvent event)? pointerUp,
     TResult Function(PointerCancelEvent event)? pointerCancel,
     TResult Function(DrawingState state)? setState,
+    TResult Function()? loadStrokes,
     required TResult orElse(),
   }) {
     if (pointerCancel != null) {
@@ -1010,6 +1043,7 @@ class _$DrawingEventPointerCancel implements DrawingEventPointerCancel {
     required TResult Function(DrawingEventPointerUp value) pointerUp,
     required TResult Function(DrawingEventPointerCancel value) pointerCancel,
     required TResult Function(DrawingEventSetState value) setState,
+    required TResult Function(DrawingEventLoadStrokes value) loadStrokes,
   }) {
     return pointerCancel(this);
   }
@@ -1023,6 +1057,7 @@ class _$DrawingEventPointerCancel implements DrawingEventPointerCancel {
     TResult Function(DrawingEventPointerUp value)? pointerUp,
     TResult Function(DrawingEventPointerCancel value)? pointerCancel,
     TResult Function(DrawingEventSetState value)? setState,
+    TResult Function(DrawingEventLoadStrokes value)? loadStrokes,
   }) {
     return pointerCancel?.call(this);
   }
@@ -1036,6 +1071,7 @@ class _$DrawingEventPointerCancel implements DrawingEventPointerCancel {
     TResult Function(DrawingEventPointerUp value)? pointerUp,
     TResult Function(DrawingEventPointerCancel value)? pointerCancel,
     TResult Function(DrawingEventSetState value)? setState,
+    TResult Function(DrawingEventLoadStrokes value)? loadStrokes,
     required TResult orElse(),
   }) {
     if (pointerCancel != null) {
@@ -1136,6 +1172,7 @@ class _$DrawingEventSetState implements DrawingEventSetState {
     required TResult Function(PointerUpEvent event) pointerUp,
     required TResult Function(PointerCancelEvent event) pointerCancel,
     required TResult Function(DrawingState state) setState,
+    required TResult Function() loadStrokes,
   }) {
     return setState(state);
   }
@@ -1149,6 +1186,7 @@ class _$DrawingEventSetState implements DrawingEventSetState {
     TResult Function(PointerUpEvent event)? pointerUp,
     TResult Function(PointerCancelEvent event)? pointerCancel,
     TResult Function(DrawingState state)? setState,
+    TResult Function()? loadStrokes,
   }) {
     return setState?.call(state);
   }
@@ -1162,6 +1200,7 @@ class _$DrawingEventSetState implements DrawingEventSetState {
     TResult Function(PointerUpEvent event)? pointerUp,
     TResult Function(PointerCancelEvent event)? pointerCancel,
     TResult Function(DrawingState state)? setState,
+    TResult Function()? loadStrokes,
     required TResult orElse(),
   }) {
     if (setState != null) {
@@ -1179,6 +1218,7 @@ class _$DrawingEventSetState implements DrawingEventSetState {
     required TResult Function(DrawingEventPointerUp value) pointerUp,
     required TResult Function(DrawingEventPointerCancel value) pointerCancel,
     required TResult Function(DrawingEventSetState value) setState,
+    required TResult Function(DrawingEventLoadStrokes value) loadStrokes,
   }) {
     return setState(this);
   }
@@ -1192,6 +1232,7 @@ class _$DrawingEventSetState implements DrawingEventSetState {
     TResult Function(DrawingEventPointerUp value)? pointerUp,
     TResult Function(DrawingEventPointerCancel value)? pointerCancel,
     TResult Function(DrawingEventSetState value)? setState,
+    TResult Function(DrawingEventLoadStrokes value)? loadStrokes,
   }) {
     return setState?.call(this);
   }
@@ -1205,6 +1246,7 @@ class _$DrawingEventSetState implements DrawingEventSetState {
     TResult Function(DrawingEventPointerUp value)? pointerUp,
     TResult Function(DrawingEventPointerCancel value)? pointerCancel,
     TResult Function(DrawingEventSetState value)? setState,
+    TResult Function(DrawingEventLoadStrokes value)? loadStrokes,
     required TResult orElse(),
   }) {
     if (setState != null) {
@@ -1222,4 +1264,141 @@ abstract class DrawingEventSetState implements DrawingEvent {
   @JsonKey(ignore: true)
   _$$DrawingEventSetStateCopyWith<_$DrawingEventSetState> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DrawingEventLoadStrokesCopyWith<$Res> {
+  factory _$$DrawingEventLoadStrokesCopyWith(_$DrawingEventLoadStrokes value,
+          $Res Function(_$DrawingEventLoadStrokes) then) =
+      __$$DrawingEventLoadStrokesCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$DrawingEventLoadStrokesCopyWithImpl<$Res>
+    extends _$DrawingEventCopyWithImpl<$Res>
+    implements _$$DrawingEventLoadStrokesCopyWith<$Res> {
+  __$$DrawingEventLoadStrokesCopyWithImpl(_$DrawingEventLoadStrokes _value,
+      $Res Function(_$DrawingEventLoadStrokes) _then)
+      : super(_value, (v) => _then(v as _$DrawingEventLoadStrokes));
+
+  @override
+  _$DrawingEventLoadStrokes get _value =>
+      super._value as _$DrawingEventLoadStrokes;
+}
+
+/// @nodoc
+
+class _$DrawingEventLoadStrokes implements DrawingEventLoadStrokes {
+  const _$DrawingEventLoadStrokes();
+
+  @override
+  String toString() {
+    return 'DrawingEvent.loadStrokes()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DrawingEventLoadStrokes);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(PointerDownEvent event) pointerDown,
+    required TResult Function(PointerMoveEvent event) pointerMove,
+    required TResult Function(PointerUpEvent event) pointerUp,
+    required TResult Function(PointerCancelEvent event) pointerCancel,
+    required TResult Function(DrawingState state) setState,
+    required TResult Function() loadStrokes,
+  }) {
+    return loadStrokes();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(PointerDownEvent event)? pointerDown,
+    TResult Function(PointerMoveEvent event)? pointerMove,
+    TResult Function(PointerUpEvent event)? pointerUp,
+    TResult Function(PointerCancelEvent event)? pointerCancel,
+    TResult Function(DrawingState state)? setState,
+    TResult Function()? loadStrokes,
+  }) {
+    return loadStrokes?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(PointerDownEvent event)? pointerDown,
+    TResult Function(PointerMoveEvent event)? pointerMove,
+    TResult Function(PointerUpEvent event)? pointerUp,
+    TResult Function(PointerCancelEvent event)? pointerCancel,
+    TResult Function(DrawingState state)? setState,
+    TResult Function()? loadStrokes,
+    required TResult orElse(),
+  }) {
+    if (loadStrokes != null) {
+      return loadStrokes();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(DrawingEventInitial value) initial,
+    required TResult Function(DrawingEventPointerDown value) pointerDown,
+    required TResult Function(DrawingEventPointerMove value) pointerMove,
+    required TResult Function(DrawingEventPointerUp value) pointerUp,
+    required TResult Function(DrawingEventPointerCancel value) pointerCancel,
+    required TResult Function(DrawingEventSetState value) setState,
+    required TResult Function(DrawingEventLoadStrokes value) loadStrokes,
+  }) {
+    return loadStrokes(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(DrawingEventInitial value)? initial,
+    TResult Function(DrawingEventPointerDown value)? pointerDown,
+    TResult Function(DrawingEventPointerMove value)? pointerMove,
+    TResult Function(DrawingEventPointerUp value)? pointerUp,
+    TResult Function(DrawingEventPointerCancel value)? pointerCancel,
+    TResult Function(DrawingEventSetState value)? setState,
+    TResult Function(DrawingEventLoadStrokes value)? loadStrokes,
+  }) {
+    return loadStrokes?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(DrawingEventInitial value)? initial,
+    TResult Function(DrawingEventPointerDown value)? pointerDown,
+    TResult Function(DrawingEventPointerMove value)? pointerMove,
+    TResult Function(DrawingEventPointerUp value)? pointerUp,
+    TResult Function(DrawingEventPointerCancel value)? pointerCancel,
+    TResult Function(DrawingEventSetState value)? setState,
+    TResult Function(DrawingEventLoadStrokes value)? loadStrokes,
+    required TResult orElse(),
+  }) {
+    if (loadStrokes != null) {
+      return loadStrokes(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DrawingEventLoadStrokes implements DrawingEvent {
+  const factory DrawingEventLoadStrokes() = _$DrawingEventLoadStrokes;
 }

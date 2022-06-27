@@ -1,40 +1,56 @@
 import 'dart:ui';
 
-import 'package:perfect_freehand/perfect_freehand.dart';
+import 'package:copypaste/features/drawing/domain/entities/sp_point.dart';
+import 'package:equatable/equatable.dart';
 
-import '../../domain/entities/sp_point.dart';
+class SPPointModel extends Equatable {
+  final int id;
+  final double dx;
+  final double dy;
+  final double pressure;
 
-extension SPPointModel on SPPoint {
-  // to json
-  Map<String, dynamic> toJson() {
+  const SPPointModel({
+    required this.id,
+    required this.dx,
+    required this.dy,
+    required this.pressure,
+  });
+
+  @override
+  List<Object?> get props => [dx, dy, pressure];
+
+  /// converts to the domain layer
+  SPPoint toDomain() {
+    return SPPoint(id: id, offset: Offset(dx, dy), pressure: pressure);
+  }
+
+  /// converts from the domain layer
+  static SPPointModel fromDomain(SPPoint point) {
+    return SPPointModel(
+      id: point.id,
+      dx: point.dx,
+      dy: point.dy,
+      pressure: point.pressure,
+    );
+  }
+
+  /// to json
+  Map<String, Object?> toJson() {
     return {
+      'id': id,
       'dx': dx,
       'dy': dy,
       'pressure': pressure,
     };
   }
 
-  // from json
-  static fromJson(Map<String, dynamic> json) {
-    return SPPoint(
-      offset: Offset(json['dx'], json['dy']),
+  /// from json
+  static SPPointModel fromJson(Map<String, dynamic> json) {
+    return SPPointModel(
+      id: json['id'],
+      dx: json['dx'],
+      dy: json['dy'],
       pressure: json['pressure'],
     );
-  }
-}
-
-extension PointX on Point {
-  // to json
-  Map<String, dynamic> toJson() {
-    return {
-      'x': x,
-      'y': y,
-      'p': p,
-    };
-  }
-
-  // from json
-  static Point fromJson(Map<String, dynamic> json) {
-    return Point(json['x'], json['y'], json['p']);
   }
 }

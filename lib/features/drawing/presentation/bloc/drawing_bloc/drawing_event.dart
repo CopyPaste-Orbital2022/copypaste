@@ -29,4 +29,7 @@ class DrawingEvent with _$DrawingEvent {
   const factory DrawingEvent.setState(
     DrawingState state,
   ) = DrawingEventSetState;
+
+  /// Loads strokes from the backend
+  const factory DrawingEvent.loadStrokes() = DrawingEventLoadStrokes;
 }

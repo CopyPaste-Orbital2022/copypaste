@@ -1,5 +1,6 @@
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:copypaste/core/injections/injection.dart';
+import 'package:copypaste/core/routing/app_router.dart';
 import '../../bloc/drawing_bloc/drawing_bloc.dart';
 import '../../bloc/history_manager_bloc/history_manager_bloc.dart';
 import '../../bloc/pen_settings_bloc/pen_settings_bloc.dart';
@@ -58,7 +59,11 @@ class DrawingPageAppbarTitle extends StatelessWidget {
                   if (platformIsDesktop) const SizedBox(width: 50),
                   PlatformIconButton(
                     padding: EdgeInsets.zero,
-                    onPressed: () {},
+                    onPressed: () {
+                      getIt<AppRouter>().replace(
+                        const FileManagementRoute(),
+                      );
+                    },
                     icon: Icon(
                       PlatformIcons(context).leftChevron,
                       size: 24,
