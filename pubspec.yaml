@@ -48,14 +48,18 @@ dependencies:
   injectable: ^1.5.3
   intl: ^0.17.0
   my_color_picker:
-    path: plugins/my_color_picker
+    git:
+      url: https://github.com/CopyPaste-Orbital2022/my_color_picker.git
   my_stackable_popup_menu:
-    path: plugins/my_stackable_popup_menu
+    git:
+      url: https://github.com/CopyPaste-Orbital2022/my_stackable_popup_menu.git
   nil: ^1.1.1
   perfect_freehand:
-    path: plugins/perfect-freehand-dart
+    git:
+      url: https://github.com/CopyPaste-Orbital2022/perfect-freehand-dart.git
   selectable_items:
-    path: plugins/selectable_items
+    git:
+      url: https://github.com/CopyPaste-Orbital2022/selectable_items.git
   share_plus: ^4.0.9
   shared_preferences: ^2.0.13
   uuid: ^3.0.6
