@@ -1,14 +1,11 @@
-import '../../../../../core/injections/injection.dart';
-import '../../bloc/drawing_bloc/drawing_bloc.dart';
-import '../../bloc/selectable_bloc/blocs/eraser_width_bloc.dart';
-import '../../bloc/selectable_bloc/selectable_bloc.dart';
-import 'eraser_painter.dart';
-import 'paints/current_stroke_paint.dart';
-import 'paints/strokes_paint.dart';
-import 'strokes_painter.dart';
-import 'package:flutter/material.dart';
+import 'package:copypaste/features/authentication/presentation/bloc/auth_bloc/auth_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/injections/injection.dart';
+import '../../bloc/drawing_bloc/drawing_bloc.dart';
+import 'paints/current_stroke_paint.dart';
+import 'paints/strokes_paint.dart';
+import 'package:flutter/material.dart';
 import 'paints/eraser_paint.dart';
 
 class DrawingCanvas extends StatelessWidget {

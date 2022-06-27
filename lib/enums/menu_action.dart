@@ -1,1 +1,0 @@
-enum MenuAction { logout }

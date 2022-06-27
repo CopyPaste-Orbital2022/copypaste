@@ -1,6 +1,6 @@
-import 'package:copypaste/core/injections/injection.dart';
-import 'package:copypaste/features/drawing/presentation/bloc/drawing_bloc/drawing_bloc.dart';
-import 'package:copypaste/features/drawing/presentation/bloc/history_manager_bloc/history_state.dart';
+import '../../../../../core/injections/injection.dart';
+import '../drawing_bloc/drawing_bloc.dart';
+import 'history_state.dart';
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:freezed_annotation/freezed_annotation.dart";
 import 'package:injectable/injectable.dart';

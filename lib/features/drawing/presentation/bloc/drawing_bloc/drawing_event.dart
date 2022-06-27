@@ -2,6 +2,9 @@ part of "drawing_bloc.dart";
 
 @freezed
 class DrawingEvent with _$DrawingEvent {
+  /// Initial Event
+  const factory DrawingEvent.initial() = DrawingEventInitial;
+
   /// Register Pointer Down Event
   const factory DrawingEvent.pointerDown(
     PointerDownEvent event,
@@ -26,4 +29,7 @@ class DrawingEvent with _$DrawingEvent {
   const factory DrawingEvent.setState(
     DrawingState state,
   ) = DrawingEventSetState;
+
+  /// Loads strokes from the backend
+  const factory DrawingEvent.loadStrokes() = DrawingEventLoadStrokes;
 }

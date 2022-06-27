@@ -16,11 +16,12 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SPStroke {
+  int get id => throw _privateConstructorUsedError;
   double get size => throw _privateConstructorUsedError;
   Color get color => throw _privateConstructorUsedError;
   List<SPPoint> get points => throw _privateConstructorUsedError;
   bool get isComplete => throw _privateConstructorUsedError;
-  List<Point>? get cachedBorderPoints => throw _privateConstructorUsedError;
+  List<SPPoint>? get cachedBorderPoints => throw _privateConstructorUsedError;
   double get thinning => throw _privateConstructorUsedError; // check
   double get smoothing => throw _privateConstructorUsedError; // check
   double get streamline => throw _privateConstructorUsedError; // check
@@ -40,11 +41,12 @@ abstract class $SPStrokeCopyWith<$Res> {
   factory $SPStrokeCopyWith(SPStroke value, $Res Function(SPStroke) then) =
       _$SPStrokeCopyWithImpl<$Res>;
   $Res call(
-      {double size,
+      {int id,
+      double size,
       Color color,
       List<SPPoint> points,
       bool isComplete,
-      List<Point>? cachedBorderPoints,
+      List<SPPoint>? cachedBorderPoints,
       double thinning,
       double smoothing,
       double streamline,
@@ -65,6 +67,7 @@ class _$SPStrokeCopyWithImpl<$Res> implements $SPStrokeCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? size = freezed,
     Object? color = freezed,
     Object? points = freezed,
@@ -80,6 +83,10 @@ class _$SPStrokeCopyWithImpl<$Res> implements $SPStrokeCopyWith<$Res> {
     Object? simulatePressure = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       size: size == freezed
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
@@ -99,7 +106,7 @@ class _$SPStrokeCopyWithImpl<$Res> implements $SPStrokeCopyWith<$Res> {
       cachedBorderPoints: cachedBorderPoints == freezed
           ? _value.cachedBorderPoints
           : cachedBorderPoints // ignore: cast_nullable_to_non_nullable
-              as List<Point>?,
+              as List<SPPoint>?,
       thinning: thinning == freezed
           ? _value.thinning
           : thinning // ignore: cast_nullable_to_non_nullable
@@ -143,11 +150,12 @@ abstract class _$$_SPStrokeCopyWith<$Res> implements $SPStrokeCopyWith<$Res> {
       __$$_SPStrokeCopyWithImpl<$Res>;
   @override
   $Res call(
-      {double size,
+      {int id,
+      double size,
       Color color,
       List<SPPoint> points,
       bool isComplete,
-      List<Point>? cachedBorderPoints,
+      List<SPPoint>? cachedBorderPoints,
       double thinning,
       double smoothing,
       double streamline,
@@ -170,6 +178,7 @@ class __$$_SPStrokeCopyWithImpl<$Res> extends _$SPStrokeCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? size = freezed,
     Object? color = freezed,
     Object? points = freezed,
@@ -185,6 +194,10 @@ class __$$_SPStrokeCopyWithImpl<$Res> extends _$SPStrokeCopyWithImpl<$Res>
     Object? simulatePressure = freezed,
   }) {
     return _then(_$_SPStroke(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       size: size == freezed
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
@@ -204,7 +217,7 @@ class __$$_SPStrokeCopyWithImpl<$Res> extends _$SPStrokeCopyWithImpl<$Res>
       cachedBorderPoints: cachedBorderPoints == freezed
           ? _value._cachedBorderPoints
           : cachedBorderPoints // ignore: cast_nullable_to_non_nullable
-              as List<Point>?,
+              as List<SPPoint>?,
       thinning: thinning == freezed
           ? _value.thinning
           : thinning // ignore: cast_nullable_to_non_nullable
@@ -245,11 +258,12 @@ class __$$_SPStrokeCopyWithImpl<$Res> extends _$SPStrokeCopyWithImpl<$Res>
 
 class _$_SPStroke implements _SPStroke {
   const _$_SPStroke(
-      {required this.size,
+      {required this.id,
+      required this.size,
       required this.color,
       final List<SPPoint> points = const [],
       this.isComplete = false,
-      final List<Point>? cachedBorderPoints,
+      final List<SPPoint>? cachedBorderPoints,
       required this.thinning,
       required this.smoothing,
       required this.streamline,
@@ -261,6 +275,8 @@ class _$_SPStroke implements _SPStroke {
       : _points = points,
         _cachedBorderPoints = cachedBorderPoints;
 
+  @override
+  final int id;
   @override
   final double size;
   @override
@@ -276,9 +292,9 @@ class _$_SPStroke implements _SPStroke {
   @override
   @JsonKey()
   final bool isComplete;
-  final List<Point>? _cachedBorderPoints;
+  final List<SPPoint>? _cachedBorderPoints;
   @override
-  List<Point>? get cachedBorderPoints {
+  List<SPPoint>? get cachedBorderPoints {
     final value = _cachedBorderPoints;
     if (value == null) return null;
     // ignore: implicit_dynamic_type
@@ -309,7 +325,7 @@ class _$_SPStroke implements _SPStroke {
 
   @override
   String toString() {
-    return 'SPStroke(size: $size, color: $color, points: $points, isComplete: $isComplete, cachedBorderPoints: $cachedBorderPoints, thinning: $thinning, smoothing: $smoothing, streamline: $streamline, taperStart: $taperStart, taperEnd: $taperEnd, capStart: $capStart, capEnd: $capEnd, simulatePressure: $simulatePressure)';
+    return 'SPStroke(id: $id, size: $size, color: $color, points: $points, isComplete: $isComplete, cachedBorderPoints: $cachedBorderPoints, thinning: $thinning, smoothing: $smoothing, streamline: $streamline, taperStart: $taperStart, taperEnd: $taperEnd, capStart: $capStart, capEnd: $capEnd, simulatePressure: $simulatePressure)';
   }
 
   @override
@@ -317,6 +333,7 @@ class _$_SPStroke implements _SPStroke {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SPStroke &&
+            const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.size, size) &&
             const DeepCollectionEquality().equals(other.color, color) &&
             const DeepCollectionEquality().equals(other._points, _points) &&
@@ -340,6 +357,7 @@ class _$_SPStroke implements _SPStroke {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(size),
       const DeepCollectionEquality().hash(color),
       const DeepCollectionEquality().hash(_points),
@@ -362,11 +380,12 @@ class _$_SPStroke implements _SPStroke {
 
 abstract class _SPStroke implements SPStroke {
   const factory _SPStroke(
-      {required final double size,
+      {required final int id,
+      required final double size,
       required final Color color,
       final List<SPPoint> points,
       final bool isComplete,
-      final List<Point>? cachedBorderPoints,
+      final List<SPPoint>? cachedBorderPoints,
       required final double thinning,
       required final double smoothing,
       required final double streamline,
@@ -377,6 +396,8 @@ abstract class _SPStroke implements SPStroke {
       required final bool simulatePressure}) = _$_SPStroke;
 
   @override
+  int get id => throw _privateConstructorUsedError;
+  @override
   double get size => throw _privateConstructorUsedError;
   @override
   Color get color => throw _privateConstructorUsedError;
@@ -385,7 +406,7 @@ abstract class _SPStroke implements SPStroke {
   @override
   bool get isComplete => throw _privateConstructorUsedError;
   @override
-  List<Point>? get cachedBorderPoints => throw _privateConstructorUsedError;
+  List<SPPoint>? get cachedBorderPoints => throw _privateConstructorUsedError;
   @override
   double get thinning => throw _privateConstructorUsedError;
   @override // check

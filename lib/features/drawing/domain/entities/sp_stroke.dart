@@ -8,11 +8,12 @@ part 'sp_stroke.freezed.dart';
 @freezed
 abstract class SPStroke with _$SPStroke {
   const factory SPStroke({
+    required int id,
     required double size,
     required Color color,
     @Default([]) List<SPPoint> points,
     @Default(false) bool isComplete,
-    List<Point>? cachedBorderPoints,
+    List<SPPoint>? cachedBorderPoints,
     required double thinning, // check
     required double smoothing, // check
     required double streamline, // check
@@ -39,11 +40,11 @@ extension SPStrokeX on SPStroke {
   }
 
   /// Gets the border points of the stroke.
-  List<Point> get borderPoints {
+  List<SPPoint> get borderPoints {
     if (cachedBorderPoints != null) {
       return cachedBorderPoints!;
     } else {
-      return getStroke(
+      final rawPoints = getStroke(
         points.map((e) => e.point).toList(),
         size: size,
         taperStart: taperStart,
@@ -56,6 +57,11 @@ extension SPStrokeX on SPStroke {
         capEnd: capEnd,
         simulatePressure: simulatePressure,
       );
+      List<SPPoint> res = [];
+      for (int i = 0; i < rawPoints.length; i++) {
+        res.add(SPPointX.fromPoint(rawPoints[i], i));
+      }
+      return res;
     }
   }
 

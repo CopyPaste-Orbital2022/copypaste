@@ -1,3 +1,4 @@
+import 'package:copypaste/features/drawing/domain/entities/sp_point.dart';
 import 'package:flutter/material.dart';
 
 import '../../../domain/entities/sp_stroke.dart';
@@ -39,16 +40,16 @@ class StrokesPainter extends CustomPainter {
     } else if (outlinePoints.length < 2) {
       // If the list only has one point, draw a dot.
       path.addOval(Rect.fromCircle(
-          center: Offset(outlinePoints[0].x, outlinePoints[0].y), radius: 1));
+          center: Offset(outlinePoints[0].dx, outlinePoints[0].dy), radius: 1));
     } else {
       // Otherwise, draw a line that connects each point with a bezier curve segment.
-      path.moveTo(outlinePoints[0].x, outlinePoints[0].y);
+      path.moveTo(outlinePoints[0].dx, outlinePoints[0].dy);
 
       for (int i = 1; i < outlinePoints.length - 1; ++i) {
         final p0 = outlinePoints[i];
         final p1 = outlinePoints[i + 1];
         path.quadraticBezierTo(
-            p0.x, p0.y, (p0.x + p1.x) / 2, (p0.y + p1.y) / 2);
+            p0.dx, p0.dy, (p0.dx + p1.dx) / 2, (p0.dy + p1.dy) / 2);
       }
     }
 

@@ -1,9 +1,13 @@
+import 'dart:developer' as developer;
+import 'dart:math';
 import 'dart:ui';
-import 'package:copypaste/core/injections/injection.dart';
-import 'package:copypaste/features/drawing/presentation/bloc/history_manager_bloc/history_manager_bloc.dart';
-import 'package:copypaste/features/drawing/presentation/bloc/history_manager_bloc/history_state.dart';
-import 'package:copypaste/features/drawing/presentation/bloc/pen_settings_bloc/pen_settings_bloc.dart';
-
+import 'package:copypaste/features/drawing/domain/usecases/add_stroke.dart';
+import 'package:copypaste/features/drawing/domain/usecases/delete_stroke.dart';
+import 'package:copypaste/features/drawing/domain/usecases/load_strokes_for_drawing.dart';
+import '../../../../../core/injections/injection.dart';
+import '../history_manager_bloc/history_manager_bloc.dart';
+import '../history_manager_bloc/history_state.dart';
+import '../pen_settings_bloc/pen_settings_bloc.dart';
 import '../../../domain/entities/sp_point.dart';
 import '../selectable_bloc/blocs/current_tool_bloc.dart';
 import '../selectable_bloc/blocs/eraser_width_bloc.dart';
@@ -26,6 +30,10 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
   final PenColorBloc penColorBloc;
   final EraserWidthBloc eraserWidthBloc;
   final PenSettingsBloc penSettingsBloc;
+  final LoadStrokesForDrawingUsecase loadStrokesForDrawingUsecase;
+  final AddStrokeUsecase addStrokeUsecase;
+  final DeleteStrokeUsecase deleteStrokeUsecase;
+
   int? _pointer;
 
   DrawingBloc({
@@ -34,26 +42,36 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
     required this.penWidthBloc,
     required this.eraserWidthBloc,
     required this.penSettingsBloc,
+    required this.loadStrokesForDrawingUsecase,
+    required this.addStrokeUsecase,
+    required this.deleteStrokeUsecase,
   }) : super(DrawingStateX.initial()) {
-    on<DrawingEvent>((event, emit) {
-      event.map(
-        pointerDown: (event) => handlePointerEvent(event.event, emit, {
+    // sets the event handlers
+    on<DrawingEvent>((event, emit) async {
+      await event.map(
+        initial: (event) async => await handleInitialEvent(event, emit),
+        pointerDown: (event) async =>
+            await handlePointerEvent(event.event, emit, {
           DrawingButtonType.pen: startDrawing,
           DrawingButtonType.eraser: erase,
         }),
-        pointerMove: (event) => handlePointerEvent(event.event, emit, {
+        pointerMove: (event) async =>
+            await handlePointerEvent(event.event, emit, {
           DrawingButtonType.pen: updateDrawing,
           DrawingButtonType.eraser: erase,
         }),
-        pointerUp: (event) => handlePointerEvent(event.event, emit, {
+        pointerUp: (event) async =>
+            await handlePointerEvent(event.event, emit, {
           DrawingButtonType.pen: endDrawing,
           DrawingButtonType.eraser: finishErase,
         }),
-        pointerCancel: (event) => handlePointerEvent(event.event, emit, {
+        pointerCancel: (event) async =>
+            await handlePointerEvent(event.event, emit, {
           DrawingButtonType.pen: endDrawing,
           DrawingButtonType.eraser: finishErase,
         }),
-        setState: (event) => emit(event.state),
+        setState: (event) async => emit(event.state),
+        loadStrokes: (event) async => await handleLoadStrokes(emit),
       );
     });
   }
@@ -62,10 +80,32 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
 
   // event handlers
 
+  Future<void> handleInitialEvent(
+    DrawingEvent event,
+    Emitter<DrawingState> emit,
+  ) async {
+    await handleLoadStrokes(emit);
+  }
+
+  Future<void> handleLoadStrokes(Emitter<DrawingState> emit) async {
+    final failureOrStrokes = await loadStrokesForDrawingUsecase();
+    await failureOrStrokes.fold(
+      (failure) async => null,
+      (strokes) async {
+        emit(
+          state.copyWith(strokes: strokes),
+        );
+      },
+    );
+  }
+
   bool get useStylus => penSettingsBloc.state.useStylus;
 
-  void handlePointerEvent(PointerEvent event, Emitter emit,
-      Map<DrawingButtonType, void Function(PointerEvent, Emitter)> handlers) {
+  Future<void> handlePointerEvent(
+      PointerEvent event,
+      Emitter emit,
+      Map<DrawingButtonType, Future<void> Function(PointerEvent, Emitter)>
+          handlers) async {
     // for drawing and erasing, we only want to recognize a single pointer
     // so we only handle the event if it's the same pointer
     if (event.pointer != _pointer && _pointer != null) {
@@ -90,7 +130,7 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
       }
     }
     if (handlers.containsKey(currentTool!)) {
-      handlers[currentTool!]!(event, emit);
+      await handlers[currentTool!]!(event, emit);
     }
   }
 
@@ -100,82 +140,126 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
 
   double get penWidth => penWidthBloc.selected!;
 
-  void startDrawing(PointerEvent event, Emitter emit) {
-    // update the state
+  Future<void> startDrawing(PointerEvent event, Emitter emit) async {
+    // create the point
+    final SPPoint point = SPPoint(
+      id: 0,
+      offset: event.localPosition,
+      pressure: event.pressure,
+    );
+    // create the stroke
+    final SPStroke stroke = SPStroke(
+      id: state.strokes.length,
+      points: [point],
+      isComplete: false,
+      size: penWidth,
+      color: penColor,
+      thinning: penSettingsBloc.state.thinning,
+      smoothing: penSettingsBloc.state.smoothing,
+      streamline: penSettingsBloc.state.streamline,
+      taperStart: penSettingsBloc.state.taperStart,
+      taperEnd: penSettingsBloc.state.taperEnd,
+      capStart: penSettingsBloc.state.capStart,
+      capEnd: penSettingsBloc.state.capEnd,
+      simulatePressure: penSettingsBloc.state.useStylus,
+    );
+    // emits the current stroke
+    emit(state.copyWith(currentStroke: stroke));
+  }
+
+  Future<void> updateDrawing(PointerEvent event, Emitter emit) async {
+    // create the point
+    final SPPoint point = SPPoint(
+      id: state.currentStroke!.points.length,
+      offset: event.localPosition,
+      pressure: event.pressure,
+    );
+    // emits the state with the new point added
     emit(
-      state.startDrawing(
-        SPPoint(
-          offset: event.localPosition,
-          pressure: event.pressure,
+      state.copyWith(
+        currentStroke: state.currentStroke!.copyWith(
+          points: List.from(state.currentStroke!.points)..add(point),
         ),
-        color: penColor,
-        size: penWidth,
-        thinning: penSettingsBloc.state.thinning,
-        smoothing: penSettingsBloc.state.smoothing,
-        streamline: penSettingsBloc.state.streamline,
-        taperStart: penSettingsBloc.state.taperStart,
-        taperEnd: penSettingsBloc.state.taperEnd,
-        capStart: penSettingsBloc.state.capStart,
-        capEnd: penSettingsBloc.state.capEnd,
-        simulatePressure: !useStylus,
       ),
     );
   }
 
-  void updateDrawing(PointerEvent event, Emitter emit) {
-    // update the stroke
-    emit(
-      state.updateDrawing(
-        SPPoint(offset: event.localPosition, pressure: event.pressure),
-      ),
+  Future<void> endDrawing(PointerEvent event, Emitter emit) async {
+    // create the point
+    final SPPoint point = SPPoint(
+      id: state.currentStroke!.points.length,
+      offset: event.localPosition,
+      pressure: event.pressure,
     );
-  }
+    // emits the state with the new point added
+    final completedStroke = state.currentStroke!.copyWith(
+      points: List.from(state.currentStroke!.points)..add(point),
+      isComplete: true,
+    );
+    // caching the border points
+    final completedAndCachedStroke = completedStroke.copyWith(
+      cachedBorderPoints: completedStroke.borderPoints,
+    );
 
-  void endDrawing(PointerEvent event, Emitter emit) {
-    final newState = state.endDrawing(
-      SPPoint(
-        offset: event.localPosition,
-        pressure: event.pressure,
-      ),
+    addStrokeUsecase(completedAndCachedStroke);
+    final newState = state.copyWith(
+      currentStroke: null,
+      strokes: List.from(state.strokes)..add(completedAndCachedStroke),
     );
-    print("adding to history");
-    print(getIt<HistoryManagerBloc>().state.stack.length);
     getIt<HistoryManagerBloc>().add(HistoryManagerEvent.push(newState));
     emit(newState);
   }
 
   void cancelDrawing(PointerEvent event, Emitter emit) {
-    // update the state
-    emit(
-      state.copyWith(
-        currentStroke: null,
-      ),
-    );
+    // dismiss everything that's inputed
+    emit(state.copyWith(currentStroke: null));
   }
 
   // erasing actions
 
-  double get eraserWidth => eraserWidthBloc.selected!;
+  /// the [eraserRadius]
+  ///
+  /// note that the [eraserWidthBloc] stores the diameter but not the actual eraser width
+  double get eraserRadius => eraserWidthBloc.selected! / 2;
 
-  void erase(PointerEvent event, Emitter emit) {
-    final position = event.localPosition;
-    final newState = state
-        .copyWith(
-          eraserPosition: position,
-        )
-        .eraseStroke(
-          position,
-          eraserWidth / 2,
-        );
-    emit(newState);
+  Future<void> erase(PointerEvent event, Emitter emit) async {
+    List<SPStroke> strokesLeft = [];
+    for (final stroke in state.strokes) {
+      bool shouldErase = false;
+      for (final point in stroke.borderPoints) {
+        final dx = event.localPosition.dx - point.dx;
+        final dy = event.localPosition.dy - point.dy;
+        final distance = sqrt(dx * dx + dy * dy);
+        if (distance < eraserRadius) {
+          shouldErase = true;
+          break;
+        }
+      }
+      if (shouldErase) {
+        deleteStrokeUsecase(stroke);
+      } else {
+        strokesLeft.add(stroke);
+      }
+    }
+    // gets the strokes from the database
+    // this can help keep the data in sync
+    final newState = state.copyWith(strokes: strokesLeft);
+    // update the history
+    getIt<HistoryManagerBloc>().add(
+      HistoryManagerEvent.push(newState),
+    );
+    // emit the state
+    emit(
+      newState.copyWith(
+        // we do not want to update this eraser position to the history bloc, as that would case the eraser to appear on undo / redo
+        eraserPosition: event.localPosition,
+      ),
+    );
   }
 
-  void finishErase(PointerEvent event, Emitter emit) {
-    final newState = state.copyWith(
-      eraserPosition: null,
+  Future<void> finishErase(PointerEvent event, Emitter emit) async {
+    emit(
+      state.copyWith(eraserPosition: null),
     );
-    print("adding to history");
-    getIt<HistoryManagerBloc>().add(HistoryManagerEvent.push(newState));
-    emit(newState);
   }
 }

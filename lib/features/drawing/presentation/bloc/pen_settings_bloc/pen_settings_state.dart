@@ -16,6 +16,6 @@ class PenSettingsState with _$PenSettingsState {
 
 extension PenSettingsStateX on PenSettingsState {
   static PenSettingsState initial() {
-    return PenSettingsState();
+    return const PenSettingsState();
   }
 }

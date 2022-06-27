@@ -1,5 +1,5 @@
-import 'package:copypaste/features/drawing/presentation/bloc/pen_settings_bloc/pen_settings_bloc.dart';
-import 'package:copypaste/features/drawing/presentation/widgets/menus/pen_menu/toggle_setting_item.dart';
+import '../../bloc/pen_settings_bloc/pen_settings_bloc.dart';
+import 'pen_menu/toggle_setting_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'pen_menu/slider_setting_item.dart';

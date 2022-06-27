@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -28,10 +25,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -49,21 +43,42 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyB0rHSbN8i2wkYdSvCAgda9_hFLL37la-I',
+    appId: '1:752489971803:web:954966b8067f38968dff7e',
+    messagingSenderId: '752489971803',
+    projectId: 'sketch-paste',
+    authDomain: 'sketch-paste.firebaseapp.com',
+    storageBucket: 'sketch-paste.appspot.com',
+  );
+
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDkeawjS5rp0nQ55c_AebqcEo7khiqvJGc',
-    appId: '1:1014506689686:android:17a7dc25fb10b19fdddeb7',
-    messagingSenderId: '1014506689686',
-    projectId: 'copypaste-69a13',
-    storageBucket: 'copypaste-69a13.appspot.com',
+    apiKey: 'AIzaSyA0en5EMEZcCMTcEfYtqQfS5Dt2j83xw0c',
+    appId: '1:752489971803:android:726e8f18e4b842cc8dff7e',
+    messagingSenderId: '752489971803',
+    projectId: 'sketch-paste',
+    storageBucket: 'sketch-paste.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyB5yUTGHj1ChlQOWIvuFRWLwQSBtoL-BU0',
-    appId: '1:1014506689686:ios:a30d0318ceb3ed3bdddeb7',
-    messagingSenderId: '1014506689686',
-    projectId: 'copypaste-69a13',
-    storageBucket: 'copypaste-69a13.appspot.com',
-    iosClientId: '1014506689686-3f0r36mbvlucdjk1mshb705oks0388co.apps.googleusercontent.com',
+    apiKey: 'AIzaSyDYexlEaZ1TSIkZilJWBRdkXTc7M8VRZsk',
+    appId: '1:752489971803:ios:62df603cac1d6fd48dff7e',
+    messagingSenderId: '752489971803',
+    projectId: 'sketch-paste',
+    storageBucket: 'sketch-paste.appspot.com',
+    iosClientId:
+        '752489971803-sd92aonrkgoh6rkbfui9ir50asn86m9l.apps.googleusercontent.com',
+    iosBundleId: 'app.tinyhacks.copypaste',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyDYexlEaZ1TSIkZilJWBRdkXTc7M8VRZsk',
+    appId: '1:752489971803:ios:62df603cac1d6fd48dff7e',
+    messagingSenderId: '752489971803',
+    projectId: 'sketch-paste',
+    storageBucket: 'sketch-paste.appspot.com',
+    iosClientId:
+        '752489971803-sd92aonrkgoh6rkbfui9ir50asn86m9l.apps.googleusercontent.com',
     iosBundleId: 'app.tinyhacks.copypaste',
   );
 }
