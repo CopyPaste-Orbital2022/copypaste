@@ -4,10 +4,11 @@ FLUTTER_APPLICATION_PATH=/Users/xiuxuan/Developer/copypaste
 COCOAPODS_PARALLEL_CODE_SIGN=true
 FLUTTER_TARGET=lib/main.dart
 FLUTTER_BUILD_DIR=build
-FLUTTER_BUILD_NAME=0.2.0
+FLUTTER_BUILD_NAME=0.3.0
 FLUTTER_BUILD_NUMBER=2
 EXCLUDED_ARCHS[sdk=iphonesimulator*]=i386
-DART_OBFUSCATION=false
+DART_OBFUSCATION=true
+SPLIT_DEBUG_INFO=debug-info
 TRACK_WIDGET_CREATION=false
-TREE_SHAKE_ICONS=false
-PACKAGE_CONFIG=.dart_tool/package_config.json
+TREE_SHAKE_ICONS=true
+PACKAGE_CONFIG=/Users/xiuxuan/Developer/copypaste/.dart_tool/package_config.json
