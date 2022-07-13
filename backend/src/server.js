@@ -19,12 +19,12 @@ mongoose.connect("mongodb+srv://deveshbag:tEq4G2otw7tRTH47@cluster0.ertgnat.mong
     app.post("/auth", async function(req, res) {
         const matchedUser = await User.find({email: req.body.email});
         var response;
-
+        console.log(matchedUser);
         // Register
-        if (user_name in req.body) {
-            if (matchedUser) {
+        if ("user_name" in req.body) {
+            if (matchedUser.length != 0) {
                 console.log("User already exists!");
-                response = { "user_id": matchedUser._id };
+                response = { "user_id": matchedUser[0]._id };
             }
             else  {
                 console.log("Adding new user to database...");
@@ -39,9 +39,15 @@ mongoose.connect("mongodb+srv://deveshbag:tEq4G2otw7tRTH47@cluster0.ertgnat.mong
         }
         //Log In
         else {
-            if (matchedUser) {
+            if (matchedUser.length != 0) {
                 console.log("User exists in database");
-                response = { "user_id": matchedUser._id };
+                if (matchedUser[0].password == req.body.password) {
+                    response = { "user_id": matchedUser[0]._id };
+                }
+                else {
+                    console.log("Wrong password!");
+                    response = { "user_id": null };
+                }
             } 
             else {
                 console.log("User doesn't exist!");
