@@ -65,16 +65,31 @@ mongoose.connect("mongodb+srv://deveshbag:tEq4G2otw7tRTH47@cluster0.ertgnat.mong
     
     //Drawing Route (/drawings)
     app.post("/drawings", async function(req, res) {
-        
+        //authenticate
+        const matchedUser = await User.find({_id: req.body.user_id});
+        console.log(matchedUser);
+        var code;
+        if (matchedUser.length == 0) {
+            // throw new Error("User doesn't exist!");
+            code = "100";
+        }
+        if (matchedUser[0].password != req.body.password) {
+            // throw new Error("Wrong password");
+            code = "101";
+        }
         switch (req.body.action) {
             case "create_drawing":
                 const newDrawing = new Drawing({
                     user_id: req.body.user_id,
                     drawing_name: req.body.drawing_name,
-                    strokes: [0, 0, 0, 1] 
                 });
                 await newDrawing.save();
-                const response = { message: "New Note Created!" }
+                code = 0;
+                const response = {
+                    "code": code,
+                    "drawing_id": newDrawing._id,
+                    "created_date": newDrawing.created_date
+                };
                 res.json(response);
                 break;
             default:

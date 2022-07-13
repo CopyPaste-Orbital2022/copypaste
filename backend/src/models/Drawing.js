@@ -26,70 +26,70 @@ const drawingSchema = mongoose.Schema({
         points: [{
             dx: {
                type: mongoose.Schema.Types.Decimal128,
-               required: true,
+               
             },
             dy: {
                 type: mongoose.Schema.Types.Decimal128,
-                required: true,
+                
             },
             pressue: {
                 type: mongoose.Schema.Types.Decimal128,
-                required: true,
+                
             }
         }],
         border_points: [{
             dx: {
                type: mongoose.Schema.Types.Decimal128,
-               required: true,
+               
             },
             dy: {
                 type: mongoose.Schema.Types.Decimal128,
-                required: true,
+                
             },
             pressue: {
                 type: mongoose.Schema.Types.Decimal128,
-                required: true,
+                
             }
         }],
         color: {
             type: mongoose.Schema.Types.Decimal128,
-            required: true,
+            
         },
         thinning: {
             type: mongoose.Schema.Types.Decimal128,
-            required: true,
+            
         },
         smoothing: {
             type: mongoose.Schema.Types.Decimal128,
-            required: true,
+            
         },
         streamline: {
             type: mongoose.Schema.Types.Decimal128,
-            required: true,
+            
         },
         taper_start: {
             type: mongoose.Schema.Types.Decimal128,
-            required: true,
+            
         },
         taper_end: {
             type: mongoose.Schema.Types.Decimal128,
-            required: true,
+            
         },
         cap_start: {
             type: Boolean,
-            required: true,
+            
         },
         cap_end: {
             type: Boolean,
-            required: true,
+            
         },
         size: {
             type: mongoose.Schema.Types.Decimal128,
-            required: true,
+            
         },
         simulate_pressure: {
             type: Boolean,
-            required: true,
+            
         }
     }]
 })
