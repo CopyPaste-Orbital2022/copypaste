@@ -1,19 +1,21 @@
 import 'package:copypaste/features/file_management/domain/entities/sp_drawing.dart';
 
+import '../../../../core/errors_and_failures/errors/json_exception.dart';
+
 class SPDrawingModel extends SPDrawing {
   const SPDrawingModel({
     required super.id,
+    required super.name,
     required super.createdAt,
     required super.modifiedAt,
-    required super.name,
   });
 
   factory SPDrawingModel.fromJson(Map<String, dynamic> json) {
     return SPDrawingModel(
-      id: json['id'],
-      createdAt: json['createdAt'].toDate(),
-      modifiedAt: json['modifiedAt'].toDate(),
-      name: json['name'],
+      id: json['id'] ?? (throw JsonKeyNotFoundException(message: 'id-not-found')),
+      createdAt: json['createdAt'].toDate() ?? (throw JsonKeyNotFoundException(message: 'createdAt-not-found')),
+      modifiedAt: json['modifiedAt'].toDate() ?? (throw JsonKeyNotFoundException(message: 'modifiedAt-not-found')),
+      name: json['name'] ?? (throw JsonKeyNotFoundException(message: 'name-not-found')),
     );
   }
 

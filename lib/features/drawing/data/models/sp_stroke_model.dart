@@ -3,7 +3,8 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
 class SPStrokeModel extends Equatable {
-  final int id;
+  final String id;
+  final int index;
   final double size;
   final int color;
   final bool isComplete;
@@ -18,6 +19,7 @@ class SPStrokeModel extends Equatable {
 
   const SPStrokeModel({
     required this.id,
+    required this.index,
     required this.size,
     required this.color,
     required this.isComplete,
@@ -51,6 +53,7 @@ class SPStrokeModel extends Equatable {
   SPStroke toDomain() {
     return SPStroke(
       id: id,
+      index: index,
       size: size,
       color: Color(color),
       thinning: thinning,
@@ -69,6 +72,7 @@ class SPStrokeModel extends Equatable {
   static SPStrokeModel fromDomain(SPStroke stroke) {
     return SPStrokeModel(
       id: stroke.id,
+      index: stroke.index,
       size: stroke.size,
       color: stroke.color.value,
       thinning: stroke.thinning,
@@ -105,6 +109,7 @@ class SPStrokeModel extends Equatable {
   static SPStrokeModel fromJson(Map<String, dynamic> json) {
     return SPStrokeModel(
       id: json['id'],
+      index: json['index'],
       size: json['size'],
       color: json['color'],
       isComplete: json['isComplete'],

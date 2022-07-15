@@ -1,23 +1,30 @@
+import 'dart:html';
+
 import 'package:bitsdojo_window/bitsdojo_window.dart';
+import 'package:flutter/foundation.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'features/authentication/presentation/bloc/auth_bloc/auth_bloc.dart';
-import 'features/drawing/presentation/bloc/drawing_bloc/drawing_bloc.dart';
-import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:my_stackable_popup_menu/my_stackable_popup_menu.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'core/injections/injection.dart';
 import 'core/routing/app_router.dart';
 import 'core/utilities/helpers/platform_helpers.dart';
+import 'package:sqflite/sqflite.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  if (defaultTargetPlatform == TargetPlatform.windows || defaultTargetPlatform == TargetPlatform.linux) {
+    // Initialize FFI
+    sqfliteFfiInit();
+  }
+  databaseFactory = databaseFactoryFfi;
   await configureMyStackablePopupDependencies();
   await configureInjection(Environment.prod);
+  await Hive.initFlutter();
+
   if (platformIsDesktop) {
     doWhenWindowReady(() {
       const initialSize = Size(750, 700);
@@ -50,8 +57,7 @@ class AppContainer extends StatelessWidget {
             inputDecorationTheme: InputDecorationTheme(
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10.0),
-                borderSide:
-                    const BorderSide(width: 1, color: Color(0xFFF5BC00)),
+                borderSide: const BorderSide(width: 1, color: Color(0xFFF5BC00)),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10.0),
@@ -59,13 +65,11 @@ class AppContainer extends StatelessWidget {
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10.0),
-                borderSide:
-                    const BorderSide(width: 1, color: Color(0xFFF5BC00)),
+                borderSide: const BorderSide(width: 1, color: Color(0xFFF5BC00)),
               ),
               disabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10.0),
-                borderSide:
-                    const BorderSide(width: 1, color: Color(0xFFF5BC00)),
+                borderSide: const BorderSide(width: 1, color: Color(0xFFF5BC00)),
               ),
               filled: true,
               fillColor: const Color(0xFFF5BC00),

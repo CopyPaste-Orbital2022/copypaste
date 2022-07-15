@@ -1,0 +1,6 @@
+[submodule "plugins/my_stackable_popup_menu"]
+	path = plugins/my_stackable_popup_menu
+	url = https://github.com/CopyPaste-Orbital2022/my_stackable_popup_menu.git
+[submodule "plugins/my_color_picker"]
+	path = plugins/my_color_picker
+	url = https://github.com/CopyPaste-Orbital2022/my_color_picker.git

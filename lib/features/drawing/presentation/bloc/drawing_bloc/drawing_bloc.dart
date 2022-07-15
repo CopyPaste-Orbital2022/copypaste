@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:copypaste/features/drawing/domain/usecases/add_stroke.dart';
 import 'package:copypaste/features/drawing/domain/usecases/delete_stroke.dart';
 import 'package:copypaste/features/drawing/domain/usecases/load_strokes_for_drawing.dart';
+import 'package:uuid/uuid.dart';
 import '../../../../../core/injections/injection.dart';
 import '../history_manager_bloc/history_manager_bloc.dart';
 import '../history_manager_bloc/history_state.dart';
@@ -50,23 +51,19 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
     on<DrawingEvent>((event, emit) async {
       await event.map(
         initial: (event) async => await handleInitialEvent(event, emit),
-        pointerDown: (event) async =>
-            await handlePointerEvent(event.event, emit, {
+        pointerDown: (event) async => await handlePointerEvent(event.event, emit, {
           DrawingButtonType.pen: startDrawing,
           DrawingButtonType.eraser: erase,
         }),
-        pointerMove: (event) async =>
-            await handlePointerEvent(event.event, emit, {
+        pointerMove: (event) async => await handlePointerEvent(event.event, emit, {
           DrawingButtonType.pen: updateDrawing,
           DrawingButtonType.eraser: erase,
         }),
-        pointerUp: (event) async =>
-            await handlePointerEvent(event.event, emit, {
+        pointerUp: (event) async => await handlePointerEvent(event.event, emit, {
           DrawingButtonType.pen: endDrawing,
           DrawingButtonType.eraser: finishErase,
         }),
-        pointerCancel: (event) async =>
-            await handlePointerEvent(event.event, emit, {
+        pointerCancel: (event) async => await handlePointerEvent(event.event, emit, {
           DrawingButtonType.pen: endDrawing,
           DrawingButtonType.eraser: finishErase,
         }),
@@ -101,11 +98,8 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
 
   bool get useStylus => penSettingsBloc.state.useStylus;
 
-  Future<void> handlePointerEvent(
-      PointerEvent event,
-      Emitter emit,
-      Map<DrawingButtonType, Future<void> Function(PointerEvent, Emitter)>
-          handlers) async {
+  Future<void> handlePointerEvent(PointerEvent event, Emitter emit,
+      Map<DrawingButtonType, Future<void> Function(PointerEvent, Emitter)> handlers) async {
     // for drawing and erasing, we only want to recognize a single pointer
     // so we only handle the event if it's the same pointer
     if (event.pointer != _pointer && _pointer != null) {
@@ -124,8 +118,7 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
     // if useStylus is true, we want to ignore all pointer events that
     // aren't stylus events
     if (useStylus) {
-      if (event.kind != PointerDeviceKind.stylus ||
-          event.kind != PointerDeviceKind.invertedStylus) {
+      if (event.kind != PointerDeviceKind.stylus || event.kind != PointerDeviceKind.invertedStylus) {
         return;
       }
     }
@@ -143,13 +136,15 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
   Future<void> startDrawing(PointerEvent event, Emitter emit) async {
     // create the point
     final SPPoint point = SPPoint(
-      id: 0,
+      id: const Uuid().v4(),
+      index: 0,
       offset: event.localPosition,
       pressure: event.pressure,
     );
     // create the stroke
     final SPStroke stroke = SPStroke(
-      id: state.strokes.length,
+      id: const Uuid().v4(),
+      index: state.strokes.length,
       points: [point],
       isComplete: false,
       size: penWidth,
@@ -170,7 +165,8 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
   Future<void> updateDrawing(PointerEvent event, Emitter emit) async {
     // create the point
     final SPPoint point = SPPoint(
-      id: state.currentStroke!.points.length,
+      id: const Uuid().v4(),
+      index: state.currentStroke!.points.length,
       offset: event.localPosition,
       pressure: event.pressure,
     );
@@ -187,7 +183,8 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
   Future<void> endDrawing(PointerEvent event, Emitter emit) async {
     // create the point
     final SPPoint point = SPPoint(
-      id: state.currentStroke!.points.length,
+      id: const Uuid().v4(),
+      index: state.currentStroke!.points.length,
       offset: event.localPosition,
       pressure: event.pressure,
     );

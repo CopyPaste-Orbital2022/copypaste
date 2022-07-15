@@ -21,6 +21,8 @@ mixin _$DatabaseFailure {
     TResult Function(String description) $default, {
     required TResult Function(String? description) hasNoDrawing,
     required TResult Function(String? description) userHasNotSignedIn,
+    required TResult Function(String? description) jsonKeyNotFound,
+    required TResult Function(String? description) insertionFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +30,8 @@ mixin _$DatabaseFailure {
     TResult Function(String description)? $default, {
     TResult Function(String? description)? hasNoDrawing,
     TResult Function(String? description)? userHasNotSignedIn,
+    TResult Function(String? description)? jsonKeyNotFound,
+    TResult Function(String? description)? insertionFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +39,8 @@ mixin _$DatabaseFailure {
     TResult Function(String description)? $default, {
     TResult Function(String? description)? hasNoDrawing,
     TResult Function(String? description)? userHasNotSignedIn,
+    TResult Function(String? description)? jsonKeyNotFound,
+    TResult Function(String? description)? insertionFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -44,6 +50,10 @@ mixin _$DatabaseFailure {
     required TResult Function(DatabaseFailureHasNoDrawing value) hasNoDrawing,
     required TResult Function(DatabaseFailureUserHasNotSignedIn value)
         userHasNotSignedIn,
+    required TResult Function(DatabaseFailureJsonKeyNotFound value)
+        jsonKeyNotFound,
+    required TResult Function(DatabaseFailureInsertionFailure value)
+        insertionFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -52,6 +62,8 @@ mixin _$DatabaseFailure {
     TResult Function(DatabaseFailureHasNoDrawing value)? hasNoDrawing,
     TResult Function(DatabaseFailureUserHasNotSignedIn value)?
         userHasNotSignedIn,
+    TResult Function(DatabaseFailureJsonKeyNotFound value)? jsonKeyNotFound,
+    TResult Function(DatabaseFailureInsertionFailure value)? insertionFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +72,8 @@ mixin _$DatabaseFailure {
     TResult Function(DatabaseFailureHasNoDrawing value)? hasNoDrawing,
     TResult Function(DatabaseFailureUserHasNotSignedIn value)?
         userHasNotSignedIn,
+    TResult Function(DatabaseFailureJsonKeyNotFound value)? jsonKeyNotFound,
+    TResult Function(DatabaseFailureInsertionFailure value)? insertionFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -151,6 +165,8 @@ class _$_DatabaseFailure implements _DatabaseFailure {
     TResult Function(String description) $default, {
     required TResult Function(String? description) hasNoDrawing,
     required TResult Function(String? description) userHasNotSignedIn,
+    required TResult Function(String? description) jsonKeyNotFound,
+    required TResult Function(String? description) insertionFailure,
   }) {
     return $default(description);
   }
@@ -161,6 +177,8 @@ class _$_DatabaseFailure implements _DatabaseFailure {
     TResult Function(String description)? $default, {
     TResult Function(String? description)? hasNoDrawing,
     TResult Function(String? description)? userHasNotSignedIn,
+    TResult Function(String? description)? jsonKeyNotFound,
+    TResult Function(String? description)? insertionFailure,
   }) {
     return $default?.call(description);
   }
@@ -171,6 +189,8 @@ class _$_DatabaseFailure implements _DatabaseFailure {
     TResult Function(String description)? $default, {
     TResult Function(String? description)? hasNoDrawing,
     TResult Function(String? description)? userHasNotSignedIn,
+    TResult Function(String? description)? jsonKeyNotFound,
+    TResult Function(String? description)? insertionFailure,
     required TResult orElse(),
   }) {
     if ($default != null) {
@@ -186,6 +206,10 @@ class _$_DatabaseFailure implements _DatabaseFailure {
     required TResult Function(DatabaseFailureHasNoDrawing value) hasNoDrawing,
     required TResult Function(DatabaseFailureUserHasNotSignedIn value)
         userHasNotSignedIn,
+    required TResult Function(DatabaseFailureJsonKeyNotFound value)
+        jsonKeyNotFound,
+    required TResult Function(DatabaseFailureInsertionFailure value)
+        insertionFailure,
   }) {
     return $default(this);
   }
@@ -197,6 +221,8 @@ class _$_DatabaseFailure implements _DatabaseFailure {
     TResult Function(DatabaseFailureHasNoDrawing value)? hasNoDrawing,
     TResult Function(DatabaseFailureUserHasNotSignedIn value)?
         userHasNotSignedIn,
+    TResult Function(DatabaseFailureJsonKeyNotFound value)? jsonKeyNotFound,
+    TResult Function(DatabaseFailureInsertionFailure value)? insertionFailure,
   }) {
     return $default?.call(this);
   }
@@ -208,6 +234,8 @@ class _$_DatabaseFailure implements _DatabaseFailure {
     TResult Function(DatabaseFailureHasNoDrawing value)? hasNoDrawing,
     TResult Function(DatabaseFailureUserHasNotSignedIn value)?
         userHasNotSignedIn,
+    TResult Function(DatabaseFailureJsonKeyNotFound value)? jsonKeyNotFound,
+    TResult Function(DatabaseFailureInsertionFailure value)? insertionFailure,
     required TResult orElse(),
   }) {
     if ($default != null) {
@@ -299,6 +327,8 @@ class _$DatabaseFailureHasNoDrawing implements DatabaseFailureHasNoDrawing {
     TResult Function(String description) $default, {
     required TResult Function(String? description) hasNoDrawing,
     required TResult Function(String? description) userHasNotSignedIn,
+    required TResult Function(String? description) jsonKeyNotFound,
+    required TResult Function(String? description) insertionFailure,
   }) {
     return hasNoDrawing(description);
   }
@@ -309,6 +339,8 @@ class _$DatabaseFailureHasNoDrawing implements DatabaseFailureHasNoDrawing {
     TResult Function(String description)? $default, {
     TResult Function(String? description)? hasNoDrawing,
     TResult Function(String? description)? userHasNotSignedIn,
+    TResult Function(String? description)? jsonKeyNotFound,
+    TResult Function(String? description)? insertionFailure,
   }) {
     return hasNoDrawing?.call(description);
   }
@@ -319,6 +351,8 @@ class _$DatabaseFailureHasNoDrawing implements DatabaseFailureHasNoDrawing {
     TResult Function(String description)? $default, {
     TResult Function(String? description)? hasNoDrawing,
     TResult Function(String? description)? userHasNotSignedIn,
+    TResult Function(String? description)? jsonKeyNotFound,
+    TResult Function(String? description)? insertionFailure,
     required TResult orElse(),
   }) {
     if (hasNoDrawing != null) {
@@ -334,6 +368,10 @@ class _$DatabaseFailureHasNoDrawing implements DatabaseFailureHasNoDrawing {
     required TResult Function(DatabaseFailureHasNoDrawing value) hasNoDrawing,
     required TResult Function(DatabaseFailureUserHasNotSignedIn value)
         userHasNotSignedIn,
+    required TResult Function(DatabaseFailureJsonKeyNotFound value)
+        jsonKeyNotFound,
+    required TResult Function(DatabaseFailureInsertionFailure value)
+        insertionFailure,
   }) {
     return hasNoDrawing(this);
   }
@@ -345,6 +383,8 @@ class _$DatabaseFailureHasNoDrawing implements DatabaseFailureHasNoDrawing {
     TResult Function(DatabaseFailureHasNoDrawing value)? hasNoDrawing,
     TResult Function(DatabaseFailureUserHasNotSignedIn value)?
         userHasNotSignedIn,
+    TResult Function(DatabaseFailureJsonKeyNotFound value)? jsonKeyNotFound,
+    TResult Function(DatabaseFailureInsertionFailure value)? insertionFailure,
   }) {
     return hasNoDrawing?.call(this);
   }
@@ -356,6 +396,8 @@ class _$DatabaseFailureHasNoDrawing implements DatabaseFailureHasNoDrawing {
     TResult Function(DatabaseFailureHasNoDrawing value)? hasNoDrawing,
     TResult Function(DatabaseFailureUserHasNotSignedIn value)?
         userHasNotSignedIn,
+    TResult Function(DatabaseFailureJsonKeyNotFound value)? jsonKeyNotFound,
+    TResult Function(DatabaseFailureInsertionFailure value)? insertionFailure,
     required TResult orElse(),
   }) {
     if (hasNoDrawing != null) {
@@ -450,6 +492,8 @@ class _$DatabaseFailureUserHasNotSignedIn
     TResult Function(String description) $default, {
     required TResult Function(String? description) hasNoDrawing,
     required TResult Function(String? description) userHasNotSignedIn,
+    required TResult Function(String? description) jsonKeyNotFound,
+    required TResult Function(String? description) insertionFailure,
   }) {
     return userHasNotSignedIn(description);
   }
@@ -460,6 +504,8 @@ class _$DatabaseFailureUserHasNotSignedIn
     TResult Function(String description)? $default, {
     TResult Function(String? description)? hasNoDrawing,
     TResult Function(String? description)? userHasNotSignedIn,
+    TResult Function(String? description)? jsonKeyNotFound,
+    TResult Function(String? description)? insertionFailure,
   }) {
     return userHasNotSignedIn?.call(description);
   }
@@ -470,6 +516,8 @@ class _$DatabaseFailureUserHasNotSignedIn
     TResult Function(String description)? $default, {
     TResult Function(String? description)? hasNoDrawing,
     TResult Function(String? description)? userHasNotSignedIn,
+    TResult Function(String? description)? jsonKeyNotFound,
+    TResult Function(String? description)? insertionFailure,
     required TResult orElse(),
   }) {
     if (userHasNotSignedIn != null) {
@@ -485,6 +533,10 @@ class _$DatabaseFailureUserHasNotSignedIn
     required TResult Function(DatabaseFailureHasNoDrawing value) hasNoDrawing,
     required TResult Function(DatabaseFailureUserHasNotSignedIn value)
         userHasNotSignedIn,
+    required TResult Function(DatabaseFailureJsonKeyNotFound value)
+        jsonKeyNotFound,
+    required TResult Function(DatabaseFailureInsertionFailure value)
+        insertionFailure,
   }) {
     return userHasNotSignedIn(this);
   }
@@ -496,6 +548,8 @@ class _$DatabaseFailureUserHasNotSignedIn
     TResult Function(DatabaseFailureHasNoDrawing value)? hasNoDrawing,
     TResult Function(DatabaseFailureUserHasNotSignedIn value)?
         userHasNotSignedIn,
+    TResult Function(DatabaseFailureJsonKeyNotFound value)? jsonKeyNotFound,
+    TResult Function(DatabaseFailureInsertionFailure value)? insertionFailure,
   }) {
     return userHasNotSignedIn?.call(this);
   }
@@ -507,6 +561,8 @@ class _$DatabaseFailureUserHasNotSignedIn
     TResult Function(DatabaseFailureHasNoDrawing value)? hasNoDrawing,
     TResult Function(DatabaseFailureUserHasNotSignedIn value)?
         userHasNotSignedIn,
+    TResult Function(DatabaseFailureJsonKeyNotFound value)? jsonKeyNotFound,
+    TResult Function(DatabaseFailureInsertionFailure value)? insertionFailure,
     required TResult orElse(),
   }) {
     if (userHasNotSignedIn != null) {
@@ -524,5 +580,333 @@ abstract class DatabaseFailureUserHasNotSignedIn implements DatabaseFailure {
   @JsonKey(ignore: true)
   _$$DatabaseFailureUserHasNotSignedInCopyWith<
           _$DatabaseFailureUserHasNotSignedIn>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DatabaseFailureJsonKeyNotFoundCopyWith<$Res> {
+  factory _$$DatabaseFailureJsonKeyNotFoundCopyWith(
+          _$DatabaseFailureJsonKeyNotFound value,
+          $Res Function(_$DatabaseFailureJsonKeyNotFound) then) =
+      __$$DatabaseFailureJsonKeyNotFoundCopyWithImpl<$Res>;
+  $Res call({String? description});
+}
+
+/// @nodoc
+class __$$DatabaseFailureJsonKeyNotFoundCopyWithImpl<$Res>
+    extends _$DatabaseFailureCopyWithImpl<$Res>
+    implements _$$DatabaseFailureJsonKeyNotFoundCopyWith<$Res> {
+  __$$DatabaseFailureJsonKeyNotFoundCopyWithImpl(
+      _$DatabaseFailureJsonKeyNotFound _value,
+      $Res Function(_$DatabaseFailureJsonKeyNotFound) _then)
+      : super(_value, (v) => _then(v as _$DatabaseFailureJsonKeyNotFound));
+
+  @override
+  _$DatabaseFailureJsonKeyNotFound get _value =>
+      super._value as _$DatabaseFailureJsonKeyNotFound;
+
+  @override
+  $Res call({
+    Object? description = freezed,
+  }) {
+    return _then(_$DatabaseFailureJsonKeyNotFound(
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DatabaseFailureJsonKeyNotFound
+    implements DatabaseFailureJsonKeyNotFound {
+  const _$DatabaseFailureJsonKeyNotFound({this.description});
+
+  @override
+  final String? description;
+
+  @override
+  String toString() {
+    return 'DatabaseFailure.jsonKeyNotFound(description: $description)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DatabaseFailureJsonKeyNotFound &&
+            const DeepCollectionEquality()
+                .equals(other.description, description));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(description));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$DatabaseFailureJsonKeyNotFoundCopyWith<_$DatabaseFailureJsonKeyNotFound>
+      get copyWith => __$$DatabaseFailureJsonKeyNotFoundCopyWithImpl<
+          _$DatabaseFailureJsonKeyNotFound>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String description) $default, {
+    required TResult Function(String? description) hasNoDrawing,
+    required TResult Function(String? description) userHasNotSignedIn,
+    required TResult Function(String? description) jsonKeyNotFound,
+    required TResult Function(String? description) insertionFailure,
+  }) {
+    return jsonKeyNotFound(description);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult Function(String description)? $default, {
+    TResult Function(String? description)? hasNoDrawing,
+    TResult Function(String? description)? userHasNotSignedIn,
+    TResult Function(String? description)? jsonKeyNotFound,
+    TResult Function(String? description)? insertionFailure,
+  }) {
+    return jsonKeyNotFound?.call(description);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String description)? $default, {
+    TResult Function(String? description)? hasNoDrawing,
+    TResult Function(String? description)? userHasNotSignedIn,
+    TResult Function(String? description)? jsonKeyNotFound,
+    TResult Function(String? description)? insertionFailure,
+    required TResult orElse(),
+  }) {
+    if (jsonKeyNotFound != null) {
+      return jsonKeyNotFound(description);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_DatabaseFailure value) $default, {
+    required TResult Function(DatabaseFailureHasNoDrawing value) hasNoDrawing,
+    required TResult Function(DatabaseFailureUserHasNotSignedIn value)
+        userHasNotSignedIn,
+    required TResult Function(DatabaseFailureJsonKeyNotFound value)
+        jsonKeyNotFound,
+    required TResult Function(DatabaseFailureInsertionFailure value)
+        insertionFailure,
+  }) {
+    return jsonKeyNotFound(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult Function(_DatabaseFailure value)? $default, {
+    TResult Function(DatabaseFailureHasNoDrawing value)? hasNoDrawing,
+    TResult Function(DatabaseFailureUserHasNotSignedIn value)?
+        userHasNotSignedIn,
+    TResult Function(DatabaseFailureJsonKeyNotFound value)? jsonKeyNotFound,
+    TResult Function(DatabaseFailureInsertionFailure value)? insertionFailure,
+  }) {
+    return jsonKeyNotFound?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_DatabaseFailure value)? $default, {
+    TResult Function(DatabaseFailureHasNoDrawing value)? hasNoDrawing,
+    TResult Function(DatabaseFailureUserHasNotSignedIn value)?
+        userHasNotSignedIn,
+    TResult Function(DatabaseFailureJsonKeyNotFound value)? jsonKeyNotFound,
+    TResult Function(DatabaseFailureInsertionFailure value)? insertionFailure,
+    required TResult orElse(),
+  }) {
+    if (jsonKeyNotFound != null) {
+      return jsonKeyNotFound(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DatabaseFailureJsonKeyNotFound implements DatabaseFailure {
+  const factory DatabaseFailureJsonKeyNotFound({final String? description}) =
+      _$DatabaseFailureJsonKeyNotFound;
+
+  String? get description => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$DatabaseFailureJsonKeyNotFoundCopyWith<_$DatabaseFailureJsonKeyNotFound>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DatabaseFailureInsertionFailureCopyWith<$Res> {
+  factory _$$DatabaseFailureInsertionFailureCopyWith(
+          _$DatabaseFailureInsertionFailure value,
+          $Res Function(_$DatabaseFailureInsertionFailure) then) =
+      __$$DatabaseFailureInsertionFailureCopyWithImpl<$Res>;
+  $Res call({String? description});
+}
+
+/// @nodoc
+class __$$DatabaseFailureInsertionFailureCopyWithImpl<$Res>
+    extends _$DatabaseFailureCopyWithImpl<$Res>
+    implements _$$DatabaseFailureInsertionFailureCopyWith<$Res> {
+  __$$DatabaseFailureInsertionFailureCopyWithImpl(
+      _$DatabaseFailureInsertionFailure _value,
+      $Res Function(_$DatabaseFailureInsertionFailure) _then)
+      : super(_value, (v) => _then(v as _$DatabaseFailureInsertionFailure));
+
+  @override
+  _$DatabaseFailureInsertionFailure get _value =>
+      super._value as _$DatabaseFailureInsertionFailure;
+
+  @override
+  $Res call({
+    Object? description = freezed,
+  }) {
+    return _then(_$DatabaseFailureInsertionFailure(
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DatabaseFailureInsertionFailure
+    implements DatabaseFailureInsertionFailure {
+  const _$DatabaseFailureInsertionFailure({this.description});
+
+  @override
+  final String? description;
+
+  @override
+  String toString() {
+    return 'DatabaseFailure.insertionFailure(description: $description)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DatabaseFailureInsertionFailure &&
+            const DeepCollectionEquality()
+                .equals(other.description, description));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(description));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$DatabaseFailureInsertionFailureCopyWith<_$DatabaseFailureInsertionFailure>
+      get copyWith => __$$DatabaseFailureInsertionFailureCopyWithImpl<
+          _$DatabaseFailureInsertionFailure>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String description) $default, {
+    required TResult Function(String? description) hasNoDrawing,
+    required TResult Function(String? description) userHasNotSignedIn,
+    required TResult Function(String? description) jsonKeyNotFound,
+    required TResult Function(String? description) insertionFailure,
+  }) {
+    return insertionFailure(description);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult Function(String description)? $default, {
+    TResult Function(String? description)? hasNoDrawing,
+    TResult Function(String? description)? userHasNotSignedIn,
+    TResult Function(String? description)? jsonKeyNotFound,
+    TResult Function(String? description)? insertionFailure,
+  }) {
+    return insertionFailure?.call(description);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String description)? $default, {
+    TResult Function(String? description)? hasNoDrawing,
+    TResult Function(String? description)? userHasNotSignedIn,
+    TResult Function(String? description)? jsonKeyNotFound,
+    TResult Function(String? description)? insertionFailure,
+    required TResult orElse(),
+  }) {
+    if (insertionFailure != null) {
+      return insertionFailure(description);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_DatabaseFailure value) $default, {
+    required TResult Function(DatabaseFailureHasNoDrawing value) hasNoDrawing,
+    required TResult Function(DatabaseFailureUserHasNotSignedIn value)
+        userHasNotSignedIn,
+    required TResult Function(DatabaseFailureJsonKeyNotFound value)
+        jsonKeyNotFound,
+    required TResult Function(DatabaseFailureInsertionFailure value)
+        insertionFailure,
+  }) {
+    return insertionFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult Function(_DatabaseFailure value)? $default, {
+    TResult Function(DatabaseFailureHasNoDrawing value)? hasNoDrawing,
+    TResult Function(DatabaseFailureUserHasNotSignedIn value)?
+        userHasNotSignedIn,
+    TResult Function(DatabaseFailureJsonKeyNotFound value)? jsonKeyNotFound,
+    TResult Function(DatabaseFailureInsertionFailure value)? insertionFailure,
+  }) {
+    return insertionFailure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_DatabaseFailure value)? $default, {
+    TResult Function(DatabaseFailureHasNoDrawing value)? hasNoDrawing,
+    TResult Function(DatabaseFailureUserHasNotSignedIn value)?
+        userHasNotSignedIn,
+    TResult Function(DatabaseFailureJsonKeyNotFound value)? jsonKeyNotFound,
+    TResult Function(DatabaseFailureInsertionFailure value)? insertionFailure,
+    required TResult orElse(),
+  }) {
+    if (insertionFailure != null) {
+      return insertionFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DatabaseFailureInsertionFailure implements DatabaseFailure {
+  const factory DatabaseFailureInsertionFailure({final String? description}) =
+      _$DatabaseFailureInsertionFailure;
+
+  String? get description => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$DatabaseFailureInsertionFailureCopyWith<_$DatabaseFailureInsertionFailure>
       get copyWith => throw _privateConstructorUsedError;
 }

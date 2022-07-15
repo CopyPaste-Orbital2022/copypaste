@@ -3,9 +3,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../errors_and_failures/errors/unsupported_shared_preferences_type_error.dart';
 
 extension SharedPreferencesX on SharedPreferences {
-  /// Gets the value for "[prefix]-[id]" if it exists
+  /// Gets the value for "[prefix]-[index]" if it exists
   /// Resolves to [defaultValue], stores it, and
-  /// returns it if the value for "[prefix]-[id]"
+  /// returns it if the value for "[prefix]-[index]"
   /// does not exist.
   T getElseSet<T>(String key, T defaultValue) {
     if (T == int) {
