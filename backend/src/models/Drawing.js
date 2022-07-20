@@ -3,6 +3,8 @@
 
 const mongoose = require('mongoose');
 var ObjectId = require('mongodb').ObjectId;
+require('mongoose-long')(mongoose);
+const {Types: {Long}} = mongoose;
 
 // in case need to use int64
 // require('mongoose-long')(mongoose);
@@ -23,6 +25,9 @@ const drawingSchema = mongoose.Schema({
         default: Date.now,
     },
     strokes: [{
+        index: {
+            type: Long,
+        },
         points: [{
             dx: {
                type: mongoose.Schema.Types.Decimal128,

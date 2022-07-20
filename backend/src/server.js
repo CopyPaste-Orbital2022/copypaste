@@ -98,6 +98,7 @@ mongoose.connect("mongodb+srv://deveshbag:tEq4G2otw7tRTH47@cluster0.ertgnat.mong
     })
 })
 
-app.listen(5000, function() {
-    console.log("Server started at PORT 5000")
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, function() {
+    console.log("Server started at PORT " + PORT)
 });
