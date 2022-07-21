@@ -415,35 +415,35 @@ abstract class _SPStroke implements SPStroke {
       required final bool simulatePressure}) = _$_SPStroke;
 
   @override
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
-  int get index => throw _privateConstructorUsedError;
+  int get index;
   @override
-  double get size => throw _privateConstructorUsedError;
+  double get size;
   @override
-  Color get color => throw _privateConstructorUsedError;
+  Color get color;
   @override
-  List<SPPoint> get points => throw _privateConstructorUsedError;
+  List<SPPoint> get points;
   @override
-  bool get isComplete => throw _privateConstructorUsedError;
+  bool get isComplete;
   @override
-  List<SPPoint>? get cachedBorderPoints => throw _privateConstructorUsedError;
+  List<SPPoint>? get cachedBorderPoints;
   @override
-  double get thinning => throw _privateConstructorUsedError;
+  double get thinning;
   @override // check
-  double get smoothing => throw _privateConstructorUsedError;
+  double get smoothing;
   @override // check
-  double get streamline => throw _privateConstructorUsedError;
+  double get streamline;
   @override // check
-  double get taperStart => throw _privateConstructorUsedError;
+  double get taperStart;
   @override // check
-  double get taperEnd => throw _privateConstructorUsedError;
+  double get taperEnd;
   @override // check
-  bool get capStart => throw _privateConstructorUsedError;
+  bool get capStart;
   @override
-  bool get capEnd => throw _privateConstructorUsedError;
+  bool get capEnd;
   @override
-  bool get simulatePressure => throw _privateConstructorUsedError;
+  bool get simulatePressure;
   @override
   @JsonKey(ignore: true)
   _$$_SPStrokeCopyWith<_$_SPStroke> get copyWith =>

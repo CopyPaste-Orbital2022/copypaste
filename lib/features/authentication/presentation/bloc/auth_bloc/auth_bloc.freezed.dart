@@ -457,6 +457,8 @@ abstract class _$$UserSignedInCopyWith<$Res> {
           _$UserSignedIn value, $Res Function(_$UserSignedIn) then) =
       __$$UserSignedInCopyWithImpl<$Res>;
   $Res call({SPUser user});
+
+  $SPUserCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -479,6 +481,13 @@ class __$$UserSignedInCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
           : user // ignore: cast_nullable_to_non_nullable
               as SPUser,
     ));
+  }
+
+  @override
+  $SPUserCopyWith<$Res> get user {
+    return $SPUserCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
   }
 }
 
@@ -584,7 +593,7 @@ class _$UserSignedIn implements UserSignedIn {
 abstract class UserSignedIn implements AuthState {
   const factory UserSignedIn(final SPUser user) = _$UserSignedIn;
 
-  SPUser get user => throw _privateConstructorUsedError;
+  SPUser get user;
   @JsonKey(ignore: true)
   _$$UserSignedInCopyWith<_$UserSignedIn> get copyWith =>
       throw _privateConstructorUsedError;

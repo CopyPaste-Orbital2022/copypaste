@@ -270,21 +270,21 @@ abstract class _PenSettingsState implements PenSettingsState {
       final bool useStylus}) = _$_PenSettingsState;
 
   @override
-  double get thinning => throw _privateConstructorUsedError;
+  double get thinning;
   @override
-  double get smoothing => throw _privateConstructorUsedError;
+  double get smoothing;
   @override
-  double get streamline => throw _privateConstructorUsedError;
+  double get streamline;
   @override
-  double get taperStart => throw _privateConstructorUsedError;
+  double get taperStart;
   @override
-  double get taperEnd => throw _privateConstructorUsedError;
+  double get taperEnd;
   @override
-  bool get capStart => throw _privateConstructorUsedError;
+  bool get capStart;
   @override
-  bool get capEnd => throw _privateConstructorUsedError;
+  bool get capEnd;
   @override
-  bool get useStylus => throw _privateConstructorUsedError;
+  bool get useStylus;
   @override
   @JsonKey(ignore: true)
   _$$_PenSettingsStateCopyWith<_$_PenSettingsState> get copyWith =>
@@ -581,7 +581,7 @@ abstract class _PenSettingsEventThinningChanged implements PenSettingsEvent {
   const factory _PenSettingsEventThinningChanged(final double thinning) =
       _$_PenSettingsEventThinningChanged;
 
-  double get thinning => throw _privateConstructorUsedError;
+  double get thinning;
   @JsonKey(ignore: true)
   _$$_PenSettingsEventThinningChangedCopyWith<
           _$_PenSettingsEventThinningChanged>
@@ -771,7 +771,7 @@ abstract class _PenSettingsEventSmoothingChanged implements PenSettingsEvent {
   const factory _PenSettingsEventSmoothingChanged(final double smoothing) =
       _$_PenSettingsEventSmoothingChanged;
 
-  double get smoothing => throw _privateConstructorUsedError;
+  double get smoothing;
   @JsonKey(ignore: true)
   _$$_PenSettingsEventSmoothingChangedCopyWith<
           _$_PenSettingsEventSmoothingChanged>
@@ -962,7 +962,7 @@ abstract class _PenSettingsEventStreamlineChanged implements PenSettingsEvent {
   const factory _PenSettingsEventStreamlineChanged(final double streamline) =
       _$_PenSettingsEventStreamlineChanged;
 
-  double get streamline => throw _privateConstructorUsedError;
+  double get streamline;
   @JsonKey(ignore: true)
   _$$_PenSettingsEventStreamlineChangedCopyWith<
           _$_PenSettingsEventStreamlineChanged>
@@ -1153,7 +1153,7 @@ abstract class _PenSettingsEventTaperStartChanged implements PenSettingsEvent {
   const factory _PenSettingsEventTaperStartChanged(final double taperStart) =
       _$_PenSettingsEventTaperStartChanged;
 
-  double get taperStart => throw _privateConstructorUsedError;
+  double get taperStart;
   @JsonKey(ignore: true)
   _$$_PenSettingsEventTaperStartChangedCopyWith<
           _$_PenSettingsEventTaperStartChanged>
@@ -1343,7 +1343,7 @@ abstract class _PenSettingsEventTaperEndChanged implements PenSettingsEvent {
   const factory _PenSettingsEventTaperEndChanged(final double taperEnd) =
       _$_PenSettingsEventTaperEndChanged;
 
-  double get taperEnd => throw _privateConstructorUsedError;
+  double get taperEnd;
   @JsonKey(ignore: true)
   _$$_PenSettingsEventTaperEndChangedCopyWith<
           _$_PenSettingsEventTaperEndChanged>
@@ -1533,7 +1533,7 @@ abstract class _PenSettingsEventCapStartChanged implements PenSettingsEvent {
   const factory _PenSettingsEventCapStartChanged(final bool capStart) =
       _$_PenSettingsEventCapStartChanged;
 
-  bool get capStart => throw _privateConstructorUsedError;
+  bool get capStart;
   @JsonKey(ignore: true)
   _$$_PenSettingsEventCapStartChangedCopyWith<
           _$_PenSettingsEventCapStartChanged>
@@ -1722,7 +1722,7 @@ abstract class _PenSettingsEventCapEndChanged implements PenSettingsEvent {
   const factory _PenSettingsEventCapEndChanged(final bool capEnd) =
       _$_PenSettingsEventCapEndChanged;
 
-  bool get capEnd => throw _privateConstructorUsedError;
+  bool get capEnd;
   @JsonKey(ignore: true)
   _$$_PenSettingsEventCapEndChangedCopyWith<_$_PenSettingsEventCapEndChanged>
       get copyWith => throw _privateConstructorUsedError;
@@ -1911,7 +1911,7 @@ abstract class _PenSettingsEventUseStylusChanged implements PenSettingsEvent {
   const factory _PenSettingsEventUseStylusChanged(final bool useStylus) =
       _$_PenSettingsEventUseStylusChanged;
 
-  bool get useStylus => throw _privateConstructorUsedError;
+  bool get useStylus;
   @JsonKey(ignore: true)
   _$$_PenSettingsEventUseStylusChangedCopyWith<
           _$_PenSettingsEventUseStylusChanged>

@@ -6,7 +6,7 @@ import 'package:perfect_freehand/perfect_freehand.dart';
 part 'sp_stroke.freezed.dart';
 
 @freezed
-abstract class SPStroke with _$SPStroke {
+class SPStroke with _$SPStroke {
   const factory SPStroke({
     required String id,
     required int index,

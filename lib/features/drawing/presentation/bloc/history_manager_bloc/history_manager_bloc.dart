@@ -12,8 +12,7 @@ part "history_manager_event.dart";
 part "history_manager_bloc.freezed.dart";
 
 @LazySingleton()
-class HistoryManagerBloc
-    extends Bloc<HistoryManagerEvent, HistoryManagerState> {
+class HistoryManagerBloc extends Bloc<HistoryManagerEvent, HistoryManagerState> {
   HistoryManagerBloc() : super(HistoryManagerStateX.initial()) {
     on<HistoryManagerEvent>((event, emit) {
       event.map(
@@ -25,7 +24,7 @@ class HistoryManagerBloc
   }
 
   void onUndo(
-    _HistoryManagerEventUndo event,
+    HistoryManagerEventUndo event,
     Emitter<HistoryManagerState> emit,
   ) {
     final stateAfterUndo = state.undo();
@@ -34,7 +33,7 @@ class HistoryManagerBloc
   }
 
   void onRedo(
-    _HistoryManagerEventRedo event,
+    HistoryManagerEventRedo event,
     Emitter<HistoryManagerState> emit,
   ) {
     final stateAfterRedo = state.redo();
@@ -43,7 +42,7 @@ class HistoryManagerBloc
   }
 
   void onPush(
-    _HistoryManagerEventPush event,
+    HistoryManagerEventPush event,
     Emitter<HistoryManagerState> emit,
   ) {
     emit(state.addNewState(event.state));

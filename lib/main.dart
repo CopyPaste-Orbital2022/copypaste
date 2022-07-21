@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive_flutter/hive_flutter.dart';

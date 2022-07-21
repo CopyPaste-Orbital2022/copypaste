@@ -1,4 +1,7 @@
+import 'package:copypaste/features/authentication/domain/entities/sp_user.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
+import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
@@ -12,13 +15,20 @@ Future<void> configureInjection(String env) async {
 }
 
 @module
-abstract class PreferencesInjectionModule {
+abstract class PersistenceModule {
   @preResolve
   Future<SharedPreferences> get prefs => SharedPreferences.getInstance();
+
+  @injectable
+  FlutterSecureStorage get secureStorage => const FlutterSecureStorage();
+
+  @injectable
+  http.Client get httpClient => http.Client();
 }
 
 @module
 abstract class DatabaseInjectionModule {
+  @preResolve
   Future<Database> get database async {
     final db = await openDatabase('notes.db');
     await db.execute(

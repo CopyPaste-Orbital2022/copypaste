@@ -243,7 +243,7 @@ class _$EmailChanged implements EmailChanged {
 abstract class EmailChanged implements ValidationEvent {
   factory EmailChanged(final String emailStr) = _$EmailChanged;
 
-  String get emailStr => throw _privateConstructorUsedError;
+  String get emailStr;
   @JsonKey(ignore: true)
   _$$EmailChangedCopyWith<_$EmailChanged> get copyWith =>
       throw _privateConstructorUsedError;
@@ -399,7 +399,7 @@ class _$PasswordChanged implements PasswordChanged {
 abstract class PasswordChanged implements ValidationEvent {
   factory PasswordChanged(final String passwordStr) = _$PasswordChanged;
 
-  String get passwordStr => throw _privateConstructorUsedError;
+  String get passwordStr;
   @JsonKey(ignore: true)
   _$$PasswordChangedCopyWith<_$PasswordChanged> get copyWith =>
       throw _privateConstructorUsedError;
@@ -557,7 +557,7 @@ abstract class DisplayNameChanged implements ValidationEvent {
   factory DisplayNameChanged(final String displayNameStr) =
       _$DisplayNameChanged;
 
-  String get displayNameStr => throw _privateConstructorUsedError;
+  String get displayNameStr;
   @JsonKey(ignore: true)
   _$$DisplayNameChangedCopyWith<_$DisplayNameChanged> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1052,20 +1052,19 @@ abstract class _ValidationState implements ValidationState {
       required final DisplayName displayName}) = _$_ValidationState;
 
   @override
-  Email get email => throw _privateConstructorUsedError;
+  Email get email;
   @override
-  Password get password => throw _privateConstructorUsedError;
+  Password get password;
   @override
-  bool get showErrorMessages => throw _privateConstructorUsedError;
+  bool get showErrorMessages;
   @override
-  bool get isSubmitting => throw _privateConstructorUsedError;
+  bool get isSubmitting;
   @override
-  Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption =>
-      throw _privateConstructorUsedError;
+  Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption;
   @override
-  bool get isSignIn => throw _privateConstructorUsedError;
+  bool get isSignIn;
   @override
-  DisplayName get displayName => throw _privateConstructorUsedError;
+  DisplayName get displayName;
   @override
   @JsonKey(ignore: true)
   _$$_ValidationStateCopyWith<_$_ValidationState> get copyWith =>

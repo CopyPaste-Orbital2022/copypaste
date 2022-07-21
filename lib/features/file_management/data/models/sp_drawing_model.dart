@@ -1,4 +1,5 @@
 import 'package:copypaste/features/file_management/domain/entities/sp_drawing.dart';
+import 'package:flutter/foundation.dart';
 
 import '../../../../core/errors_and_failures/errors/json_exception.dart';
 
@@ -12,10 +13,12 @@ class SPDrawingModel extends SPDrawing {
 
   factory SPDrawingModel.fromJson(Map<String, dynamic> json) {
     return SPDrawingModel(
-      id: json['id'] ?? (throw JsonKeyNotFoundException(message: 'id-not-found')),
-      createdAt: json['createdAt'].toDate() ?? (throw JsonKeyNotFoundException(message: 'createdAt-not-found')),
-      modifiedAt: json['modifiedAt'].toDate() ?? (throw JsonKeyNotFoundException(message: 'modifiedAt-not-found')),
-      name: json['name'] ?? (throw JsonKeyNotFoundException(message: 'name-not-found')),
+      id: json['ID'] ?? (throw JsonKeyNotFoundException(message: 'id-not-found')),
+      createdAt:
+          DateTime.tryParse(json['CREATED_AT']) ?? (throw JsonKeyNotFoundException(message: 'created-at-not-found')),
+      modifiedAt:
+          DateTime.tryParse(json['MODIFIED_AT']) ?? (throw JsonKeyNotFoundException(message: 'modified-at-not-found')),
+      name: json['NAME'] ?? (throw JsonKeyNotFoundException(message: 'name-not-found')),
     );
   }
 
@@ -31,8 +34,8 @@ class SPDrawingModel extends SPDrawing {
   Map<String, Object?> toJson() {
     return {
       'id': id,
-      'createdAt': createdAt,
-      'modifiedAt': modifiedAt,
+      'created_at': createdAt.toIso8601String(),
+      'modified_at': modifiedAt.toIso8601String(),
       'name': name,
     };
   }

@@ -170,13 +170,13 @@ abstract class _SPPoint implements SPPoint {
       required final double pressure}) = _$_SPPoint;
 
   @override
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
-  int get index => throw _privateConstructorUsedError;
+  int get index;
   @override
-  Offset get offset => throw _privateConstructorUsedError;
+  Offset get offset;
   @override
-  double get pressure => throw _privateConstructorUsedError;
+  double get pressure;
   @override
   @JsonKey(ignore: true)
   _$$_SPPointCopyWith<_$_SPPoint> get copyWith =>

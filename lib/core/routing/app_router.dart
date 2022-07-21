@@ -12,7 +12,6 @@ part 'app_router.gr.dart';
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
-    // TODO: fix the splash page not updating
     AutoRoute(page: SplashPage),
     CustomRoute(
       initial: true,

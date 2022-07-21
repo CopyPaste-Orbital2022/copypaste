@@ -100,7 +100,9 @@ class __$$_FileManagementStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_FileManagementState implements _FileManagementState {
+class _$_FileManagementState
+    with DiagnosticableTreeMixin
+    implements _FileManagementState {
   const _$_FileManagementState(
       {final List<SPDrawing> drawings = const [], this.selectedDrawing})
       : _drawings = drawings;
@@ -117,8 +119,17 @@ class _$_FileManagementState implements _FileManagementState {
   final SPDrawing? selectedDrawing;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'FileManagementState(drawings: $drawings, selectedDrawing: $selectedDrawing)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'FileManagementState'))
+      ..add(DiagnosticsProperty('drawings', drawings))
+      ..add(DiagnosticsProperty('selectedDrawing', selectedDrawing));
   }
 
   @override
@@ -150,9 +161,9 @@ abstract class _FileManagementState implements FileManagementState {
       final SPDrawing? selectedDrawing}) = _$_FileManagementState;
 
   @override
-  List<SPDrawing> get drawings => throw _privateConstructorUsedError;
+  List<SPDrawing> get drawings;
   @override
-  SPDrawing? get selectedDrawing => throw _privateConstructorUsedError;
+  SPDrawing? get selectedDrawing;
   @override
   @JsonKey(ignore: true)
   _$$_FileManagementStateCopyWith<_$_FileManagementState> get copyWith =>
@@ -264,12 +275,20 @@ class __$$FileManagementEventRefreshListCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FileManagementEventRefreshList
+    with DiagnosticableTreeMixin
     implements FileManagementEventRefreshList {
   const _$FileManagementEventRefreshList();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'FileManagementEvent.refreshListEvent()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(
+        DiagnosticsProperty('type', 'FileManagementEvent.refreshListEvent'));
   }
 
   @override
@@ -396,12 +415,20 @@ class __$$FileManagementEventCreateNewDrawingCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FileManagementEventCreateNewDrawing
+    with DiagnosticableTreeMixin
     implements FileManagementEventCreateNewDrawing {
   const _$FileManagementEventCreateNewDrawing();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'FileManagementEvent.createNewDrawingEvent()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty(
+        'type', 'FileManagementEvent.createNewDrawingEvent'));
   }
 
   @override
@@ -548,6 +575,7 @@ class __$$FileManagementEventChangeDrawingNameCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FileManagementEventChangeDrawingName
+    with DiagnosticableTreeMixin
     implements FileManagementEventChangeDrawingName {
   const _$FileManagementEventChangeDrawingName(this.drawing, this.name);
 
@@ -557,8 +585,18 @@ class _$FileManagementEventChangeDrawingName
   final String name;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'FileManagementEvent.changeDrawingNameEvent(drawing: $drawing, name: $name)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'FileManagementEvent.changeDrawingNameEvent'))
+      ..add(DiagnosticsProperty('drawing', drawing))
+      ..add(DiagnosticsProperty('name', name));
   }
 
   @override
@@ -673,8 +711,8 @@ abstract class FileManagementEventChangeDrawingName
           final SPDrawing drawing, final String name) =
       _$FileManagementEventChangeDrawingName;
 
-  SPDrawing get drawing => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
+  SPDrawing get drawing;
+  String get name;
   @JsonKey(ignore: true)
   _$$FileManagementEventChangeDrawingNameCopyWith<
           _$FileManagementEventChangeDrawingName>
@@ -719,6 +757,7 @@ class __$$FileManagementEventSelectDrawingCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FileManagementEventSelectDrawing
+    with DiagnosticableTreeMixin
     implements FileManagementEventSelectDrawing {
   const _$FileManagementEventSelectDrawing(this.drawing);
 
@@ -726,8 +765,16 @@ class _$FileManagementEventSelectDrawing
   final SPDrawing drawing;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'FileManagementEvent.selectDrawing(drawing: $drawing)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'FileManagementEvent.selectDrawing'))
+      ..add(DiagnosticsProperty('drawing', drawing));
   }
 
   @override
@@ -837,7 +884,7 @@ abstract class FileManagementEventSelectDrawing implements FileManagementEvent {
   const factory FileManagementEventSelectDrawing(final SPDrawing drawing) =
       _$FileManagementEventSelectDrawing;
 
-  SPDrawing get drawing => throw _privateConstructorUsedError;
+  SPDrawing get drawing;
   @JsonKey(ignore: true)
   _$$FileManagementEventSelectDrawingCopyWith<
           _$FileManagementEventSelectDrawing>

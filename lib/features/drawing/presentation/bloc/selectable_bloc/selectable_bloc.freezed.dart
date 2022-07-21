@@ -136,7 +136,7 @@ abstract class _SelectableState<T> implements SelectableState<T> {
       _$_SelectableState<T>;
 
   @override
-  SelectableItems<T> get items => throw _privateConstructorUsedError;
+  SelectableItems<T> get items;
   @override
   @JsonKey(ignore: true)
   _$$_SelectableStateCopyWith<T, _$_SelectableState<T>> get copyWith =>
@@ -370,7 +370,7 @@ abstract class SelectableEventSelect<T> implements SelectableEvent<T> {
   const factory SelectableEventSelect(final T item) =
       _$SelectableEventSelect<T>;
 
-  T get item => throw _privateConstructorUsedError;
+  T get item;
   @JsonKey(ignore: true)
   _$$SelectableEventSelectCopyWith<T, _$SelectableEventSelect<T>>
       get copyWith => throw _privateConstructorUsedError;
@@ -525,7 +525,7 @@ abstract class SelectableEventSelectAt<T> implements SelectableEvent<T> {
   const factory SelectableEventSelectAt(final int index) =
       _$SelectableEventSelectAt<T>;
 
-  int get index => throw _privateConstructorUsedError;
+  int get index;
   @JsonKey(ignore: true)
   _$$SelectableEventSelectAtCopyWith<T, _$SelectableEventSelectAt<T>>
       get copyWith => throw _privateConstructorUsedError;
@@ -691,8 +691,8 @@ abstract class SelectableEventModify<T> implements SelectableEvent<T> {
   const factory SelectableEventModify(final int index, final T value) =
       _$SelectableEventModify<T>;
 
-  int get index => throw _privateConstructorUsedError;
-  T get value => throw _privateConstructorUsedError;
+  int get index;
+  T get value;
   @JsonKey(ignore: true)
   _$$SelectableEventModifyCopyWith<T, _$SelectableEventModify<T>>
       get copyWith => throw _privateConstructorUsedError;
@@ -848,7 +848,7 @@ abstract class SelectableEventRemove<T> implements SelectableEvent<T> {
   const factory SelectableEventRemove(final T item) =
       _$SelectableEventRemove<T>;
 
-  T get item => throw _privateConstructorUsedError;
+  T get item;
   @JsonKey(ignore: true)
   _$$SelectableEventRemoveCopyWith<T, _$SelectableEventRemove<T>>
       get copyWith => throw _privateConstructorUsedError;
@@ -1003,7 +1003,7 @@ abstract class SelectableEventRemoveAt<T> implements SelectableEvent<T> {
   const factory SelectableEventRemoveAt(final int index) =
       _$SelectableEventRemoveAt<T>;
 
-  int get index => throw _privateConstructorUsedError;
+  int get index;
   @JsonKey(ignore: true)
   _$$SelectableEventRemoveAtCopyWith<T, _$SelectableEventRemoveAt<T>>
       get copyWith => throw _privateConstructorUsedError;

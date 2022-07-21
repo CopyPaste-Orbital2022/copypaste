@@ -2,6 +2,7 @@ import 'package:copypaste/core/errors_and_failures/failures/database_failure.dar
 import 'package:copypaste/features/file_management/domain/entities/sp_drawing.dart';
 import 'package:copypaste/features/file_management/domain/repositories/i_file_management_repository.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 
 /// Loads the drawings as a list, sorted by the modified date
@@ -23,6 +24,7 @@ class LoadDrawingsListUsecase {
 
   Future<Either<DatabaseFailure, List<SPDrawing>>> call() async {
     final drawingsOrFailure = await repository.loadAllDrawings();
+    debugPrint('drawingsOrFailure: $drawingsOrFailure');
     return drawingsOrFailure.fold(
       (failure) => left(failure),
       (drawings) {

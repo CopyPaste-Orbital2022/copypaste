@@ -252,9 +252,9 @@ abstract class InvalidEmail<T> implements ValueFailure<T> {
       _$InvalidEmail<T>;
 
   @override
-  T get value => throw _privateConstructorUsedError;
+  T get value;
   @override
-  String get failedReason => throw _privateConstructorUsedError;
+  String get failedReason;
   @override
   @JsonKey(ignore: true)
   _$$InvalidEmailCopyWith<T, _$InvalidEmail<T>> get copyWith =>
@@ -411,9 +411,9 @@ abstract class InvalidPassword<T> implements ValueFailure<T> {
       _$InvalidPassword<T>;
 
   @override
-  T get value => throw _privateConstructorUsedError;
+  T get value;
   @override
-  String get failedReason => throw _privateConstructorUsedError;
+  String get failedReason;
   @override
   @JsonKey(ignore: true)
   _$$InvalidPasswordCopyWith<T, _$InvalidPassword<T>> get copyWith =>
@@ -570,9 +570,9 @@ abstract class InvalidDisplayName<T> implements ValueFailure<T> {
       _$InvalidDisplayName<T>;
 
   @override
-  T get value => throw _privateConstructorUsedError;
+  T get value;
   @override
-  String get failedReason => throw _privateConstructorUsedError;
+  String get failedReason;
   @override
   @JsonKey(ignore: true)
   _$$InvalidDisplayNameCopyWith<T, _$InvalidDisplayName<T>> get copyWith =>

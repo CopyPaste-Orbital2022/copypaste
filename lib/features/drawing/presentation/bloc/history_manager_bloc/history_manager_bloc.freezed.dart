@@ -150,9 +150,9 @@ abstract class _HistoryManagerState implements HistoryManagerState {
       final List<HistoryState> stack}) = _$_HistoryManagerState;
 
   @override
-  int? get currentIndex => throw _privateConstructorUsedError;
+  int? get currentIndex;
   @override
-  List<HistoryState> get stack => throw _privateConstructorUsedError;
+  List<HistoryState> get stack;
   @override
   @JsonKey(ignore: true)
   _$$_HistoryManagerStateCopyWith<_$_HistoryManagerState> get copyWith =>
@@ -185,23 +185,23 @@ mixin _$HistoryManagerEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_HistoryManagerEventUndo value) undo,
-    required TResult Function(_HistoryManagerEventRedo value) redo,
-    required TResult Function(_HistoryManagerEventPush value) push,
+    required TResult Function(HistoryManagerEventUndo value) undo,
+    required TResult Function(HistoryManagerEventRedo value) redo,
+    required TResult Function(HistoryManagerEventPush value) push,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_HistoryManagerEventUndo value)? undo,
-    TResult Function(_HistoryManagerEventRedo value)? redo,
-    TResult Function(_HistoryManagerEventPush value)? push,
+    TResult Function(HistoryManagerEventUndo value)? undo,
+    TResult Function(HistoryManagerEventRedo value)? redo,
+    TResult Function(HistoryManagerEventPush value)? push,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_HistoryManagerEventUndo value)? undo,
-    TResult Function(_HistoryManagerEventRedo value)? redo,
-    TResult Function(_HistoryManagerEventPush value)? push,
+    TResult Function(HistoryManagerEventUndo value)? undo,
+    TResult Function(HistoryManagerEventRedo value)? redo,
+    TResult Function(HistoryManagerEventPush value)? push,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -225,29 +225,29 @@ class _$HistoryManagerEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$$_HistoryManagerEventUndoCopyWith<$Res> {
-  factory _$$_HistoryManagerEventUndoCopyWith(_$_HistoryManagerEventUndo value,
-          $Res Function(_$_HistoryManagerEventUndo) then) =
-      __$$_HistoryManagerEventUndoCopyWithImpl<$Res>;
+abstract class _$$HistoryManagerEventUndoCopyWith<$Res> {
+  factory _$$HistoryManagerEventUndoCopyWith(_$HistoryManagerEventUndo value,
+          $Res Function(_$HistoryManagerEventUndo) then) =
+      __$$HistoryManagerEventUndoCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_HistoryManagerEventUndoCopyWithImpl<$Res>
+class __$$HistoryManagerEventUndoCopyWithImpl<$Res>
     extends _$HistoryManagerEventCopyWithImpl<$Res>
-    implements _$$_HistoryManagerEventUndoCopyWith<$Res> {
-  __$$_HistoryManagerEventUndoCopyWithImpl(_$_HistoryManagerEventUndo _value,
-      $Res Function(_$_HistoryManagerEventUndo) _then)
-      : super(_value, (v) => _then(v as _$_HistoryManagerEventUndo));
+    implements _$$HistoryManagerEventUndoCopyWith<$Res> {
+  __$$HistoryManagerEventUndoCopyWithImpl(_$HistoryManagerEventUndo _value,
+      $Res Function(_$HistoryManagerEventUndo) _then)
+      : super(_value, (v) => _then(v as _$HistoryManagerEventUndo));
 
   @override
-  _$_HistoryManagerEventUndo get _value =>
-      super._value as _$_HistoryManagerEventUndo;
+  _$HistoryManagerEventUndo get _value =>
+      super._value as _$HistoryManagerEventUndo;
 }
 
 /// @nodoc
 
-class _$_HistoryManagerEventUndo implements _HistoryManagerEventUndo {
-  const _$_HistoryManagerEventUndo();
+class _$HistoryManagerEventUndo implements HistoryManagerEventUndo {
+  const _$HistoryManagerEventUndo();
 
   @override
   String toString() {
@@ -258,7 +258,7 @@ class _$_HistoryManagerEventUndo implements _HistoryManagerEventUndo {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_HistoryManagerEventUndo);
+            other is _$HistoryManagerEventUndo);
   }
 
   @override
@@ -301,9 +301,9 @@ class _$_HistoryManagerEventUndo implements _HistoryManagerEventUndo {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_HistoryManagerEventUndo value) undo,
-    required TResult Function(_HistoryManagerEventRedo value) redo,
-    required TResult Function(_HistoryManagerEventPush value) push,
+    required TResult Function(HistoryManagerEventUndo value) undo,
+    required TResult Function(HistoryManagerEventRedo value) redo,
+    required TResult Function(HistoryManagerEventPush value) push,
   }) {
     return undo(this);
   }
@@ -311,9 +311,9 @@ class _$_HistoryManagerEventUndo implements _HistoryManagerEventUndo {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_HistoryManagerEventUndo value)? undo,
-    TResult Function(_HistoryManagerEventRedo value)? redo,
-    TResult Function(_HistoryManagerEventPush value)? push,
+    TResult Function(HistoryManagerEventUndo value)? undo,
+    TResult Function(HistoryManagerEventRedo value)? redo,
+    TResult Function(HistoryManagerEventPush value)? push,
   }) {
     return undo?.call(this);
   }
@@ -321,9 +321,9 @@ class _$_HistoryManagerEventUndo implements _HistoryManagerEventUndo {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_HistoryManagerEventUndo value)? undo,
-    TResult Function(_HistoryManagerEventRedo value)? redo,
-    TResult Function(_HistoryManagerEventPush value)? push,
+    TResult Function(HistoryManagerEventUndo value)? undo,
+    TResult Function(HistoryManagerEventRedo value)? redo,
+    TResult Function(HistoryManagerEventPush value)? push,
     required TResult orElse(),
   }) {
     if (undo != null) {
@@ -333,34 +333,34 @@ class _$_HistoryManagerEventUndo implements _HistoryManagerEventUndo {
   }
 }
 
-abstract class _HistoryManagerEventUndo implements HistoryManagerEvent {
-  const factory _HistoryManagerEventUndo() = _$_HistoryManagerEventUndo;
+abstract class HistoryManagerEventUndo implements HistoryManagerEvent {
+  const factory HistoryManagerEventUndo() = _$HistoryManagerEventUndo;
 }
 
 /// @nodoc
-abstract class _$$_HistoryManagerEventRedoCopyWith<$Res> {
-  factory _$$_HistoryManagerEventRedoCopyWith(_$_HistoryManagerEventRedo value,
-          $Res Function(_$_HistoryManagerEventRedo) then) =
-      __$$_HistoryManagerEventRedoCopyWithImpl<$Res>;
+abstract class _$$HistoryManagerEventRedoCopyWith<$Res> {
+  factory _$$HistoryManagerEventRedoCopyWith(_$HistoryManagerEventRedo value,
+          $Res Function(_$HistoryManagerEventRedo) then) =
+      __$$HistoryManagerEventRedoCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_HistoryManagerEventRedoCopyWithImpl<$Res>
+class __$$HistoryManagerEventRedoCopyWithImpl<$Res>
     extends _$HistoryManagerEventCopyWithImpl<$Res>
-    implements _$$_HistoryManagerEventRedoCopyWith<$Res> {
-  __$$_HistoryManagerEventRedoCopyWithImpl(_$_HistoryManagerEventRedo _value,
-      $Res Function(_$_HistoryManagerEventRedo) _then)
-      : super(_value, (v) => _then(v as _$_HistoryManagerEventRedo));
+    implements _$$HistoryManagerEventRedoCopyWith<$Res> {
+  __$$HistoryManagerEventRedoCopyWithImpl(_$HistoryManagerEventRedo _value,
+      $Res Function(_$HistoryManagerEventRedo) _then)
+      : super(_value, (v) => _then(v as _$HistoryManagerEventRedo));
 
   @override
-  _$_HistoryManagerEventRedo get _value =>
-      super._value as _$_HistoryManagerEventRedo;
+  _$HistoryManagerEventRedo get _value =>
+      super._value as _$HistoryManagerEventRedo;
 }
 
 /// @nodoc
 
-class _$_HistoryManagerEventRedo implements _HistoryManagerEventRedo {
-  const _$_HistoryManagerEventRedo();
+class _$HistoryManagerEventRedo implements HistoryManagerEventRedo {
+  const _$HistoryManagerEventRedo();
 
   @override
   String toString() {
@@ -371,7 +371,7 @@ class _$_HistoryManagerEventRedo implements _HistoryManagerEventRedo {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_HistoryManagerEventRedo);
+            other is _$HistoryManagerEventRedo);
   }
 
   @override
@@ -414,9 +414,9 @@ class _$_HistoryManagerEventRedo implements _HistoryManagerEventRedo {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_HistoryManagerEventUndo value) undo,
-    required TResult Function(_HistoryManagerEventRedo value) redo,
-    required TResult Function(_HistoryManagerEventPush value) push,
+    required TResult Function(HistoryManagerEventUndo value) undo,
+    required TResult Function(HistoryManagerEventRedo value) redo,
+    required TResult Function(HistoryManagerEventPush value) push,
   }) {
     return redo(this);
   }
@@ -424,9 +424,9 @@ class _$_HistoryManagerEventRedo implements _HistoryManagerEventRedo {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_HistoryManagerEventUndo value)? undo,
-    TResult Function(_HistoryManagerEventRedo value)? redo,
-    TResult Function(_HistoryManagerEventPush value)? push,
+    TResult Function(HistoryManagerEventUndo value)? undo,
+    TResult Function(HistoryManagerEventRedo value)? redo,
+    TResult Function(HistoryManagerEventPush value)? push,
   }) {
     return redo?.call(this);
   }
@@ -434,9 +434,9 @@ class _$_HistoryManagerEventRedo implements _HistoryManagerEventRedo {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_HistoryManagerEventUndo value)? undo,
-    TResult Function(_HistoryManagerEventRedo value)? redo,
-    TResult Function(_HistoryManagerEventPush value)? push,
+    TResult Function(HistoryManagerEventUndo value)? undo,
+    TResult Function(HistoryManagerEventRedo value)? redo,
+    TResult Function(HistoryManagerEventPush value)? push,
     required TResult orElse(),
   }) {
     if (redo != null) {
@@ -446,35 +446,35 @@ class _$_HistoryManagerEventRedo implements _HistoryManagerEventRedo {
   }
 }
 
-abstract class _HistoryManagerEventRedo implements HistoryManagerEvent {
-  const factory _HistoryManagerEventRedo() = _$_HistoryManagerEventRedo;
+abstract class HistoryManagerEventRedo implements HistoryManagerEvent {
+  const factory HistoryManagerEventRedo() = _$HistoryManagerEventRedo;
 }
 
 /// @nodoc
-abstract class _$$_HistoryManagerEventPushCopyWith<$Res> {
-  factory _$$_HistoryManagerEventPushCopyWith(_$_HistoryManagerEventPush value,
-          $Res Function(_$_HistoryManagerEventPush) then) =
-      __$$_HistoryManagerEventPushCopyWithImpl<$Res>;
+abstract class _$$HistoryManagerEventPushCopyWith<$Res> {
+  factory _$$HistoryManagerEventPushCopyWith(_$HistoryManagerEventPush value,
+          $Res Function(_$HistoryManagerEventPush) then) =
+      __$$HistoryManagerEventPushCopyWithImpl<$Res>;
   $Res call({HistoryState state});
 }
 
 /// @nodoc
-class __$$_HistoryManagerEventPushCopyWithImpl<$Res>
+class __$$HistoryManagerEventPushCopyWithImpl<$Res>
     extends _$HistoryManagerEventCopyWithImpl<$Res>
-    implements _$$_HistoryManagerEventPushCopyWith<$Res> {
-  __$$_HistoryManagerEventPushCopyWithImpl(_$_HistoryManagerEventPush _value,
-      $Res Function(_$_HistoryManagerEventPush) _then)
-      : super(_value, (v) => _then(v as _$_HistoryManagerEventPush));
+    implements _$$HistoryManagerEventPushCopyWith<$Res> {
+  __$$HistoryManagerEventPushCopyWithImpl(_$HistoryManagerEventPush _value,
+      $Res Function(_$HistoryManagerEventPush) _then)
+      : super(_value, (v) => _then(v as _$HistoryManagerEventPush));
 
   @override
-  _$_HistoryManagerEventPush get _value =>
-      super._value as _$_HistoryManagerEventPush;
+  _$HistoryManagerEventPush get _value =>
+      super._value as _$HistoryManagerEventPush;
 
   @override
   $Res call({
     Object? state = freezed,
   }) {
-    return _then(_$_HistoryManagerEventPush(
+    return _then(_$HistoryManagerEventPush(
       state == freezed
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
@@ -485,8 +485,8 @@ class __$$_HistoryManagerEventPushCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_HistoryManagerEventPush implements _HistoryManagerEventPush {
-  const _$_HistoryManagerEventPush(this.state);
+class _$HistoryManagerEventPush implements HistoryManagerEventPush {
+  const _$HistoryManagerEventPush(this.state);
 
   @override
   final HistoryState state;
@@ -500,7 +500,7 @@ class _$_HistoryManagerEventPush implements _HistoryManagerEventPush {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_HistoryManagerEventPush &&
+            other is _$HistoryManagerEventPush &&
             const DeepCollectionEquality().equals(other.state, state));
   }
 
@@ -510,10 +510,9 @@ class _$_HistoryManagerEventPush implements _HistoryManagerEventPush {
 
   @JsonKey(ignore: true)
   @override
-  _$$_HistoryManagerEventPushCopyWith<_$_HistoryManagerEventPush>
-      get copyWith =>
-          __$$_HistoryManagerEventPushCopyWithImpl<_$_HistoryManagerEventPush>(
-              this, _$identity);
+  _$$HistoryManagerEventPushCopyWith<_$HistoryManagerEventPush> get copyWith =>
+      __$$HistoryManagerEventPushCopyWithImpl<_$HistoryManagerEventPush>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -552,9 +551,9 @@ class _$_HistoryManagerEventPush implements _HistoryManagerEventPush {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_HistoryManagerEventUndo value) undo,
-    required TResult Function(_HistoryManagerEventRedo value) redo,
-    required TResult Function(_HistoryManagerEventPush value) push,
+    required TResult Function(HistoryManagerEventUndo value) undo,
+    required TResult Function(HistoryManagerEventRedo value) redo,
+    required TResult Function(HistoryManagerEventPush value) push,
   }) {
     return push(this);
   }
@@ -562,9 +561,9 @@ class _$_HistoryManagerEventPush implements _HistoryManagerEventPush {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_HistoryManagerEventUndo value)? undo,
-    TResult Function(_HistoryManagerEventRedo value)? redo,
-    TResult Function(_HistoryManagerEventPush value)? push,
+    TResult Function(HistoryManagerEventUndo value)? undo,
+    TResult Function(HistoryManagerEventRedo value)? redo,
+    TResult Function(HistoryManagerEventPush value)? push,
   }) {
     return push?.call(this);
   }
@@ -572,9 +571,9 @@ class _$_HistoryManagerEventPush implements _HistoryManagerEventPush {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_HistoryManagerEventUndo value)? undo,
-    TResult Function(_HistoryManagerEventRedo value)? redo,
-    TResult Function(_HistoryManagerEventPush value)? push,
+    TResult Function(HistoryManagerEventUndo value)? undo,
+    TResult Function(HistoryManagerEventRedo value)? redo,
+    TResult Function(HistoryManagerEventPush value)? push,
     required TResult orElse(),
   }) {
     if (push != null) {
@@ -584,12 +583,12 @@ class _$_HistoryManagerEventPush implements _HistoryManagerEventPush {
   }
 }
 
-abstract class _HistoryManagerEventPush implements HistoryManagerEvent {
-  const factory _HistoryManagerEventPush(final HistoryState state) =
-      _$_HistoryManagerEventPush;
+abstract class HistoryManagerEventPush implements HistoryManagerEvent {
+  const factory HistoryManagerEventPush(final HistoryState state) =
+      _$HistoryManagerEventPush;
 
-  HistoryState get state => throw _privateConstructorUsedError;
+  HistoryState get state;
   @JsonKey(ignore: true)
-  _$$_HistoryManagerEventPushCopyWith<_$_HistoryManagerEventPush>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$HistoryManagerEventPushCopyWith<_$HistoryManagerEventPush> get copyWith =>
+      throw _privateConstructorUsedError;
 }

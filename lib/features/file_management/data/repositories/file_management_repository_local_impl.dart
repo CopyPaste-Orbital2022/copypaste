@@ -17,20 +17,16 @@ class FileManagementRepositoryLocalImpl implements IFileManagementRepository {
 
   @override
   Future<Either<DatabaseFailure, List<SPDrawing>>> loadAllDrawings() async {
-    final resultJson = await database.query('drawings', columns: ['id', 'name', 'createdAt', 'modifiedAt']);
-    try {
-      final result = resultJson.map((json) => SPDrawingModel.fromJson(json)).toList();
-      return right(result);
-    } on JsonKeyNotFoundException {
-      return left(const DatabaseFailure.jsonKeyNotFound());
-    }
+    final resultJson = await database.query('drawings', columns: ['id', 'name', 'created_at', 'modified_at']);
+    final result = resultJson.map((json) => SPDrawingModel.fromJson(json)).toList();
+    return right(result);
   }
 
   @override
   Future<Either<DatabaseFailure, Unit>> saveDrawing(SPDrawing drawing) async {
     final result = await database.insert(
       'drawings',
-      SPDrawingModel.fromDomain(drawing).toJson(),
+      SPDrawingModel.fromDomain(drawing).toJson()..addEntries({'synced': 0}.entries),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
 

@@ -1,15 +1,11 @@
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+part 'sp_user.freezed.dart';
 
-class SPUser extends Equatable {
-  final String uid;
-  final String userName;
-  final String? email;
-  const SPUser({
-    required this.uid,
-    required this.userName,
-    required this.email,
-  });
-
-  @override
-  List<Object?> get props => [uid, userName, email];
+@freezed
+class SPUser with _$SPUser {
+  const factory SPUser({
+    required String uid,
+    required String userName,
+    required String email,
+  }) = _SPUser;
 }

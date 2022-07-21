@@ -18,52 +18,49 @@ class SPDrawingRepositoryLocalImpl implements ISPDrawingRepository {
 
   @override
   Future<Either<DatabaseFailure, Unit>> addPointToStroke(SPStroke stroke, SPPoint point) async {
-    database.insert(
-      'points',
-      SPPointModel.fromDomain(point).toJson(),
-    );
-    throw UnimplementedError();
+    // TODO: implement addPointToStroke
+    return right(unit);
   }
 
   @override
-  Future<Either<DatabaseFailure, Unit>> deleteStroke(SPStroke stroke) {
+  Future<Either<DatabaseFailure, Unit>> deleteStroke(SPStroke stroke) async {
     // TODO: implement deleteStroke
-    throw UnimplementedError();
+    return right(unit);
   }
 
   @override
-  Future<Either<DatabaseFailure, List<SPPoint>>> loadBorderPointsFromStroke(SPStroke stroke) {
+  Future<Either<DatabaseFailure, List<SPPoint>>> loadBorderPointsFromStroke(SPStroke stroke) async {
     // TODO: implement loadBorderPointsFromStroke
-    throw UnimplementedError();
+    return right(const <SPPoint>[]);
   }
 
   @override
-  Future<Either<DatabaseFailure, List<SPPoint>>> loadPointsFromStroke(SPStroke stroke) {
+  Future<Either<DatabaseFailure, List<SPPoint>>> loadPointsFromStroke(SPStroke stroke) async {
     // TODO: implement loadPointsFromStroke
-    throw UnimplementedError();
+    return right(const <SPPoint>[]);
   }
 
   @override
-  Future<Either<DatabaseFailure, List<SPStroke>>> loadStrokes() {
+  Future<Either<DatabaseFailure, List<SPStroke>>> loadStrokes() async {
     // TODO: implement loadStrokes
-    throw UnimplementedError();
+    return right(const <SPStroke>[]);
   }
 
   @override
-  Future<Either<DatabaseFailure, Unit>> setBorderPointsOfStroke(SPStroke stroke, List<SPPoint> points) {
+  Future<Either<DatabaseFailure, Unit>> setBorderPointsOfStroke(SPStroke stroke, List<SPPoint> points) async {
     // TODO: implement setBorderPointsOfStroke
-    throw UnimplementedError();
+    return right(unit);
   }
 
   @override
-  Future<Either<DatabaseFailure, Unit>> setPointsOfStroke(SPStroke stroke, List<SPPoint> points) {
+  Future<Either<DatabaseFailure, Unit>> setPointsOfStroke(SPStroke stroke, List<SPPoint> points) async {
     // TODO: implement setPointsOfStroke
-    throw UnimplementedError();
+    return right(unit);
   }
 
   @override
-  Future<Either<DatabaseFailure, Unit>> setStroke(SPStroke stroke) {
+  Future<Either<DatabaseFailure, Unit>> setStroke(SPStroke stroke) async {
     // TODO: implement setStroke
-    throw UnimplementedError();
+    return right(unit);
   }
 }

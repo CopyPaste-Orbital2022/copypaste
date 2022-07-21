@@ -189,11 +189,11 @@ abstract class _DrawingState implements DrawingState {
       final Offset? eraserPosition}) = _$_DrawingState;
 
   @override
-  List<SPStroke> get strokes => throw _privateConstructorUsedError;
+  List<SPStroke> get strokes;
   @override
-  SPStroke? get currentStroke => throw _privateConstructorUsedError;
+  SPStroke? get currentStroke;
   @override
-  Offset? get eraserPosition => throw _privateConstructorUsedError;
+  Offset? get eraserPosition;
   @override
   @JsonKey(ignore: true)
   _$$_DrawingStateCopyWith<_$_DrawingState> get copyWith =>
@@ -584,7 +584,7 @@ abstract class DrawingEventPointerDown implements DrawingEvent {
   const factory DrawingEventPointerDown(final PointerDownEvent event) =
       _$DrawingEventPointerDown;
 
-  PointerDownEvent get event => throw _privateConstructorUsedError;
+  PointerDownEvent get event;
   @JsonKey(ignore: true)
   _$$DrawingEventPointerDownCopyWith<_$DrawingEventPointerDown> get copyWith =>
       throw _privateConstructorUsedError;
@@ -751,7 +751,7 @@ abstract class DrawingEventPointerMove implements DrawingEvent {
   const factory DrawingEventPointerMove(final PointerMoveEvent event) =
       _$DrawingEventPointerMove;
 
-  PointerMoveEvent get event => throw _privateConstructorUsedError;
+  PointerMoveEvent get event;
   @JsonKey(ignore: true)
   _$$DrawingEventPointerMoveCopyWith<_$DrawingEventPointerMove> get copyWith =>
       throw _privateConstructorUsedError;
@@ -917,7 +917,7 @@ abstract class DrawingEventPointerUp implements DrawingEvent {
   const factory DrawingEventPointerUp(final PointerUpEvent event) =
       _$DrawingEventPointerUp;
 
-  PointerUpEvent get event => throw _privateConstructorUsedError;
+  PointerUpEvent get event;
   @JsonKey(ignore: true)
   _$$DrawingEventPointerUpCopyWith<_$DrawingEventPointerUp> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1085,7 +1085,7 @@ abstract class DrawingEventPointerCancel implements DrawingEvent {
   const factory DrawingEventPointerCancel(final PointerCancelEvent event) =
       _$DrawingEventPointerCancel;
 
-  PointerCancelEvent get event => throw _privateConstructorUsedError;
+  PointerCancelEvent get event;
   @JsonKey(ignore: true)
   _$$DrawingEventPointerCancelCopyWith<_$DrawingEventPointerCancel>
       get copyWith => throw _privateConstructorUsedError;
@@ -1260,7 +1260,7 @@ abstract class DrawingEventSetState implements DrawingEvent {
   const factory DrawingEventSetState(final DrawingState state) =
       _$DrawingEventSetState;
 
-  DrawingState get state => throw _privateConstructorUsedError;
+  DrawingState get state;
   @JsonKey(ignore: true)
   _$$DrawingEventSetStateCopyWith<_$DrawingEventSetState> get copyWith =>
       throw _privateConstructorUsedError;

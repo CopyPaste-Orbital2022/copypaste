@@ -248,7 +248,7 @@ class _$_DatabaseFailure implements _DatabaseFailure {
 abstract class _DatabaseFailure implements DatabaseFailure {
   const factory _DatabaseFailure(final String description) = _$_DatabaseFailure;
 
-  String get description => throw _privateConstructorUsedError;
+  String get description;
   @JsonKey(ignore: true)
   _$$_DatabaseFailureCopyWith<_$_DatabaseFailure> get copyWith =>
       throw _privateConstructorUsedError;
@@ -411,7 +411,7 @@ abstract class DatabaseFailureHasNoDrawing implements DatabaseFailure {
   const factory DatabaseFailureHasNoDrawing({final String? description}) =
       _$DatabaseFailureHasNoDrawing;
 
-  String? get description => throw _privateConstructorUsedError;
+  String? get description;
   @JsonKey(ignore: true)
   _$$DatabaseFailureHasNoDrawingCopyWith<_$DatabaseFailureHasNoDrawing>
       get copyWith => throw _privateConstructorUsedError;
@@ -576,7 +576,7 @@ abstract class DatabaseFailureUserHasNotSignedIn implements DatabaseFailure {
   const factory DatabaseFailureUserHasNotSignedIn({final String? description}) =
       _$DatabaseFailureUserHasNotSignedIn;
 
-  String? get description => throw _privateConstructorUsedError;
+  String? get description;
   @JsonKey(ignore: true)
   _$$DatabaseFailureUserHasNotSignedInCopyWith<
           _$DatabaseFailureUserHasNotSignedIn>
@@ -741,7 +741,7 @@ abstract class DatabaseFailureJsonKeyNotFound implements DatabaseFailure {
   const factory DatabaseFailureJsonKeyNotFound({final String? description}) =
       _$DatabaseFailureJsonKeyNotFound;
 
-  String? get description => throw _privateConstructorUsedError;
+  String? get description;
   @JsonKey(ignore: true)
   _$$DatabaseFailureJsonKeyNotFoundCopyWith<_$DatabaseFailureJsonKeyNotFound>
       get copyWith => throw _privateConstructorUsedError;
@@ -905,7 +905,7 @@ abstract class DatabaseFailureInsertionFailure implements DatabaseFailure {
   const factory DatabaseFailureInsertionFailure({final String? description}) =
       _$DatabaseFailureInsertionFailure;
 
-  String? get description => throw _privateConstructorUsedError;
+  String? get description;
   @JsonKey(ignore: true)
   _$$DatabaseFailureInsertionFailureCopyWith<_$DatabaseFailureInsertionFailure>
       get copyWith => throw _privateConstructorUsedError;
