@@ -11,8 +11,7 @@ class DrawingListItem extends StatelessWidget {
 
   final SPDrawing drawing;
 
-  static const dateTimeStyle =
-      TextStyle(fontStyle: FontStyle.italic, fontSize: 10);
+  static const dateTimeStyle = TextStyle(fontStyle: FontStyle.italic, fontSize: 10);
 
   @override
   Widget build(BuildContext context) {
@@ -44,11 +43,11 @@ class DrawingListItem extends StatelessWidget {
                 children: [
                   Text(drawing.name == "" ? "Untitled Drawing" : drawing.name),
                   Text(
-                    "Created At: ${drawing.modifiedAt.toString()}",
+                    "Created At: ${drawing.updatedAt.toString()}",
                     style: dateTimeStyle,
                   ),
                   Text(
-                    "Modified At: ${drawing.modifiedAt.toString()}",
+                    "Modified At: ${drawing.updatedAt.toString()}",
                     style: dateTimeStyle,
                   ),
                 ],

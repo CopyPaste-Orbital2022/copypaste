@@ -3,11 +3,16 @@ import 'package:copypaste/features/file_management/domain/entities/sp_drawing.da
 import 'package:dartz/dartz.dart';
 
 abstract class IFileManagementRepository {
-  /// Asks the databse to create a drawing if the drawing does not exist
-  ///
-  /// Else, asks the database to update the existing drawing
-  Future<Either<DatabaseFailure, Unit>> saveDrawing(SPDrawing drawing);
+  /// returns the list of all the drawings in the database
+  Stream<List<SPDrawing>> get drawingsStream;
 
-  /// Asks the database to load all the drawings
-  Future<Either<DatabaseFailure, List<SPDrawing>>> loadAllDrawings();
+  /// creates the drawing in the database
+  Future<Either<DatabaseFailure, SPDrawing>> createDrawing({
+    required String name,
+    required DateTime createdAt,
+    required DateTime updatedAt,
+  });
+
+  /// Else, asks the database to update the existing drawing
+  Future<Either<DatabaseFailure, Unit>> updateDrawing(SPDrawing drawing);
 }

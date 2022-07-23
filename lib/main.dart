@@ -9,19 +9,12 @@ import 'package:my_stackable_popup_menu/my_stackable_popup_menu.dart';
 import 'core/injections/injection.dart';
 import 'core/routing/app_router.dart';
 import 'core/utilities/helpers/platform_helpers.dart';
-import 'package:sqflite/sqflite.dart';
-import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  if (defaultTargetPlatform == TargetPlatform.windows || defaultTargetPlatform == TargetPlatform.linux) {
-    // Initialize FFI
-    sqfliteFfiInit();
-  }
-  databaseFactory = databaseFactoryFfi;
+  await Hive.initFlutter();
   await configureMyStackablePopupDependencies();
   await configureInjection(Environment.prod);
-  await Hive.initFlutter();
 
   if (platformIsDesktop) {
     doWhenWindowReady(() {

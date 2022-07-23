@@ -8,13 +8,11 @@ part 'sp_stroke.freezed.dart';
 @freezed
 class SPStroke with _$SPStroke {
   const factory SPStroke({
-    required String id,
-    required int index,
+    int? id,
     required double size,
     required Color color,
     @Default([]) List<SPPoint> points,
     @Default(false) bool isComplete,
-    List<SPPoint>? cachedBorderPoints,
     required double thinning, // check
     required double smoothing, // check
     required double streamline, // check
@@ -27,25 +25,13 @@ class SPStroke with _$SPStroke {
 }
 
 extension SPStrokeX on SPStroke {
-  /// Add a point to the stroke.
   SPStroke addPoint(SPPoint point) {
     return copyWith(
       points: List.from(points)..add(point),
     );
   }
 
-  /// Finish the stroke.
-  SPStroke finish() {
-    final finished = copyWith(isComplete: true);
-    return finished.cacheBorderPoints();
-  }
-
-  /// Gets the border points of the stroke.
-  List<SPPoint> get borderPoints {
-    if (cachedBorderPoints != null) {
-      return cachedBorderPoints!;
-    } else {
-      final rawPoints = getStroke(
+  List<Point> get borderPoints => getStroke(
         points.map((e) => e.point).toList(),
         size: size,
         taperStart: taperStart,
@@ -58,18 +44,4 @@ extension SPStrokeX on SPStroke {
         capEnd: capEnd,
         simulatePressure: simulatePressure,
       );
-      List<SPPoint> res = [];
-      for (int i = 0; i < rawPoints.length; i++) {
-        res.add(SPPointX.fromPoint(rawPoints[i], i));
-      }
-      return res;
-    }
-  }
-
-  /// cache the border points of the stroke.
-  SPStroke cacheBorderPoints() {
-    return copyWith(
-      cachedBorderPoints: borderPoints,
-    );
-  }
 }

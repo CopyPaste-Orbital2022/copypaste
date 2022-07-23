@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:copypaste/features/authentication/data/datasources/sp_cloud_auth.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:http/http.dart';
 import 'package:injectable/injectable.dart';
 import '../../../../core/errors_and_failures/failures/auth_failure.dart';
 import '../../domain/entities/display_name.dart';
@@ -11,13 +10,23 @@ import '../../domain/entities/password.dart';
 import '../../domain/entities/sp_user.dart';
 import '../../domain/repositories/i_auth_repository.dart';
 
+/// Implementation of [IAuthRepository] that uses the SPCloudAuth API.
+///
+/// This class is a [LazySingleton] so that it can be injected as a dependency.
 @LazySingleton(as: IAuthRepository)
 class AuthRepositoryImpl implements IAuthRepository {
   AuthRepositoryImpl(this.auth, this.storage);
-  final SPCloudAuth auth;
+
+  /// The [ISPCloudAuth] API that is used to communicate with the SPCloud API.
+  final ISPCloudAuth auth;
+
+  /// The [FlutterSecureStorage] that is used to store the user's credentials.
   final FlutterSecureStorage storage;
+
+  /// The [SPUser] that is currently logged in.
   SPUser? user;
 
+  /// Returns the [SPUser] that is currently logged in.
   @override
   Future<Option<SPUser>> getUser() async {
     if (user != null) {
@@ -38,6 +47,7 @@ class AuthRepositoryImpl implements IAuthRepository {
     }
   }
 
+  /// log out the current user.
   @override
   Future<void> logOut() async {
     if (user != null) {
@@ -49,6 +59,7 @@ class AuthRepositoryImpl implements IAuthRepository {
     user = null;
   }
 
+  /// registers a new user with the given [email], [password] and [displayName].
   @override
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({
     required Email email,
@@ -114,6 +125,7 @@ class AuthRepositoryImpl implements IAuthRepository {
     }
   }
 
+  /// logs in the user with the given [email] and [password].
   @override
   Future<Either<AuthFailure, Unit>> signInWithEmailAndPassword({
     required Email email,

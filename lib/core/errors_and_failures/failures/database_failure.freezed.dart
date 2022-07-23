@@ -23,6 +23,9 @@ mixin _$DatabaseFailure {
     required TResult Function(String? description) userHasNotSignedIn,
     required TResult Function(String? description) jsonKeyNotFound,
     required TResult Function(String? description) insertionFailure,
+    required TResult Function(String? description) jsonParseFailure,
+    required TResult Function(String? description) hiveError,
+    required TResult Function(String? description) isarError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +35,9 @@ mixin _$DatabaseFailure {
     TResult Function(String? description)? userHasNotSignedIn,
     TResult Function(String? description)? jsonKeyNotFound,
     TResult Function(String? description)? insertionFailure,
+    TResult Function(String? description)? jsonParseFailure,
+    TResult Function(String? description)? hiveError,
+    TResult Function(String? description)? isarError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +47,9 @@ mixin _$DatabaseFailure {
     TResult Function(String? description)? userHasNotSignedIn,
     TResult Function(String? description)? jsonKeyNotFound,
     TResult Function(String? description)? insertionFailure,
+    TResult Function(String? description)? jsonParseFailure,
+    TResult Function(String? description)? hiveError,
+    TResult Function(String? description)? isarError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -54,6 +63,10 @@ mixin _$DatabaseFailure {
         jsonKeyNotFound,
     required TResult Function(DatabaseFailureInsertionFailure value)
         insertionFailure,
+    required TResult Function(DatabaseFailureJsonParseFailure value)
+        jsonParseFailure,
+    required TResult Function(DatabaseFailureHiveError value) hiveError,
+    required TResult Function(DatabaseFailureIsarError value) isarError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -64,6 +77,9 @@ mixin _$DatabaseFailure {
         userHasNotSignedIn,
     TResult Function(DatabaseFailureJsonKeyNotFound value)? jsonKeyNotFound,
     TResult Function(DatabaseFailureInsertionFailure value)? insertionFailure,
+    TResult Function(DatabaseFailureJsonParseFailure value)? jsonParseFailure,
+    TResult Function(DatabaseFailureHiveError value)? hiveError,
+    TResult Function(DatabaseFailureIsarError value)? isarError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -74,6 +90,9 @@ mixin _$DatabaseFailure {
         userHasNotSignedIn,
     TResult Function(DatabaseFailureJsonKeyNotFound value)? jsonKeyNotFound,
     TResult Function(DatabaseFailureInsertionFailure value)? insertionFailure,
+    TResult Function(DatabaseFailureJsonParseFailure value)? jsonParseFailure,
+    TResult Function(DatabaseFailureHiveError value)? hiveError,
+    TResult Function(DatabaseFailureIsarError value)? isarError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -167,6 +186,9 @@ class _$_DatabaseFailure implements _DatabaseFailure {
     required TResult Function(String? description) userHasNotSignedIn,
     required TResult Function(String? description) jsonKeyNotFound,
     required TResult Function(String? description) insertionFailure,
+    required TResult Function(String? description) jsonParseFailure,
+    required TResult Function(String? description) hiveError,
+    required TResult Function(String? description) isarError,
   }) {
     return $default(description);
   }
@@ -179,6 +201,9 @@ class _$_DatabaseFailure implements _DatabaseFailure {
     TResult Function(String? description)? userHasNotSignedIn,
     TResult Function(String? description)? jsonKeyNotFound,
     TResult Function(String? description)? insertionFailure,
+    TResult Function(String? description)? jsonParseFailure,
+    TResult Function(String? description)? hiveError,
+    TResult Function(String? description)? isarError,
   }) {
     return $default?.call(description);
   }
@@ -191,6 +216,9 @@ class _$_DatabaseFailure implements _DatabaseFailure {
     TResult Function(String? description)? userHasNotSignedIn,
     TResult Function(String? description)? jsonKeyNotFound,
     TResult Function(String? description)? insertionFailure,
+    TResult Function(String? description)? jsonParseFailure,
+    TResult Function(String? description)? hiveError,
+    TResult Function(String? description)? isarError,
     required TResult orElse(),
   }) {
     if ($default != null) {
@@ -210,6 +238,10 @@ class _$_DatabaseFailure implements _DatabaseFailure {
         jsonKeyNotFound,
     required TResult Function(DatabaseFailureInsertionFailure value)
         insertionFailure,
+    required TResult Function(DatabaseFailureJsonParseFailure value)
+        jsonParseFailure,
+    required TResult Function(DatabaseFailureHiveError value) hiveError,
+    required TResult Function(DatabaseFailureIsarError value) isarError,
   }) {
     return $default(this);
   }
@@ -223,6 +255,9 @@ class _$_DatabaseFailure implements _DatabaseFailure {
         userHasNotSignedIn,
     TResult Function(DatabaseFailureJsonKeyNotFound value)? jsonKeyNotFound,
     TResult Function(DatabaseFailureInsertionFailure value)? insertionFailure,
+    TResult Function(DatabaseFailureJsonParseFailure value)? jsonParseFailure,
+    TResult Function(DatabaseFailureHiveError value)? hiveError,
+    TResult Function(DatabaseFailureIsarError value)? isarError,
   }) {
     return $default?.call(this);
   }
@@ -236,6 +271,9 @@ class _$_DatabaseFailure implements _DatabaseFailure {
         userHasNotSignedIn,
     TResult Function(DatabaseFailureJsonKeyNotFound value)? jsonKeyNotFound,
     TResult Function(DatabaseFailureInsertionFailure value)? insertionFailure,
+    TResult Function(DatabaseFailureJsonParseFailure value)? jsonParseFailure,
+    TResult Function(DatabaseFailureHiveError value)? hiveError,
+    TResult Function(DatabaseFailureIsarError value)? isarError,
     required TResult orElse(),
   }) {
     if ($default != null) {
@@ -329,6 +367,9 @@ class _$DatabaseFailureHasNoDrawing implements DatabaseFailureHasNoDrawing {
     required TResult Function(String? description) userHasNotSignedIn,
     required TResult Function(String? description) jsonKeyNotFound,
     required TResult Function(String? description) insertionFailure,
+    required TResult Function(String? description) jsonParseFailure,
+    required TResult Function(String? description) hiveError,
+    required TResult Function(String? description) isarError,
   }) {
     return hasNoDrawing(description);
   }
@@ -341,6 +382,9 @@ class _$DatabaseFailureHasNoDrawing implements DatabaseFailureHasNoDrawing {
     TResult Function(String? description)? userHasNotSignedIn,
     TResult Function(String? description)? jsonKeyNotFound,
     TResult Function(String? description)? insertionFailure,
+    TResult Function(String? description)? jsonParseFailure,
+    TResult Function(String? description)? hiveError,
+    TResult Function(String? description)? isarError,
   }) {
     return hasNoDrawing?.call(description);
   }
@@ -353,6 +397,9 @@ class _$DatabaseFailureHasNoDrawing implements DatabaseFailureHasNoDrawing {
     TResult Function(String? description)? userHasNotSignedIn,
     TResult Function(String? description)? jsonKeyNotFound,
     TResult Function(String? description)? insertionFailure,
+    TResult Function(String? description)? jsonParseFailure,
+    TResult Function(String? description)? hiveError,
+    TResult Function(String? description)? isarError,
     required TResult orElse(),
   }) {
     if (hasNoDrawing != null) {
@@ -372,6 +419,10 @@ class _$DatabaseFailureHasNoDrawing implements DatabaseFailureHasNoDrawing {
         jsonKeyNotFound,
     required TResult Function(DatabaseFailureInsertionFailure value)
         insertionFailure,
+    required TResult Function(DatabaseFailureJsonParseFailure value)
+        jsonParseFailure,
+    required TResult Function(DatabaseFailureHiveError value) hiveError,
+    required TResult Function(DatabaseFailureIsarError value) isarError,
   }) {
     return hasNoDrawing(this);
   }
@@ -385,6 +436,9 @@ class _$DatabaseFailureHasNoDrawing implements DatabaseFailureHasNoDrawing {
         userHasNotSignedIn,
     TResult Function(DatabaseFailureJsonKeyNotFound value)? jsonKeyNotFound,
     TResult Function(DatabaseFailureInsertionFailure value)? insertionFailure,
+    TResult Function(DatabaseFailureJsonParseFailure value)? jsonParseFailure,
+    TResult Function(DatabaseFailureHiveError value)? hiveError,
+    TResult Function(DatabaseFailureIsarError value)? isarError,
   }) {
     return hasNoDrawing?.call(this);
   }
@@ -398,6 +452,9 @@ class _$DatabaseFailureHasNoDrawing implements DatabaseFailureHasNoDrawing {
         userHasNotSignedIn,
     TResult Function(DatabaseFailureJsonKeyNotFound value)? jsonKeyNotFound,
     TResult Function(DatabaseFailureInsertionFailure value)? insertionFailure,
+    TResult Function(DatabaseFailureJsonParseFailure value)? jsonParseFailure,
+    TResult Function(DatabaseFailureHiveError value)? hiveError,
+    TResult Function(DatabaseFailureIsarError value)? isarError,
     required TResult orElse(),
   }) {
     if (hasNoDrawing != null) {
@@ -494,6 +551,9 @@ class _$DatabaseFailureUserHasNotSignedIn
     required TResult Function(String? description) userHasNotSignedIn,
     required TResult Function(String? description) jsonKeyNotFound,
     required TResult Function(String? description) insertionFailure,
+    required TResult Function(String? description) jsonParseFailure,
+    required TResult Function(String? description) hiveError,
+    required TResult Function(String? description) isarError,
   }) {
     return userHasNotSignedIn(description);
   }
@@ -506,6 +566,9 @@ class _$DatabaseFailureUserHasNotSignedIn
     TResult Function(String? description)? userHasNotSignedIn,
     TResult Function(String? description)? jsonKeyNotFound,
     TResult Function(String? description)? insertionFailure,
+    TResult Function(String? description)? jsonParseFailure,
+    TResult Function(String? description)? hiveError,
+    TResult Function(String? description)? isarError,
   }) {
     return userHasNotSignedIn?.call(description);
   }
@@ -518,6 +581,9 @@ class _$DatabaseFailureUserHasNotSignedIn
     TResult Function(String? description)? userHasNotSignedIn,
     TResult Function(String? description)? jsonKeyNotFound,
     TResult Function(String? description)? insertionFailure,
+    TResult Function(String? description)? jsonParseFailure,
+    TResult Function(String? description)? hiveError,
+    TResult Function(String? description)? isarError,
     required TResult orElse(),
   }) {
     if (userHasNotSignedIn != null) {
@@ -537,6 +603,10 @@ class _$DatabaseFailureUserHasNotSignedIn
         jsonKeyNotFound,
     required TResult Function(DatabaseFailureInsertionFailure value)
         insertionFailure,
+    required TResult Function(DatabaseFailureJsonParseFailure value)
+        jsonParseFailure,
+    required TResult Function(DatabaseFailureHiveError value) hiveError,
+    required TResult Function(DatabaseFailureIsarError value) isarError,
   }) {
     return userHasNotSignedIn(this);
   }
@@ -550,6 +620,9 @@ class _$DatabaseFailureUserHasNotSignedIn
         userHasNotSignedIn,
     TResult Function(DatabaseFailureJsonKeyNotFound value)? jsonKeyNotFound,
     TResult Function(DatabaseFailureInsertionFailure value)? insertionFailure,
+    TResult Function(DatabaseFailureJsonParseFailure value)? jsonParseFailure,
+    TResult Function(DatabaseFailureHiveError value)? hiveError,
+    TResult Function(DatabaseFailureIsarError value)? isarError,
   }) {
     return userHasNotSignedIn?.call(this);
   }
@@ -563,6 +636,9 @@ class _$DatabaseFailureUserHasNotSignedIn
         userHasNotSignedIn,
     TResult Function(DatabaseFailureJsonKeyNotFound value)? jsonKeyNotFound,
     TResult Function(DatabaseFailureInsertionFailure value)? insertionFailure,
+    TResult Function(DatabaseFailureJsonParseFailure value)? jsonParseFailure,
+    TResult Function(DatabaseFailureHiveError value)? hiveError,
+    TResult Function(DatabaseFailureIsarError value)? isarError,
     required TResult orElse(),
   }) {
     if (userHasNotSignedIn != null) {
@@ -659,6 +735,9 @@ class _$DatabaseFailureJsonKeyNotFound
     required TResult Function(String? description) userHasNotSignedIn,
     required TResult Function(String? description) jsonKeyNotFound,
     required TResult Function(String? description) insertionFailure,
+    required TResult Function(String? description) jsonParseFailure,
+    required TResult Function(String? description) hiveError,
+    required TResult Function(String? description) isarError,
   }) {
     return jsonKeyNotFound(description);
   }
@@ -671,6 +750,9 @@ class _$DatabaseFailureJsonKeyNotFound
     TResult Function(String? description)? userHasNotSignedIn,
     TResult Function(String? description)? jsonKeyNotFound,
     TResult Function(String? description)? insertionFailure,
+    TResult Function(String? description)? jsonParseFailure,
+    TResult Function(String? description)? hiveError,
+    TResult Function(String? description)? isarError,
   }) {
     return jsonKeyNotFound?.call(description);
   }
@@ -683,6 +765,9 @@ class _$DatabaseFailureJsonKeyNotFound
     TResult Function(String? description)? userHasNotSignedIn,
     TResult Function(String? description)? jsonKeyNotFound,
     TResult Function(String? description)? insertionFailure,
+    TResult Function(String? description)? jsonParseFailure,
+    TResult Function(String? description)? hiveError,
+    TResult Function(String? description)? isarError,
     required TResult orElse(),
   }) {
     if (jsonKeyNotFound != null) {
@@ -702,6 +787,10 @@ class _$DatabaseFailureJsonKeyNotFound
         jsonKeyNotFound,
     required TResult Function(DatabaseFailureInsertionFailure value)
         insertionFailure,
+    required TResult Function(DatabaseFailureJsonParseFailure value)
+        jsonParseFailure,
+    required TResult Function(DatabaseFailureHiveError value) hiveError,
+    required TResult Function(DatabaseFailureIsarError value) isarError,
   }) {
     return jsonKeyNotFound(this);
   }
@@ -715,6 +804,9 @@ class _$DatabaseFailureJsonKeyNotFound
         userHasNotSignedIn,
     TResult Function(DatabaseFailureJsonKeyNotFound value)? jsonKeyNotFound,
     TResult Function(DatabaseFailureInsertionFailure value)? insertionFailure,
+    TResult Function(DatabaseFailureJsonParseFailure value)? jsonParseFailure,
+    TResult Function(DatabaseFailureHiveError value)? hiveError,
+    TResult Function(DatabaseFailureIsarError value)? isarError,
   }) {
     return jsonKeyNotFound?.call(this);
   }
@@ -728,6 +820,9 @@ class _$DatabaseFailureJsonKeyNotFound
         userHasNotSignedIn,
     TResult Function(DatabaseFailureJsonKeyNotFound value)? jsonKeyNotFound,
     TResult Function(DatabaseFailureInsertionFailure value)? insertionFailure,
+    TResult Function(DatabaseFailureJsonParseFailure value)? jsonParseFailure,
+    TResult Function(DatabaseFailureHiveError value)? hiveError,
+    TResult Function(DatabaseFailureIsarError value)? isarError,
     required TResult orElse(),
   }) {
     if (jsonKeyNotFound != null) {
@@ -823,6 +918,9 @@ class _$DatabaseFailureInsertionFailure
     required TResult Function(String? description) userHasNotSignedIn,
     required TResult Function(String? description) jsonKeyNotFound,
     required TResult Function(String? description) insertionFailure,
+    required TResult Function(String? description) jsonParseFailure,
+    required TResult Function(String? description) hiveError,
+    required TResult Function(String? description) isarError,
   }) {
     return insertionFailure(description);
   }
@@ -835,6 +933,9 @@ class _$DatabaseFailureInsertionFailure
     TResult Function(String? description)? userHasNotSignedIn,
     TResult Function(String? description)? jsonKeyNotFound,
     TResult Function(String? description)? insertionFailure,
+    TResult Function(String? description)? jsonParseFailure,
+    TResult Function(String? description)? hiveError,
+    TResult Function(String? description)? isarError,
   }) {
     return insertionFailure?.call(description);
   }
@@ -847,6 +948,9 @@ class _$DatabaseFailureInsertionFailure
     TResult Function(String? description)? userHasNotSignedIn,
     TResult Function(String? description)? jsonKeyNotFound,
     TResult Function(String? description)? insertionFailure,
+    TResult Function(String? description)? jsonParseFailure,
+    TResult Function(String? description)? hiveError,
+    TResult Function(String? description)? isarError,
     required TResult orElse(),
   }) {
     if (insertionFailure != null) {
@@ -866,6 +970,10 @@ class _$DatabaseFailureInsertionFailure
         jsonKeyNotFound,
     required TResult Function(DatabaseFailureInsertionFailure value)
         insertionFailure,
+    required TResult Function(DatabaseFailureJsonParseFailure value)
+        jsonParseFailure,
+    required TResult Function(DatabaseFailureHiveError value) hiveError,
+    required TResult Function(DatabaseFailureIsarError value) isarError,
   }) {
     return insertionFailure(this);
   }
@@ -879,6 +987,9 @@ class _$DatabaseFailureInsertionFailure
         userHasNotSignedIn,
     TResult Function(DatabaseFailureJsonKeyNotFound value)? jsonKeyNotFound,
     TResult Function(DatabaseFailureInsertionFailure value)? insertionFailure,
+    TResult Function(DatabaseFailureJsonParseFailure value)? jsonParseFailure,
+    TResult Function(DatabaseFailureHiveError value)? hiveError,
+    TResult Function(DatabaseFailureIsarError value)? isarError,
   }) {
     return insertionFailure?.call(this);
   }
@@ -892,6 +1003,9 @@ class _$DatabaseFailureInsertionFailure
         userHasNotSignedIn,
     TResult Function(DatabaseFailureJsonKeyNotFound value)? jsonKeyNotFound,
     TResult Function(DatabaseFailureInsertionFailure value)? insertionFailure,
+    TResult Function(DatabaseFailureJsonParseFailure value)? jsonParseFailure,
+    TResult Function(DatabaseFailureHiveError value)? hiveError,
+    TResult Function(DatabaseFailureIsarError value)? isarError,
     required TResult orElse(),
   }) {
     if (insertionFailure != null) {
@@ -908,5 +1022,550 @@ abstract class DatabaseFailureInsertionFailure implements DatabaseFailure {
   String? get description;
   @JsonKey(ignore: true)
   _$$DatabaseFailureInsertionFailureCopyWith<_$DatabaseFailureInsertionFailure>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DatabaseFailureJsonParseFailureCopyWith<$Res> {
+  factory _$$DatabaseFailureJsonParseFailureCopyWith(
+          _$DatabaseFailureJsonParseFailure value,
+          $Res Function(_$DatabaseFailureJsonParseFailure) then) =
+      __$$DatabaseFailureJsonParseFailureCopyWithImpl<$Res>;
+  $Res call({String? description});
+}
+
+/// @nodoc
+class __$$DatabaseFailureJsonParseFailureCopyWithImpl<$Res>
+    extends _$DatabaseFailureCopyWithImpl<$Res>
+    implements _$$DatabaseFailureJsonParseFailureCopyWith<$Res> {
+  __$$DatabaseFailureJsonParseFailureCopyWithImpl(
+      _$DatabaseFailureJsonParseFailure _value,
+      $Res Function(_$DatabaseFailureJsonParseFailure) _then)
+      : super(_value, (v) => _then(v as _$DatabaseFailureJsonParseFailure));
+
+  @override
+  _$DatabaseFailureJsonParseFailure get _value =>
+      super._value as _$DatabaseFailureJsonParseFailure;
+
+  @override
+  $Res call({
+    Object? description = freezed,
+  }) {
+    return _then(_$DatabaseFailureJsonParseFailure(
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DatabaseFailureJsonParseFailure
+    implements DatabaseFailureJsonParseFailure {
+  const _$DatabaseFailureJsonParseFailure({this.description});
+
+  @override
+  final String? description;
+
+  @override
+  String toString() {
+    return 'DatabaseFailure.jsonParseFailure(description: $description)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DatabaseFailureJsonParseFailure &&
+            const DeepCollectionEquality()
+                .equals(other.description, description));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(description));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$DatabaseFailureJsonParseFailureCopyWith<_$DatabaseFailureJsonParseFailure>
+      get copyWith => __$$DatabaseFailureJsonParseFailureCopyWithImpl<
+          _$DatabaseFailureJsonParseFailure>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String description) $default, {
+    required TResult Function(String? description) hasNoDrawing,
+    required TResult Function(String? description) userHasNotSignedIn,
+    required TResult Function(String? description) jsonKeyNotFound,
+    required TResult Function(String? description) insertionFailure,
+    required TResult Function(String? description) jsonParseFailure,
+    required TResult Function(String? description) hiveError,
+    required TResult Function(String? description) isarError,
+  }) {
+    return jsonParseFailure(description);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult Function(String description)? $default, {
+    TResult Function(String? description)? hasNoDrawing,
+    TResult Function(String? description)? userHasNotSignedIn,
+    TResult Function(String? description)? jsonKeyNotFound,
+    TResult Function(String? description)? insertionFailure,
+    TResult Function(String? description)? jsonParseFailure,
+    TResult Function(String? description)? hiveError,
+    TResult Function(String? description)? isarError,
+  }) {
+    return jsonParseFailure?.call(description);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String description)? $default, {
+    TResult Function(String? description)? hasNoDrawing,
+    TResult Function(String? description)? userHasNotSignedIn,
+    TResult Function(String? description)? jsonKeyNotFound,
+    TResult Function(String? description)? insertionFailure,
+    TResult Function(String? description)? jsonParseFailure,
+    TResult Function(String? description)? hiveError,
+    TResult Function(String? description)? isarError,
+    required TResult orElse(),
+  }) {
+    if (jsonParseFailure != null) {
+      return jsonParseFailure(description);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_DatabaseFailure value) $default, {
+    required TResult Function(DatabaseFailureHasNoDrawing value) hasNoDrawing,
+    required TResult Function(DatabaseFailureUserHasNotSignedIn value)
+        userHasNotSignedIn,
+    required TResult Function(DatabaseFailureJsonKeyNotFound value)
+        jsonKeyNotFound,
+    required TResult Function(DatabaseFailureInsertionFailure value)
+        insertionFailure,
+    required TResult Function(DatabaseFailureJsonParseFailure value)
+        jsonParseFailure,
+    required TResult Function(DatabaseFailureHiveError value) hiveError,
+    required TResult Function(DatabaseFailureIsarError value) isarError,
+  }) {
+    return jsonParseFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult Function(_DatabaseFailure value)? $default, {
+    TResult Function(DatabaseFailureHasNoDrawing value)? hasNoDrawing,
+    TResult Function(DatabaseFailureUserHasNotSignedIn value)?
+        userHasNotSignedIn,
+    TResult Function(DatabaseFailureJsonKeyNotFound value)? jsonKeyNotFound,
+    TResult Function(DatabaseFailureInsertionFailure value)? insertionFailure,
+    TResult Function(DatabaseFailureJsonParseFailure value)? jsonParseFailure,
+    TResult Function(DatabaseFailureHiveError value)? hiveError,
+    TResult Function(DatabaseFailureIsarError value)? isarError,
+  }) {
+    return jsonParseFailure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_DatabaseFailure value)? $default, {
+    TResult Function(DatabaseFailureHasNoDrawing value)? hasNoDrawing,
+    TResult Function(DatabaseFailureUserHasNotSignedIn value)?
+        userHasNotSignedIn,
+    TResult Function(DatabaseFailureJsonKeyNotFound value)? jsonKeyNotFound,
+    TResult Function(DatabaseFailureInsertionFailure value)? insertionFailure,
+    TResult Function(DatabaseFailureJsonParseFailure value)? jsonParseFailure,
+    TResult Function(DatabaseFailureHiveError value)? hiveError,
+    TResult Function(DatabaseFailureIsarError value)? isarError,
+    required TResult orElse(),
+  }) {
+    if (jsonParseFailure != null) {
+      return jsonParseFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DatabaseFailureJsonParseFailure implements DatabaseFailure {
+  const factory DatabaseFailureJsonParseFailure({final String? description}) =
+      _$DatabaseFailureJsonParseFailure;
+
+  String? get description;
+  @JsonKey(ignore: true)
+  _$$DatabaseFailureJsonParseFailureCopyWith<_$DatabaseFailureJsonParseFailure>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DatabaseFailureHiveErrorCopyWith<$Res> {
+  factory _$$DatabaseFailureHiveErrorCopyWith(_$DatabaseFailureHiveError value,
+          $Res Function(_$DatabaseFailureHiveError) then) =
+      __$$DatabaseFailureHiveErrorCopyWithImpl<$Res>;
+  $Res call({String? description});
+}
+
+/// @nodoc
+class __$$DatabaseFailureHiveErrorCopyWithImpl<$Res>
+    extends _$DatabaseFailureCopyWithImpl<$Res>
+    implements _$$DatabaseFailureHiveErrorCopyWith<$Res> {
+  __$$DatabaseFailureHiveErrorCopyWithImpl(_$DatabaseFailureHiveError _value,
+      $Res Function(_$DatabaseFailureHiveError) _then)
+      : super(_value, (v) => _then(v as _$DatabaseFailureHiveError));
+
+  @override
+  _$DatabaseFailureHiveError get _value =>
+      super._value as _$DatabaseFailureHiveError;
+
+  @override
+  $Res call({
+    Object? description = freezed,
+  }) {
+    return _then(_$DatabaseFailureHiveError(
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DatabaseFailureHiveError implements DatabaseFailureHiveError {
+  const _$DatabaseFailureHiveError({this.description});
+
+  @override
+  final String? description;
+
+  @override
+  String toString() {
+    return 'DatabaseFailure.hiveError(description: $description)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DatabaseFailureHiveError &&
+            const DeepCollectionEquality()
+                .equals(other.description, description));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(description));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$DatabaseFailureHiveErrorCopyWith<_$DatabaseFailureHiveError>
+      get copyWith =>
+          __$$DatabaseFailureHiveErrorCopyWithImpl<_$DatabaseFailureHiveError>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String description) $default, {
+    required TResult Function(String? description) hasNoDrawing,
+    required TResult Function(String? description) userHasNotSignedIn,
+    required TResult Function(String? description) jsonKeyNotFound,
+    required TResult Function(String? description) insertionFailure,
+    required TResult Function(String? description) jsonParseFailure,
+    required TResult Function(String? description) hiveError,
+    required TResult Function(String? description) isarError,
+  }) {
+    return hiveError(description);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult Function(String description)? $default, {
+    TResult Function(String? description)? hasNoDrawing,
+    TResult Function(String? description)? userHasNotSignedIn,
+    TResult Function(String? description)? jsonKeyNotFound,
+    TResult Function(String? description)? insertionFailure,
+    TResult Function(String? description)? jsonParseFailure,
+    TResult Function(String? description)? hiveError,
+    TResult Function(String? description)? isarError,
+  }) {
+    return hiveError?.call(description);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String description)? $default, {
+    TResult Function(String? description)? hasNoDrawing,
+    TResult Function(String? description)? userHasNotSignedIn,
+    TResult Function(String? description)? jsonKeyNotFound,
+    TResult Function(String? description)? insertionFailure,
+    TResult Function(String? description)? jsonParseFailure,
+    TResult Function(String? description)? hiveError,
+    TResult Function(String? description)? isarError,
+    required TResult orElse(),
+  }) {
+    if (hiveError != null) {
+      return hiveError(description);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_DatabaseFailure value) $default, {
+    required TResult Function(DatabaseFailureHasNoDrawing value) hasNoDrawing,
+    required TResult Function(DatabaseFailureUserHasNotSignedIn value)
+        userHasNotSignedIn,
+    required TResult Function(DatabaseFailureJsonKeyNotFound value)
+        jsonKeyNotFound,
+    required TResult Function(DatabaseFailureInsertionFailure value)
+        insertionFailure,
+    required TResult Function(DatabaseFailureJsonParseFailure value)
+        jsonParseFailure,
+    required TResult Function(DatabaseFailureHiveError value) hiveError,
+    required TResult Function(DatabaseFailureIsarError value) isarError,
+  }) {
+    return hiveError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult Function(_DatabaseFailure value)? $default, {
+    TResult Function(DatabaseFailureHasNoDrawing value)? hasNoDrawing,
+    TResult Function(DatabaseFailureUserHasNotSignedIn value)?
+        userHasNotSignedIn,
+    TResult Function(DatabaseFailureJsonKeyNotFound value)? jsonKeyNotFound,
+    TResult Function(DatabaseFailureInsertionFailure value)? insertionFailure,
+    TResult Function(DatabaseFailureJsonParseFailure value)? jsonParseFailure,
+    TResult Function(DatabaseFailureHiveError value)? hiveError,
+    TResult Function(DatabaseFailureIsarError value)? isarError,
+  }) {
+    return hiveError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_DatabaseFailure value)? $default, {
+    TResult Function(DatabaseFailureHasNoDrawing value)? hasNoDrawing,
+    TResult Function(DatabaseFailureUserHasNotSignedIn value)?
+        userHasNotSignedIn,
+    TResult Function(DatabaseFailureJsonKeyNotFound value)? jsonKeyNotFound,
+    TResult Function(DatabaseFailureInsertionFailure value)? insertionFailure,
+    TResult Function(DatabaseFailureJsonParseFailure value)? jsonParseFailure,
+    TResult Function(DatabaseFailureHiveError value)? hiveError,
+    TResult Function(DatabaseFailureIsarError value)? isarError,
+    required TResult orElse(),
+  }) {
+    if (hiveError != null) {
+      return hiveError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DatabaseFailureHiveError implements DatabaseFailure {
+  const factory DatabaseFailureHiveError({final String? description}) =
+      _$DatabaseFailureHiveError;
+
+  String? get description;
+  @JsonKey(ignore: true)
+  _$$DatabaseFailureHiveErrorCopyWith<_$DatabaseFailureHiveError>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DatabaseFailureIsarErrorCopyWith<$Res> {
+  factory _$$DatabaseFailureIsarErrorCopyWith(_$DatabaseFailureIsarError value,
+          $Res Function(_$DatabaseFailureIsarError) then) =
+      __$$DatabaseFailureIsarErrorCopyWithImpl<$Res>;
+  $Res call({String? description});
+}
+
+/// @nodoc
+class __$$DatabaseFailureIsarErrorCopyWithImpl<$Res>
+    extends _$DatabaseFailureCopyWithImpl<$Res>
+    implements _$$DatabaseFailureIsarErrorCopyWith<$Res> {
+  __$$DatabaseFailureIsarErrorCopyWithImpl(_$DatabaseFailureIsarError _value,
+      $Res Function(_$DatabaseFailureIsarError) _then)
+      : super(_value, (v) => _then(v as _$DatabaseFailureIsarError));
+
+  @override
+  _$DatabaseFailureIsarError get _value =>
+      super._value as _$DatabaseFailureIsarError;
+
+  @override
+  $Res call({
+    Object? description = freezed,
+  }) {
+    return _then(_$DatabaseFailureIsarError(
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DatabaseFailureIsarError implements DatabaseFailureIsarError {
+  const _$DatabaseFailureIsarError({this.description});
+
+  @override
+  final String? description;
+
+  @override
+  String toString() {
+    return 'DatabaseFailure.isarError(description: $description)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DatabaseFailureIsarError &&
+            const DeepCollectionEquality()
+                .equals(other.description, description));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(description));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$DatabaseFailureIsarErrorCopyWith<_$DatabaseFailureIsarError>
+      get copyWith =>
+          __$$DatabaseFailureIsarErrorCopyWithImpl<_$DatabaseFailureIsarError>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String description) $default, {
+    required TResult Function(String? description) hasNoDrawing,
+    required TResult Function(String? description) userHasNotSignedIn,
+    required TResult Function(String? description) jsonKeyNotFound,
+    required TResult Function(String? description) insertionFailure,
+    required TResult Function(String? description) jsonParseFailure,
+    required TResult Function(String? description) hiveError,
+    required TResult Function(String? description) isarError,
+  }) {
+    return isarError(description);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult Function(String description)? $default, {
+    TResult Function(String? description)? hasNoDrawing,
+    TResult Function(String? description)? userHasNotSignedIn,
+    TResult Function(String? description)? jsonKeyNotFound,
+    TResult Function(String? description)? insertionFailure,
+    TResult Function(String? description)? jsonParseFailure,
+    TResult Function(String? description)? hiveError,
+    TResult Function(String? description)? isarError,
+  }) {
+    return isarError?.call(description);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String description)? $default, {
+    TResult Function(String? description)? hasNoDrawing,
+    TResult Function(String? description)? userHasNotSignedIn,
+    TResult Function(String? description)? jsonKeyNotFound,
+    TResult Function(String? description)? insertionFailure,
+    TResult Function(String? description)? jsonParseFailure,
+    TResult Function(String? description)? hiveError,
+    TResult Function(String? description)? isarError,
+    required TResult orElse(),
+  }) {
+    if (isarError != null) {
+      return isarError(description);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_DatabaseFailure value) $default, {
+    required TResult Function(DatabaseFailureHasNoDrawing value) hasNoDrawing,
+    required TResult Function(DatabaseFailureUserHasNotSignedIn value)
+        userHasNotSignedIn,
+    required TResult Function(DatabaseFailureJsonKeyNotFound value)
+        jsonKeyNotFound,
+    required TResult Function(DatabaseFailureInsertionFailure value)
+        insertionFailure,
+    required TResult Function(DatabaseFailureJsonParseFailure value)
+        jsonParseFailure,
+    required TResult Function(DatabaseFailureHiveError value) hiveError,
+    required TResult Function(DatabaseFailureIsarError value) isarError,
+  }) {
+    return isarError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult Function(_DatabaseFailure value)? $default, {
+    TResult Function(DatabaseFailureHasNoDrawing value)? hasNoDrawing,
+    TResult Function(DatabaseFailureUserHasNotSignedIn value)?
+        userHasNotSignedIn,
+    TResult Function(DatabaseFailureJsonKeyNotFound value)? jsonKeyNotFound,
+    TResult Function(DatabaseFailureInsertionFailure value)? insertionFailure,
+    TResult Function(DatabaseFailureJsonParseFailure value)? jsonParseFailure,
+    TResult Function(DatabaseFailureHiveError value)? hiveError,
+    TResult Function(DatabaseFailureIsarError value)? isarError,
+  }) {
+    return isarError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_DatabaseFailure value)? $default, {
+    TResult Function(DatabaseFailureHasNoDrawing value)? hasNoDrawing,
+    TResult Function(DatabaseFailureUserHasNotSignedIn value)?
+        userHasNotSignedIn,
+    TResult Function(DatabaseFailureJsonKeyNotFound value)? jsonKeyNotFound,
+    TResult Function(DatabaseFailureInsertionFailure value)? insertionFailure,
+    TResult Function(DatabaseFailureJsonParseFailure value)? jsonParseFailure,
+    TResult Function(DatabaseFailureHiveError value)? hiveError,
+    TResult Function(DatabaseFailureIsarError value)? isarError,
+    required TResult orElse(),
+  }) {
+    if (isarError != null) {
+      return isarError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DatabaseFailureIsarError implements DatabaseFailure {
+  const factory DatabaseFailureIsarError({final String? description}) =
+      _$DatabaseFailureIsarError;
+
+  String? get description;
+  @JsonKey(ignore: true)
+  _$$DatabaseFailureIsarErrorCopyWith<_$DatabaseFailureIsarError>
       get copyWith => throw _privateConstructorUsedError;
 }

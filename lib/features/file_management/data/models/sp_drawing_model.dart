@@ -1,42 +1,56 @@
 import 'package:copypaste/features/file_management/domain/entities/sp_drawing.dart';
-import 'package:flutter/foundation.dart';
+import 'package:isar/isar.dart';
+import '../../../drawing/data/models/sp_stroke_model.dart';
 
-import '../../../../core/errors_and_failures/errors/json_exception.dart';
+part 'sp_drawing_model.g.dart';
 
-class SPDrawingModel extends SPDrawing {
-  const SPDrawingModel({
-    required super.id,
-    required super.name,
-    required super.createdAt,
-    required super.modifiedAt,
-  });
+@Collection()
+class SPDrawingModel {
+  SPDrawingModel();
 
-  factory SPDrawingModel.fromJson(Map<String, dynamic> json) {
-    return SPDrawingModel(
-      id: json['ID'] ?? (throw JsonKeyNotFoundException(message: 'id-not-found')),
-      createdAt:
-          DateTime.tryParse(json['CREATED_AT']) ?? (throw JsonKeyNotFoundException(message: 'created-at-not-found')),
-      modifiedAt:
-          DateTime.tryParse(json['MODIFIED_AT']) ?? (throw JsonKeyNotFoundException(message: 'modified-at-not-found')),
-      name: json['NAME'] ?? (throw JsonKeyNotFoundException(message: 'name-not-found')),
-    );
-  }
+  var id = Isar.autoIncrement;
 
-  factory SPDrawingModel.fromDomain(SPDrawing domain) {
-    return SPDrawingModel(
-      id: domain.id,
-      createdAt: domain.createdAt,
-      modifiedAt: domain.modifiedAt,
-      name: domain.name,
-    );
-  }
+  late String name;
 
-  Map<String, Object?> toJson() {
+  late DateTime createdAt;
+
+  late DateTime updatedAt;
+
+  final strokes = IsarLinks<SPStrokeModel>();
+
+  // to json
+  Map<String, String> toJson() {
     return {
-      'id': id,
-      'created_at': createdAt.toIso8601String(),
-      'modified_at': modifiedAt.toIso8601String(),
+      'id': id.toString(),
       'name': name,
+      'createdAt': createdAt.toIso8601String(),
+      'updatedAt': updatedAt.toIso8601String(),
     };
+  }
+
+  // from json
+  SPDrawingModel.fromJson(Map<String, String> json) {
+    id = int.parse(json['id']!);
+    name = json['name']!;
+    createdAt = DateTime.parse(json['createdAt']!);
+    updatedAt = DateTime.parse(json['updatedAt']!);
+  }
+
+  // from domain entity
+  SPDrawingModel.fromSPDrawing(SPDrawing drawing) {
+    id = drawing.id;
+    name = drawing.name;
+    createdAt = drawing.createdAt;
+    updatedAt = drawing.updatedAt;
+  }
+
+  // to domain entity
+  SPDrawing toSPDrawing() {
+    return SPDrawing(
+      id: id,
+      name: name,
+      createdAt: createdAt,
+      updatedAt: updatedAt,
+    );
   }
 }

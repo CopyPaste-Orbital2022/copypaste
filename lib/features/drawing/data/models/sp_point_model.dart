@@ -1,46 +1,39 @@
 import 'dart:ui';
 
+import 'package:copypaste/features/drawing/data/models/sp_stroke_model.dart';
 import 'package:copypaste/features/drawing/domain/entities/sp_point.dart';
-import 'package:equatable/equatable.dart';
+import 'package:isar/isar.dart';
+part 'sp_point_model.g.dart';
 
-class SPPointModel extends Equatable {
-  final String id;
-  final int index;
-  final double dx;
-  final double dy;
-  final double pressure;
+@Collection()
+class SPPointModel {
+  int id = Isar.autoIncrement;
+  late double dx;
+  late double dy;
+  late double pressure;
+  @Backlink(to: 'points')
+  final stroke = IsarLink<SPStrokeModel>();
 
-  const SPPointModel({
-    required this.id,
-    required this.index,
-    required this.dx,
-    required this.dy,
-    required this.pressure,
-  });
-
-  @override
-  List<Object?> get props => [dx, dy, pressure];
+  SPPointModel();
 
   /// converts to the domain layer
   SPPoint toDomain() {
-    return SPPoint(id: id, index: index, offset: Offset(dx, dy), pressure: pressure);
+    return SPPoint(id: id, offset: Offset(dx, dy), pressure: pressure);
   }
 
   /// converts from the domain layer
   static SPPointModel fromDomain(SPPoint point) {
-    return SPPointModel(
-      id: point.id,
-      index: point.index,
-      dx: point.dx,
-      dy: point.dy,
-      pressure: point.pressure,
-    );
+    final model = SPPointModel();
+    model.dx = point.offset.dx;
+    model.dy = point.offset.dy;
+    model.pressure = point.pressure;
+    return model;
   }
 
   /// to json
   Map<String, Object?> toJson() {
     return {
-      'id': index,
+      'id': id,
       'dx': dx,
       'dy': dy,
       'pressure': pressure,
@@ -49,12 +42,11 @@ class SPPointModel extends Equatable {
 
   /// from json
   static SPPointModel fromJson(Map<String, dynamic> json) {
-    return SPPointModel(
-      id: json['id'] as String,
-      index: json['index'] as int,
-      dx: json['dx'] as double,
-      dy: json['dy'] as double,
-      pressure: json['pressure'] as double,
-    );
+    final model = SPPointModel();
+    model.id = json['id'] as int;
+    model.dx = json['dx'] as double;
+    model.dy = json['dy'] as double;
+    model.pressure = json['pressure'] as double;
+    return model;
   }
 }

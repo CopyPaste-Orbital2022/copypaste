@@ -24,4 +24,19 @@ class DatabaseFailure with _$DatabaseFailure {
   const factory DatabaseFailure.insertionFailure({
     String? description,
   }) = DatabaseFailureInsertionFailure;
+
+  /// json failed to parse
+  const factory DatabaseFailure.jsonParseFailure({
+    String? description,
+  }) = DatabaseFailureJsonParseFailure;
+
+  /// hive error
+  const factory DatabaseFailure.hiveError({
+    String? description,
+  }) = DatabaseFailureHiveError;
+
+  /// isar error
+  const factory DatabaseFailure.isarError({
+    String? description,
+  }) = DatabaseFailureIsarError;
 }

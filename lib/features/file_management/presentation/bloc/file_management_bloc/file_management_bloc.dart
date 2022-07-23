@@ -5,8 +5,6 @@ import 'package:copypaste/core/routing/app_router.dart';
 import 'package:copypaste/features/drawing/presentation/bloc/drawing_bloc/drawing_bloc.dart';
 import 'package:copypaste/features/file_management/domain/usecases/change_drawing_name.dart';
 import 'package:copypaste/features/file_management/domain/usecases/create_drawing.dart';
-import 'package:copypaste/features/file_management/domain/usecases/load_drawings_list.dart';
-import 'package:copypaste/features/file_management/domain/usecases/load_most_recent_drawing.dart';
 import 'package:flutter/foundation.dart';
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:freezed_annotation/freezed_annotation.dart";
@@ -24,21 +22,16 @@ part "file_management_bloc.freezed.dart";
 class FileManagementBloc extends Bloc<FileManagementEvent, FileManagementState> {
   final ChangeDrawingNameUsecase changeDrawingNameUsecase;
   final CreateNewDrawingUsecase createNewDrawingUsecase;
-  final LoadDrawingsListUsecase loadDrawingsListUsecase;
-  final LoadMostRecentDrawingUsecase loadMostRecentDrawingUsecase;
   final AppRouter router;
 
   FileManagementBloc(
     this.changeDrawingNameUsecase,
     this.createNewDrawingUsecase,
-    this.loadDrawingsListUsecase,
-    this.loadMostRecentDrawingUsecase,
     this.router,
   ) : super(FileManagementStateX.initial()) {
     on<FileManagementEvent>(
       (event, emit) async {
         await event.map(
-          refreshListEvent: (event) async => await _onLoadDrawings(emit),
           createNewDrawingEvent: (event) async => await _onCreateNewDrawingEvent(event, emit),
           changeDrawingNameEvent: (event) async => await _onChangeDrawingNameEvent(event, emit),
           selectDrawing: (event) async => await _onSelectDrawingEvent(event, emit),
@@ -47,31 +40,9 @@ class FileManagementBloc extends Bloc<FileManagementEvent, FileManagementState> 
     );
   }
 
-  Future<void> _onLoadDrawings(Emitter<FileManagementState> emit) async {
-    final drawingsListOrFailure = await loadDrawingsListUsecase();
-    drawingsListOrFailure.fold(
-      (failure) {
-        // TODO: write the code to notify the user when there is a failure
-        debugPrint("$failure");
-      },
-      (drawings) {
-        debugPrint(drawings.toString());
-        emit(
-          state.copyWith(drawings: drawings),
-        );
-      },
-    );
-  }
-
   Future<void> _onCreateNewDrawingEvent(
       FileManagementEventCreateNewDrawing event, Emitter<FileManagementState> emit) async {
     final newDrawingOrFailure = await createNewDrawingUsecase();
-    await newDrawingOrFailure.fold((l) async {
-      // TODO: add error handling
-      await _onLoadDrawings(emit);
-    }, (r) async {
-      await _onLoadDrawings(emit);
-    });
   }
 
   Future<void> _onChangeDrawingNameEvent(
@@ -80,12 +51,6 @@ class FileManagementBloc extends Bloc<FileManagementEvent, FileManagementState> 
       event.drawing,
       event.name,
     );
-    await failureOrUnit.fold((l) async {
-      await _onLoadDrawings(emit);
-      debugPrint("has encountered failure");
-    }, (r) async {
-      await _onLoadDrawings(emit);
-    });
   }
 
   Future<void> _onSelectDrawingEvent(FileManagementEventSelectDrawing event, Emitter<FileManagementState> emit) async {
@@ -94,7 +59,7 @@ class FileManagementBloc extends Bloc<FileManagementEvent, FileManagementState> 
         selectedDrawing: event.drawing,
       ),
     );
-    getIt<DrawingBloc>().add(const DrawingEvent.initial());
+    getIt<DrawingBloc>().add(DrawingEvent.initial(drawing: event.drawing));
     await router.replace(const DrawingRoute());
   }
 }

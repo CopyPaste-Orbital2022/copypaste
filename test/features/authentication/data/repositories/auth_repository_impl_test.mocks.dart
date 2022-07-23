@@ -49,11 +49,11 @@ class _FakeMacOsOptions_8 extends _i1.Fake implements _i3.MacOsOptions {}
 
 class _FakeEither_9<L, R> extends _i1.Fake implements _i4.Either<L, R> {}
 
-/// A class which mocks [SPCloudAuth].
+/// A class which mocks [ISPCloudAuth].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockSPCloudAuth extends _i1.Mock implements _i5.SPCloudAuth {
-  MockSPCloudAuth() {
+class MockISPCloudAuth extends _i1.Mock implements _i5.ISPCloudAuth {
+  MockISPCloudAuth() {
     _i1.throwOnMissingStub(this);
   }
 

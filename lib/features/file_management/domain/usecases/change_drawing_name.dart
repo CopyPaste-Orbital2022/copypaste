@@ -11,10 +11,8 @@ class ChangeDrawingNameUsecase {
 
   const ChangeDrawingNameUsecase(this.repository);
 
-  Future<Either<DatabaseFailure, Unit>> call(
-      SPDrawing drawing, String name) async {
-    final failureOrUnit =
-        await repository.saveDrawing(drawing.modify(name: name));
+  Future<Either<DatabaseFailure, Unit>> call(SPDrawing drawing, String name) async {
+    final failureOrUnit = await repository.updateDrawing(drawing.copyWith(name: name));
     return failureOrUnit;
   }
 }

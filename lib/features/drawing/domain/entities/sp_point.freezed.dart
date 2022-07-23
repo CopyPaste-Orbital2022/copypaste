@@ -16,8 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SPPoint {
-  String get id => throw _privateConstructorUsedError;
-  int get index => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
   Offset get offset => throw _privateConstructorUsedError;
   double get pressure => throw _privateConstructorUsedError;
 
@@ -29,7 +28,7 @@ mixin _$SPPoint {
 abstract class $SPPointCopyWith<$Res> {
   factory $SPPointCopyWith(SPPoint value, $Res Function(SPPoint) then) =
       _$SPPointCopyWithImpl<$Res>;
-  $Res call({String id, int index, Offset offset, double pressure});
+  $Res call({int? id, Offset offset, double pressure});
 }
 
 /// @nodoc
@@ -43,7 +42,6 @@ class _$SPPointCopyWithImpl<$Res> implements $SPPointCopyWith<$Res> {
   @override
   $Res call({
     Object? id = freezed,
-    Object? index = freezed,
     Object? offset = freezed,
     Object? pressure = freezed,
   }) {
@@ -51,11 +49,7 @@ class _$SPPointCopyWithImpl<$Res> implements $SPPointCopyWith<$Res> {
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      index: index == freezed
-          ? _value.index
-          : index // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       offset: offset == freezed
           ? _value.offset
           : offset // ignore: cast_nullable_to_non_nullable
@@ -74,7 +68,7 @@ abstract class _$$_SPPointCopyWith<$Res> implements $SPPointCopyWith<$Res> {
           _$_SPPoint value, $Res Function(_$_SPPoint) then) =
       __$$_SPPointCopyWithImpl<$Res>;
   @override
-  $Res call({String id, int index, Offset offset, double pressure});
+  $Res call({int? id, Offset offset, double pressure});
 }
 
 /// @nodoc
@@ -89,7 +83,6 @@ class __$$_SPPointCopyWithImpl<$Res> extends _$SPPointCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? index = freezed,
     Object? offset = freezed,
     Object? pressure = freezed,
   }) {
@@ -97,11 +90,7 @@ class __$$_SPPointCopyWithImpl<$Res> extends _$SPPointCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      index: index == freezed
-          ? _value.index
-          : index // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       offset: offset == freezed
           ? _value.offset
           : offset // ignore: cast_nullable_to_non_nullable
@@ -117,16 +106,10 @@ class __$$_SPPointCopyWithImpl<$Res> extends _$SPPointCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_SPPoint implements _SPPoint {
-  const _$_SPPoint(
-      {required this.id,
-      required this.index,
-      required this.offset,
-      required this.pressure});
+  const _$_SPPoint({this.id, required this.offset, required this.pressure});
 
   @override
-  final String id;
-  @override
-  final int index;
+  final int? id;
   @override
   final Offset offset;
   @override
@@ -134,7 +117,7 @@ class _$_SPPoint implements _SPPoint {
 
   @override
   String toString() {
-    return 'SPPoint(id: $id, index: $index, offset: $offset, pressure: $pressure)';
+    return 'SPPoint(id: $id, offset: $offset, pressure: $pressure)';
   }
 
   @override
@@ -143,7 +126,6 @@ class _$_SPPoint implements _SPPoint {
         (other.runtimeType == runtimeType &&
             other is _$_SPPoint &&
             const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.index, index) &&
             const DeepCollectionEquality().equals(other.offset, offset) &&
             const DeepCollectionEquality().equals(other.pressure, pressure));
   }
@@ -152,7 +134,6 @@ class _$_SPPoint implements _SPPoint {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(index),
       const DeepCollectionEquality().hash(offset),
       const DeepCollectionEquality().hash(pressure));
 
@@ -164,15 +145,12 @@ class _$_SPPoint implements _SPPoint {
 
 abstract class _SPPoint implements SPPoint {
   const factory _SPPoint(
-      {required final String id,
-      required final int index,
+      {final int? id,
       required final Offset offset,
       required final double pressure}) = _$_SPPoint;
 
   @override
-  String get id;
-  @override
-  int get index;
+  int? get id;
   @override
   Offset get offset;
   @override

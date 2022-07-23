@@ -3,9 +3,13 @@ import 'package:copypaste/core/cloud/sp_cloud.dart';
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 
-@LazySingleton()
-class SPCloudAuth extends ISPCloud {
-  SPCloudAuth(
+@LazySingleton(as: ISPCloudAuth)
+class SPCloudAuthImpl extends ISPCloudAuth {
+  SPCloudAuthImpl(super.client);
+}
+
+class ISPCloudAuth extends ISPCloud {
+  ISPCloudAuth(
     super.client, {
     super.scheme = 'https',
     super.host = 'www.tinyhacks.app',

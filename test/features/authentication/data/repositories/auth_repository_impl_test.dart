@@ -17,12 +17,12 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'auth_repository_impl_test.mocks.dart';
 
-@GenerateMocks([SPCloudAuth, FlutterSecureStorage, Email, Password, DisplayName])
+@GenerateMocks([ISPCloudAuth, FlutterSecureStorage, Email, Password, DisplayName])
 void main() {
   // Write tests for features/authentication/data/repositories/firebase_auth_repository_impl.dart here.
 
   group('AuthRepositoryImpl', () {
-    late SPCloudAuth mockCloudAuth;
+    late ISPCloudAuth mockCloudAuth;
     late FlutterSecureStorage storage;
     late AuthRepositoryImpl authRepository;
     late SPUser user;
@@ -31,7 +31,7 @@ void main() {
     late DisplayName displayName;
 
     setUp(() {
-      mockCloudAuth = MockSPCloudAuth();
+      mockCloudAuth = MockISPCloudAuth();
       storage = MockFlutterSecureStorage();
       authRepository = AuthRepositoryImpl(mockCloudAuth, storage);
       user = const SPUser(uid: 'user_id', userName: 'user_name', email: 'test@tinyhacks.app');

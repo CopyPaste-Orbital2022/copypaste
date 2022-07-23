@@ -8,8 +8,7 @@ part 'sp_point.freezed.dart';
 @freezed
 class SPPoint with _$SPPoint {
   const factory SPPoint({
-    required String id,
-    required int index,
+    int? id,
     required Offset offset,
     required double pressure,
   }) = _SPPoint;
@@ -24,14 +23,4 @@ extension SPPointX on SPPoint {
 
   /// Get the [Point] from the [SPPoint].
   Point get point => Point(dx, dy, pressure);
-
-  /// from point
-  static SPPoint fromPoint(Point point, int index) {
-    return SPPoint(
-      id: const Uuid().v4(),
-      index: index,
-      offset: Offset(point.x, point.y),
-      pressure: point.p,
-    );
-  }
 }

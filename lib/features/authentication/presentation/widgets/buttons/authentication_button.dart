@@ -23,17 +23,13 @@ class AuthenticationButton extends StatelessWidget {
                     (l) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
-                          content:
-                              Text("Failed to Sign in: " + l.description()),
+                          content: Text("Failed to Sign in: " + l.description()),
                         ),
                       );
                     },
                     (r) {
                       getIt<AppRouter>().replace(const FileManagementRoute());
                       // TODO: change the event to load drawings event
-                      getIt<FileManagementBloc>().add(
-                        const FileManagementEvent.refreshListEvent(),
-                      );
                     },
                   )
                 });

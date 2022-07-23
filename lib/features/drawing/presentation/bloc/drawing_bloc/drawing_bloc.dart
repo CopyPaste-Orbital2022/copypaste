@@ -3,8 +3,8 @@ import 'dart:math';
 import 'dart:ui';
 import 'package:copypaste/features/drawing/domain/usecases/add_stroke.dart';
 import 'package:copypaste/features/drawing/domain/usecases/delete_stroke.dart';
-import 'package:copypaste/features/drawing/domain/usecases/load_strokes_for_drawing.dart';
-import 'package:uuid/uuid.dart';
+import 'package:copypaste/features/drawing/domain/usecases/open_drawing.dart';
+import 'package:copypaste/features/file_management/domain/entities/sp_drawing.dart';
 import '../../../../../core/injections/injection.dart';
 import '../history_manager_bloc/history_manager_bloc.dart';
 import '../history_manager_bloc/history_state.dart';
@@ -31,9 +31,9 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
   final PenColorBloc penColorBloc;
   final EraserWidthBloc eraserWidthBloc;
   final PenSettingsBloc penSettingsBloc;
-  final LoadStrokesForDrawingUsecase loadStrokesForDrawingUsecase;
   final AddStrokeUsecase addStrokeUsecase;
   final DeleteStrokeUsecase deleteStrokeUsecase;
+  final OpenDrawingUsecase openDrawingUsecase;
 
   int? _pointer;
 
@@ -43,9 +43,9 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
     required this.penWidthBloc,
     required this.eraserWidthBloc,
     required this.penSettingsBloc,
-    required this.loadStrokesForDrawingUsecase,
     required this.addStrokeUsecase,
     required this.deleteStrokeUsecase,
+    required this.openDrawingUsecase,
   }) : super(DrawingStateX.initial()) {
     // sets the event handlers
     on<DrawingEvent>((event, emit) async {
@@ -68,7 +68,6 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
           DrawingButtonType.eraser: finishErase,
         }),
         setState: (event) async => emit(event.state),
-        loadStrokes: (event) async => await handleLoadStrokes(emit),
       );
     });
   }
@@ -78,22 +77,10 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
   // event handlers
 
   Future<void> handleInitialEvent(
-    DrawingEvent event,
+    DrawingEventInitial event,
     Emitter<DrawingState> emit,
   ) async {
-    await handleLoadStrokes(emit);
-  }
-
-  Future<void> handleLoadStrokes(Emitter<DrawingState> emit) async {
-    final failureOrStrokes = await loadStrokesForDrawingUsecase();
-    await failureOrStrokes.fold(
-      (failure) async => null,
-      (strokes) async {
-        emit(
-          state.copyWith(strokes: strokes),
-        );
-      },
-    );
+    openDrawingUsecase(event.drawing);
   }
 
   bool get useStylus => penSettingsBloc.state.useStylus;
@@ -136,15 +123,11 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
   Future<void> startDrawing(PointerEvent event, Emitter emit) async {
     // create the point
     final SPPoint point = SPPoint(
-      id: const Uuid().v4(),
-      index: 0,
       offset: event.localPosition,
       pressure: event.pressure,
     );
     // create the stroke
     final SPStroke stroke = SPStroke(
-      id: const Uuid().v4(),
-      index: state.strokes.length,
       points: [point],
       isComplete: false,
       size: penWidth,
@@ -165,8 +148,7 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
   Future<void> updateDrawing(PointerEvent event, Emitter emit) async {
     // create the point
     final SPPoint point = SPPoint(
-      id: const Uuid().v4(),
-      index: state.currentStroke!.points.length,
+      id: state.currentStroke!.points.length,
       offset: event.localPosition,
       pressure: event.pressure,
     );
@@ -183,8 +165,7 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
   Future<void> endDrawing(PointerEvent event, Emitter emit) async {
     // create the point
     final SPPoint point = SPPoint(
-      id: const Uuid().v4(),
-      index: state.currentStroke!.points.length,
+      id: state.currentStroke!.points.length,
       offset: event.localPosition,
       pressure: event.pressure,
     );
@@ -194,14 +175,11 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
       isComplete: true,
     );
     // caching the border points
-    final completedAndCachedStroke = completedStroke.copyWith(
-      cachedBorderPoints: completedStroke.borderPoints,
-    );
 
-    addStrokeUsecase(completedAndCachedStroke);
+    addStrokeUsecase(completedStroke);
     final newState = state.copyWith(
       currentStroke: null,
-      strokes: List.from(state.strokes)..add(completedAndCachedStroke),
+      strokes: List.from(state.strokes)..add(completedStroke),
     );
     getIt<HistoryManagerBloc>().add(HistoryManagerEvent.push(newState));
     emit(newState);
@@ -224,8 +202,8 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
     for (final stroke in state.strokes) {
       bool shouldErase = false;
       for (final point in stroke.borderPoints) {
-        final dx = event.localPosition.dx - point.dx;
-        final dy = event.localPosition.dy - point.dy;
+        final dx = event.localPosition.dx - point.x;
+        final dy = event.localPosition.dy - point.y;
         final distance = sqrt(dx * dx + dy * dy);
         if (distance < eraserRadius) {
           shouldErase = true;

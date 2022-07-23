@@ -1,10 +1,15 @@
 import 'package:copypaste/features/authentication/domain/entities/sp_user.dart';
+import 'package:copypaste/features/drawing/data/models/sp_point_model.dart';
+import 'package:copypaste/features/drawing/data/models/sp_stroke_model.dart';
+import 'package:copypaste/features/file_management/data/models/sp_drawing_model.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
+import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
+import 'package:isar/isar.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sqflite/sqflite.dart';
 import 'injection.config.dart';
 
 final getIt = GetIt.instance;
@@ -24,22 +29,20 @@ abstract class PersistenceModule {
 
   @injectable
   http.Client get httpClient => http.Client();
-}
 
-@module
-abstract class DatabaseInjectionModule {
   @preResolve
-  Future<Database> get database async {
-    final db = await openDatabase('notes.db');
-    await db.execute(
-      'CREATE TABLE IF NOT EXISTS DRAWINGS(ID TEXT PRIMARY KEY NOT NULL, NAME TEXT NOT NULL, CREATED_AT TIMESTAMP NOT NULL, MODIFIED_AT TIMESTAMP NOT NULL, SYNCED INT NOT NULL);',
+  Future<Box<dynamic>> get hiveBox async => await Hive.openBox('drawings');
+
+  @preResolve
+  Future<Isar> get isar async {
+    final directory = await getApplicationSupportDirectory();
+    return await Isar.open(
+      schemas: [
+        SPDrawingModelSchema,
+        SPStrokeModelSchema,
+        SPPointModelSchema,
+      ],
+      directory: directory.path,
     );
-    await db.execute(
-      'CREATE TABLE IF NOT EXISTS POINTS(ID TEXT PRIMARY KEY NOT NULL, DID TEXT NOT NULL, SID TEXT NOT NULL, P_INDEX INT NOT NULL, POS_X DOUBLE NOT NULL, POS_Y DOUBLE NOT NULL, PRESSURE DOUBLE NOT NULL, TYPE INTEGER NOT NULL);',
-    );
-    await db.execute(
-      'CREATE TABLE IF NOT EXISTS STROKES(ID TEXT PRIMARY KEY NOT NULL, DID TEXT NOT NULL, S_INDEX INT NOT NULL, CREATED_AT DATETIME NOT NULL, SYNCED_AT DATETIME, SIZE DOUBLE NOT NULL, COLOR INT NOT NULL, THINNING DOUBLE NOT NULL, SMOOTHING DOUBLE NOT NULL, STREAMLINE DOUBLE NOT NULL, TAPER_START DOUBLE NOT NULL, TAPER_END DOUBLE NOT NULL, CAP_START BOOLEAN NOT NULL, CAP_END BOOLEAN NOT NULL, SIMULATE_PRESSURE BOOLEAN NOT NULL);',
-    );
-    return db;
   }
 }

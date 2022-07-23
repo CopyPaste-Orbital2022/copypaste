@@ -1,59 +1,36 @@
+import 'package:copypaste/features/drawing/data/models/sp_point_model.dart';
 import 'package:copypaste/features/drawing/domain/entities/sp_stroke.dart';
-import 'package:equatable/equatable.dart';
+import 'package:copypaste/features/file_management/data/models/sp_drawing_model.dart';
 import 'package:flutter/material.dart';
+import 'package:isar/isar.dart';
+part 'sp_stroke_model.g.dart';
 
-class SPStrokeModel extends Equatable {
-  final String id;
-  final int index;
-  final double size;
-  final int color;
-  final bool isComplete;
-  final double thinning;
-  final double smoothing;
-  final double streamline;
-  final double taperStart;
-  final double taperEnd;
-  final bool capStart;
-  final bool capEnd;
-  final bool simulatePressure;
+@Collection()
+class SPStrokeModel {
+  int id = Isar.autoIncrement;
+  late double size;
+  late int color;
+  late bool isComplete;
+  late double thinning;
+  late double smoothing;
+  late double streamline;
+  late double taperStart;
+  late double taperEnd;
+  late bool capStart;
+  late bool capEnd;
+  late bool simulatePressure;
 
-  const SPStrokeModel({
-    required this.id,
-    required this.index,
-    required this.size,
-    required this.color,
-    required this.isComplete,
-    required this.thinning,
-    required this.smoothing,
-    required this.streamline,
-    required this.taperStart,
-    required this.taperEnd,
-    required this.capStart,
-    required this.capEnd,
-    required this.simulatePressure,
-  });
+  final points = IsarLinks<SPPointModel>();
 
-  @override
-  List<Object?> get props => [
-        id,
-        size,
-        color,
-        isComplete,
-        thinning,
-        smoothing,
-        streamline,
-        taperStart,
-        taperEnd,
-        capStart,
-        capEnd,
-        simulatePressure,
-      ];
+  @Backlink(to: 'strokes')
+  final drawing = IsarLink<SPDrawingModel>();
+
+  SPStrokeModel();
 
   /// Converts to the domain layer. Note that we are lacking the
   SPStroke toDomain() {
     return SPStroke(
       id: id,
-      index: index,
       size: size,
       color: Color(color),
       thinning: thinning,
@@ -65,26 +42,26 @@ class SPStrokeModel extends Equatable {
       capEnd: capEnd,
       simulatePressure: simulatePressure,
       isComplete: isComplete,
+      points: points.map((e) => e.toDomain()).toList(),
     );
   }
 
   /// Converts from the domain layer
   static SPStrokeModel fromDomain(SPStroke stroke) {
-    return SPStrokeModel(
-      id: stroke.id,
-      index: stroke.index,
-      size: stroke.size,
-      color: stroke.color.value,
-      thinning: stroke.thinning,
-      smoothing: stroke.smoothing,
-      streamline: stroke.streamline,
-      taperStart: stroke.taperStart,
-      taperEnd: stroke.taperEnd,
-      capStart: stroke.capStart,
-      capEnd: stroke.capEnd,
-      simulatePressure: stroke.simulatePressure,
-      isComplete: stroke.isComplete,
-    );
+    final model = SPStrokeModel();
+    model.size = stroke.size;
+    model.color = stroke.color.value;
+    model.isComplete = stroke.isComplete;
+    model.thinning = stroke.thinning;
+    model.smoothing = stroke.smoothing;
+    model.streamline = stroke.streamline;
+    model.taperStart = stroke.taperStart;
+    model.taperEnd = stroke.taperEnd;
+    model.capStart = stroke.capStart;
+    model.capEnd = stroke.capEnd;
+    model.simulatePressure = stroke.simulatePressure;
+    model.points.addAll(stroke.points.map((e) => SPPointModel.fromDomain(e)));
+    return model;
   }
 
   /// Converts to Json
@@ -93,6 +70,7 @@ class SPStrokeModel extends Equatable {
       'id': id,
       'size': size,
       'color': color,
+      'isComplete': isComplete,
       'thinning': thinning,
       'smoothing': smoothing,
       'streamline': streamline,
@@ -101,26 +79,28 @@ class SPStrokeModel extends Equatable {
       'capStart': capStart,
       'capEnd': capEnd,
       'simulatePressure': simulatePressure,
-      'isComplete': isComplete,
+      'points': points.map((e) => e.toJson()).toList(),
     };
   }
 
   /// Converts from json
   static SPStrokeModel fromJson(Map<String, dynamic> json) {
-    return SPStrokeModel(
-      id: json['id'],
-      index: json['index'],
-      size: json['size'],
-      color: json['color'],
-      isComplete: json['isComplete'],
-      thinning: json['thinning'],
-      smoothing: json['smoothing'],
-      streamline: json['streamline'],
-      taperStart: json['taperStart'],
-      taperEnd: json['taperEnd'],
-      capStart: json['capStart'],
-      capEnd: json['capEnd'],
-      simulatePressure: json['simulatePressure'],
+    final SPStrokeModel stroke = SPStrokeModel();
+    stroke.id = json['id'] as int;
+    stroke.size = json['size'] as double;
+    stroke.color = json['color'] as int;
+    stroke.thinning = json['thinning'] as double;
+    stroke.smoothing = json['smoothing'] as double;
+    stroke.streamline = json['streamline'] as double;
+    stroke.taperStart = json['taperStart'] as double;
+    stroke.taperEnd = json['taperEnd'] as double;
+    stroke.capStart = json['capStart'] as bool;
+    stroke.capEnd = json['capEnd'] as bool;
+    stroke.simulatePressure = json['simulatePressure'] as bool;
+    stroke.isComplete = json['isComplete'] as bool;
+    stroke.points.addAll(
+      (json['points'] as List<dynamic>).map((e) => SPPointModel.fromJson(e)),
     );
+    return stroke;
   }
 }

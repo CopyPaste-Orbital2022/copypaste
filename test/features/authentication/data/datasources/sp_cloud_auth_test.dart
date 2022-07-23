@@ -11,11 +11,11 @@ import 'sp_cloud_auth_test.mocks.dart';
 void main() {
   group('test auth', () {
     late MockClient client;
-    late SPCloudAuth auth;
+    late ISPCloudAuth auth;
 
     setUp(() {
       client = MockClient();
-      auth = SPCloudAuth(
+      auth = ISPCloudAuth(
         client,
         scheme: 'https',
         host: 'www.tinyhacks.app',

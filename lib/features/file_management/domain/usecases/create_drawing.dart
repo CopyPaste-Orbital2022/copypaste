@@ -13,19 +13,12 @@ class CreateNewDrawingUsecase {
   const CreateNewDrawingUsecase(this.repository);
 
   Future<Either<DatabaseFailure, SPDrawing>> call({String? name}) async {
-    // creates a drawing
-    final SPDrawing drawing = SPDrawing(
-      id: const Uuid().v4(),
-      name: name ?? "",
-      createdAt: DateTime.now(),
-      modifiedAt: DateTime.now(),
-    );
+    final drawingOrFailure = await repository.createDrawing(
+        name: name ?? 'Untitled Drawing', createdAt: DateTime.now(), updatedAt: DateTime.now());
 
-    final failureOrUnit = await repository.saveDrawing(drawing);
-
-    return failureOrUnit.fold(
+    return drawingOrFailure.fold(
       (failure) => left(failure),
-      (r) => right(drawing),
+      (drawing) => right(drawing),
     );
   }
 }
