@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:copypaste/features/drawing/data/models/sp_stroke_model.dart';
 import 'package:copypaste/features/drawing/domain/entities/sp_stroke.dart';
 import 'package:copypaste/core/errors_and_failures/failures/database_failure.dart';
@@ -16,33 +18,6 @@ class SPDrawingRepositoryLocalImpl implements ISPDrawingRepository {
   final Isar isar;
 
   SPDrawingModel? drawing;
-
-  @override
-  Future<Either<DatabaseFailure, Unit>> openDrawing(SPDrawing drawing) async {
-    try {
-      this.drawing = SPDrawingModel.fromSPDrawing(drawing);
-      await this.drawing!.strokes.load();
-      return right(unit);
-    } on Exception {
-      return left(DatabaseFailure.isarError(description: drawing.name));
-    }
-  }
-
-  @override
-  Stream<List<SPStroke>>? get strokesStream {
-    if (drawing == null) {
-      return null;
-    }
-    return isar.sPDrawingModels.watchObject(drawing!.id).map(
-      (event) {
-        if (event == null) {
-          return [];
-        }
-        event.strokes.loadSync();
-        return event.strokes.map((e) => e.toDomain()).toList();
-      },
-    );
-  }
 
   @override
   Future<Either<DatabaseFailure, Unit>> setStroke(SPStroke stroke) async {
@@ -75,10 +50,14 @@ class SPDrawingRepositoryLocalImpl implements ISPDrawingRepository {
       final strokeId = await isar.writeTxn((isar) async {
         final sid = await isar.sPStrokeModels.put(strokeModel);
         await strokeModel.points.save();
-        await strokeModel.drawing.save();
+        drawing!.strokes.add(strokeModel);
+        debugPrint('added stroke $sid');
+        await drawing!.strokes.save();
+        debugPrint('saved drawing');
         return sid;
       });
       strokeModel.id = strokeId;
+      debugPrint('added stroke $strokeId');
       return right(strokeModel.toDomain());
     } on IsarError catch (e) {
       debugPrint(e.toString());
@@ -96,6 +75,49 @@ class SPDrawingRepositoryLocalImpl implements ISPDrawingRepository {
         await isar.sPStrokeModels.delete(strokeModel.id);
       });
       return right(unit);
+    } on IsarError catch (e) {
+      debugPrint(e.toString());
+      return left(DatabaseFailure.isarError(description: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<DatabaseFailure, List<SPStroke>>> loadStrokes() async {
+    try {
+      assert(drawing != null);
+      await drawing!.strokes.load();
+
+      debugPrint('loaded ${drawing!.strokes.length} strokes');
+
+      for (final strokeModel in drawing!.strokes) {
+        await strokeModel.points.load();
+        debugPrint('loaded ${strokeModel.points.length} points');
+      }
+
+      return right(drawing!.strokes.map((strokeModel) => strokeModel.toDomain()).toList());
+    } on IsarError catch (e) {
+      debugPrint(e.toString());
+      return left(DatabaseFailure.isarError(description: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<DatabaseFailure, List<SPStroke>>> openDrawing(SPDrawing drawing) async {
+    try {
+      final tmpDrawingModel = SPDrawingModel.fromSPDrawing(drawing);
+      this.drawing = await isar.sPDrawingModels.get(drawing.id);
+
+      // load strokes
+      await this.drawing!.strokes.load();
+
+      debugPrint('loaded ${this.drawing!.strokes.length} strokes');
+
+      for (final strokeModel in this.drawing!.strokes) {
+        await strokeModel.points.load();
+        debugPrint('loaded ${strokeModel.points.length} points');
+      }
+
+      return right(this.drawing!.strokes.map((strokeModel) => strokeModel.toDomain()).toList());
     } on IsarError catch (e) {
       debugPrint(e.toString());
       return left(DatabaseFailure.isarError(description: e.toString()));

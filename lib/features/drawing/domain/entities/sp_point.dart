@@ -9,6 +9,7 @@ part 'sp_point.freezed.dart';
 class SPPoint with _$SPPoint {
   const factory SPPoint({
     int? id,
+    required int index,
     required Offset offset,
     required double pressure,
   }) = _SPPoint;

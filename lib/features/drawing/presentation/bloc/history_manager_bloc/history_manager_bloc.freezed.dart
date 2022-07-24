@@ -166,6 +166,7 @@ mixin _$HistoryManagerEvent {
     required TResult Function() undo,
     required TResult Function() redo,
     required TResult Function(HistoryState state) push,
+    required TResult Function() clear,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -173,6 +174,7 @@ mixin _$HistoryManagerEvent {
     TResult Function()? undo,
     TResult Function()? redo,
     TResult Function(HistoryState state)? push,
+    TResult Function()? clear,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -180,6 +182,7 @@ mixin _$HistoryManagerEvent {
     TResult Function()? undo,
     TResult Function()? redo,
     TResult Function(HistoryState state)? push,
+    TResult Function()? clear,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -188,6 +191,7 @@ mixin _$HistoryManagerEvent {
     required TResult Function(HistoryManagerEventUndo value) undo,
     required TResult Function(HistoryManagerEventRedo value) redo,
     required TResult Function(HistoryManagerEventPush value) push,
+    required TResult Function(HistoryManagerEventClear value) clear,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -195,6 +199,7 @@ mixin _$HistoryManagerEvent {
     TResult Function(HistoryManagerEventUndo value)? undo,
     TResult Function(HistoryManagerEventRedo value)? redo,
     TResult Function(HistoryManagerEventPush value)? push,
+    TResult Function(HistoryManagerEventClear value)? clear,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -202,6 +207,7 @@ mixin _$HistoryManagerEvent {
     TResult Function(HistoryManagerEventUndo value)? undo,
     TResult Function(HistoryManagerEventRedo value)? redo,
     TResult Function(HistoryManagerEventPush value)? push,
+    TResult Function(HistoryManagerEventClear value)? clear,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -270,6 +276,7 @@ class _$HistoryManagerEventUndo implements HistoryManagerEventUndo {
     required TResult Function() undo,
     required TResult Function() redo,
     required TResult Function(HistoryState state) push,
+    required TResult Function() clear,
   }) {
     return undo();
   }
@@ -280,6 +287,7 @@ class _$HistoryManagerEventUndo implements HistoryManagerEventUndo {
     TResult Function()? undo,
     TResult Function()? redo,
     TResult Function(HistoryState state)? push,
+    TResult Function()? clear,
   }) {
     return undo?.call();
   }
@@ -290,6 +298,7 @@ class _$HistoryManagerEventUndo implements HistoryManagerEventUndo {
     TResult Function()? undo,
     TResult Function()? redo,
     TResult Function(HistoryState state)? push,
+    TResult Function()? clear,
     required TResult orElse(),
   }) {
     if (undo != null) {
@@ -304,6 +313,7 @@ class _$HistoryManagerEventUndo implements HistoryManagerEventUndo {
     required TResult Function(HistoryManagerEventUndo value) undo,
     required TResult Function(HistoryManagerEventRedo value) redo,
     required TResult Function(HistoryManagerEventPush value) push,
+    required TResult Function(HistoryManagerEventClear value) clear,
   }) {
     return undo(this);
   }
@@ -314,6 +324,7 @@ class _$HistoryManagerEventUndo implements HistoryManagerEventUndo {
     TResult Function(HistoryManagerEventUndo value)? undo,
     TResult Function(HistoryManagerEventRedo value)? redo,
     TResult Function(HistoryManagerEventPush value)? push,
+    TResult Function(HistoryManagerEventClear value)? clear,
   }) {
     return undo?.call(this);
   }
@@ -324,6 +335,7 @@ class _$HistoryManagerEventUndo implements HistoryManagerEventUndo {
     TResult Function(HistoryManagerEventUndo value)? undo,
     TResult Function(HistoryManagerEventRedo value)? redo,
     TResult Function(HistoryManagerEventPush value)? push,
+    TResult Function(HistoryManagerEventClear value)? clear,
     required TResult orElse(),
   }) {
     if (undo != null) {
@@ -383,6 +395,7 @@ class _$HistoryManagerEventRedo implements HistoryManagerEventRedo {
     required TResult Function() undo,
     required TResult Function() redo,
     required TResult Function(HistoryState state) push,
+    required TResult Function() clear,
   }) {
     return redo();
   }
@@ -393,6 +406,7 @@ class _$HistoryManagerEventRedo implements HistoryManagerEventRedo {
     TResult Function()? undo,
     TResult Function()? redo,
     TResult Function(HistoryState state)? push,
+    TResult Function()? clear,
   }) {
     return redo?.call();
   }
@@ -403,6 +417,7 @@ class _$HistoryManagerEventRedo implements HistoryManagerEventRedo {
     TResult Function()? undo,
     TResult Function()? redo,
     TResult Function(HistoryState state)? push,
+    TResult Function()? clear,
     required TResult orElse(),
   }) {
     if (redo != null) {
@@ -417,6 +432,7 @@ class _$HistoryManagerEventRedo implements HistoryManagerEventRedo {
     required TResult Function(HistoryManagerEventUndo value) undo,
     required TResult Function(HistoryManagerEventRedo value) redo,
     required TResult Function(HistoryManagerEventPush value) push,
+    required TResult Function(HistoryManagerEventClear value) clear,
   }) {
     return redo(this);
   }
@@ -427,6 +443,7 @@ class _$HistoryManagerEventRedo implements HistoryManagerEventRedo {
     TResult Function(HistoryManagerEventUndo value)? undo,
     TResult Function(HistoryManagerEventRedo value)? redo,
     TResult Function(HistoryManagerEventPush value)? push,
+    TResult Function(HistoryManagerEventClear value)? clear,
   }) {
     return redo?.call(this);
   }
@@ -437,6 +454,7 @@ class _$HistoryManagerEventRedo implements HistoryManagerEventRedo {
     TResult Function(HistoryManagerEventUndo value)? undo,
     TResult Function(HistoryManagerEventRedo value)? redo,
     TResult Function(HistoryManagerEventPush value)? push,
+    TResult Function(HistoryManagerEventClear value)? clear,
     required TResult orElse(),
   }) {
     if (redo != null) {
@@ -520,6 +538,7 @@ class _$HistoryManagerEventPush implements HistoryManagerEventPush {
     required TResult Function() undo,
     required TResult Function() redo,
     required TResult Function(HistoryState state) push,
+    required TResult Function() clear,
   }) {
     return push(state);
   }
@@ -530,6 +549,7 @@ class _$HistoryManagerEventPush implements HistoryManagerEventPush {
     TResult Function()? undo,
     TResult Function()? redo,
     TResult Function(HistoryState state)? push,
+    TResult Function()? clear,
   }) {
     return push?.call(state);
   }
@@ -540,6 +560,7 @@ class _$HistoryManagerEventPush implements HistoryManagerEventPush {
     TResult Function()? undo,
     TResult Function()? redo,
     TResult Function(HistoryState state)? push,
+    TResult Function()? clear,
     required TResult orElse(),
   }) {
     if (push != null) {
@@ -554,6 +575,7 @@ class _$HistoryManagerEventPush implements HistoryManagerEventPush {
     required TResult Function(HistoryManagerEventUndo value) undo,
     required TResult Function(HistoryManagerEventRedo value) redo,
     required TResult Function(HistoryManagerEventPush value) push,
+    required TResult Function(HistoryManagerEventClear value) clear,
   }) {
     return push(this);
   }
@@ -564,6 +586,7 @@ class _$HistoryManagerEventPush implements HistoryManagerEventPush {
     TResult Function(HistoryManagerEventUndo value)? undo,
     TResult Function(HistoryManagerEventRedo value)? redo,
     TResult Function(HistoryManagerEventPush value)? push,
+    TResult Function(HistoryManagerEventClear value)? clear,
   }) {
     return push?.call(this);
   }
@@ -574,6 +597,7 @@ class _$HistoryManagerEventPush implements HistoryManagerEventPush {
     TResult Function(HistoryManagerEventUndo value)? undo,
     TResult Function(HistoryManagerEventRedo value)? redo,
     TResult Function(HistoryManagerEventPush value)? push,
+    TResult Function(HistoryManagerEventClear value)? clear,
     required TResult orElse(),
   }) {
     if (push != null) {
@@ -591,4 +615,123 @@ abstract class HistoryManagerEventPush implements HistoryManagerEvent {
   @JsonKey(ignore: true)
   _$$HistoryManagerEventPushCopyWith<_$HistoryManagerEventPush> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$HistoryManagerEventClearCopyWith<$Res> {
+  factory _$$HistoryManagerEventClearCopyWith(_$HistoryManagerEventClear value,
+          $Res Function(_$HistoryManagerEventClear) then) =
+      __$$HistoryManagerEventClearCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$HistoryManagerEventClearCopyWithImpl<$Res>
+    extends _$HistoryManagerEventCopyWithImpl<$Res>
+    implements _$$HistoryManagerEventClearCopyWith<$Res> {
+  __$$HistoryManagerEventClearCopyWithImpl(_$HistoryManagerEventClear _value,
+      $Res Function(_$HistoryManagerEventClear) _then)
+      : super(_value, (v) => _then(v as _$HistoryManagerEventClear));
+
+  @override
+  _$HistoryManagerEventClear get _value =>
+      super._value as _$HistoryManagerEventClear;
+}
+
+/// @nodoc
+
+class _$HistoryManagerEventClear implements HistoryManagerEventClear {
+  const _$HistoryManagerEventClear();
+
+  @override
+  String toString() {
+    return 'HistoryManagerEvent.clear()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$HistoryManagerEventClear);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() undo,
+    required TResult Function() redo,
+    required TResult Function(HistoryState state) push,
+    required TResult Function() clear,
+  }) {
+    return clear();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? undo,
+    TResult Function()? redo,
+    TResult Function(HistoryState state)? push,
+    TResult Function()? clear,
+  }) {
+    return clear?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? undo,
+    TResult Function()? redo,
+    TResult Function(HistoryState state)? push,
+    TResult Function()? clear,
+    required TResult orElse(),
+  }) {
+    if (clear != null) {
+      return clear();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(HistoryManagerEventUndo value) undo,
+    required TResult Function(HistoryManagerEventRedo value) redo,
+    required TResult Function(HistoryManagerEventPush value) push,
+    required TResult Function(HistoryManagerEventClear value) clear,
+  }) {
+    return clear(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(HistoryManagerEventUndo value)? undo,
+    TResult Function(HistoryManagerEventRedo value)? redo,
+    TResult Function(HistoryManagerEventPush value)? push,
+    TResult Function(HistoryManagerEventClear value)? clear,
+  }) {
+    return clear?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(HistoryManagerEventUndo value)? undo,
+    TResult Function(HistoryManagerEventRedo value)? redo,
+    TResult Function(HistoryManagerEventPush value)? push,
+    TResult Function(HistoryManagerEventClear value)? clear,
+    required TResult orElse(),
+  }) {
+    if (clear != null) {
+      return clear(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class HistoryManagerEventClear implements HistoryManagerEvent {
+  const factory HistoryManagerEventClear() = _$HistoryManagerEventClear;
 }

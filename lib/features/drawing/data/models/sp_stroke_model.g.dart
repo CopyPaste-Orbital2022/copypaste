@@ -15,7 +15,7 @@ extension GetSPStrokeModelCollection on Isar {
 const SPStrokeModelSchema = CollectionSchema(
   name: 'SPStrokeModel',
   schema:
-      '{"name":"SPStrokeModel","idName":"id","properties":[{"name":"capEnd","type":"Bool"},{"name":"capStart","type":"Bool"},{"name":"color","type":"Long"},{"name":"isComplete","type":"Bool"},{"name":"simulatePressure","type":"Bool"},{"name":"size","type":"Double"},{"name":"smoothing","type":"Double"},{"name":"streamline","type":"Double"},{"name":"taperEnd","type":"Double"},{"name":"taperStart","type":"Double"},{"name":"thinning","type":"Double"}],"indexes":[],"links":[{"name":"points","target":"SPPointModel"}]}',
+      '{"name":"SPStrokeModel","idName":"id","properties":[{"name":"capEnd","type":"Bool"},{"name":"capStart","type":"Bool"},{"name":"color","type":"Long"},{"name":"isComplete","type":"Bool"},{"name":"simulatePressure","type":"Bool"},{"name":"size","type":"Double"},{"name":"smoothing","type":"Double"},{"name":"streamline","type":"Double"},{"name":"synced","type":"Bool"},{"name":"taperEnd","type":"Double"},{"name":"taperStart","type":"Double"},{"name":"thinning","type":"Double"}],"indexes":[],"links":[{"name":"points","target":"SPPointModel"}]}',
   idName: 'id',
   propertyIds: {
     'capEnd': 0,
@@ -26,9 +26,10 @@ const SPStrokeModelSchema = CollectionSchema(
     'size': 5,
     'smoothing': 6,
     'streamline': 7,
-    'taperEnd': 8,
-    'taperStart': 9,
-    'thinning': 10
+    'synced': 8,
+    'taperEnd': 9,
+    'taperStart': 10,
+    'thinning': 11
   },
   listProperties: {},
   indexIds: {},
@@ -88,12 +89,14 @@ void _sPStrokeModelSerializeNative(
   final _smoothing = value6;
   final value7 = object.streamline;
   final _streamline = value7;
-  final value8 = object.taperEnd;
-  final _taperEnd = value8;
-  final value9 = object.taperStart;
-  final _taperStart = value9;
-  final value10 = object.thinning;
-  final _thinning = value10;
+  final value8 = object.synced;
+  final _synced = value8;
+  final value9 = object.taperEnd;
+  final _taperEnd = value9;
+  final value10 = object.taperStart;
+  final _taperStart = value10;
+  final value11 = object.thinning;
+  final _thinning = value11;
   final size = staticSize + dynamicSize;
 
   rawObj.buffer = alloc(size);
@@ -108,9 +111,10 @@ void _sPStrokeModelSerializeNative(
   writer.writeDouble(offsets[5], _size);
   writer.writeDouble(offsets[6], _smoothing);
   writer.writeDouble(offsets[7], _streamline);
-  writer.writeDouble(offsets[8], _taperEnd);
-  writer.writeDouble(offsets[9], _taperStart);
-  writer.writeDouble(offsets[10], _thinning);
+  writer.writeBool(offsets[8], _synced);
+  writer.writeDouble(offsets[9], _taperEnd);
+  writer.writeDouble(offsets[10], _taperStart);
+  writer.writeDouble(offsets[11], _thinning);
 }
 
 SPStrokeModel _sPStrokeModelDeserializeNative(
@@ -128,9 +132,10 @@ SPStrokeModel _sPStrokeModelDeserializeNative(
   object.size = reader.readDouble(offsets[5]);
   object.smoothing = reader.readDouble(offsets[6]);
   object.streamline = reader.readDouble(offsets[7]);
-  object.taperEnd = reader.readDouble(offsets[8]);
-  object.taperStart = reader.readDouble(offsets[9]);
-  object.thinning = reader.readDouble(offsets[10]);
+  object.synced = reader.readBool(offsets[8]);
+  object.taperEnd = reader.readDouble(offsets[9]);
+  object.taperStart = reader.readDouble(offsets[10]);
+  object.thinning = reader.readDouble(offsets[11]);
   _sPStrokeModelAttachLinks(collection, id, object);
   return object;
 }
@@ -157,10 +162,12 @@ P _sPStrokeModelDeserializePropNative<P>(
     case 7:
       return (reader.readDouble(offset)) as P;
     case 8:
-      return (reader.readDouble(offset)) as P;
+      return (reader.readBool(offset)) as P;
     case 9:
       return (reader.readDouble(offset)) as P;
     case 10:
+      return (reader.readDouble(offset)) as P;
+    case 11:
       return (reader.readDouble(offset)) as P;
     default:
       throw 'Illegal propertyIndex';
@@ -179,6 +186,7 @@ dynamic _sPStrokeModelSerializeWeb(
   IsarNative.jsObjectSet(jsObj, 'size', object.size);
   IsarNative.jsObjectSet(jsObj, 'smoothing', object.smoothing);
   IsarNative.jsObjectSet(jsObj, 'streamline', object.streamline);
+  IsarNative.jsObjectSet(jsObj, 'synced', object.synced);
   IsarNative.jsObjectSet(jsObj, 'taperEnd', object.taperEnd);
   IsarNative.jsObjectSet(jsObj, 'taperStart', object.taperStart);
   IsarNative.jsObjectSet(jsObj, 'thinning', object.thinning);
@@ -202,6 +210,7 @@ SPStrokeModel _sPStrokeModelDeserializeWeb(
       IsarNative.jsObjectGet(jsObj, 'smoothing') ?? double.negativeInfinity;
   object.streamline =
       IsarNative.jsObjectGet(jsObj, 'streamline') ?? double.negativeInfinity;
+  object.synced = IsarNative.jsObjectGet(jsObj, 'synced') ?? false;
   object.taperEnd =
       IsarNative.jsObjectGet(jsObj, 'taperEnd') ?? double.negativeInfinity;
   object.taperStart =
@@ -238,6 +247,8 @@ P _sPStrokeModelDeserializePropWeb<P>(Object jsObj, String propertyName) {
     case 'streamline':
       return (IsarNative.jsObjectGet(jsObj, 'streamline') ??
           double.negativeInfinity) as P;
+    case 'synced':
+      return (IsarNative.jsObjectGet(jsObj, 'synced') ?? false) as P;
     case 'taperEnd':
       return (IsarNative.jsObjectGet(jsObj, 'taperEnd') ??
           double.negativeInfinity) as P;
@@ -557,6 +568,15 @@ extension SPStrokeModelQueryFilter
   }
 
   QueryBuilder<SPStrokeModel, SPStrokeModel, QAfterFilterCondition>
+      syncedEqualTo(bool value) {
+    return addFilterConditionInternal(FilterCondition(
+      type: ConditionType.eq,
+      property: 'synced',
+      value: value,
+    ));
+  }
+
+  QueryBuilder<SPStrokeModel, SPStrokeModel, QAfterFilterCondition>
       taperEndGreaterThan(double value) {
     return addFilterConditionInternal(FilterCondition(
       type: ConditionType.gt,
@@ -751,6 +771,14 @@ extension SPStrokeModelQueryWhereSortBy
     return addSortByInternal('streamline', Sort.desc);
   }
 
+  QueryBuilder<SPStrokeModel, SPStrokeModel, QAfterSortBy> sortBySynced() {
+    return addSortByInternal('synced', Sort.asc);
+  }
+
+  QueryBuilder<SPStrokeModel, SPStrokeModel, QAfterSortBy> sortBySyncedDesc() {
+    return addSortByInternal('synced', Sort.desc);
+  }
+
   QueryBuilder<SPStrokeModel, SPStrokeModel, QAfterSortBy> sortByTaperEnd() {
     return addSortByInternal('taperEnd', Sort.asc);
   }
@@ -859,6 +887,14 @@ extension SPStrokeModelQueryWhereSortThenBy
     return addSortByInternal('streamline', Sort.desc);
   }
 
+  QueryBuilder<SPStrokeModel, SPStrokeModel, QAfterSortBy> thenBySynced() {
+    return addSortByInternal('synced', Sort.asc);
+  }
+
+  QueryBuilder<SPStrokeModel, SPStrokeModel, QAfterSortBy> thenBySyncedDesc() {
+    return addSortByInternal('synced', Sort.desc);
+  }
+
   QueryBuilder<SPStrokeModel, SPStrokeModel, QAfterSortBy> thenByTaperEnd() {
     return addSortByInternal('taperEnd', Sort.asc);
   }
@@ -926,6 +962,10 @@ extension SPStrokeModelQueryWhereDistinct
     return addDistinctByInternal('streamline');
   }
 
+  QueryBuilder<SPStrokeModel, SPStrokeModel, QDistinct> distinctBySynced() {
+    return addDistinctByInternal('synced');
+  }
+
   QueryBuilder<SPStrokeModel, SPStrokeModel, QDistinct> distinctByTaperEnd() {
     return addDistinctByInternal('taperEnd');
   }
@@ -976,6 +1016,10 @@ extension SPStrokeModelQueryProperty
 
   QueryBuilder<SPStrokeModel, double, QQueryOperations> streamlineProperty() {
     return addPropertyNameInternal('streamline');
+  }
+
+  QueryBuilder<SPStrokeModel, bool, QQueryOperations> syncedProperty() {
+    return addPropertyNameInternal('synced');
   }
 
   QueryBuilder<SPStrokeModel, double, QQueryOperations> taperEndProperty() {

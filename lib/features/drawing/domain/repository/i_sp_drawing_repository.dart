@@ -5,9 +5,11 @@ import '../entities/sp_stroke.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class ISPDrawingRepository {
-  Stream<List<SPStroke>>? get strokesStream;
+  // load strokes
+  Future<Either<DatabaseFailure, List<SPStroke>>> loadStrokes();
 
-  Future<Either<DatabaseFailure, Unit>> openDrawing(SPDrawing drawing);
+  // get strokes stream
+  Future<Either<DatabaseFailure, List<SPStroke>>> openDrawing(SPDrawing drawing);
 
   /// Asks to add a stroke to the drawing
   Future<Either<DatabaseFailure, SPStroke>> addStroke(SPStroke stroke);

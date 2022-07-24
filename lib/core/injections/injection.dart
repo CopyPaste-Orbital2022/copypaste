@@ -2,6 +2,7 @@ import 'package:copypaste/features/authentication/domain/entities/sp_user.dart';
 import 'package:copypaste/features/drawing/data/models/sp_point_model.dart';
 import 'package:copypaste/features/drawing/data/models/sp_stroke_model.dart';
 import 'package:copypaste/features/file_management/data/models/sp_drawing_model.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
@@ -36,6 +37,7 @@ abstract class PersistenceModule {
   @preResolve
   Future<Isar> get isar async {
     final directory = await getApplicationSupportDirectory();
+    debugPrint('directory: $directory');
     return await Isar.open(
       schemas: [
         SPDrawingModelSchema,

@@ -19,6 +19,7 @@ class HistoryManagerBloc extends Bloc<HistoryManagerEvent, HistoryManagerState> 
         undo: (event) => onUndo(event, emit),
         redo: (event) => onRedo(event, emit),
         push: (event) => onPush(event, emit),
+        clear: (event) => onClear(event, emit),
       );
     });
   }
@@ -46,6 +47,15 @@ class HistoryManagerBloc extends Bloc<HistoryManagerEvent, HistoryManagerState> 
     Emitter<HistoryManagerState> emit,
   ) {
     emit(state.addNewState(event.state));
+  }
+
+  void onClear(
+    HistoryManagerEventClear event,
+    Emitter<HistoryManagerState> emit,
+  ) {
+    emit(
+      state.copyWith(stack: [], currentIndex: null),
+    );
   }
 
   void historyStateMapper(HistoryState? state) {

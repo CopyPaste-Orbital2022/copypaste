@@ -8,6 +8,7 @@ part 'sp_point_model.g.dart';
 @Collection()
 class SPPointModel {
   int id = Isar.autoIncrement;
+  late int index;
   late double dx;
   late double dy;
   late double pressure;
@@ -18,12 +19,13 @@ class SPPointModel {
 
   /// converts to the domain layer
   SPPoint toDomain() {
-    return SPPoint(id: id, offset: Offset(dx, dy), pressure: pressure);
+    return SPPoint(id: id, index: index, offset: Offset(dx, dy), pressure: pressure);
   }
 
   /// converts from the domain layer
   static SPPointModel fromDomain(SPPoint point) {
     final model = SPPointModel();
+    model.index = point.index;
     model.dx = point.offset.dx;
     model.dy = point.offset.dy;
     model.pressure = point.pressure;
@@ -34,6 +36,7 @@ class SPPointModel {
   Map<String, Object?> toJson() {
     return {
       'id': id,
+      'index': index,
       'dx': dx,
       'dy': dy,
       'pressure': pressure,
@@ -44,6 +47,7 @@ class SPPointModel {
   static SPPointModel fromJson(Map<String, dynamic> json) {
     final model = SPPointModel();
     model.id = json['id'] as int;
+    model.index = json['index'] as int;
     model.dx = json['dx'] as double;
     model.dy = json['dy'] as double;
     model.pressure = json['pressure'] as double;

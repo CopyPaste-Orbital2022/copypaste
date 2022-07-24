@@ -10,4 +10,7 @@ class HistoryManagerEvent with _$HistoryManagerEvent {
 
   /// Pushes the given [state] to the stack
   const factory HistoryManagerEvent.push(HistoryState state) = HistoryManagerEventPush;
+
+  /// Clears the stack
+  const factory HistoryManagerEvent.clear() = HistoryManagerEventClear;
 }

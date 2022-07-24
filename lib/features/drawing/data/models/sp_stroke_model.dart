@@ -19,6 +19,7 @@ class SPStrokeModel {
   late bool capStart;
   late bool capEnd;
   late bool simulatePressure;
+  bool synced = false;
 
   final points = IsarLinks<SPPointModel>();
 
@@ -29,6 +30,8 @@ class SPStrokeModel {
 
   /// Converts to the domain layer. Note that we are lacking the
   SPStroke toDomain() {
+    final sortedPoints = points.map((point) => point.toDomain()).toList();
+    sortedPoints.sort((a, b) => a.index.compareTo(b.index));
     return SPStroke(
       id: id,
       size: size,
@@ -42,7 +45,7 @@ class SPStrokeModel {
       capEnd: capEnd,
       simulatePressure: simulatePressure,
       isComplete: isComplete,
-      points: points.map((e) => e.toDomain()).toList(),
+      points: sortedPoints,
     );
   }
 
@@ -101,6 +104,7 @@ class SPStrokeModel {
     stroke.points.addAll(
       (json['points'] as List<dynamic>).map((e) => SPPointModel.fromJson(e)),
     );
+    stroke.synced = true;
     return stroke;
   }
 }

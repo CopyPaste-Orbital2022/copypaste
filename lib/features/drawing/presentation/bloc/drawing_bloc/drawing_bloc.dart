@@ -1,6 +1,7 @@
 import 'dart:developer' as developer;
 import 'dart:math';
 import 'dart:ui';
+import 'package:copypaste/features/drawing/domain/repository/i_sp_drawing_repository.dart';
 import 'package:copypaste/features/drawing/domain/usecases/add_stroke.dart';
 import 'package:copypaste/features/drawing/domain/usecases/delete_stroke.dart';
 import 'package:copypaste/features/drawing/domain/usecases/open_drawing.dart';
@@ -34,6 +35,7 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
   final AddStrokeUsecase addStrokeUsecase;
   final DeleteStrokeUsecase deleteStrokeUsecase;
   final OpenDrawingUsecase openDrawingUsecase;
+  final ISPDrawingRepository drawingRepository;
 
   int? _pointer;
 
@@ -46,6 +48,7 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
     required this.addStrokeUsecase,
     required this.deleteStrokeUsecase,
     required this.openDrawingUsecase,
+    required this.drawingRepository,
   }) : super(DrawingStateX.initial()) {
     // sets the event handlers
     on<DrawingEvent>((event, emit) async {
@@ -80,7 +83,14 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
     DrawingEventInitial event,
     Emitter<DrawingState> emit,
   ) async {
-    openDrawingUsecase(event.drawing);
+    final failureOrStrokes = await openDrawingUsecase(event.drawing);
+    failureOrStrokes.fold((l) {
+      // TODO: handle error
+    }, (strokes) {
+      emit(state.copyWith(strokes: strokes));
+    });
+    getIt<HistoryManagerBloc>().add(HistoryManagerEvent.clear());
+    getIt<HistoryManagerBloc>().add(HistoryManagerEvent.push(state));
   }
 
   bool get useStylus => penSettingsBloc.state.useStylus;
@@ -123,9 +133,11 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
   Future<void> startDrawing(PointerEvent event, Emitter emit) async {
     // create the point
     final SPPoint point = SPPoint(
+      index: 0,
       offset: event.localPosition,
       pressure: event.pressure,
     );
+
     // create the stroke
     final SPStroke stroke = SPStroke(
       points: [point],
@@ -148,7 +160,7 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
   Future<void> updateDrawing(PointerEvent event, Emitter emit) async {
     // create the point
     final SPPoint point = SPPoint(
-      id: state.currentStroke!.points.length,
+      index: state.currentStroke!.points.length,
       offset: event.localPosition,
       pressure: event.pressure,
     );
@@ -165,7 +177,7 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
   Future<void> endDrawing(PointerEvent event, Emitter emit) async {
     // create the point
     final SPPoint point = SPPoint(
-      id: state.currentStroke!.points.length,
+      index: state.currentStroke!.points.length,
       offset: event.localPosition,
       pressure: event.pressure,
     );
@@ -176,7 +188,7 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
     );
     // caching the border points
 
-    addStrokeUsecase(completedStroke);
+    await addStrokeUsecase(completedStroke);
     final newState = state.copyWith(
       currentStroke: null,
       strokes: List.from(state.strokes)..add(completedStroke),
@@ -198,7 +210,6 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
   double get eraserRadius => eraserWidthBloc.selected! / 2;
 
   Future<void> erase(PointerEvent event, Emitter emit) async {
-    List<SPStroke> strokesLeft = [];
     for (final stroke in state.strokes) {
       bool shouldErase = false;
       for (final point in stroke.borderPoints) {
@@ -211,25 +222,19 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
         }
       }
       if (shouldErase) {
-        deleteStrokeUsecase(stroke);
-      } else {
-        strokesLeft.add(stroke);
+        await deleteStrokeUsecase(stroke);
       }
     }
-    // gets the strokes from the database
-    // this can help keep the data in sync
-    final newState = state.copyWith(strokes: strokesLeft);
     // update the history
-    getIt<HistoryManagerBloc>().add(
-      HistoryManagerEvent.push(newState),
-    );
     // emit the state
     emit(
-      newState.copyWith(
-        // we do not want to update this eraser position to the history bloc, as that would case the eraser to appear on undo / redo
+      state.copyWith(
         eraserPosition: event.localPosition,
       ),
     );
+
+    // gets the strokes from the database
+    // this can help keep the data in sync
   }
 
   Future<void> finishErase(PointerEvent event, Emitter emit) async {

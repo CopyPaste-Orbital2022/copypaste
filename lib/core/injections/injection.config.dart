@@ -106,7 +106,8 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
       penSettingsBloc: get<_i13.PenSettingsBloc>(),
       addStrokeUsecase: get<_i24.AddStrokeUsecase>(),
       deleteStrokeUsecase: get<_i28.DeleteStrokeUsecase>(),
-      openDrawingUsecase: get<_i22.OpenDrawingUsecase>()));
+      openDrawingUsecase: get<_i22.OpenDrawingUsecase>(),
+      drawingRepository: get<_i20.ISPDrawingRepository>()));
   gh.lazySingleton<_i30.FileManagementBloc>(() => _i30.FileManagementBloc(
       get<_i26.ChangeDrawingNameUsecase>(),
       get<_i27.CreateNewDrawingUsecase>(),

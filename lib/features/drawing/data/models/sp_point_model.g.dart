@@ -15,9 +15,9 @@ extension GetSPPointModelCollection on Isar {
 const SPPointModelSchema = CollectionSchema(
   name: 'SPPointModel',
   schema:
-      '{"name":"SPPointModel","idName":"id","properties":[{"name":"dx","type":"Double"},{"name":"dy","type":"Double"},{"name":"pressure","type":"Double"}],"indexes":[],"links":[]}',
+      '{"name":"SPPointModel","idName":"id","properties":[{"name":"dx","type":"Double"},{"name":"dy","type":"Double"},{"name":"index","type":"Long"},{"name":"pressure","type":"Double"}],"indexes":[],"links":[]}',
   idName: 'id',
-  propertyIds: {'dx': 0, 'dy': 1, 'pressure': 2},
+  propertyIds: {'dx': 0, 'dy': 1, 'index': 2, 'pressure': 3},
   listProperties: {},
   indexIds: {},
   indexValueTypes: {},
@@ -64,8 +64,10 @@ void _sPPointModelSerializeNative(
   final _dx = value0;
   final value1 = object.dy;
   final _dy = value1;
-  final value2 = object.pressure;
-  final _pressure = value2;
+  final value2 = object.index;
+  final _index = value2;
+  final value3 = object.pressure;
+  final _pressure = value3;
   final size = staticSize + dynamicSize;
 
   rawObj.buffer = alloc(size);
@@ -74,7 +76,8 @@ void _sPPointModelSerializeNative(
   final writer = IsarBinaryWriter(buffer, staticSize);
   writer.writeDouble(offsets[0], _dx);
   writer.writeDouble(offsets[1], _dy);
-  writer.writeDouble(offsets[2], _pressure);
+  writer.writeLong(offsets[2], _index);
+  writer.writeDouble(offsets[3], _pressure);
 }
 
 SPPointModel _sPPointModelDeserializeNative(
@@ -86,7 +89,8 @@ SPPointModel _sPPointModelDeserializeNative(
   object.dx = reader.readDouble(offsets[0]);
   object.dy = reader.readDouble(offsets[1]);
   object.id = id;
-  object.pressure = reader.readDouble(offsets[2]);
+  object.index = reader.readLong(offsets[2]);
+  object.pressure = reader.readDouble(offsets[3]);
   _sPPointModelAttachLinks(collection, id, object);
   return object;
 }
@@ -101,6 +105,8 @@ P _sPPointModelDeserializePropNative<P>(
     case 1:
       return (reader.readDouble(offset)) as P;
     case 2:
+      return (reader.readLong(offset)) as P;
+    case 3:
       return (reader.readDouble(offset)) as P;
     default:
       throw 'Illegal propertyIndex';
@@ -113,6 +119,7 @@ dynamic _sPPointModelSerializeWeb(
   IsarNative.jsObjectSet(jsObj, 'dx', object.dx);
   IsarNative.jsObjectSet(jsObj, 'dy', object.dy);
   IsarNative.jsObjectSet(jsObj, 'id', object.id);
+  IsarNative.jsObjectSet(jsObj, 'index', object.index);
   IsarNative.jsObjectSet(jsObj, 'pressure', object.pressure);
   return jsObj;
 }
@@ -123,6 +130,8 @@ SPPointModel _sPPointModelDeserializeWeb(
   object.dx = IsarNative.jsObjectGet(jsObj, 'dx') ?? double.negativeInfinity;
   object.dy = IsarNative.jsObjectGet(jsObj, 'dy') ?? double.negativeInfinity;
   object.id = IsarNative.jsObjectGet(jsObj, 'id') ?? double.negativeInfinity;
+  object.index =
+      IsarNative.jsObjectGet(jsObj, 'index') ?? double.negativeInfinity;
   object.pressure =
       IsarNative.jsObjectGet(jsObj, 'pressure') ?? double.negativeInfinity;
   _sPPointModelAttachLinks(collection,
@@ -140,6 +149,9 @@ P _sPPointModelDeserializePropWeb<P>(Object jsObj, String propertyName) {
           as P;
     case 'id':
       return (IsarNative.jsObjectGet(jsObj, 'id') ?? double.negativeInfinity)
+          as P;
+    case 'index':
+      return (IsarNative.jsObjectGet(jsObj, 'index') ?? double.negativeInfinity)
           as P;
     case 'pressure':
       return (IsarNative.jsObjectGet(jsObj, 'pressure') ??
@@ -331,6 +343,55 @@ extension SPPointModelQueryFilter
     ));
   }
 
+  QueryBuilder<SPPointModel, SPPointModel, QAfterFilterCondition> indexEqualTo(
+      int value) {
+    return addFilterConditionInternal(FilterCondition(
+      type: ConditionType.eq,
+      property: 'index',
+      value: value,
+    ));
+  }
+
+  QueryBuilder<SPPointModel, SPPointModel, QAfterFilterCondition>
+      indexGreaterThan(
+    int value, {
+    bool include = false,
+  }) {
+    return addFilterConditionInternal(FilterCondition(
+      type: ConditionType.gt,
+      include: include,
+      property: 'index',
+      value: value,
+    ));
+  }
+
+  QueryBuilder<SPPointModel, SPPointModel, QAfterFilterCondition> indexLessThan(
+    int value, {
+    bool include = false,
+  }) {
+    return addFilterConditionInternal(FilterCondition(
+      type: ConditionType.lt,
+      include: include,
+      property: 'index',
+      value: value,
+    ));
+  }
+
+  QueryBuilder<SPPointModel, SPPointModel, QAfterFilterCondition> indexBetween(
+    int lower,
+    int upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return addFilterConditionInternal(FilterCondition.between(
+      property: 'index',
+      lower: lower,
+      includeLower: includeLower,
+      upper: upper,
+      includeUpper: includeUpper,
+    ));
+  }
+
   QueryBuilder<SPPointModel, SPPointModel, QAfterFilterCondition>
       pressureGreaterThan(double value) {
     return addFilterConditionInternal(FilterCondition(
@@ -401,6 +462,14 @@ extension SPPointModelQueryWhereSortBy
     return addSortByInternal('id', Sort.desc);
   }
 
+  QueryBuilder<SPPointModel, SPPointModel, QAfterSortBy> sortByIndex() {
+    return addSortByInternal('index', Sort.asc);
+  }
+
+  QueryBuilder<SPPointModel, SPPointModel, QAfterSortBy> sortByIndexDesc() {
+    return addSortByInternal('index', Sort.desc);
+  }
+
   QueryBuilder<SPPointModel, SPPointModel, QAfterSortBy> sortByPressure() {
     return addSortByInternal('pressure', Sort.asc);
   }
@@ -436,6 +505,14 @@ extension SPPointModelQueryWhereSortThenBy
     return addSortByInternal('id', Sort.desc);
   }
 
+  QueryBuilder<SPPointModel, SPPointModel, QAfterSortBy> thenByIndex() {
+    return addSortByInternal('index', Sort.asc);
+  }
+
+  QueryBuilder<SPPointModel, SPPointModel, QAfterSortBy> thenByIndexDesc() {
+    return addSortByInternal('index', Sort.desc);
+  }
+
   QueryBuilder<SPPointModel, SPPointModel, QAfterSortBy> thenByPressure() {
     return addSortByInternal('pressure', Sort.asc);
   }
@@ -459,6 +536,10 @@ extension SPPointModelQueryWhereDistinct
     return addDistinctByInternal('id');
   }
 
+  QueryBuilder<SPPointModel, SPPointModel, QDistinct> distinctByIndex() {
+    return addDistinctByInternal('index');
+  }
+
   QueryBuilder<SPPointModel, SPPointModel, QDistinct> distinctByPressure() {
     return addDistinctByInternal('pressure');
   }
@@ -476,6 +557,10 @@ extension SPPointModelQueryProperty
 
   QueryBuilder<SPPointModel, int, QQueryOperations> idProperty() {
     return addPropertyNameInternal('id');
+  }
+
+  QueryBuilder<SPPointModel, int, QQueryOperations> indexProperty() {
+    return addPropertyNameInternal('index');
   }
 
   QueryBuilder<SPPointModel, double, QQueryOperations> pressureProperty() {

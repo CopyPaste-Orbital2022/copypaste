@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:copypaste/core/injections/injection.dart';
 import 'package:copypaste/core/routing/app_router.dart';
 import 'package:copypaste/features/drawing/presentation/bloc/drawing_bloc/drawing_bloc.dart';
+import 'package:copypaste/features/drawing/presentation/bloc/history_manager_bloc/history_manager_bloc.dart';
 import 'package:copypaste/features/file_management/domain/usecases/change_drawing_name.dart';
 import 'package:copypaste/features/file_management/domain/usecases/create_drawing.dart';
 import 'package:flutter/foundation.dart';

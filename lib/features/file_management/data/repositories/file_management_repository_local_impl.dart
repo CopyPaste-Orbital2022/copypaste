@@ -17,9 +17,10 @@ class FileManagementRepositoryLocalImpl implements IFileManagementRepository {
   final Isar isar;
 
   @override
-  Stream<List<SPDrawing>> get drawingsStream => isar.sPDrawingModels.where().sortByUpdatedAt().watch().map(
-        (event) => event.map((e) => e.toSPDrawing()).toList().reversed.toList(),
-      );
+  Stream<List<SPDrawing>> get drawingsStream =>
+      isar.sPDrawingModels.where().sortByUpdatedAt().watch(initialReturn: true).map(
+            (event) => event.map((e) => e.toSPDrawing()).toList().reversed.toList(),
+          );
 
   @override
   Future<Either<DatabaseFailure, Unit>> updateDrawing(SPDrawing drawing) async {
