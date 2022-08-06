@@ -1,10 +1,12 @@
 import 'package:copypaste/features/file_management/domain/entities/sp_drawing.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:isar/isar.dart';
 import '../../../drawing/data/models/sp_stroke_model.dart';
 
 part 'sp_drawing_model.g.dart';
 
 @Collection()
+@JsonSerializable()
 class SPDrawingModel {
   SPDrawingModel();
 
@@ -12,29 +14,21 @@ class SPDrawingModel {
 
   late String name;
 
+  @JsonKey(name: 'created_at')
   late DateTime createdAt;
 
+  @JsonKey(name: 'updated_at')
   late DateTime updatedAt;
 
   final strokes = IsarLinks<SPStrokeModel>();
 
-  // to json
-  Map<String, String> toJson() {
-    return {
-      'id': id.toString(),
-      'name': name,
-      'createdAt': createdAt.toIso8601String(),
-      'updatedAt': updatedAt.toIso8601String(),
-    };
-  }
+  late int syncedState = 1;
 
   // from json
-  SPDrawingModel.fromJson(Map<String, String> json) {
-    id = int.parse(json['id']!);
-    name = json['name']!;
-    createdAt = DateTime.parse(json['createdAt']!);
-    updatedAt = DateTime.parse(json['updatedAt']!);
-  }
+  factory SPDrawingModel.fromJson(Map<String, dynamic> json) => _$SPDrawingModelFromJson(json);
+
+  // to json
+  Map<String, dynamic> toJson() => _$SPDrawingModelToJson(this);
 
   // from domain entity
   SPDrawingModel.fromSPDrawing(SPDrawing drawing) {

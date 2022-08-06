@@ -7,5 +7,6 @@ class SPUser with _$SPUser {
     required String uid,
     required String userName,
     required String email,
+    required String password,
   }) = _SPUser;
 }

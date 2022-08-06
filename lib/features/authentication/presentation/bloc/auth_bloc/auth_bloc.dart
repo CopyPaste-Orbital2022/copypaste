@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import '../../../domain/entities/sp_user.dart';
 import '../../../domain/repositories/i_auth_repository.dart';
@@ -9,7 +10,7 @@ part 'auth_state.dart';
 
 part 'auth_bloc.freezed.dart';
 
-@injectable
+@LazySingleton()
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   IAuthRepository repository;
   AuthBloc(this.repository) : super(const AuthState.initial()) {
@@ -17,9 +18,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       Option<SPUser> user = await repository.getUser();
       user.fold(
         () {
+          debugPrint('User not signed in');
           emit(const AuthState.userNotSignedIn());
         },
         (a) {
+          debugPrint('User signed in');
           emit(AuthState.userSignedIn(a));
         },
       );

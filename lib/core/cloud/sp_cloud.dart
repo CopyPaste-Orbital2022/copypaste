@@ -1,17 +1,15 @@
 import 'package:http/http.dart' as http;
 
 abstract class ISPCloud {
-  ISPCloud(
-    this.client, {
+  ISPCloud({
     this.scheme = 'https',
-    this.host = 'www.tinyhacks.app',
-    this.port = 443,
+    this.host = 'fierce-dusk-15069.herokuapp.com',
+    this.port,
     this.pathSegments = const ['api', 'v1'],
   });
-  final http.Client client;
   final String host;
   final String scheme;
-  final int port;
+  final int? port;
   final List<String> pathSegments;
 
   /// Returns a [Uri] with the given [segments] and [queryParameters].

@@ -26,6 +26,7 @@ class FileManagementRepositoryLocalImpl implements IFileManagementRepository {
   Future<Either<DatabaseFailure, Unit>> updateDrawing(SPDrawing drawing) async {
     final SPDrawingModel drawingModel = SPDrawingModel.fromSPDrawing(drawing);
     drawingModel.updatedAt = DateTime.now();
+    drawingModel.syncedState = 2;
     await isar.writeTxn((isar) async {
       await isar.sPDrawingModels.put(drawingModel);
     });

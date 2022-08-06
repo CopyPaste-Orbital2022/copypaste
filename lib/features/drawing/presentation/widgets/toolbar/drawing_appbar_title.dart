@@ -1,6 +1,12 @@
-import 'package:bitsdojo_window/bitsdojo_window.dart';
+import 'dart:io';
+import 'package:copypaste/core/extensions/screenshot_controllder_extension.dart';
 import 'package:copypaste/core/injections/injection.dart';
 import 'package:copypaste/core/routing/app_router.dart';
+import 'package:copypaste/features/file_management/presentation/bloc/file_management_bloc/file_management_bloc.dart';
+import 'package:pasteboard/pasteboard.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:screenshot/screenshot.dart';
+import 'package:share_plus/share_plus.dart';
 import '../../bloc/drawing_bloc/drawing_bloc.dart';
 import '../../bloc/history_manager_bloc/history_manager_bloc.dart';
 import '../../bloc/pen_settings_bloc/pen_settings_bloc.dart';
@@ -19,8 +25,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import '../../bloc/selectable_bloc/selectable_bloc.dart';
 
-class DrawingPageAppbarTitle extends StatelessWidget {
+class DrawingPageAppbarTitle extends StatefulWidget {
   const DrawingPageAppbarTitle({Key? key}) : super(key: key);
+
+  @override
+  State<DrawingPageAppbarTitle> createState() => _DrawingPageAppbarTitleState();
+}
+
+class _DrawingPageAppbarTitleState extends State<DrawingPageAppbarTitle> {
+  GlobalKey shareButtonKey = GlobalKey();
+  GlobalKey copyButtonKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +64,6 @@ class DrawingPageAppbarTitle extends StatelessWidget {
       ],
       child: Stack(
         children: [
-          if (platformIsDesktop) MoveWindow(),
           BlocBuilder<CurrentToolBloc, CurrentToolState>(
             builder: (context, state) {
               return Row(
@@ -79,61 +92,53 @@ class DrawingPageAppbarTitle extends StatelessWidget {
                     DrawingButtonType.eraser,
                     state.selected == DrawingButtonType.eraser,
                   ),
-                  if (state.selected == DrawingButtonType.pen)
-                    ..._penButtons(context, state),
-                  if (state.selected == DrawingButtonType.eraser)
-                    ..._eraserButtons(context, state),
+                  if (state.selected == DrawingButtonType.pen) ..._penButtons(context, state),
+                  if (state.selected == DrawingButtonType.eraser) ..._eraserButtons(context, state),
                 ],
               );
             },
           ),
-          BlocBuilder<HistoryManagerBloc, HistoryManagerState>(
-              builder: (context, state) {
+          BlocBuilder<HistoryManagerBloc, HistoryManagerState>(builder: (context, state) {
             return Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 PlatformIconButton(
                   onPressed: state.canUndo
-                      ? () => context
-                          .read<HistoryManagerBloc>()
-                          .add(const HistoryManagerEvent.undo())
+                      ? () => context.read<HistoryManagerBloc>().add(const HistoryManagerEvent.undo())
                       : null,
                   icon: Icon(
-                    platformIsMaterial
-                        ? Icons.undo
-                        : CupertinoIcons.arrow_uturn_left,
-                    color: state.canUndo
-                        ? Colors.white
-                        : Colors.white.withAlpha(128),
+                    platformIsMaterial ? Icons.undo : CupertinoIcons.arrow_uturn_left,
+                    color: state.canUndo ? Colors.white : Colors.white.withAlpha(128),
                     size: 24,
                   ),
                   padding: EdgeInsets.zero,
                 ),
                 PlatformIconButton(
                   onPressed: state.canRedo
-                      ? () => context
-                          .read<HistoryManagerBloc>()
-                          .add(const HistoryManagerEvent.redo())
+                      ? () => context.read<HistoryManagerBloc>().add(const HistoryManagerEvent.redo())
                       : null,
                   icon: Icon(
-                    platformIsMaterial
-                        ? Icons.redo
-                        : CupertinoIcons.arrow_uturn_right,
-                    color: state.canRedo
-                        ? Colors.white
-                        : Colors.white.withAlpha(128),
+                    platformIsMaterial ? Icons.redo : CupertinoIcons.arrow_uturn_right,
+                    color: state.canRedo ? Colors.white : Colors.white.withAlpha(128),
                     size: 24,
                   ),
                   padding: EdgeInsets.zero,
                 ),
                 const VerticalDivider(),
                 PlatformIconButton(
+                  key: copyButtonKey,
+                  icon: const Icon(Icons.copy_outlined, color: Colors.white, size: 24),
+                  onPressed: _onCopyImageToClipboard,
+                  padding: EdgeInsets.zero,
+                ),
+                PlatformIconButton(
+                  key: shareButtonKey,
                   icon: Icon(
                     PlatformIcons(context).share,
                     color: Colors.white,
                     size: 24,
                   ),
-                  onPressed: () {},
+                  onPressed: _onShareButtonPressed,
                   padding: EdgeInsets.zero,
                 ),
                 PlatformIconButton(
@@ -167,5 +172,37 @@ class DrawingPageAppbarTitle extends StatelessWidget {
       const VerticalDivider(),
       for (int i = 0; i < 3; i++) WidthButton<EraserWidthBloc>(index: i),
     ];
+  }
+
+  Future<void> _onCopyImageToClipboard() async {
+    debugPrint('copy image to clipboard');
+    final image = await getIt<ScreenshotController>().capture();
+    debugPrint('image captured: ${image != null}');
+    await Pasteboard.writeImage(image);
+    debugPrint('image copied to clipboard');
+  }
+
+  Future<void> _onShareButtonPressed() async {
+    String drawingName =
+        getIt<FileManagementBloc>().state.selectedDrawing?.name.replaceAll(' ', '_') ?? 'Untitled_Drawing';
+    String fileName = '$drawingName-${DateTime.now().toIso8601String()}.png';
+    final filePath = await getIt<ScreenshotController>().takeScreenshotToTmpDir(fileName);
+    if (filePath != null) {
+      await _shareImage(filePath, key: shareButtonKey);
+    }
+  }
+
+  Future<ShareResult> _shareImage(
+    String path, {
+    String? subject,
+    required GlobalKey key,
+  }) async {
+    final renderBox = key.currentContext!.findRenderObject() as RenderBox;
+    return await Share.shareFilesWithResult(
+      [path],
+      subject: subject,
+      mimeTypes: ['image/png'],
+      sharePositionOrigin: renderBox.localToGlobal(Offset.zero) & renderBox.size,
+    );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:copypaste/features/authentication/presentation/bloc/auth_bloc/auth_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:screenshot/screenshot.dart';
 
 import '../../../../../core/injections/injection.dart';
 import '../../bloc/drawing_bloc/drawing_bloc.dart';
@@ -26,12 +27,15 @@ class DrawingCanvas extends StatelessWidget {
       onPointerCancel: (event) => getIt<DrawingBloc>().add(
         DrawingEvent.pointerCancel(event),
       ),
-      child: Stack(
-        children: const [
-          StrokesPaint(),
-          CurrentStrokePaint(),
-          EraserPaint(),
-        ],
+      child: Screenshot(
+        controller: getIt<ScreenshotController>(),
+        child: Stack(
+          children: const [
+            StrokesPaint(),
+            CurrentStrokePaint(),
+            EraserPaint(),
+          ],
+        ),
       ),
     );
   }

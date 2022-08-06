@@ -10,6 +10,7 @@ import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:screenshot/screenshot.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'injection.config.dart';
 
@@ -25,10 +26,10 @@ abstract class PersistenceModule {
   @preResolve
   Future<SharedPreferences> get prefs => SharedPreferences.getInstance();
 
-  @injectable
+  @lazySingleton
   FlutterSecureStorage get secureStorage => const FlutterSecureStorage();
 
-  @injectable
+  @lazySingleton
   http.Client get httpClient => http.Client();
 
   @preResolve
@@ -43,8 +44,12 @@ abstract class PersistenceModule {
         SPDrawingModelSchema,
         SPStrokeModelSchema,
         SPPointModelSchema,
+        DeletedStrokeSchema,
       ],
       directory: directory.path,
     );
   }
+
+  @lazySingleton
+  ScreenshotController get screenshotController => ScreenshotController();
 }

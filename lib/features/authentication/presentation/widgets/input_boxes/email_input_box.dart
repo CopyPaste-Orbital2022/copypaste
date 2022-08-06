@@ -1,4 +1,4 @@
-import 'raw_input_box.dart';
+import 'package:copypaste/core/adaptive/adaptive_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/errors_and_failures/failures/auth_failure.dart';
@@ -10,13 +10,11 @@ class EmailInputBox extends StatelessWidget {
   final obscureText = false;
   final TextInputType inputType = TextInputType.emailAddress;
   Function(String) getOnChangedFn(BuildContext context, ValidationState state) {
-    return (newValue) =>
-        context.read<ValidationBloc>().add(EmailChanged(newValue));
+    return (newValue) => context.read<ValidationBloc>().add(EmailChanged(newValue));
   }
 
   String? _getErrorText(BuildContext context, ValidationState state) {
-    final ValidationState validationState =
-        context.read<ValidationBloc>().state;
+    final ValidationState validationState = context.read<ValidationBloc>().state;
     if (validationState.showErrorMessages) {
       Email email = validationState.email;
       if (!email.isValid()) {
@@ -33,13 +31,11 @@ class EmailInputBox extends StatelessWidget {
     return null;
   }
 
-  String? Function(AuthFailure) _generateAuthFailureMapper(
-      ValidationState state) {
+  String? Function(AuthFailure) _generateAuthFailureMapper(ValidationState state) {
     return (AuthFailure failure) => _mapAuthFailureToEmailText(state, failure);
   }
 
-  String? _mapAuthFailureToEmailText(
-      ValidationState state, AuthFailure failure) {
+  String? _mapAuthFailureToEmailText(ValidationState state, AuthFailure failure) {
     if (failure == AuthFailure.emailAlreadyInUse() && !state.isSignIn) {
       return "Email is already in use. Please signup with another email or try sign in.";
     }
@@ -54,9 +50,8 @@ class EmailInputBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ValidationBloc, ValidationState>(
-        builder: (context, state) {
-      return RawInputBox(
+    return BlocBuilder<ValidationBloc, ValidationState>(builder: (context, state) {
+      return AdaptiveTextField(
         inputType: inputType,
         obscureText: obscureText,
         getOnChangedFn: getOnChangedFn,

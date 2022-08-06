@@ -176,27 +176,30 @@ code_sign_if_enabled() {
 }
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/bitsdojo_window_macos/bitsdojo_window_macos.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/flutter_secure_storage_macos/flutter_secure_storage_macos.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/isar_flutter_libs/isar_flutter_libs.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/macos_ui/macos_ui.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/pasteboard/pasteboard.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/path_provider_macos/path_provider_macos.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/share_plus_macos/share_plus_macos.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/shared_preferences_macos/shared_preferences_macos.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/url_launcher_macos/url_launcher_macos.framework"
 fi
 if [[ "$CONFIGURATION" == "Profile" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/bitsdojo_window_macos/bitsdojo_window_macos.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/flutter_secure_storage_macos/flutter_secure_storage_macos.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/isar_flutter_libs/isar_flutter_libs.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/macos_ui/macos_ui.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/pasteboard/pasteboard.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/path_provider_macos/path_provider_macos.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/share_plus_macos/share_plus_macos.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/shared_preferences_macos/shared_preferences_macos.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/url_launcher_macos/url_launcher_macos.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/bitsdojo_window_macos/bitsdojo_window_macos.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/flutter_secure_storage_macos/flutter_secure_storage_macos.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/isar_flutter_libs/isar_flutter_libs.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/macos_ui/macos_ui.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/pasteboard/pasteboard.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/path_provider_macos/path_provider_macos.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/share_plus_macos/share_plus_macos.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/shared_preferences_macos/shared_preferences_macos.framework"

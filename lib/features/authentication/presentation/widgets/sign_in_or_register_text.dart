@@ -3,9 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/validation_bloc/validation_bloc.dart';
 
 class SignInOrRegisterText extends StatelessWidget {
-  const SignInOrRegisterText(
-      {Key? key, this.fontSize = 17, this.reversed = false, this.prefix = ""})
-      : super(key: key);
+  const SignInOrRegisterText({Key? key, this.fontSize = 17, this.reversed = false, this.prefix = ""}) : super(key: key);
 
   final double fontSize;
   final bool reversed;
@@ -13,7 +11,7 @@ class SignInOrRegisterText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ValidationBloc, ValidationState>(
+    return BlocBuilder<ValidationBloc, ValidationState>(
       builder: (context, state) {
         return Text(
           prefix + (state.isSignIn ^ reversed ? "Sign In" : "Register"),
@@ -23,7 +21,6 @@ class SignInOrRegisterText extends StatelessWidget {
           ),
         );
       },
-      listener: (context, state) {},
     );
   }
 }

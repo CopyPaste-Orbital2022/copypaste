@@ -10,27 +10,28 @@ import 'package:hive/hive.dart' as _i4;
 import 'package:http/http.dart' as _i5;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:isar/isar.dart' as _i11;
-import 'package:shared_preferences/shared_preferences.dart' as _i15;
+import 'package:screenshot/screenshot.dart' as _i16;
+import 'package:shared_preferences/shared_preferences.dart' as _i17;
 
 import '../../features/authentication/data/datasources/sp_cloud_auth.dart'
     as _i10;
 import '../../features/authentication/data/repositories/auth_repository_impl.dart'
-    as _i17;
+    as _i19;
 import '../../features/authentication/domain/repositories/i_auth_repository.dart'
-    as _i16;
+    as _i18;
 import '../../features/authentication/presentation/bloc/auth_bloc/auth_bloc.dart'
-    as _i25;
+    as _i27;
 import '../../features/authentication/presentation/bloc/validation_bloc/validation_bloc.dart'
-    as _i23;
+    as _i25;
 import '../../features/drawing/data/repositories/sp_drawing_repository_local_impl.dart'
-    as _i21;
+    as _i23;
 import '../../features/drawing/domain/repository/i_sp_drawing_repository.dart'
-    as _i20;
-import '../../features/drawing/domain/usecases/add_stroke.dart' as _i24;
-import '../../features/drawing/domain/usecases/delete_stroke.dart' as _i28;
-import '../../features/drawing/domain/usecases/open_drawing.dart' as _i22;
+    as _i22;
+import '../../features/drawing/domain/usecases/add_stroke.dart' as _i26;
+import '../../features/drawing/domain/usecases/delete_stroke.dart' as _i30;
+import '../../features/drawing/domain/usecases/open_drawing.dart' as _i24;
 import '../../features/drawing/presentation/bloc/drawing_bloc/drawing_bloc.dart'
-    as _i29;
+    as _i31;
 import '../../features/drawing/presentation/bloc/history_manager_bloc/history_manager_bloc.dart'
     as _i9;
 import '../../features/drawing/presentation/bloc/pen_settings_bloc/pen_settings_bloc.dart'
@@ -44,17 +45,18 @@ import '../../features/drawing/presentation/bloc/selectable_bloc/blocs/pen_color
 import '../../features/drawing/presentation/bloc/selectable_bloc/blocs/pen_width_bloc.dart'
     as _i14;
 import '../../features/file_management/data/repositories/file_management_repository_local_impl.dart'
-    as _i19;
+    as _i21;
 import '../../features/file_management/domain/repositories/i_file_management_repository.dart'
-    as _i18;
+    as _i20;
 import '../../features/file_management/domain/usecases/change_drawing_name.dart'
-    as _i26;
+    as _i28;
 import '../../features/file_management/domain/usecases/create_drawing.dart'
-    as _i27;
+    as _i29;
 import '../../features/file_management/presentation/bloc/file_management_bloc/file_management_bloc.dart'
-    as _i30;
+    as _i32;
+import '../cloud/sync_service.dart' as _i15;
 import '../routing/app_router.dart' as _i3;
-import 'injection.dart' as _i31; // ignore_for_file: unnecessary_lambdas
+import 'injection.dart' as _i33; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
@@ -65,54 +67,60 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
   gh.lazySingleton<_i3.AppRouter>(() => _i3.AppRouter());
   await gh.factoryAsync<_i4.Box<dynamic>>(() => persistenceModule.hiveBox,
       preResolve: true);
-  gh.factory<_i5.Client>(() => persistenceModule.httpClient);
+  gh.lazySingleton<_i5.Client>(() => persistenceModule.httpClient);
   gh.lazySingleton<_i6.CurrentToolBloc>(() => _i6.CurrentToolBloc());
   gh.lazySingleton<_i7.EraserWidthBloc>(() => _i7.EraserWidthBloc());
-  gh.factory<_i8.FlutterSecureStorage>(() => persistenceModule.secureStorage);
+  gh.lazySingleton<_i8.FlutterSecureStorage>(
+      () => persistenceModule.secureStorage);
   gh.lazySingleton<_i9.HistoryManagerBloc>(() => _i9.HistoryManagerBloc());
-  gh.lazySingleton<_i10.ISPCloudAuth>(
-      () => _i10.SPCloudAuthImpl(get<_i5.Client>()));
+  gh.lazySingleton<_i10.ISPCloudAuth>(() => _i10.SPCloudAuthImpl());
   await gh.factoryAsync<_i11.Isar>(() => persistenceModule.isar,
       preResolve: true);
   gh.lazySingleton<_i12.PenColorBloc>(() => _i12.PenColorBloc());
   gh.lazySingleton<_i13.PenSettingsBloc>(() => _i13.PenSettingsBloc());
   gh.lazySingleton<_i14.PenWidthBloc>(() => _i14.PenWidthBloc());
-  await gh.factoryAsync<_i15.SharedPreferences>(() => persistenceModule.prefs,
+  gh.lazySingleton<_i15.SPCloudDrawing>(() => _i15.SPCloudDrawing());
+  gh.lazySingleton<_i16.ScreenshotController>(
+      () => persistenceModule.screenshotController);
+  await gh.factoryAsync<_i17.SharedPreferences>(() => persistenceModule.prefs,
       preResolve: true);
-  gh.lazySingleton<_i16.IAuthRepository>(() => _i17.AuthRepositoryImpl(
+  gh.lazySingleton<_i18.IAuthRepository>(() => _i19.AuthRepositoryImpl(
       get<_i10.ISPCloudAuth>(), get<_i8.FlutterSecureStorage>()));
-  gh.lazySingleton<_i18.IFileManagementRepository>(
-      () => _i19.FileManagementRepositoryLocalImpl(get<_i11.Isar>()));
-  gh.lazySingleton<_i20.ISPDrawingRepository>(
-      () => _i21.SPDrawingRepositoryLocalImpl(get<_i11.Isar>()));
-  gh.lazySingleton<_i22.OpenDrawingUsecase>(
-      () => _i22.OpenDrawingUsecase(get<_i20.ISPDrawingRepository>()));
-  gh.factory<_i23.ValidationBloc>(
-      () => _i23.ValidationBloc(get<_i16.IAuthRepository>()));
-  gh.lazySingleton<_i24.AddStrokeUsecase>(
-      () => _i24.AddStrokeUsecase(get<_i20.ISPDrawingRepository>()));
-  gh.factory<_i25.AuthBloc>(() => _i25.AuthBloc(get<_i16.IAuthRepository>()));
-  gh.lazySingleton<_i26.ChangeDrawingNameUsecase>(() =>
-      _i26.ChangeDrawingNameUsecase(get<_i18.IFileManagementRepository>()));
-  gh.lazySingleton<_i27.CreateNewDrawingUsecase>(() =>
-      _i27.CreateNewDrawingUsecase(get<_i18.IFileManagementRepository>()));
-  gh.lazySingleton<_i28.DeleteStrokeUsecase>(
-      () => _i28.DeleteStrokeUsecase(get<_i20.ISPDrawingRepository>()));
-  gh.lazySingleton<_i29.DrawingBloc>(() => _i29.DrawingBloc(
+  gh.lazySingleton<_i20.IFileManagementRepository>(
+      () => _i21.FileManagementRepositoryLocalImpl(get<_i11.Isar>()));
+  gh.lazySingleton<_i22.ISPDrawingRepository>(
+      () => _i23.SPDrawingRepositoryLocalImpl(get<_i11.Isar>()));
+  gh.lazySingleton<_i24.OpenDrawingUsecase>(
+      () => _i24.OpenDrawingUsecase(get<_i22.ISPDrawingRepository>()));
+  gh.factory<_i25.ValidationBloc>(
+      () => _i25.ValidationBloc(get<_i18.IAuthRepository>()));
+  gh.lazySingleton<_i26.AddStrokeUsecase>(
+      () => _i26.AddStrokeUsecase(get<_i22.ISPDrawingRepository>()));
+  gh.lazySingleton<_i27.AuthBloc>(
+      () => _i27.AuthBloc(get<_i18.IAuthRepository>()));
+  gh.lazySingleton<_i28.ChangeDrawingNameUsecase>(() =>
+      _i28.ChangeDrawingNameUsecase(get<_i20.IFileManagementRepository>()));
+  gh.lazySingleton<_i29.CreateNewDrawingUsecase>(() =>
+      _i29.CreateNewDrawingUsecase(get<_i20.IFileManagementRepository>()));
+  gh.lazySingleton<_i30.DeleteStrokeUsecase>(
+      () => _i30.DeleteStrokeUsecase(get<_i22.ISPDrawingRepository>()));
+  gh.lazySingleton<_i31.DrawingBloc>(() => _i31.DrawingBloc(
       currentToolBloc: get<_i6.CurrentToolBloc>(),
       penColorBloc: get<_i12.PenColorBloc>(),
       penWidthBloc: get<_i14.PenWidthBloc>(),
       eraserWidthBloc: get<_i7.EraserWidthBloc>(),
       penSettingsBloc: get<_i13.PenSettingsBloc>(),
-      addStrokeUsecase: get<_i24.AddStrokeUsecase>(),
-      deleteStrokeUsecase: get<_i28.DeleteStrokeUsecase>(),
-      openDrawingUsecase: get<_i22.OpenDrawingUsecase>(),
-      drawingRepository: get<_i20.ISPDrawingRepository>()));
-  gh.lazySingleton<_i30.FileManagementBloc>(() => _i30.FileManagementBloc(
-      get<_i26.ChangeDrawingNameUsecase>(),
-      get<_i27.CreateNewDrawingUsecase>(),
+      addStrokeUsecase: get<_i26.AddStrokeUsecase>(),
+      deleteStrokeUsecase: get<_i30.DeleteStrokeUsecase>(),
+      openDrawingUsecase: get<_i24.OpenDrawingUsecase>(),
+      drawingRepository: get<_i22.ISPDrawingRepository>()));
+  gh.lazySingleton<_i32.FileManagementBloc>(() => _i32.FileManagementBloc(
+      get<_i28.ChangeDrawingNameUsecase>(),
+      get<_i29.CreateNewDrawingUsecase>(),
       get<_i3.AppRouter>()));
+  gh.lazySingleton<_i15.SyncService>(() => _i15.SyncService(
+      get<_i11.Isar>(), get<_i27.AuthBloc>(), get<_i15.SPCloudDrawing>()));
   return get;
 }
 
-class _$PersistenceModule extends _i31.PersistenceModule {}
+class _$PersistenceModule extends _i33.PersistenceModule {}

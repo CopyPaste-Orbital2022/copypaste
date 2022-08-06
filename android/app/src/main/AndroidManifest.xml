@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="app.tinyhacks.copypaste">
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="copypaste"
         android:name="${applicationName}"

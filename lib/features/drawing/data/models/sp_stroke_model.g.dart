@@ -1034,3 +1034,488 @@ extension SPStrokeModelQueryProperty
     return addPropertyNameInternal('thinning');
   }
 }
+
+// ignore_for_file: duplicate_ignore, non_constant_identifier_names, constant_identifier_names, invalid_use_of_protected_member, unnecessary_cast, unused_local_variable
+
+extension GetDeletedStrokeCollection on Isar {
+  IsarCollection<DeletedStroke> get deletedStrokes => getCollection();
+}
+
+const DeletedStrokeSchema = CollectionSchema(
+  name: 'DeletedStroke',
+  schema:
+      '{"name":"DeletedStroke","idName":"id","properties":[{"name":"drawingId","type":"Long"},{"name":"strokeId","type":"Long"}],"indexes":[],"links":[]}',
+  idName: 'id',
+  propertyIds: {'drawingId': 0, 'strokeId': 1},
+  listProperties: {},
+  indexIds: {},
+  indexValueTypes: {},
+  linkIds: {},
+  backlinkLinkNames: {},
+  getId: _deletedStrokeGetId,
+  setId: _deletedStrokeSetId,
+  getLinks: _deletedStrokeGetLinks,
+  attachLinks: _deletedStrokeAttachLinks,
+  serializeNative: _deletedStrokeSerializeNative,
+  deserializeNative: _deletedStrokeDeserializeNative,
+  deserializePropNative: _deletedStrokeDeserializePropNative,
+  serializeWeb: _deletedStrokeSerializeWeb,
+  deserializeWeb: _deletedStrokeDeserializeWeb,
+  deserializePropWeb: _deletedStrokeDeserializePropWeb,
+  version: 3,
+);
+
+int? _deletedStrokeGetId(DeletedStroke object) {
+  if (object.id == Isar.autoIncrement) {
+    return null;
+  } else {
+    return object.id;
+  }
+}
+
+void _deletedStrokeSetId(DeletedStroke object, int id) {
+  object.id = id;
+}
+
+List<IsarLinkBase> _deletedStrokeGetLinks(DeletedStroke object) {
+  return [];
+}
+
+void _deletedStrokeSerializeNative(
+    IsarCollection<DeletedStroke> collection,
+    IsarRawObject rawObj,
+    DeletedStroke object,
+    int staticSize,
+    List<int> offsets,
+    AdapterAlloc alloc) {
+  var dynamicSize = 0;
+  final value0 = object.drawingId;
+  final _drawingId = value0;
+  final value1 = object.strokeId;
+  final _strokeId = value1;
+  final size = staticSize + dynamicSize;
+
+  rawObj.buffer = alloc(size);
+  rawObj.buffer_length = size;
+  final buffer = IsarNative.bufAsBytes(rawObj.buffer, size);
+  final writer = IsarBinaryWriter(buffer, staticSize);
+  writer.writeLong(offsets[0], _drawingId);
+  writer.writeLong(offsets[1], _strokeId);
+}
+
+DeletedStroke _deletedStrokeDeserializeNative(
+    IsarCollection<DeletedStroke> collection,
+    int id,
+    IsarBinaryReader reader,
+    List<int> offsets) {
+  final object = DeletedStroke(
+    reader.readLong(offsets[1]),
+    reader.readLong(offsets[0]),
+  );
+  object.id = id;
+  return object;
+}
+
+P _deletedStrokeDeserializePropNative<P>(
+    int id, IsarBinaryReader reader, int propertyIndex, int offset) {
+  switch (propertyIndex) {
+    case -1:
+      return id as P;
+    case 0:
+      return (reader.readLong(offset)) as P;
+    case 1:
+      return (reader.readLong(offset)) as P;
+    default:
+      throw 'Illegal propertyIndex';
+  }
+}
+
+dynamic _deletedStrokeSerializeWeb(
+    IsarCollection<DeletedStroke> collection, DeletedStroke object) {
+  final jsObj = IsarNative.newJsObject();
+  IsarNative.jsObjectSet(jsObj, 'drawingId', object.drawingId);
+  IsarNative.jsObjectSet(jsObj, 'id', object.id);
+  IsarNative.jsObjectSet(jsObj, 'strokeId', object.strokeId);
+  return jsObj;
+}
+
+DeletedStroke _deletedStrokeDeserializeWeb(
+    IsarCollection<DeletedStroke> collection, dynamic jsObj) {
+  final object = DeletedStroke(
+    IsarNative.jsObjectGet(jsObj, 'strokeId') ?? double.negativeInfinity,
+    IsarNative.jsObjectGet(jsObj, 'drawingId') ?? double.negativeInfinity,
+  );
+  object.id = IsarNative.jsObjectGet(jsObj, 'id') ?? double.negativeInfinity;
+  return object;
+}
+
+P _deletedStrokeDeserializePropWeb<P>(Object jsObj, String propertyName) {
+  switch (propertyName) {
+    case 'drawingId':
+      return (IsarNative.jsObjectGet(jsObj, 'drawingId') ??
+          double.negativeInfinity) as P;
+    case 'id':
+      return (IsarNative.jsObjectGet(jsObj, 'id') ?? double.negativeInfinity)
+          as P;
+    case 'strokeId':
+      return (IsarNative.jsObjectGet(jsObj, 'strokeId') ??
+          double.negativeInfinity) as P;
+    default:
+      throw 'Illegal propertyName';
+  }
+}
+
+void _deletedStrokeAttachLinks(
+    IsarCollection col, int id, DeletedStroke object) {}
+
+extension DeletedStrokeQueryWhereSort
+    on QueryBuilder<DeletedStroke, DeletedStroke, QWhere> {
+  QueryBuilder<DeletedStroke, DeletedStroke, QAfterWhere> anyId() {
+    return addWhereClauseInternal(const IdWhereClause.any());
+  }
+}
+
+extension DeletedStrokeQueryWhere
+    on QueryBuilder<DeletedStroke, DeletedStroke, QWhereClause> {
+  QueryBuilder<DeletedStroke, DeletedStroke, QAfterWhereClause> idEqualTo(
+      int id) {
+    return addWhereClauseInternal(IdWhereClause.between(
+      lower: id,
+      includeLower: true,
+      upper: id,
+      includeUpper: true,
+    ));
+  }
+
+  QueryBuilder<DeletedStroke, DeletedStroke, QAfterWhereClause> idNotEqualTo(
+      int id) {
+    if (whereSortInternal == Sort.asc) {
+      return addWhereClauseInternal(
+        IdWhereClause.lessThan(upper: id, includeUpper: false),
+      ).addWhereClauseInternal(
+        IdWhereClause.greaterThan(lower: id, includeLower: false),
+      );
+    } else {
+      return addWhereClauseInternal(
+        IdWhereClause.greaterThan(lower: id, includeLower: false),
+      ).addWhereClauseInternal(
+        IdWhereClause.lessThan(upper: id, includeUpper: false),
+      );
+    }
+  }
+
+  QueryBuilder<DeletedStroke, DeletedStroke, QAfterWhereClause> idGreaterThan(
+      int id,
+      {bool include = false}) {
+    return addWhereClauseInternal(
+      IdWhereClause.greaterThan(lower: id, includeLower: include),
+    );
+  }
+
+  QueryBuilder<DeletedStroke, DeletedStroke, QAfterWhereClause> idLessThan(
+      int id,
+      {bool include = false}) {
+    return addWhereClauseInternal(
+      IdWhereClause.lessThan(upper: id, includeUpper: include),
+    );
+  }
+
+  QueryBuilder<DeletedStroke, DeletedStroke, QAfterWhereClause> idBetween(
+    int lowerId,
+    int upperId, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return addWhereClauseInternal(IdWhereClause.between(
+      lower: lowerId,
+      includeLower: includeLower,
+      upper: upperId,
+      includeUpper: includeUpper,
+    ));
+  }
+}
+
+extension DeletedStrokeQueryFilter
+    on QueryBuilder<DeletedStroke, DeletedStroke, QFilterCondition> {
+  QueryBuilder<DeletedStroke, DeletedStroke, QAfterFilterCondition>
+      drawingIdEqualTo(int value) {
+    return addFilterConditionInternal(FilterCondition(
+      type: ConditionType.eq,
+      property: 'drawingId',
+      value: value,
+    ));
+  }
+
+  QueryBuilder<DeletedStroke, DeletedStroke, QAfterFilterCondition>
+      drawingIdGreaterThan(
+    int value, {
+    bool include = false,
+  }) {
+    return addFilterConditionInternal(FilterCondition(
+      type: ConditionType.gt,
+      include: include,
+      property: 'drawingId',
+      value: value,
+    ));
+  }
+
+  QueryBuilder<DeletedStroke, DeletedStroke, QAfterFilterCondition>
+      drawingIdLessThan(
+    int value, {
+    bool include = false,
+  }) {
+    return addFilterConditionInternal(FilterCondition(
+      type: ConditionType.lt,
+      include: include,
+      property: 'drawingId',
+      value: value,
+    ));
+  }
+
+  QueryBuilder<DeletedStroke, DeletedStroke, QAfterFilterCondition>
+      drawingIdBetween(
+    int lower,
+    int upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return addFilterConditionInternal(FilterCondition.between(
+      property: 'drawingId',
+      lower: lower,
+      includeLower: includeLower,
+      upper: upper,
+      includeUpper: includeUpper,
+    ));
+  }
+
+  QueryBuilder<DeletedStroke, DeletedStroke, QAfterFilterCondition> idEqualTo(
+      int value) {
+    return addFilterConditionInternal(FilterCondition(
+      type: ConditionType.eq,
+      property: 'id',
+      value: value,
+    ));
+  }
+
+  QueryBuilder<DeletedStroke, DeletedStroke, QAfterFilterCondition>
+      idGreaterThan(
+    int value, {
+    bool include = false,
+  }) {
+    return addFilterConditionInternal(FilterCondition(
+      type: ConditionType.gt,
+      include: include,
+      property: 'id',
+      value: value,
+    ));
+  }
+
+  QueryBuilder<DeletedStroke, DeletedStroke, QAfterFilterCondition> idLessThan(
+    int value, {
+    bool include = false,
+  }) {
+    return addFilterConditionInternal(FilterCondition(
+      type: ConditionType.lt,
+      include: include,
+      property: 'id',
+      value: value,
+    ));
+  }
+
+  QueryBuilder<DeletedStroke, DeletedStroke, QAfterFilterCondition> idBetween(
+    int lower,
+    int upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return addFilterConditionInternal(FilterCondition.between(
+      property: 'id',
+      lower: lower,
+      includeLower: includeLower,
+      upper: upper,
+      includeUpper: includeUpper,
+    ));
+  }
+
+  QueryBuilder<DeletedStroke, DeletedStroke, QAfterFilterCondition>
+      strokeIdEqualTo(int value) {
+    return addFilterConditionInternal(FilterCondition(
+      type: ConditionType.eq,
+      property: 'strokeId',
+      value: value,
+    ));
+  }
+
+  QueryBuilder<DeletedStroke, DeletedStroke, QAfterFilterCondition>
+      strokeIdGreaterThan(
+    int value, {
+    bool include = false,
+  }) {
+    return addFilterConditionInternal(FilterCondition(
+      type: ConditionType.gt,
+      include: include,
+      property: 'strokeId',
+      value: value,
+    ));
+  }
+
+  QueryBuilder<DeletedStroke, DeletedStroke, QAfterFilterCondition>
+      strokeIdLessThan(
+    int value, {
+    bool include = false,
+  }) {
+    return addFilterConditionInternal(FilterCondition(
+      type: ConditionType.lt,
+      include: include,
+      property: 'strokeId',
+      value: value,
+    ));
+  }
+
+  QueryBuilder<DeletedStroke, DeletedStroke, QAfterFilterCondition>
+      strokeIdBetween(
+    int lower,
+    int upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return addFilterConditionInternal(FilterCondition.between(
+      property: 'strokeId',
+      lower: lower,
+      includeLower: includeLower,
+      upper: upper,
+      includeUpper: includeUpper,
+    ));
+  }
+}
+
+extension DeletedStrokeQueryLinks
+    on QueryBuilder<DeletedStroke, DeletedStroke, QFilterCondition> {}
+
+extension DeletedStrokeQueryWhereSortBy
+    on QueryBuilder<DeletedStroke, DeletedStroke, QSortBy> {
+  QueryBuilder<DeletedStroke, DeletedStroke, QAfterSortBy> sortByDrawingId() {
+    return addSortByInternal('drawingId', Sort.asc);
+  }
+
+  QueryBuilder<DeletedStroke, DeletedStroke, QAfterSortBy>
+      sortByDrawingIdDesc() {
+    return addSortByInternal('drawingId', Sort.desc);
+  }
+
+  QueryBuilder<DeletedStroke, DeletedStroke, QAfterSortBy> sortById() {
+    return addSortByInternal('id', Sort.asc);
+  }
+
+  QueryBuilder<DeletedStroke, DeletedStroke, QAfterSortBy> sortByIdDesc() {
+    return addSortByInternal('id', Sort.desc);
+  }
+
+  QueryBuilder<DeletedStroke, DeletedStroke, QAfterSortBy> sortByStrokeId() {
+    return addSortByInternal('strokeId', Sort.asc);
+  }
+
+  QueryBuilder<DeletedStroke, DeletedStroke, QAfterSortBy>
+      sortByStrokeIdDesc() {
+    return addSortByInternal('strokeId', Sort.desc);
+  }
+}
+
+extension DeletedStrokeQueryWhereSortThenBy
+    on QueryBuilder<DeletedStroke, DeletedStroke, QSortThenBy> {
+  QueryBuilder<DeletedStroke, DeletedStroke, QAfterSortBy> thenByDrawingId() {
+    return addSortByInternal('drawingId', Sort.asc);
+  }
+
+  QueryBuilder<DeletedStroke, DeletedStroke, QAfterSortBy>
+      thenByDrawingIdDesc() {
+    return addSortByInternal('drawingId', Sort.desc);
+  }
+
+  QueryBuilder<DeletedStroke, DeletedStroke, QAfterSortBy> thenById() {
+    return addSortByInternal('id', Sort.asc);
+  }
+
+  QueryBuilder<DeletedStroke, DeletedStroke, QAfterSortBy> thenByIdDesc() {
+    return addSortByInternal('id', Sort.desc);
+  }
+
+  QueryBuilder<DeletedStroke, DeletedStroke, QAfterSortBy> thenByStrokeId() {
+    return addSortByInternal('strokeId', Sort.asc);
+  }
+
+  QueryBuilder<DeletedStroke, DeletedStroke, QAfterSortBy>
+      thenByStrokeIdDesc() {
+    return addSortByInternal('strokeId', Sort.desc);
+  }
+}
+
+extension DeletedStrokeQueryWhereDistinct
+    on QueryBuilder<DeletedStroke, DeletedStroke, QDistinct> {
+  QueryBuilder<DeletedStroke, DeletedStroke, QDistinct> distinctByDrawingId() {
+    return addDistinctByInternal('drawingId');
+  }
+
+  QueryBuilder<DeletedStroke, DeletedStroke, QDistinct> distinctById() {
+    return addDistinctByInternal('id');
+  }
+
+  QueryBuilder<DeletedStroke, DeletedStroke, QDistinct> distinctByStrokeId() {
+    return addDistinctByInternal('strokeId');
+  }
+}
+
+extension DeletedStrokeQueryProperty
+    on QueryBuilder<DeletedStroke, DeletedStroke, QQueryProperty> {
+  QueryBuilder<DeletedStroke, int, QQueryOperations> drawingIdProperty() {
+    return addPropertyNameInternal('drawingId');
+  }
+
+  QueryBuilder<DeletedStroke, int, QQueryOperations> idProperty() {
+    return addPropertyNameInternal('id');
+  }
+
+  QueryBuilder<DeletedStroke, int, QQueryOperations> strokeIdProperty() {
+    return addPropertyNameInternal('strokeId');
+  }
+}
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+SPStrokeJsonModel _$SPStrokeJsonModelFromJson(Map<String, dynamic> json) =>
+    SPStrokeJsonModel(
+      id: json['stroke_id'] as int,
+      size: (json['size'] as num).toDouble(),
+      color: json['color'] as int,
+      isComplete: json['is_complete'] as bool,
+      thinning: (json['thinning'] as num).toDouble(),
+      smoothing: (json['smoothing'] as num).toDouble(),
+      streamline: (json['streamline'] as num).toDouble(),
+      taperStart: (json['taper_start'] as num).toDouble(),
+      taperEnd: (json['taper_end'] as num).toDouble(),
+      capStart: json['cap_start'] as bool,
+      capEnd: json['cap_end'] as bool,
+      simulatePressure: json['simulate_pressure'] as bool,
+      points: (json['points'] as List<dynamic>)
+          .map((e) => SPPointJsonModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$SPStrokeJsonModelToJson(SPStrokeJsonModel instance) =>
+    <String, dynamic>{
+      'stroke_id': instance.id,
+      'size': instance.size,
+      'color': instance.color,
+      'is_complete': instance.isComplete,
+      'thinning': instance.thinning,
+      'smoothing': instance.smoothing,
+      'streamline': instance.streamline,
+      'taper_start': instance.taperStart,
+      'taper_end': instance.taperEnd,
+      'cap_start': instance.capStart,
+      'cap_end': instance.capEnd,
+      'simulate_pressure': instance.simulatePressure,
+      'points': instance.points,
+    };

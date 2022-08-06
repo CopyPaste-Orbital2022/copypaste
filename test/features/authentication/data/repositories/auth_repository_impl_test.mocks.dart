@@ -29,25 +29,23 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: camel_case_types
 
-class _FakeClient_0 extends _i1.Fake implements _i2.Client {}
+class _FakeResponse_0 extends _i1.Fake implements _i2.Response {}
 
-class _FakeResponse_1 extends _i1.Fake implements _i2.Response {}
+class _FakeUri_1 extends _i1.Fake implements Uri {}
 
-class _FakeUri_2 extends _i1.Fake implements Uri {}
+class _FakeIOSOptions_2 extends _i1.Fake implements _i3.IOSOptions {}
 
-class _FakeIOSOptions_3 extends _i1.Fake implements _i3.IOSOptions {}
+class _FakeAndroidOptions_3 extends _i1.Fake implements _i3.AndroidOptions {}
 
-class _FakeAndroidOptions_4 extends _i1.Fake implements _i3.AndroidOptions {}
+class _FakeLinuxOptions_4 extends _i1.Fake implements _i3.LinuxOptions {}
 
-class _FakeLinuxOptions_5 extends _i1.Fake implements _i3.LinuxOptions {}
+class _FakeWindowsOptions_5 extends _i1.Fake implements _i3.WindowsOptions {}
 
-class _FakeWindowsOptions_6 extends _i1.Fake implements _i3.WindowsOptions {}
+class _FakeWebOptions_6 extends _i1.Fake implements _i3.WebOptions {}
 
-class _FakeWebOptions_7 extends _i1.Fake implements _i3.WebOptions {}
+class _FakeMacOsOptions_7 extends _i1.Fake implements _i3.MacOsOptions {}
 
-class _FakeMacOsOptions_8 extends _i1.Fake implements _i3.MacOsOptions {}
-
-class _FakeEither_9<L, R> extends _i1.Fake implements _i4.Either<L, R> {}
+class _FakeEither_8<L, R> extends _i1.Fake implements _i4.Either<L, R> {}
 
 /// A class which mocks [ISPCloudAuth].
 ///
@@ -58,18 +56,12 @@ class MockISPCloudAuth extends _i1.Mock implements _i5.ISPCloudAuth {
   }
 
   @override
-  _i2.Client get client => (super.noSuchMethod(Invocation.getter(#client),
-      returnValue: _FakeClient_0()) as _i2.Client);
-  @override
   String get host =>
       (super.noSuchMethod(Invocation.getter(#host), returnValue: '') as String);
   @override
   String get scheme =>
       (super.noSuchMethod(Invocation.getter(#scheme), returnValue: '')
           as String);
-  @override
-  int get port =>
-      (super.noSuchMethod(Invocation.getter(#port), returnValue: 0) as int);
   @override
   List<String> get pathSegments =>
       (super.noSuchMethod(Invocation.getter(#pathSegments),
@@ -80,19 +72,19 @@ class MockISPCloudAuth extends _i1.Mock implements _i5.ISPCloudAuth {
       (super.noSuchMethod(
               Invocation.method(#register, [],
                   {#email: email, #password: password, #userName: userName}),
-              returnValue: Future<_i2.Response>.value(_FakeResponse_1()))
+              returnValue: Future<_i2.Response>.value(_FakeResponse_0()))
           as _i6.Future<_i2.Response>);
   @override
   _i6.Future<_i2.Response> logIn({String? email, String? password}) => (super
       .noSuchMethod(
           Invocation.method(#logIn, [], {#email: email, #password: password}),
-          returnValue: Future<_i2.Response>.value(_FakeResponse_1())) as _i6
+          returnValue: Future<_i2.Response>.value(_FakeResponse_0())) as _i6
       .Future<_i2.Response>);
   @override
   _i6.Future<_i2.Response> logOut({String? userId, String? email}) =>
       (super.noSuchMethod(
               Invocation.method(#logOut, [], {#userId: userId, #email: email}),
-              returnValue: Future<_i2.Response>.value(_FakeResponse_1()))
+              returnValue: Future<_i2.Response>.value(_FakeResponse_0()))
           as _i6.Future<_i2.Response>);
   @override
   Uri getUri(List<String>? segments,
@@ -100,7 +92,7 @@ class MockISPCloudAuth extends _i1.Mock implements _i5.ISPCloudAuth {
       (super.noSuchMethod(
           Invocation.method(#getUri, [segments],
               {#queryParameters: queryParameters, #fragment: fragment}),
-          returnValue: _FakeUri_2()) as Uri);
+          returnValue: _FakeUri_1()) as Uri);
 }
 
 /// A class which mocks [FlutterSecureStorage].
@@ -115,27 +107,27 @@ class MockFlutterSecureStorage extends _i1.Mock
   @override
   _i3.IOSOptions get iOptions =>
       (super.noSuchMethod(Invocation.getter(#iOptions),
-          returnValue: _FakeIOSOptions_3()) as _i3.IOSOptions);
+          returnValue: _FakeIOSOptions_2()) as _i3.IOSOptions);
   @override
   _i3.AndroidOptions get aOptions =>
       (super.noSuchMethod(Invocation.getter(#aOptions),
-          returnValue: _FakeAndroidOptions_4()) as _i3.AndroidOptions);
+          returnValue: _FakeAndroidOptions_3()) as _i3.AndroidOptions);
   @override
   _i3.LinuxOptions get lOptions =>
       (super.noSuchMethod(Invocation.getter(#lOptions),
-          returnValue: _FakeLinuxOptions_5()) as _i3.LinuxOptions);
+          returnValue: _FakeLinuxOptions_4()) as _i3.LinuxOptions);
   @override
   _i3.WindowsOptions get wOptions =>
       (super.noSuchMethod(Invocation.getter(#wOptions),
-          returnValue: _FakeWindowsOptions_6()) as _i3.WindowsOptions);
+          returnValue: _FakeWindowsOptions_5()) as _i3.WindowsOptions);
   @override
   _i3.WebOptions get webOptions =>
       (super.noSuchMethod(Invocation.getter(#webOptions),
-          returnValue: _FakeWebOptions_7()) as _i3.WebOptions);
+          returnValue: _FakeWebOptions_6()) as _i3.WebOptions);
   @override
   _i3.MacOsOptions get mOptions =>
       (super.noSuchMethod(Invocation.getter(#mOptions),
-          returnValue: _FakeMacOsOptions_8()) as _i3.MacOsOptions);
+          returnValue: _FakeMacOsOptions_7()) as _i3.MacOsOptions);
   @override
   _i6.Future<void> write(
           {String? key,
@@ -272,12 +264,12 @@ class MockEmail extends _i1.Mock implements _i7.Email {
   @override
   _i4.Either<_i8.ValueFailure<String>, String> get value =>
       (super.noSuchMethod(Invocation.getter(#value),
-              returnValue: _FakeEither_9<_i8.ValueFailure<String>, String>())
+              returnValue: _FakeEither_8<_i8.ValueFailure<String>, String>())
           as _i4.Either<_i8.ValueFailure<String>, String>);
   @override
   _i4.Either<_i8.ValueFailure<String>, _i4.Unit> get failureOrUnit =>
       (super.noSuchMethod(Invocation.getter(#failureOrUnit),
-              returnValue: _FakeEither_9<_i8.ValueFailure<String>, _i4.Unit>())
+              returnValue: _FakeEither_8<_i8.ValueFailure<String>, _i4.Unit>())
           as _i4.Either<_i8.ValueFailure<String>, _i4.Unit>);
   @override
   List<Object> get props =>
@@ -304,12 +296,12 @@ class MockPassword extends _i1.Mock implements _i9.Password {
   @override
   _i4.Either<_i8.ValueFailure<String>, String> get value =>
       (super.noSuchMethod(Invocation.getter(#value),
-              returnValue: _FakeEither_9<_i8.ValueFailure<String>, String>())
+              returnValue: _FakeEither_8<_i8.ValueFailure<String>, String>())
           as _i4.Either<_i8.ValueFailure<String>, String>);
   @override
   _i4.Either<_i8.ValueFailure<String>, _i4.Unit> get failureOrUnit =>
       (super.noSuchMethod(Invocation.getter(#failureOrUnit),
-              returnValue: _FakeEither_9<_i8.ValueFailure<String>, _i4.Unit>())
+              returnValue: _FakeEither_8<_i8.ValueFailure<String>, _i4.Unit>())
           as _i4.Either<_i8.ValueFailure<String>, _i4.Unit>);
   @override
   List<Object> get props =>
@@ -336,12 +328,12 @@ class MockDisplayName extends _i1.Mock implements _i10.DisplayName {
   @override
   _i4.Either<_i8.ValueFailure<String>, String> get value =>
       (super.noSuchMethod(Invocation.getter(#value),
-              returnValue: _FakeEither_9<_i8.ValueFailure<String>, String>())
+              returnValue: _FakeEither_8<_i8.ValueFailure<String>, String>())
           as _i4.Either<_i8.ValueFailure<String>, String>);
   @override
   _i4.Either<_i8.ValueFailure<String>, _i4.Unit> get failureOrUnit =>
       (super.noSuchMethod(Invocation.getter(#failureOrUnit),
-              returnValue: _FakeEither_9<_i8.ValueFailure<String>, _i4.Unit>())
+              returnValue: _FakeEither_8<_i8.ValueFailure<String>, _i4.Unit>())
           as _i4.Either<_i8.ValueFailure<String>, _i4.Unit>);
   @override
   List<Object> get props =>

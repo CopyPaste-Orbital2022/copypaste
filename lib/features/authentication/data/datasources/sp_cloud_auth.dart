@@ -1,19 +1,20 @@
 import 'dart:convert';
 import 'package:copypaste/core/cloud/sp_cloud.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: ISPCloudAuth)
 class SPCloudAuthImpl extends ISPCloudAuth {
-  SPCloudAuthImpl(super.client);
+  SPCloudAuthImpl();
 }
 
 class ISPCloudAuth extends ISPCloud {
-  ISPCloudAuth(
-    super.client, {
+  ISPCloudAuth({
     super.scheme = 'https',
-    super.host = 'www.tinyhacks.app',
-    super.port = 443,
+    super.host = 'fierce-dusk-15069.herokuapp.com',
+    super.port,
     super.pathSegments = const ['api', 'v1', 'auth'],
   });
 
@@ -23,12 +24,12 @@ class ISPCloudAuth extends ISPCloud {
     required String password,
     required String userName,
   }) async {
-    return await client.post(
+    return await Client().post(
       getUri(['register']),
       headers: {
         'Content-Type': 'application/json',
       },
-      body: json.encode({
+      body: jsonEncode({
         'user_name': userName,
         'email': email,
         'password': password,
@@ -41,7 +42,8 @@ class ISPCloudAuth extends ISPCloud {
     required String email,
     required String password,
   }) async {
-    return await client.post(
+    debugPrint(getUri(['login']).toString());
+    return await Client().post(
       getUri(['login']),
       headers: {
         'Content-Type': 'application/json',
@@ -58,7 +60,7 @@ class ISPCloudAuth extends ISPCloud {
     required String userId,
     required String email,
   }) async {
-    return await client.post(
+    return await Client().post(
       getUri(['logout']),
       headers: {
         'Content-Type': 'application/json',

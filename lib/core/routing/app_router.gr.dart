@@ -53,8 +53,8 @@ class _$AppRouter extends RootStackRouter {
   @override
   List<RouteConfig> get routes => [
         RouteConfig(SplashRoute.name, path: '/splash-page'),
-        RouteConfig(AuthenticationRoute.name, path: '/authentication-page'),
-        RouteConfig(FileManagementRoute.name, path: '/'),
+        RouteConfig(AuthenticationRoute.name, path: '/'),
+        RouteConfig(FileManagementRoute.name, path: '/file-management-page'),
         RouteConfig(DrawingRoute.name, path: '/drawing-page')
       ];
 }
@@ -70,8 +70,7 @@ class SplashRoute extends PageRouteInfo<void> {
 /// generated route for
 /// [AuthenticationPage]
 class AuthenticationRoute extends PageRouteInfo<void> {
-  const AuthenticationRoute()
-      : super(AuthenticationRoute.name, path: '/authentication-page');
+  const AuthenticationRoute() : super(AuthenticationRoute.name, path: '/');
 
   static const String name = 'AuthenticationRoute';
 }
@@ -79,7 +78,8 @@ class AuthenticationRoute extends PageRouteInfo<void> {
 /// generated route for
 /// [FileManagementPage]
 class FileManagementRoute extends PageRouteInfo<void> {
-  const FileManagementRoute() : super(FileManagementRoute.name, path: '/');
+  const FileManagementRoute()
+      : super(FileManagementRoute.name, path: '/file-management-page');
 
   static const String name = 'FileManagementRoute';
 }

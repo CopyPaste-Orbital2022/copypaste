@@ -19,6 +19,7 @@ mixin _$SPUser {
   String get uid => throw _privateConstructorUsedError;
   String get userName => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SPUserCopyWith<SPUser> get copyWith => throw _privateConstructorUsedError;
@@ -28,7 +29,7 @@ mixin _$SPUser {
 abstract class $SPUserCopyWith<$Res> {
   factory $SPUserCopyWith(SPUser value, $Res Function(SPUser) then) =
       _$SPUserCopyWithImpl<$Res>;
-  $Res call({String uid, String userName, String email});
+  $Res call({String uid, String userName, String email, String password});
 }
 
 /// @nodoc
@@ -44,6 +45,7 @@ class _$SPUserCopyWithImpl<$Res> implements $SPUserCopyWith<$Res> {
     Object? uid = freezed,
     Object? userName = freezed,
     Object? email = freezed,
+    Object? password = freezed,
   }) {
     return _then(_value.copyWith(
       uid: uid == freezed
@@ -58,6 +60,10 @@ class _$SPUserCopyWithImpl<$Res> implements $SPUserCopyWith<$Res> {
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      password: password == freezed
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -67,7 +73,7 @@ abstract class _$$_SPUserCopyWith<$Res> implements $SPUserCopyWith<$Res> {
   factory _$$_SPUserCopyWith(_$_SPUser value, $Res Function(_$_SPUser) then) =
       __$$_SPUserCopyWithImpl<$Res>;
   @override
-  $Res call({String uid, String userName, String email});
+  $Res call({String uid, String userName, String email, String password});
 }
 
 /// @nodoc
@@ -84,6 +90,7 @@ class __$$_SPUserCopyWithImpl<$Res> extends _$SPUserCopyWithImpl<$Res>
     Object? uid = freezed,
     Object? userName = freezed,
     Object? email = freezed,
+    Object? password = freezed,
   }) {
     return _then(_$_SPUser(
       uid: uid == freezed
@@ -98,6 +105,10 @@ class __$$_SPUserCopyWithImpl<$Res> extends _$SPUserCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      password: password == freezed
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -106,7 +117,10 @@ class __$$_SPUserCopyWithImpl<$Res> extends _$SPUserCopyWithImpl<$Res>
 
 class _$_SPUser implements _SPUser {
   const _$_SPUser(
-      {required this.uid, required this.userName, required this.email});
+      {required this.uid,
+      required this.userName,
+      required this.email,
+      required this.password});
 
   @override
   final String uid;
@@ -114,10 +128,12 @@ class _$_SPUser implements _SPUser {
   final String userName;
   @override
   final String email;
+  @override
+  final String password;
 
   @override
   String toString() {
-    return 'SPUser(uid: $uid, userName: $userName, email: $email)';
+    return 'SPUser(uid: $uid, userName: $userName, email: $email, password: $password)';
   }
 
   @override
@@ -127,7 +143,8 @@ class _$_SPUser implements _SPUser {
             other is _$_SPUser &&
             const DeepCollectionEquality().equals(other.uid, uid) &&
             const DeepCollectionEquality().equals(other.userName, userName) &&
-            const DeepCollectionEquality().equals(other.email, email));
+            const DeepCollectionEquality().equals(other.email, email) &&
+            const DeepCollectionEquality().equals(other.password, password));
   }
 
   @override
@@ -135,7 +152,8 @@ class _$_SPUser implements _SPUser {
       runtimeType,
       const DeepCollectionEquality().hash(uid),
       const DeepCollectionEquality().hash(userName),
-      const DeepCollectionEquality().hash(email));
+      const DeepCollectionEquality().hash(email),
+      const DeepCollectionEquality().hash(password));
 
   @JsonKey(ignore: true)
   @override
@@ -147,7 +165,8 @@ abstract class _SPUser implements SPUser {
   const factory _SPUser(
       {required final String uid,
       required final String userName,
-      required final String email}) = _$_SPUser;
+      required final String email,
+      required final String password}) = _$_SPUser;
 
   @override
   String get uid;
@@ -155,6 +174,8 @@ abstract class _SPUser implements SPUser {
   String get userName;
   @override
   String get email;
+  @override
+  String get password;
   @override
   @JsonKey(ignore: true)
   _$$_SPUserCopyWith<_$_SPUser> get copyWith =>

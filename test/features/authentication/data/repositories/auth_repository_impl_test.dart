@@ -34,7 +34,7 @@ void main() {
       mockCloudAuth = MockISPCloudAuth();
       storage = MockFlutterSecureStorage();
       authRepository = AuthRepositoryImpl(mockCloudAuth, storage);
-      user = const SPUser(uid: 'user_id', userName: 'user_name', email: 'test@tinyhacks.app');
+      user = const SPUser(uid: 'user_id', userName: 'user_name', email: 'test@tinyhacks.app', password: 'test');
       email = MockEmail();
       password = MockPassword();
       displayName = MockDisplayName();

@@ -15,9 +15,9 @@ extension GetSPDrawingModelCollection on Isar {
 const SPDrawingModelSchema = CollectionSchema(
   name: 'SPDrawingModel',
   schema:
-      '{"name":"SPDrawingModel","idName":"id","properties":[{"name":"createdAt","type":"Long"},{"name":"name","type":"String"},{"name":"updatedAt","type":"Long"}],"indexes":[],"links":[{"name":"strokes","target":"SPStrokeModel"}]}',
+      '{"name":"SPDrawingModel","idName":"id","properties":[{"name":"createdAt","type":"Long"},{"name":"name","type":"String"},{"name":"syncedState","type":"Long"},{"name":"updatedAt","type":"Long"}],"indexes":[],"links":[{"name":"strokes","target":"SPStrokeModel"}]}',
   idName: 'id',
-  propertyIds: {'createdAt': 0, 'name': 1, 'updatedAt': 2},
+  propertyIds: {'createdAt': 0, 'name': 1, 'syncedState': 2, 'updatedAt': 3},
   listProperties: {},
   indexIds: {},
   indexValueTypes: {},
@@ -65,8 +65,10 @@ void _sPDrawingModelSerializeNative(
   final value1 = object.name;
   final _name = IsarBinaryWriter.utf8Encoder.convert(value1);
   dynamicSize += (_name.length) as int;
-  final value2 = object.updatedAt;
-  final _updatedAt = value2;
+  final value2 = object.syncedState;
+  final _syncedState = value2;
+  final value3 = object.updatedAt;
+  final _updatedAt = value3;
   final size = staticSize + dynamicSize;
 
   rawObj.buffer = alloc(size);
@@ -75,7 +77,8 @@ void _sPDrawingModelSerializeNative(
   final writer = IsarBinaryWriter(buffer, staticSize);
   writer.writeDateTime(offsets[0], _createdAt);
   writer.writeBytes(offsets[1], _name);
-  writer.writeDateTime(offsets[2], _updatedAt);
+  writer.writeLong(offsets[2], _syncedState);
+  writer.writeDateTime(offsets[3], _updatedAt);
 }
 
 SPDrawingModel _sPDrawingModelDeserializeNative(
@@ -87,7 +90,8 @@ SPDrawingModel _sPDrawingModelDeserializeNative(
   object.createdAt = reader.readDateTime(offsets[0]);
   object.id = id;
   object.name = reader.readString(offsets[1]);
-  object.updatedAt = reader.readDateTime(offsets[2]);
+  object.syncedState = reader.readLong(offsets[2]);
+  object.updatedAt = reader.readDateTime(offsets[3]);
   _sPDrawingModelAttachLinks(collection, id, object);
   return object;
 }
@@ -102,6 +106,8 @@ P _sPDrawingModelDeserializePropNative<P>(
     case 1:
       return (reader.readString(offset)) as P;
     case 2:
+      return (reader.readLong(offset)) as P;
+    case 3:
       return (reader.readDateTime(offset)) as P;
     default:
       throw 'Illegal propertyIndex';
@@ -115,6 +121,7 @@ dynamic _sPDrawingModelSerializeWeb(
       jsObj, 'createdAt', object.createdAt.toUtc().millisecondsSinceEpoch);
   IsarNative.jsObjectSet(jsObj, 'id', object.id);
   IsarNative.jsObjectSet(jsObj, 'name', object.name);
+  IsarNative.jsObjectSet(jsObj, 'syncedState', object.syncedState);
   IsarNative.jsObjectSet(
       jsObj, 'updatedAt', object.updatedAt.toUtc().millisecondsSinceEpoch);
   return jsObj;
@@ -131,6 +138,8 @@ SPDrawingModel _sPDrawingModelDeserializeWeb(
       : DateTime.fromMillisecondsSinceEpoch(0);
   object.id = IsarNative.jsObjectGet(jsObj, 'id') ?? double.negativeInfinity;
   object.name = IsarNative.jsObjectGet(jsObj, 'name') ?? '';
+  object.syncedState =
+      IsarNative.jsObjectGet(jsObj, 'syncedState') ?? double.negativeInfinity;
   object.updatedAt = IsarNative.jsObjectGet(jsObj, 'updatedAt') != null
       ? DateTime.fromMillisecondsSinceEpoch(
               IsarNative.jsObjectGet(jsObj, 'updatedAt'),
@@ -156,6 +165,9 @@ P _sPDrawingModelDeserializePropWeb<P>(Object jsObj, String propertyName) {
           as P;
     case 'name':
       return (IsarNative.jsObjectGet(jsObj, 'name') ?? '') as P;
+    case 'syncedState':
+      return (IsarNative.jsObjectGet(jsObj, 'syncedState') ??
+          double.negativeInfinity) as P;
     case 'updatedAt':
       return (IsarNative.jsObjectGet(jsObj, 'updatedAt') != null
           ? DateTime.fromMillisecondsSinceEpoch(
@@ -451,6 +463,57 @@ extension SPDrawingModelQueryFilter
   }
 
   QueryBuilder<SPDrawingModel, SPDrawingModel, QAfterFilterCondition>
+      syncedStateEqualTo(int value) {
+    return addFilterConditionInternal(FilterCondition(
+      type: ConditionType.eq,
+      property: 'syncedState',
+      value: value,
+    ));
+  }
+
+  QueryBuilder<SPDrawingModel, SPDrawingModel, QAfterFilterCondition>
+      syncedStateGreaterThan(
+    int value, {
+    bool include = false,
+  }) {
+    return addFilterConditionInternal(FilterCondition(
+      type: ConditionType.gt,
+      include: include,
+      property: 'syncedState',
+      value: value,
+    ));
+  }
+
+  QueryBuilder<SPDrawingModel, SPDrawingModel, QAfterFilterCondition>
+      syncedStateLessThan(
+    int value, {
+    bool include = false,
+  }) {
+    return addFilterConditionInternal(FilterCondition(
+      type: ConditionType.lt,
+      include: include,
+      property: 'syncedState',
+      value: value,
+    ));
+  }
+
+  QueryBuilder<SPDrawingModel, SPDrawingModel, QAfterFilterCondition>
+      syncedStateBetween(
+    int lower,
+    int upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return addFilterConditionInternal(FilterCondition.between(
+      property: 'syncedState',
+      lower: lower,
+      includeLower: includeLower,
+      upper: upper,
+      includeUpper: includeUpper,
+    ));
+  }
+
+  QueryBuilder<SPDrawingModel, SPDrawingModel, QAfterFilterCondition>
       updatedAtEqualTo(DateTime value) {
     return addFilterConditionInternal(FilterCondition(
       type: ConditionType.eq,
@@ -541,6 +604,16 @@ extension SPDrawingModelQueryWhereSortBy
     return addSortByInternal('name', Sort.desc);
   }
 
+  QueryBuilder<SPDrawingModel, SPDrawingModel, QAfterSortBy>
+      sortBySyncedState() {
+    return addSortByInternal('syncedState', Sort.asc);
+  }
+
+  QueryBuilder<SPDrawingModel, SPDrawingModel, QAfterSortBy>
+      sortBySyncedStateDesc() {
+    return addSortByInternal('syncedState', Sort.desc);
+  }
+
   QueryBuilder<SPDrawingModel, SPDrawingModel, QAfterSortBy> sortByUpdatedAt() {
     return addSortByInternal('updatedAt', Sort.asc);
   }
@@ -578,6 +651,16 @@ extension SPDrawingModelQueryWhereSortThenBy
     return addSortByInternal('name', Sort.desc);
   }
 
+  QueryBuilder<SPDrawingModel, SPDrawingModel, QAfterSortBy>
+      thenBySyncedState() {
+    return addSortByInternal('syncedState', Sort.asc);
+  }
+
+  QueryBuilder<SPDrawingModel, SPDrawingModel, QAfterSortBy>
+      thenBySyncedStateDesc() {
+    return addSortByInternal('syncedState', Sort.desc);
+  }
+
   QueryBuilder<SPDrawingModel, SPDrawingModel, QAfterSortBy> thenByUpdatedAt() {
     return addSortByInternal('updatedAt', Sort.asc);
   }
@@ -605,6 +688,11 @@ extension SPDrawingModelQueryWhereDistinct
   }
 
   QueryBuilder<SPDrawingModel, SPDrawingModel, QDistinct>
+      distinctBySyncedState() {
+    return addDistinctByInternal('syncedState');
+  }
+
+  QueryBuilder<SPDrawingModel, SPDrawingModel, QDistinct>
       distinctByUpdatedAt() {
     return addDistinctByInternal('updatedAt');
   }
@@ -624,7 +712,32 @@ extension SPDrawingModelQueryProperty
     return addPropertyNameInternal('name');
   }
 
+  QueryBuilder<SPDrawingModel, int, QQueryOperations> syncedStateProperty() {
+    return addPropertyNameInternal('syncedState');
+  }
+
   QueryBuilder<SPDrawingModel, DateTime, QQueryOperations> updatedAtProperty() {
     return addPropertyNameInternal('updatedAt');
   }
 }
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+SPDrawingModel _$SPDrawingModelFromJson(Map<String, dynamic> json) =>
+    SPDrawingModel()
+      ..id = json['id'] as int
+      ..name = json['name'] as String
+      ..createdAt = DateTime.parse(json['created_at'] as String)
+      ..updatedAt = DateTime.parse(json['updated_at'] as String)
+      ..syncedState = json['syncedState'] as int;
+
+Map<String, dynamic> _$SPDrawingModelToJson(SPDrawingModel instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'created_at': instance.createdAt.toIso8601String(),
+      'updated_at': instance.updatedAt.toIso8601String(),
+      'syncedState': instance.syncedState,
+    };

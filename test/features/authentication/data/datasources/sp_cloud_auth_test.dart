@@ -16,7 +16,6 @@ void main() {
     setUp(() {
       client = MockClient();
       auth = ISPCloudAuth(
-        client,
         scheme: 'https',
         host: 'www.tinyhacks.app',
         port: 443,
@@ -84,6 +83,40 @@ void main() {
             'user_id': '1',
           }),
           200));
+    });
+  });
+
+  group("test with real internet", () {
+    test("test register and login", () async {
+      // Arrange
+      String userName = 'test-${DateTime.now().millisecondsSinceEpoch}';
+      String email = 'test-${DateTime.now().millisecondsSinceEpoch}@tinyhacks.app';
+      String password = '${DateTime.now().millisecondsSinceEpoch}';
+      final auth = ISPCloudAuth(
+        scheme: 'https',
+        host: 'fierce-dusk-15069.herokuapp.com',
+        pathSegments: const ['api', 'v1', 'auth'],
+      );
+      // Act
+      final response = await auth.register(email: email, password: password, userName: userName);
+      // Assert
+      // the response should be valid
+      expect(response.statusCode, 200);
+      // response body should have an user_id field
+      expect(response.body, contains('user_id'));
+      final userId = json.decode(response.body)['user_id'];
+
+      // Act
+      final loginResponse = await auth.logIn(email: email, password: password);
+      // Assert
+      // the response should be valid
+      expect(loginResponse.statusCode, 200);
+      // response body should have an user_id field
+      expect(loginResponse.body, contains('user_id'));
+      // user_id should be the same as the one we registered with
+      expect(jsonDecode(loginResponse.body)['user_id'], userId);
+      // the user name
+      expect(jsonDecode(loginResponse.body)['user_name'], userName);
     });
   });
 }

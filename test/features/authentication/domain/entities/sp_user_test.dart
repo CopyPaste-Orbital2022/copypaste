@@ -12,6 +12,7 @@ void main() {
         uid: id,
         userName: 'test',
         email: 'test@tinyhacks.io',
+        password: 'test',
       );
       // assert
       expect(spUser.userName == 'test', true);
@@ -23,10 +24,8 @@ void main() {
     test('should return a valid sp user', () {
       final String id = const Uuid().v4();
       // arrange
-      final spUser1 =
-          SPUser(uid: id, userName: 'test', email: 'test@tinyhacks.io');
-      final spUser2 =
-          SPUser(uid: id, userName: 'test', email: 'test@tinyhacks.io');
+      final spUser1 = SPUser(uid: id, userName: 'test', email: 'test@tinyhacks.io', password: 'test');
+      final spUser2 = SPUser(uid: id, userName: 'test', email: 'test@tinyhacks.io', password: 'test');
       // assert
       expect(spUser1 == spUser2, true);
     });

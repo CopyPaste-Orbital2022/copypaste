@@ -567,3 +567,25 @@ extension SPPointModelQueryProperty
     return addPropertyNameInternal('pressure');
   }
 }
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+SPPointJsonModel _$SPPointJsonModelFromJson(Map<String, dynamic> json) =>
+    SPPointJsonModel(
+      id: json['point_id'] as int,
+      index: json['index'] as int,
+      dx: (json['dx'] as num).toDouble(),
+      dy: (json['dy'] as num).toDouble(),
+      pressure: (json['pressure'] as num).toDouble(),
+    );
+
+Map<String, dynamic> _$SPPointJsonModelToJson(SPPointJsonModel instance) =>
+    <String, dynamic>{
+      'point_id': instance.id,
+      'index': instance.index,
+      'dx': instance.dx,
+      'dy': instance.dy,
+      'pressure': instance.pressure,
+    };

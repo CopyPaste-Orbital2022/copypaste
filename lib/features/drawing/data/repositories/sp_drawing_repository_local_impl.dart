@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:copypaste/features/drawing/data/models/sp_point_model.dart';
 import 'package:copypaste/features/drawing/data/models/sp_stroke_model.dart';
 import 'package:copypaste/features/drawing/domain/entities/sp_stroke.dart';
 import 'package:copypaste/core/errors_and_failures/failures/database_failure.dart';
@@ -73,6 +74,11 @@ class SPDrawingRepositoryLocalImpl implements ISPDrawingRepository {
       final strokeModel = SPStrokeModel.fromDomain(stroke);
       await isar.writeTxn((isar) async {
         await isar.sPStrokeModels.delete(strokeModel.id);
+        await isar.deletedStrokes.put(DeletedStroke(strokeModel.id, drawing!.id));
+        final points = await isar.sPPointModels.filter().stroke((q) => q.idEqualTo(strokeModel.id)).findAll();
+        for (final point in points) {
+          await isar.sPPointModels.delete(point.id);
+        }
       });
       return right(unit);
     } on IsarError catch (e) {

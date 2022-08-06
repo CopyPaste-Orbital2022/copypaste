@@ -14,12 +14,12 @@ part 'app_router.gr.dart';
   routes: <AutoRoute>[
     AutoRoute(page: SplashPage),
     CustomRoute(
+      initial: true,
       page: AuthenticationPage,
       transitionsBuilder: TransitionsBuilders.fadeIn,
       durationInMilliseconds: 400,
     ),
     CustomRoute(
-      initial: true,
       page: FileManagementPage,
       transitionsBuilder: TransitionsBuilders.fadeIn,
       durationInMilliseconds: 400,

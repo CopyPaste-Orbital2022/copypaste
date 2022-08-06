@@ -210,6 +210,7 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
   double get eraserRadius => eraserWidthBloc.selected! / 2;
 
   Future<void> erase(PointerEvent event, Emitter emit) async {
+    final List<SPStroke> remainingStrokes = [];
     for (final stroke in state.strokes) {
       bool shouldErase = false;
       for (final point in stroke.borderPoints) {
@@ -223,6 +224,8 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
       }
       if (shouldErase) {
         await deleteStrokeUsecase(stroke);
+      } else {
+        remainingStrokes.add(stroke);
       }
     }
     // update the history
@@ -230,6 +233,7 @@ class DrawingBloc extends Bloc<DrawingEvent, DrawingState> {
     emit(
       state.copyWith(
         eraserPosition: event.localPosition,
+        strokes: remainingStrokes,
       ),
     );
 

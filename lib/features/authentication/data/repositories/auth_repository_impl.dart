@@ -38,11 +38,11 @@ class AuthRepositoryImpl implements IAuthRepository {
       }
       final String userName = await storage.read(key: 'user_name') ?? 'NO NAME';
       final email = await storage.read(key: 'email') ?? 'no_email@tinyhacks.app';
-      user = SPUser(
-        uid: userId,
-        userName: userName,
-        email: email,
-      );
+      final password = await storage.read(key: 'password');
+      if (password == null) {
+        return none();
+      }
+      user = SPUser(uid: userId, userName: userName, email: email, password: password);
       return some(user!);
     }
   }
@@ -115,10 +115,7 @@ class AuthRepositoryImpl implements IAuthRepository {
       await storage.write(key: 'user_name', value: displayNameString);
       await storage.write(key: 'email', value: emailString);
       user = SPUser(
-        uid: jsonResponse['user_id'],
-        userName: displayNameString,
-        email: emailString,
-      );
+          uid: jsonResponse['user_id'], userName: displayNameString, email: emailString, password: passwordString);
       return right(unit);
     } else {
       return left(AuthFailure.serverError());
@@ -173,11 +170,12 @@ class AuthRepositoryImpl implements IAuthRepository {
       );
       await storage.write(key: 'user_name', value: jsonResponse['user_name']);
       await storage.write(key: 'email', value: emailString);
+      await storage.write(key: 'password', value: passwordString);
       user = SPUser(
-        uid: jsonResponse['user_id'],
-        userName: jsonResponse['user_name'],
-        email: emailString,
-      );
+          uid: jsonResponse['user_id'],
+          userName: jsonResponse['user_name'],
+          email: emailString,
+          password: passwordString);
       return right(unit);
     } else {
       return left(AuthFailure.serverError());
