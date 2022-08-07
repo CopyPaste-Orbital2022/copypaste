@@ -27,7 +27,7 @@ class SplashPage extends StatelessWidget {
           if (state is UserSignedIn) {
             getIt<AppRouter>().replace(const DrawingRoute());
           } else {
-            getIt<AppRouter>().replace(const AuthenticationRoute());
+            getIt<AppRouter>().replace(AuthenticationRoute());
           }
         },
       ),

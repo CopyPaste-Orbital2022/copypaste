@@ -27,7 +27,7 @@ class DrawingButton extends StatelessWidget {
           isSelected ? type.selectedIconPath : type.notSelectedIconPath,
           width: 24,
           height: 24,
-          color: Colors.white,
+          color: Theme.of(context).textTheme.bodyLarge?.color,
         ),
         onPressed: () {
           getIt<CurrentToolBloc>().add(

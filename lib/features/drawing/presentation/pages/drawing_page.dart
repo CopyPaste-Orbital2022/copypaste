@@ -1,3 +1,6 @@
+import 'package:flutter/foundation.dart';
+import 'package:macos_ui/macos_ui.dart';
+
 import '../bloc/history_manager_bloc/history_manager_bloc.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
@@ -18,41 +21,34 @@ import '../widgets/toolbar/drawing_appbar_title.dart';
 class DrawingPage extends StatelessWidget {
   const DrawingPage({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider.value(
-          value: getIt<CurrentToolBloc>(),
-        ),
-        BlocProvider.value(
-          value: getIt<DrawingBloc>(),
-        ),
-        BlocProvider.value(
-          value: getIt<EraserWidthBloc>(),
-        ),
-        BlocProvider.value(
-          value: getIt<PenColorBloc>(),
-        ),
-        BlocProvider.value(
-          value: getIt<PenWidthBloc>(),
-        ),
-        BlocProvider.value(
-          value: getIt<HistoryManagerBloc>(),
-        ),
-        BlocProvider.value(
-          value: getIt<PenSettingsBloc>(),
-        ),
-      ],
-      child: MyPageWrapper(
-        child: PlatformScaffold(
+  Widget _buildScaffold(BuildContext context) {
+    switch (defaultTargetPlatform) {
+      case TargetPlatform.macOS:
+      // return MacosScaffold(
+      //   toolBar: const ToolBar(
+      //     title: DrawingPageAppbarTitle(),
+      //   ),
+      //   children: [
+      //     ContentArea(
+      //       builder: (context, scrollController) {
+      //         return const DrawingCanvas();
+      //       },
+      //     )
+      //   ],
+      // );
+      default:
+        return PlatformScaffold(
           appBar: PlatformAppBar(
             title: const DrawingPageAppbarTitle(),
-            backgroundColor: const Color(0xFFFADB00),
+            backgroundColor: defaultTargetPlatform == TargetPlatform.macOS ? Colors.white : const Color(0xFFFADB00),
           ),
           body: const DrawingCanvas(),
-        ),
-      ),
-    );
+        );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return _buildScaffold(context);
   }
 }

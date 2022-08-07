@@ -22,9 +22,12 @@ class _$AppRouter extends RootStackRouter {
           routeData: routeData, child: const SplashPage());
     },
     AuthenticationRoute.name: (routeData) {
+      final args = routeData.argsAs<AuthenticationRouteArgs>(
+          orElse: () => const AuthenticationRouteArgs());
       return CustomPage<dynamic>(
           routeData: routeData,
-          child: const AuthenticationPage(),
+          child: AuthenticationPage(
+              key: args.key, backgroundColor: args.backgroundColor),
           transitionsBuilder: TransitionsBuilders.fadeIn,
           durationInMilliseconds: 400,
           opaque: true,
@@ -69,10 +72,29 @@ class SplashRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [AuthenticationPage]
-class AuthenticationRoute extends PageRouteInfo<void> {
-  const AuthenticationRoute() : super(AuthenticationRoute.name, path: '/');
+class AuthenticationRoute extends PageRouteInfo<AuthenticationRouteArgs> {
+  AuthenticationRoute(
+      {Key? key, Color backgroundColor = const Color(0xFFEB7900)})
+      : super(AuthenticationRoute.name,
+            path: '/',
+            args: AuthenticationRouteArgs(
+                key: key, backgroundColor: backgroundColor));
 
   static const String name = 'AuthenticationRoute';
+}
+
+class AuthenticationRouteArgs {
+  const AuthenticationRouteArgs(
+      {this.key, this.backgroundColor = const Color(0xFFEB7900)});
+
+  final Key? key;
+
+  final Color backgroundColor;
+
+  @override
+  String toString() {
+    return 'AuthenticationRouteArgs{key: $key, backgroundColor: $backgroundColor}';
+  }
 }
 
 /// generated route for

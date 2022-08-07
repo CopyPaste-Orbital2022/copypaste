@@ -10,6 +10,9 @@ import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:isar/isar.dart';
 
+import '../../../drawing/data/models/sp_point_model.dart';
+import '../../../drawing/data/models/sp_stroke_model.dart';
+
 @LazySingleton(as: IFileManagementRepository)
 class FileManagementRepositoryLocalImpl implements IFileManagementRepository {
   FileManagementRepositoryLocalImpl(this.isar);
@@ -48,5 +51,34 @@ class FileManagementRepositoryLocalImpl implements IFileManagementRepository {
       drawingModel.id = id;
     });
     return right(drawingModel.toSPDrawing());
+  }
+
+  @override
+  Future<Either<DatabaseFailure, Unit>> deleteDrawing(SPDrawing drawing) async {
+    final drawingModel = await isar.sPDrawingModels.get(drawing.id);
+
+    if (drawingModel == null) {
+      return right(unit);
+    }
+
+    await drawingModel.strokes.load();
+
+    await isar.writeTxn(
+      (isar) async {
+        for (final stroke in drawingModel.strokes) {
+          final strokeModel = await isar.sPStrokeModels.get(stroke.id);
+          if (strokeModel == null) {
+            continue;
+          }
+          await strokeModel.points.load();
+          for (final point in strokeModel.points) {
+            await isar.sPPointModels.delete(point.id);
+          }
+          await isar.sPPointModels.delete(strokeModel.id);
+        }
+        await isar.sPDrawingModels.delete(drawing.id);
+      },
+    );
+    return right(unit);
   }
 }

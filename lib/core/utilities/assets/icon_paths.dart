@@ -10,4 +10,7 @@ abstract class IconPaths {
 
   /// the path for the outline pencil icon
   static const String penOutlinePath = "assets/menubar/pen.outline.svg";
+
+  /// the path for the app icon
+  static const String appIconPath = "assets/icons/sketch-paste-icon.svg";
 }

@@ -6,15 +6,15 @@ import 'package:macos_ui/macos_ui.dart';
 class AdaptiveElevatedButton extends StatelessWidget {
   const AdaptiveElevatedButton({
     Key? key,
-    required this.color,
-    required this.padding,
     required this.child,
+    this.padding,
+    this.color,
     this.onPressed,
   }) : super(key: key);
 
-  final Color color;
+  final Color? color;
 
-  final EdgeInsetsGeometry padding;
+  final EdgeInsetsGeometry? padding;
 
   final VoidCallback? onPressed;
 

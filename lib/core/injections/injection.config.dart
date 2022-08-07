@@ -28,10 +28,10 @@ import '../../features/drawing/data/repositories/sp_drawing_repository_local_imp
 import '../../features/drawing/domain/repository/i_sp_drawing_repository.dart'
     as _i22;
 import '../../features/drawing/domain/usecases/add_stroke.dart' as _i26;
-import '../../features/drawing/domain/usecases/delete_stroke.dart' as _i30;
+import '../../features/drawing/domain/usecases/delete_stroke.dart' as _i31;
 import '../../features/drawing/domain/usecases/open_drawing.dart' as _i24;
 import '../../features/drawing/presentation/bloc/drawing_bloc/drawing_bloc.dart'
-    as _i31;
+    as _i32;
 import '../../features/drawing/presentation/bloc/history_manager_bloc/history_manager_bloc.dart'
     as _i9;
 import '../../features/drawing/presentation/bloc/pen_settings_bloc/pen_settings_bloc.dart'
@@ -52,11 +52,13 @@ import '../../features/file_management/domain/usecases/change_drawing_name.dart'
     as _i28;
 import '../../features/file_management/domain/usecases/create_drawing.dart'
     as _i29;
+import '../../features/file_management/domain/usecases/delete_file_usecase.dart'
+    as _i30;
 import '../../features/file_management/presentation/bloc/file_management_bloc/file_management_bloc.dart'
-    as _i32;
+    as _i33;
 import '../cloud/sync_service.dart' as _i15;
 import '../routing/app_router.dart' as _i3;
-import 'injection.dart' as _i33; // ignore_for_file: unnecessary_lambdas
+import 'injection.dart' as _i34; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
@@ -102,19 +104,21 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
       _i28.ChangeDrawingNameUsecase(get<_i20.IFileManagementRepository>()));
   gh.lazySingleton<_i29.CreateNewDrawingUsecase>(() =>
       _i29.CreateNewDrawingUsecase(get<_i20.IFileManagementRepository>()));
-  gh.lazySingleton<_i30.DeleteStrokeUsecase>(
-      () => _i30.DeleteStrokeUsecase(get<_i22.ISPDrawingRepository>()));
-  gh.lazySingleton<_i31.DrawingBloc>(() => _i31.DrawingBloc(
+  gh.lazySingleton<_i30.DeleteFileUsecase>(
+      () => _i30.DeleteFileUsecase(get<_i20.IFileManagementRepository>()));
+  gh.lazySingleton<_i31.DeleteStrokeUsecase>(
+      () => _i31.DeleteStrokeUsecase(get<_i22.ISPDrawingRepository>()));
+  gh.lazySingleton<_i32.DrawingBloc>(() => _i32.DrawingBloc(
       currentToolBloc: get<_i6.CurrentToolBloc>(),
       penColorBloc: get<_i12.PenColorBloc>(),
       penWidthBloc: get<_i14.PenWidthBloc>(),
       eraserWidthBloc: get<_i7.EraserWidthBloc>(),
       penSettingsBloc: get<_i13.PenSettingsBloc>(),
       addStrokeUsecase: get<_i26.AddStrokeUsecase>(),
-      deleteStrokeUsecase: get<_i30.DeleteStrokeUsecase>(),
+      deleteStrokeUsecase: get<_i31.DeleteStrokeUsecase>(),
       openDrawingUsecase: get<_i24.OpenDrawingUsecase>(),
       drawingRepository: get<_i22.ISPDrawingRepository>()));
-  gh.lazySingleton<_i32.FileManagementBloc>(() => _i32.FileManagementBloc(
+  gh.lazySingleton<_i33.FileManagementBloc>(() => _i33.FileManagementBloc(
       get<_i28.ChangeDrawingNameUsecase>(),
       get<_i29.CreateNewDrawingUsecase>(),
       get<_i3.AppRouter>()));
@@ -123,4 +127,4 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
   return get;
 }
 
-class _$PersistenceModule extends _i33.PersistenceModule {}
+class _$PersistenceModule extends _i34.PersistenceModule {}

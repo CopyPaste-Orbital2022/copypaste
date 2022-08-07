@@ -8,6 +8,54 @@ import '../../features/authentication/presentation/bloc/validation_bloc/validati
 class AdaptiveTextField extends StatelessWidget {
   const AdaptiveTextField({
     Key? key,
+    this.hintText,
+    this.autocorrect = false,
+    this.keyboardType = TextInputType.text,
+    this.controller,
+    this.onSubmitted,
+    this.onChanged,
+  }) : super(key: key);
+
+  final String? hintText;
+
+  final bool autocorrect;
+
+  final TextInputType keyboardType;
+
+  final TextEditingController? controller;
+
+  final ValueChanged<String>? onSubmitted;
+
+  final ValueChanged<String>? onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    switch (defaultTargetPlatform) {
+      case TargetPlatform.macOS:
+        return macos.MacosTextField(
+          placeholder: hintText,
+          autocorrect: autocorrect,
+          keyboardType: keyboardType,
+          onSubmitted: onSubmitted,
+          onChanged: onChanged,
+        );
+      default:
+        return TextField(
+          decoration: InputDecoration(
+            hintText: hintText,
+          ),
+          autocorrect: autocorrect,
+          keyboardType: keyboardType,
+          onSubmitted: onSubmitted,
+          onChanged: onChanged,
+        );
+    }
+  }
+}
+
+class SPAdaptiveTextField extends StatelessWidget {
+  const SPAdaptiveTextField({
+    Key? key,
     required this.inputType,
     required this.obscureText,
     required this.getOnChangedFn,

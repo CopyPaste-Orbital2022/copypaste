@@ -67,9 +67,7 @@ class AuthenticationPage extends StatelessWidget {
                 return _buildBody();
               })
             ],
-            backgroundColor: backgroundColor,
           ),
-          backgroundColor: backgroundColor,
         );
       default:
         return PlatformScaffold(

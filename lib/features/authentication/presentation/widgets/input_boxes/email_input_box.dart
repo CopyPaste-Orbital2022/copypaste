@@ -51,7 +51,7 @@ class EmailInputBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ValidationBloc, ValidationState>(builder: (context, state) {
-      return AdaptiveTextField(
+      return SPAdaptiveTextField(
         inputType: inputType,
         obscureText: obscureText,
         getOnChangedFn: getOnChangedFn,

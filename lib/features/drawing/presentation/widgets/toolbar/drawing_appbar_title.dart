@@ -1,8 +1,10 @@
 import 'dart:io';
+import 'package:copypaste/core/adaptive/adaptive_icon_button.dart';
 import 'package:copypaste/core/extensions/screenshot_controllder_extension.dart';
 import 'package:copypaste/core/injections/injection.dart';
 import 'package:copypaste/core/routing/app_router.dart';
 import 'package:copypaste/features/file_management/presentation/bloc/file_management_bloc/file_management_bloc.dart';
+import 'package:flutter/foundation.dart';
 import 'package:pasteboard/pasteboard.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:screenshot/screenshot.dart';
@@ -69,21 +71,23 @@ class _DrawingPageAppbarTitleState extends State<DrawingPageAppbarTitle> {
               return Row(
                 children: [
                   // if on the desktop, we want to have padding
-                  if (platformIsDesktop) const SizedBox(width: 50),
-                  PlatformIconButton(
-                    padding: EdgeInsets.zero,
-                    onPressed: () {
-                      getIt<AppRouter>().replace(
-                        const FileManagementRoute(),
-                      );
-                    },
-                    icon: Icon(
-                      PlatformIcons(context).leftChevron,
-                      size: 24,
-                      color: Colors.white,
+                  if (defaultTargetPlatform != TargetPlatform.macOS)
+                    AdaptiveIconButton(
+                      padding: EdgeInsets.zero,
+                      onPressed: () {
+                        if (defaultTargetPlatform != TargetPlatform.macOS) {
+                          getIt<AppRouter>().replace(
+                            const FileManagementRoute(),
+                          );
+                        }
+                      },
+                      icon: Icon(
+                        PlatformIcons(context).leftChevron,
+                        size: 24,
+                        color: Theme.of(context).textTheme.bodyLarge?.color,
+                      ),
                     ),
-                  ),
-                  const VerticalDivider(),
+                  if (defaultTargetPlatform != TargetPlatform.macOS) const VerticalDivider(),
                   DrawingButton(
                     DrawingButtonType.pen,
                     state.selected == DrawingButtonType.pen,
@@ -102,49 +106,57 @@ class _DrawingPageAppbarTitleState extends State<DrawingPageAppbarTitle> {
             return Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                PlatformIconButton(
+                AdaptiveIconButton(
                   onPressed: state.canUndo
                       ? () => context.read<HistoryManagerBloc>().add(const HistoryManagerEvent.undo())
                       : null,
                   icon: Icon(
                     platformIsMaterial ? Icons.undo : CupertinoIcons.arrow_uturn_left,
-                    color: state.canUndo ? Colors.white : Colors.white.withAlpha(128),
+                    color: state.canRedo
+                        ? Theme.of(context).textTheme.bodyLarge?.color
+                        : Theme.of(context).textTheme.bodyLarge?.color?.withAlpha(128),
                     size: 24,
                   ),
                   padding: EdgeInsets.zero,
                 ),
-                PlatformIconButton(
+                AdaptiveIconButton(
                   onPressed: state.canRedo
                       ? () => context.read<HistoryManagerBloc>().add(const HistoryManagerEvent.redo())
                       : null,
                   icon: Icon(
                     platformIsMaterial ? Icons.redo : CupertinoIcons.arrow_uturn_right,
-                    color: state.canRedo ? Colors.white : Colors.white.withAlpha(128),
+                    color: state.canRedo
+                        ? Theme.of(context).textTheme.bodyLarge?.color
+                        : Theme.of(context).textTheme.bodyLarge?.color?.withAlpha(128),
                     size: 24,
                   ),
                   padding: EdgeInsets.zero,
                 ),
                 const VerticalDivider(),
-                PlatformIconButton(
+                AdaptiveIconButton(
                   key: copyButtonKey,
-                  icon: const Icon(Icons.copy_outlined, color: Colors.white, size: 24),
+                  icon: Icon(
+                    Icons.copy_outlined,
+                    color: Theme.of(context).textTheme.bodyLarge?.color,
+                    size: 24,
+                  ),
                   onPressed: _onCopyImageToClipboard,
                   padding: EdgeInsets.zero,
                 ),
-                PlatformIconButton(
+                AdaptiveIconButton(
                   key: shareButtonKey,
                   icon: Icon(
                     PlatformIcons(context).share,
-                    color: Colors.white,
+                    color: Theme.of(context).textTheme.bodyLarge?.color,
                     size: 24,
                   ),
                   onPressed: _onShareButtonPressed,
                   padding: EdgeInsets.zero,
                 ),
-                PlatformIconButton(
+                AdaptiveIconButton(
                   icon: Icon(
                     PlatformIcons(context).ellipsis,
-                    color: Colors.white,
+                    color: Theme.of(context).textTheme.bodyLarge?.color,
                     size: 24,
                   ),
                   onPressed: () {},

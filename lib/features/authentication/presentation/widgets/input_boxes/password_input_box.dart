@@ -46,7 +46,7 @@ class PasswordInputBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ValidationBloc, ValidationState>(
       builder: (context, state) {
-        return AdaptiveTextField(
+        return SPAdaptiveTextField(
           inputType: inputType,
           obscureText: obscureText,
           getOnChangedFn: getOnChangedFn,

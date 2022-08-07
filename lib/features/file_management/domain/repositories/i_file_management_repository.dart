@@ -15,4 +15,7 @@ abstract class IFileManagementRepository {
 
   /// Else, asks the database to update the existing drawing
   Future<Either<DatabaseFailure, Unit>> updateDrawing(SPDrawing drawing);
+
+  /// Delete the drawing
+  Future<Either<DatabaseFailure, Unit>> deleteDrawing(SPDrawing drawing);
 }

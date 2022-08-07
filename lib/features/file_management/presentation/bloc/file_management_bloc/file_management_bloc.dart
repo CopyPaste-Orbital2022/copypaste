@@ -1,9 +1,7 @@
 import 'dart:developer';
-
 import 'package:copypaste/core/injections/injection.dart';
 import 'package:copypaste/core/routing/app_router.dart';
 import 'package:copypaste/features/drawing/presentation/bloc/drawing_bloc/drawing_bloc.dart';
-import 'package:copypaste/features/drawing/presentation/bloc/history_manager_bloc/history_manager_bloc.dart';
 import 'package:copypaste/features/file_management/domain/usecases/change_drawing_name.dart';
 import 'package:copypaste/features/file_management/domain/usecases/create_drawing.dart';
 import 'package:flutter/foundation.dart';
@@ -43,7 +41,10 @@ class FileManagementBloc extends Bloc<FileManagementEvent, FileManagementState> 
 
   Future<void> _onCreateNewDrawingEvent(
       FileManagementEventCreateNewDrawing event, Emitter<FileManagementState> emit) async {
-    final newDrawingOrFailure = await createNewDrawingUsecase();
+    // TODO: change the usecase
+    final newDrawingOrFailure = await createNewDrawingUsecase(
+      name: event.name,
+    );
   }
 
   Future<void> _onChangeDrawingNameEvent(
@@ -61,6 +62,12 @@ class FileManagementBloc extends Bloc<FileManagementEvent, FileManagementState> 
       ),
     );
     getIt<DrawingBloc>().add(DrawingEvent.initial(drawing: event.drawing));
-    await router.replace(const DrawingRoute());
+    switch (defaultTargetPlatform) {
+      // we don't need to do anything for macos
+      case TargetPlatform.macOS:
+        break;
+      default:
+        await router.replace(const DrawingRoute());
+    }
   }
 }
